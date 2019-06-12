@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32EAEBF2275EF5F009369FE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */; };
 		B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */; };
@@ -20,6 +21,7 @@
 		B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B4001229D0BE20045DF9A /* webAddress.swift */; };
 		B387FFBE22762A9E00DE55FD /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */; };
 		B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */; };
+		B39C1FE922B147CF0071276D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B39C1FE822B147CF0071276D /* GoogleService-Info.plist */; };
 		B3A4099F22801D310034B953 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4099E22801D310034B953 /* SearchDetailViewController.swift */; };
 		B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */; };
 		B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */; };
@@ -42,6 +44,8 @@
 		B3E891A82277317800117375 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E891A72277317800117375 /* Login.storyboard */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
+		B85FDD2695CDACBBA94C26FA /* Pods_CosmeticTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F431C198CB4642CBEDA455EF /* Pods_CosmeticTests.framework */; };
+		F892CC511CC5EC977DF09B0C /* Pods_CosmeticUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1366E0D142D19132661F5DB4 /* Pods-CosmeticUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticUITests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticUITests/Pods-CosmeticUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		474767E3C777999699FCF03E /* Pods-CosmeticUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticUITests.release.xcconfig"; path = "Target Support Files/Pods-CosmeticUITests/Pods-CosmeticUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmetic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
+		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBrands.swift; sourceTree = "<group>"; };
@@ -75,6 +85,7 @@
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
 		B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
+		B39C1FE822B147CF0071276D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3A4099E22801D310034B953 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,6 +115,9 @@
 		B3E891A72277317800117375 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
+		F431C198CB4642CBEDA455EF /* Pods_CosmeticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F872A8FD90B01154F320851F /* Pods-CosmeticTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.release.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE408905127F1B5A95447717 /* Pods-Cosmetic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debug.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +131,7 @@
 				B3AF0FDB227C202400C37F63 /* AssetsLibrary.framework in Frameworks */,
 				B3AF0FD0227C071300C37F63 /* CoreMedia.framework in Frameworks */,
 				B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */,
+				900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85FDD2695CDACBBA94C26FA /* Pods_CosmeticTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F892CC511CC5EC977DF09B0C /* Pods_CosmeticUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +199,9 @@
 				B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */,
 				B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */,
 				B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */,
+				6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */,
+				F431C198CB4642CBEDA455EF /* Pods_CosmeticTests.framework */,
+				7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,6 +214,7 @@
 				B3C2FA0D2245002E0054EE16 /* CosmeticUITests */,
 				B3C2F9EA2245002C0054EE16 /* Products */,
 				B3AF0FC1227C068900C37F63 /* Frameworks */,
+				C4E91E0CC0B260FA4778BBCA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,6 +246,7 @@
 				B3C2F9F22245002C0054EE16 /* Main.storyboard */,
 				B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */,
 				B3C2F9F52245002E0054EE16 /* Assets.xcassets */,
+				B39C1FE822B147CF0071276D /* GoogleService-Info.plist */,
 				B3C2F9FA2245002E0054EE16 /* Info.plist */,
 				B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */,
 			);
@@ -249,6 +271,19 @@
 			path = CosmeticUITests;
 			sourceTree = "<group>";
 		};
+		C4E91E0CC0B260FA4778BBCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE408905127F1B5A95447717 /* Pods-Cosmetic.debug.xcconfig */,
+				8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */,
+				AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */,
+				F872A8FD90B01154F320851F /* Pods-CosmeticTests.release.xcconfig */,
+				1366E0D142D19132661F5DB4 /* Pods-CosmeticUITests.debug.xcconfig */,
+				474767E3C777999699FCF03E /* Pods-CosmeticUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,9 +291,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3C2FA132245002E0054EE16 /* Build configuration list for PBXNativeTarget "Cosmetic" */;
 			buildPhases = (
+				88E309A73D2701DDC254F5E9 /* [CP] Check Pods Manifest.lock */,
 				B3C2F9E52245002C0054EE16 /* Sources */,
 				B3C2F9E62245002C0054EE16 /* Frameworks */,
 				B3C2F9E72245002C0054EE16 /* Resources */,
+				A5190F1B2D1638E5E7CED0C0 /* [CP] Embed Pods Frameworks */,
+				6749ECD03776483150307B8D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -273,6 +311,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3C2FA162245002E0054EE16 /* Build configuration list for PBXNativeTarget "CosmeticTests" */;
 			buildPhases = (
+				BB768C3A30F775BED65E1AE9 /* [CP] Check Pods Manifest.lock */,
 				B3C2F9FB2245002E0054EE16 /* Sources */,
 				B3C2F9FC2245002E0054EE16 /* Frameworks */,
 				B3C2F9FD2245002E0054EE16 /* Resources */,
@@ -291,6 +330,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3C2FA192245002E0054EE16 /* Build configuration list for PBXNativeTarget "CosmeticUITests" */;
 			buildPhases = (
+				7E4DDC67008AB44C82CFFC92 /* [CP] Check Pods Manifest.lock */,
 				B3C2FA062245002E0054EE16 /* Sources */,
 				B3C2FA072245002E0054EE16 /* Frameworks */,
 				B3C2FA082245002E0054EE16 /* Resources */,
@@ -361,6 +401,7 @@
 				B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */,
 				B3E891A82277317800117375 /* Login.storyboard in Resources */,
 				B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */,
+				B39C1FE922B147CF0071276D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +420,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6749ECD03776483150307B8D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVTextDetectorResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVTextDetectorResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E4DDC67008AB44C82CFFC92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CosmeticUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88E309A73D2701DDC254F5E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cosmetic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5190F1B2D1638E5E7CED0C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB768C3A30F775BED65E1AE9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CosmeticTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B3C2F9E52245002C0054EE16 /* Sources */ = {
@@ -579,6 +743,7 @@
 		};
 		B3C2FA142245002E0054EE16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE408905127F1B5A95447717 /* Pods-Cosmetic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -593,7 +758,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Cosmetic";
+				PRODUCT_BUNDLE_IDENTIFIER = coco.Cosmetic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -604,6 +769,7 @@
 		};
 		B3C2FA152245002E0054EE16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -618,7 +784,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Cosmetic";
+				PRODUCT_BUNDLE_IDENTIFIER = coco.Cosmetic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -628,6 +794,7 @@
 		};
 		B3C2FA172245002E0054EE16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -649,6 +816,7 @@
 		};
 		B3C2FA182245002E0054EE16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F872A8FD90B01154F320851F /* Pods-CosmeticTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -670,6 +838,7 @@
 		};
 		B3C2FA1A2245002E0054EE16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1366E0D142D19132661F5DB4 /* Pods-CosmeticUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -690,6 +859,7 @@
 		};
 		B3C2FA1B2245002E0054EE16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474767E3C777999699FCF03E /* Pods-CosmeticUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

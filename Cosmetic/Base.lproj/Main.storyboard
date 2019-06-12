@@ -430,22 +430,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrd-Gf-VHn">
                                 <rect key="frame" x="0.0" y="603" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan brand logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8l-iD-wDE">
-                                        <rect key="frame" x="33" y="22" width="125" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="GTy-6d-pB0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGg-S8-eww">
+                                        <rect key="frame" x="157.5" y="17" width="60" height="30"/>
+                                        <state key="normal" title="Capture!"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c8l-iD-wDE" secondAttribute="trailing" symbolic="YES" id="5L4-JL-bmz"/>
-                                    <constraint firstItem="c8l-iD-wDE" firstAttribute="top" secondItem="Vrd-Gf-VHn" secondAttribute="top" constant="22" id="AkK-Bi-JlS"/>
-                                    <constraint firstAttribute="bottom" secondItem="c8l-iD-wDE" secondAttribute="bottom" constant="21" id="RQw-sg-JDD"/>
-                                    <constraint firstItem="c8l-iD-wDE" firstAttribute="leading" secondItem="Vrd-Gf-VHn" secondAttribute="leading" constant="33" id="mZ4-jn-87V"/>
+                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerX" secondItem="Vrd-Gf-VHn" secondAttribute="centerX" id="eXi-DR-gIg"/>
+                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerY" secondItem="Vrd-Gf-VHn" secondAttribute="centerY" id="mDo-Cw-Tyn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -456,6 +449,7 @@
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" id="Eic-eX-MV5"/>
                             <constraint firstItem="Vrd-Gf-VHn" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="Hcg-fY-FhF"/>
                             <constraint firstItem="Vrd-Gf-VHn" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="J2v-4g-pO2"/>
+                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" constant="583" id="exs-bY-zu4"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="gJT-nh-YrD"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="vbl-RZ-gk4"/>
                         </constraints>
