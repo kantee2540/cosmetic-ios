@@ -10,6 +10,8 @@
 		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32EAEBF2275EF5F009369FE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */; };
+		B338526322B2788F00255AD6 /* CameraResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338526122B2788F00255AD6 /* CameraResultViewController.swift */; };
+		B338526422B2788F00255AD6 /* CameraResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B338526222B2788F00255AD6 /* CameraResultViewController.xib */; };
 		B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */; };
 		B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9E2290404D008F3AEE /* BrandModel.swift */; };
 		B342F0EF228C439F00196E3B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0EE228C439F00196E3B /* HomeCollectionViewCell.swift */; };
@@ -74,6 +76,8 @@
 		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B338526122B2788F00255AD6 /* CameraResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultViewController.swift; sourceTree = "<group>"; };
+		B338526222B2788F00255AD6 /* CameraResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraResultViewController.xib; sourceTree = "<group>"; };
 		B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBrands.swift; sourceTree = "<group>"; };
 		B33B6E9E2290404D008F3AEE /* BrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
 		B342F0EE228C439F00196E3B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +158,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B338526522B2789800255AD6 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */,
+				B338526122B2788F00255AD6 /* CameraResultViewController.swift */,
+				B338526222B2788F00255AD6 /* CameraResultViewController.xib */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		B33B6EA022904052008F3AEE /* getObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +245,10 @@
 		B3C2F9EB2245002C0054EE16 /* Cosmetic */ = {
 			isa = PBXGroup;
 			children = (
+				B338526522B2789800255AD6 /* Camera */,
 				B342F0F0228C43AF00196E3B /* Home */,
 				B34A6C2822796BFB002892A7 /* Login */,
 				B33B6EA022904052008F3AEE /* getObject */,
-				B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */,
 				B3AF0FF0227C7D8D00C37F63 /* ProductDetailCameraViewController.swift */,
 				B342F0F1228C4D8A00196E3B /* CosmeticCollectionTableViewController.swift */,
 				B32BDD1D2278152600933877 /* SearchTableViewController.swift */,
@@ -399,6 +413,7 @@
 				B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */,
 				B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */,
 				B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */,
+				B338526422B2788F00255AD6 /* CameraResultViewController.xib in Resources */,
 				B3E891A82277317800117375 /* Login.storyboard in Resources */,
 				B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */,
 				B39C1FE922B147CF0071276D /* GoogleService-Info.plist in Resources */,
@@ -571,6 +586,7 @@
 				B342F0F2228C4D8A00196E3B /* CosmeticCollectionTableViewController.swift in Sources */,
 				B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
+				B338526322B2788F00255AD6 /* CameraResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

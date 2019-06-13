@@ -10,38 +10,42 @@ import UIKit
 import Firebase
 import AVFoundation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     let vision = Vision.vision()
     let cameraRunning = false
+    var resultOutputText: String!
+    
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var imageOutput: AVCapturePhotoOutput!
     
     @IBOutlet weak var cameraView: UIImageView!
     
+    @IBOutlet weak var captureButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCamera()
         
-        let recognizer = vision.onDeviceTextRecognizer()
-        let image :UIImage = UIImage(named: "item2")!
-        let visionImage = VisionImage(image: image)
-        
-        recognizer.process(visionImage)  { result, error in
-            guard error == nil, let result = result else{
-                return
-            }
-            
-            print("Text that detected ===> " + result.text)
-        }
         
     }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        print("Output processed")
+        guard let imageData = photo.fileDataRepresentation()
+            else{
+                return
+        }
+        let image = UIImage(data: imageData)!
+        textProcessing(tookPhoto: image)
+        
+        captureButton.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Search by Camera"
-        
-        videoPreviewLayer!.frame = cameraView.bounds
         
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,7 +68,9 @@ class CameraViewController: UIViewController {
                 captureSession?.addInput(input)
                 captureSession.addOutput(imageOutput)
                 
-                setupLivePreview()
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                videoPreviewLayer.videoGravity = .resizeAspect
+                cameraView.layer.addSublayer(videoPreviewLayer)
                 
                 onStartCamera()
             }
@@ -79,20 +85,39 @@ class CameraViewController: UIViewController {
     }
     func onStartCamera(){
         captureSession.startRunning()
+        
+        DispatchQueue.main.async {
+            self.videoPreviewLayer.frame = self.cameraView.bounds
+        }
     }
     func onStopCamera(){
         captureSession.stopRunning()
     }
     
-    
-    func setupLivePreview(){
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resizeAspect
-        cameraView.layer.addSublayer(videoPreviewLayer)
+    func textProcessing(tookPhoto: UIImage){
+        let recognizer = vision.onDeviceTextRecognizer()
+        let image :UIImage = tookPhoto
+        let visionImage = VisionImage(image: image)
+        
+        recognizer.process(visionImage)  { result, error in
+            guard error == nil, let result = result else{
+                return
+            }
+            
+            self.resultOutputText = result.text
+            print("Text that detected ===> " + result.text)
+        }
+        
         
     }
     
-
+    @IBAction func takePhoto(_ sender: Any) {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        imageOutput.capturePhoto(with: settings, delegate: self)
+        
+        print("CLICKED!")
+    }
+    
     /*
     // MARK: - Navigation
 

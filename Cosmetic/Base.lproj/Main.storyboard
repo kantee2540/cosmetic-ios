@@ -428,40 +428,44 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrd-Gf-VHn">
-                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="579" width="375" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGg-S8-eww">
-                                        <rect key="frame" x="157.5" y="17" width="60" height="30"/>
+                                        <rect key="frame" x="157.5" y="40" width="60" height="30"/>
                                         <state key="normal" title="Capture!"/>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="9UI-dC-jTI" eventType="touchUpInside" id="wGM-zs-4Vm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerX" secondItem="Vrd-Gf-VHn" secondAttribute="centerX" id="eXi-DR-gIg"/>
-                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerY" secondItem="Vrd-Gf-VHn" secondAttribute="centerY" id="mDo-Cw-Tyn"/>
+                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerX" secondItem="Vrd-Gf-VHn" secondAttribute="centerX" id="3WF-TZ-Yrl"/>
+                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerY" secondItem="Vrd-Gf-VHn" secondAttribute="centerY" constant="11" id="JSJ-1u-j5T"/>
+                                    <constraint firstAttribute="height" constant="88" id="zvy-Ie-8ow"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="2eN-XZ-ZoW"/>
+                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="3fT-dG-3jl"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="EYC-Lf-sXS"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" id="Eic-eX-MV5"/>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="Hcg-fY-FhF"/>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="J2v-4g-pO2"/>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" constant="583" id="exs-bY-zu4"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="gJT-nh-YrD"/>
+                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="qjT-Jm-JC8"/>
+                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="uZU-gd-7hL"/>
                             <constraint firstItem="K0J-Cf-HqJ" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="vbl-RZ-gk4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KOb-se-k2M"/>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="K0J-Cf-HqJ" id="yfF-4Z-5eq"/>
+                        <outlet property="captureButton" destination="LGg-S8-eww" id="QM2-YO-3Gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OqP-Bd-Zhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1750" y="63"/>
+            <point key="canvasLocation" x="1749.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9qY-QZ-RUb">
