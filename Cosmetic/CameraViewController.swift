@@ -12,7 +12,6 @@ import AVFoundation
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
-    let vision = Vision.vision()
     let cameraRunning = false
     var resultOutputText: String!
     
@@ -29,7 +28,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         setupCamera()
         
-        
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -39,12 +37,15 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                 return
         }
         let image = UIImage(data: imageData)!
-        textProcessing(tookPhoto: image)
         
-        captureButton.isHidden = true
+        let vc = CameraResultViewController(nibName: "CameraResultViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.imageResult = image
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        onStartCamera()
         self.tabBarController?.navigationItem.title = "Search by Camera"
         
     }
@@ -92,23 +93,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     func onStopCamera(){
         captureSession.stopRunning()
-    }
-    
-    func textProcessing(tookPhoto: UIImage){
-        let recognizer = vision.onDeviceTextRecognizer()
-        let image :UIImage = tookPhoto
-        let visionImage = VisionImage(image: image)
-        
-        recognizer.process(visionImage)  { result, error in
-            guard error == nil, let result = result else{
-                return
-            }
-            
-            self.resultOutputText = result.text
-            print("Text that detected ===> " + result.text)
-        }
-        
-        
     }
     
     @IBAction func takePhoto(_ sender: Any) {

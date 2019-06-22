@@ -7,25 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
 class CameraResultViewController: UIViewController {
 
+    let vision = Vision.vision()
     var imageResult :UIImage!
+    var textResult :String!
+    @IBOutlet weak var previewImage: UIImageView!
+    @IBOutlet weak var textViewResult: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        previewImage.image = imageResult
+        textProcessing()
         // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textProcessing(){
+        let recognizer = vision.onDeviceTextRecognizer()
+        let visionImage = VisionImage(image: imageResult)
+        
+        self.showSpinner(onView: self.view)
+        recognizer.process(visionImage)  { result, error in
+            guard error == nil, let result = result else{
+                return
+            }
+            
+            self.textResult = result.text
+            print("Text that detected ===> " + result.text)
+        }
+        textViewResult.text = textResult
+        
+        self.removeSpinner()
     }
-    */
 
+}
+
+var vSpinnerCamera :UIView?
+extension CameraResultViewController{
+    func showSpinner(onView :UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        vSpinnerCamera = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            vSpinnerCamera?.removeFromSuperview()
+            vSpinnerCamera = nil
+        }
+    }
 }
