@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AVFoundation
+import CoreML
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
@@ -18,6 +19,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var imageOutput: AVCapturePhotoOutput!
+    let videoOutput = AVCaptureVideoDataOutput()
+    let sampleBufferQueue = DispatchQueue.global(qos: .userInteractive)
     
     @IBOutlet weak var cameraView: UIImageView!
     
@@ -26,9 +29,10 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCamera()
+        
         
     }
+
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print("Output processed")
@@ -45,7 +49,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        onStartCamera()
+        setupCamera()
         self.tabBarController?.navigationItem.title = "Search by Camera"
         
     }
@@ -65,16 +69,20 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         do{
             let input = try AVCaptureDeviceInput(device: backCamera)
             imageOutput = AVCapturePhotoOutput()
-            if captureSession.canAddInput(input) && captureSession.canAddOutput(imageOutput as AVCaptureOutput){
-                captureSession?.addInput(input)
-                captureSession.addOutput(imageOutput)
+            
+            captureSession?.addInput(input)
                 
-                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                videoPreviewLayer.videoGravity = .resizeAspect
-                cameraView.layer.addSublayer(videoPreviewLayer)
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            videoPreviewLayer.videoGravity = .resizeAspect
+            cameraView.layer.addSublayer(videoPreviewLayer)
                 
-                onStartCamera()
-            }
+            videoOutput.alwaysDiscardsLateVideoFrames = true
+            videoOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
+                
+            captureSession.addOutput(videoOutput)
+            
+                
+            onStartCamera()
             
             
         }catch let error{
@@ -97,19 +105,59 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBAction func takePhoto(_ sender: Any) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        imageOutput.capturePhoto(with: settings, delegate: self)
+        //imageOutput.capturePhoto(with: settings, delegate: self)
+        videoOutput.alwaysDiscardsLateVideoFrames = true
+        videoOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
         
         print("CLICKED!")
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func imageOrientation(
+        deviceOrientation: UIDeviceOrientation,
+        cameraPosition: AVCaptureDevice.Position
+        ) -> VisionDetectorImageOrientation {
+        switch deviceOrientation {
+        case .portrait:
+            return cameraPosition == .front ? .leftTop : .rightTop
+        case .landscapeLeft:
+            return cameraPosition == .front ? .bottomLeft : .topLeft
+        case .portraitUpsideDown:
+            return cameraPosition == .front ? .rightBottom : .leftBottom
+        case .landscapeRight:
+            return cameraPosition == .front ? .topRight : .bottomRight
+        case .faceDown, .faceUp, .unknown:
+            return .leftTop
+        }
+        
     }
-    */
 
+}
+
+extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        print("begin regonize")
+        let vision = Vision.vision()
+        let textRecognizer = vision.onDeviceTextRecognizer()
+        let cameraPosition = AVCaptureDevice.Position.back
+        let metadata = VisionImageMetadata()
+        metadata.orientation = imageOrientation(
+            deviceOrientation: UIDevice.current.orientation,
+            cameraPosition: cameraPosition
+        )
+        let image = VisionImage(buffer: sampleBuffer)
+        image.metadata = metadata
+
+        textRecognizer.process(image) { result, error in
+            guard error == nil, let result = result else {
+                return
+            }
+
+            let resultText = result.text
+            print(resultText)
+            
+            
+            
+
+        }
+    }
 }

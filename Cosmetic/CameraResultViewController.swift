@@ -11,7 +11,7 @@ import Firebase
 
 class CameraResultViewController: UIViewController {
 
-    let vision = Vision.vision()
+
     var imageResult :UIImage!
     var textResult :String!
     @IBOutlet weak var previewImage: UIImageView!
@@ -25,6 +25,7 @@ class CameraResultViewController: UIViewController {
     }
     
     func textProcessing(){
+        let vision = Vision.vision()
         let recognizer = vision.onDeviceTextRecognizer()
         let visionImage = VisionImage(image: imageResult)
         
@@ -35,6 +36,8 @@ class CameraResultViewController: UIViewController {
             }
             
             self.textResult = result.text
+            
+            
             print("Text that detected ===> " + result.text)
         }
         textViewResult.text = textResult
