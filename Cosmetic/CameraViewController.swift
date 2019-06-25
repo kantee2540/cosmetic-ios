@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseMLVision
 import AVFoundation
 import CoreML
 
@@ -21,11 +22,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var imageOutput: AVCapturePhotoOutput!
     let videoOutput = AVCaptureVideoDataOutput()
     let sampleBufferQueue = DispatchQueue.global(qos: .userInteractive)
-    
     @IBOutlet weak var cameraView: UIImageView!
     
-    @IBOutlet weak var captureButton: UIButton!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,14 +101,56 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         captureSession.stopRunning()
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        //imageOutput.capturePhoto(with: settings, delegate: self)
-        videoOutput.alwaysDiscardsLateVideoFrames = true
-        videoOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
-        
-        print("CLICKED!")
+//    @IBAction func takePhoto(_ sender: Any) {
+//        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+//        //imageOutput.capturePhoto(with: settings, delegate: self)
+//        videoOutput.alwaysDiscardsLateVideoFrames = true
+//        videoOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
+//
+//        print("CLICKED!")
+//    }
+    @IBAction func doneButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
+    
+    @IBOutlet weak var resultTextView: UITextView!
+    
+    
+}
+
+extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        print("begin regonize")
+        let vision = Vision.vision()
+        let textRecognizer = vision.onDeviceTextRecognizer()
+        let cameraPosition = AVCaptureDevice.Position.back
+        let metadata = VisionImageMetadata()
+        metadata.orientation = imageOrientation(
+            deviceOrientation: UIDevice.current.orientation,
+            cameraPosition: cameraPosition
+        )
+        let image = VisionImage(buffer: sampleBuffer)
+        image.metadata = metadata
+
+        textRecognizer.process(image) { result, error in
+            guard error == nil, let result = result else {
+                self.resultTextView.text = "Could not found!"
+                return
+            }
+
+            let resultText = result.text
+            //print(resultText)
+            
+            for block in result.blocks{
+                self.resultTextView.text = "\(block.text)\n\n"
+            }
+        }
+    }
+    
+    private func addFrameView(featureFrame: CGRect, imageSize: CGSize, viewFrame: CGRect, text: String? = nil){
+        
+    }
+    
     
     func imageOrientation(
         deviceOrientation: UIDeviceOrientation,
@@ -131,33 +171,4 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
     }
 
-}
-
-extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("begin regonize")
-        let vision = Vision.vision()
-        let textRecognizer = vision.onDeviceTextRecognizer()
-        let cameraPosition = AVCaptureDevice.Position.back
-        let metadata = VisionImageMetadata()
-        metadata.orientation = imageOrientation(
-            deviceOrientation: UIDevice.current.orientation,
-            cameraPosition: cameraPosition
-        )
-        let image = VisionImage(buffer: sampleBuffer)
-        image.metadata = metadata
-
-        textRecognizer.process(image) { result, error in
-            guard error == nil, let result = result else {
-                return
-            }
-
-            let resultText = result.text
-            print(resultText)
-            
-            
-            
-
-        }
-    }
 }

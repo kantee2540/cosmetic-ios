@@ -424,48 +424,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K0J-Cf-HqJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4c-R9-hdS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrd-Gf-VHn">
-                                <rect key="frame" x="0.0" y="579" width="375" height="88"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGg-S8-eww">
-                                        <rect key="frame" x="157.5" y="40" width="60" height="30"/>
-                                        <state key="normal" title="Capture!"/>
-                                        <connections>
-                                            <action selector="takePhoto:" destination="9UI-dC-jTI" eventType="touchUpInside" id="wGM-zs-4Vm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YB1-xw-EaJ">
+                                <rect key="frame" x="16" y="556" width="343" height="91"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerX" secondItem="Vrd-Gf-VHn" secondAttribute="centerX" id="3WF-TZ-Yrl"/>
-                                    <constraint firstItem="LGg-S8-eww" firstAttribute="centerY" secondItem="Vrd-Gf-VHn" secondAttribute="centerY" constant="11" id="JSJ-1u-j5T"/>
-                                    <constraint firstAttribute="height" constant="88" id="zvy-Ie-8ow"/>
-                                </constraints>
-                            </view>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="3fT-dG-3jl"/>
-                            <constraint firstItem="K0J-Cf-HqJ" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="EYC-Lf-sXS"/>
-                            <constraint firstItem="K0J-Cf-HqJ" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" id="Eic-eX-MV5"/>
-                            <constraint firstItem="K0J-Cf-HqJ" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="gJT-nh-YrD"/>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="qjT-Jm-JC8"/>
-                            <constraint firstItem="Vrd-Gf-VHn" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="uZU-gd-7hL"/>
-                            <constraint firstItem="K0J-Cf-HqJ" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="vbl-RZ-gk4"/>
+                            <constraint firstItem="YB1-xw-EaJ" firstAttribute="top" secondItem="d4c-R9-hdS" secondAttribute="bottom" constant="-111" id="8yU-AA-euK"/>
+                            <constraint firstItem="YB1-xw-EaJ" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" constant="16" id="OZX-4k-11Y"/>
+                            <constraint firstItem="KOb-se-k2M" firstAttribute="trailing" secondItem="YB1-xw-EaJ" secondAttribute="trailing" constant="16" id="QVj-EB-fXc"/>
+                            <constraint firstItem="d4c-R9-hdS" firstAttribute="leading" secondItem="KOb-se-k2M" secondAttribute="leading" id="X68-HY-pCE"/>
+                            <constraint firstItem="d4c-R9-hdS" firstAttribute="trailing" secondItem="KOb-se-k2M" secondAttribute="trailing" id="Xxc-5p-VbN"/>
+                            <constraint firstItem="KOb-se-k2M" firstAttribute="bottom" secondItem="YB1-xw-EaJ" secondAttribute="bottom" constant="20" id="c93-eF-vae"/>
+                            <constraint firstItem="d4c-R9-hdS" firstAttribute="bottom" secondItem="KOb-se-k2M" secondAttribute="bottom" id="cEC-78-rXx"/>
+                            <constraint firstItem="d4c-R9-hdS" firstAttribute="top" secondItem="KOb-se-k2M" secondAttribute="top" id="kE6-IW-L9r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KOb-se-k2M"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Scan Product Label" id="YMn-WA-AQr">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="3VW-vA-Cdo">
+                            <connections>
+                                <action selector="doneButton:" destination="9UI-dC-jTI" id="GK5-cs-KFg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="cameraView" destination="K0J-Cf-HqJ" id="yfF-4Z-5eq"/>
-                        <outlet property="captureButton" destination="LGg-S8-eww" id="QM2-YO-3Gv"/>
+                        <outlet property="cameraView" destination="d4c-R9-hdS" id="Xzc-kH-FDU"/>
+                        <outlet property="resultTextView" destination="YB1-xw-EaJ" id="QYu-Fx-L3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OqP-Bd-Zhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.5999999999999" y="62.518740629685162"/>
+            <point key="canvasLocation" x="2581.5999999999999" y="-0.44977511244377816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9qY-QZ-RUb">
@@ -481,7 +478,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Buy-o1-iHP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2578" y="63"/>
+            <point key="canvasLocation" x="3585" y="32"/>
         </scene>
         <!--Result-->
         <scene sceneID="0k9-a2-XL2">
@@ -520,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j01-a2-dxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3426" y="63"/>
+            <point key="canvasLocation" x="4433" y="32"/>
         </scene>
         <!--Search-->
         <scene sceneID="Zpi-M2-pxM">
@@ -786,6 +783,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVJ-eB-QfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2798" y="868"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fYm-yM-FAU">
+            <objects>
+                <navigationController storyboardIdentifier="cameraViewController" id="cWL-Jr-hEp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bel-6s-lOK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9UI-dC-jTI" kind="relationship" relationship="rootViewController" id="BXf-ki-5IP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hLa-rh-o1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="0.0"/>
         </scene>
     </scenes>
     <resources>

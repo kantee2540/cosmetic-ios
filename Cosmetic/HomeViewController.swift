@@ -48,8 +48,8 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol{
     }
     
     @objc func openCamera(_ :UIBarButtonItem){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CameraView")
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "cameraViewController")
+        self.navigationController?.present(vc!, animated: true, completion: nil)
     }
     
     //Round on corner
