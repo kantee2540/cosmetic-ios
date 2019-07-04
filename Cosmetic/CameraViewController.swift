@@ -50,6 +50,10 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         setupCamera()
         self.tabBarController?.navigationItem.title = "Search by Camera"
         
+        let layer = CALayer()
+        layer.contents = UIImage(named: "item1")?.cgImage
+        cameraView.layer.addSublayer(layer)
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         onStopCamera()

@@ -21,6 +21,8 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
     var resultItem :[ProductModel] = []
     
     @IBOutlet var resultTable: UITableView!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var descriptionText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +58,22 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! CollectionTableViewCell
         let item :ProductModel = resultItem[indexPath.row]
+//        cell.textLabel?.text = item.product_name
+//        cell.detailTextLabel?.text = item.product_description
+        cell.titleTextView.text = item.product_name
+        cell.detailTextView.text = item.product_description
+        cell.priceTextView.text = "Price : " + item.product_price! + " Baht"
         
-        cell.textLabel?.text = item.product_name
-        cell.detailTextLabel?.text = item.product_description
-
+        let imageURL = URL(string: item.product_img!)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: imageURL!)
+            DispatchQueue.main.async {
+                cell.productImage.image = UIImage(data: data!)
+            }
+        }
+        
         // Configure the cell...
 
         return cell

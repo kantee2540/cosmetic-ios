@@ -125,6 +125,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
             infoVC.product_img = item.product_img
         }
         
+        tableView.deselectRow(at: indexPath, animated: true)
         
         
         

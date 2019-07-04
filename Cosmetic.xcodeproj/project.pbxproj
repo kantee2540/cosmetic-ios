@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
+		B329BD3722CE38DC00B1AEE9 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B329BD3622CE38DB00B1AEE9 /* CollectionTableViewCell.swift */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32EAEBF2275EF5F009369FE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */; };
 		B338526322B2788F00255AD6 /* CameraResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338526122B2788F00255AD6 /* CameraResultViewController.swift */; };
@@ -74,6 +75,7 @@
 		7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
 		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B329BD3622CE38DB00B1AEE9 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B32EAEBE2275EF5F009369FE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B338526122B2788F00255AD6 /* CameraResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				B3D14BC3228086E400DBAF7D /* CosmeticInfoViewController.swift */,
 				B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */,
 				B3C2F9F22245002C0054EE16 /* Main.storyboard */,
+				B329BD3622CE38DB00B1AEE9 /* CollectionTableViewCell.swift */,
 				B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */,
 				B3C2F9F52245002E0054EE16 /* Assets.xcassets */,
 				B39C1FE822B147CF0071276D /* GoogleService-Info.plist */,
@@ -571,6 +574,7 @@
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
+				B329BD3722CE38DC00B1AEE9 /* CollectionTableViewCell.swift in Sources */,
 				B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */,
 				B3AF0FF1227C7D8D00C37F63 /* ProductDetailCameraViewController.swift in Sources */,
 				B3C2FA1E22450AB40054EE16 /* LoginViewController.swift in Sources */,
