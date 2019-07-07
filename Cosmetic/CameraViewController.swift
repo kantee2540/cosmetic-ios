@@ -22,12 +22,17 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var imageOutput: AVCapturePhotoOutput!
     let videoOutput = AVCaptureVideoDataOutput()
     let sampleBufferQueue = DispatchQueue.global(qos: .userInteractive)
-    @IBOutlet weak var cameraView: UIImageView!
     
+    @IBOutlet weak var cameraView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupCamera()
+        self.tabBarController?.navigationItem.title = "Search by Camera"
         
+        let layer = CALayer()
+        layer.contents = UIImage(named: "item1")?.cgImage
+        cameraView.layer.addSublayer(layer)
         
     }
 
@@ -38,21 +43,16 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             else{
                 return
         }
-        let image = UIImage(data: imageData)!
+        //let image = UIImage(data: imageData)!
         
-        let vc = CameraResultViewController(nibName: "CameraResultViewController", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-        vc.imageResult = image
+//        let vc = CameraResultViewController(nibName: "CameraResultViewController", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        vc.imageResult = image
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setupCamera()
-        self.tabBarController?.navigationItem.title = "Search by Camera"
-        
-        let layer = CALayer()
-        layer.contents = UIImage(named: "item1")?.cgImage
-        cameraView.layer.addSublayer(layer)
+        onStartCamera()
         
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -73,9 +73,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             imageOutput = AVCapturePhotoOutput()
             
             captureSession?.addInput(input)
-                
+            
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer.videoGravity = .resizeAspect
+            videoPreviewLayer.videoGravity = .resize
             cameraView.layer.addSublayer(videoPreviewLayer)
                 
             videoOutput.alwaysDiscardsLateVideoFrames = true
@@ -94,6 +94,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         
     }
+    @IBAction func cameraClick(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "cameraResult") as! cameraResultTableViewController
+        vc.keyword = resultOutputText ?? ""
+        navigationController?.pushViewController(vc , animated: true)
+    }
+    
+    
     func onStartCamera(){
         captureSession.startRunning()
         
@@ -103,6 +110,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     func onStopCamera(){
         captureSession.stopRunning()
+        
     }
     
 //    @IBAction func takePhoto(_ sender: Any) {
@@ -124,7 +132,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("begin regonize")
+        
         let vision = Vision.vision()
         let textRecognizer = vision.onDeviceTextRecognizer()
         let cameraPosition = AVCaptureDevice.Position.back
@@ -142,11 +150,19 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
                 return
             }
 
-            let resultText = result.text
-            //print(resultText)
-            
+            //let resultText = result.text
             for block in result.blocks{
-                self.resultTextView.text = "\(block.text)\n\n"
+                
+                for line in block.lines{
+                    for element in line.elements{
+                        self.resultTextView.text = "\(element.text)\n\n"
+                        self.resultOutputText = element.text
+                        
+                        
+                        
+                    }
+                }
+                
             }
         }
     }

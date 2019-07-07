@@ -11,4 +11,6 @@ import UIKit
 class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionLabel: UILabel!
+    @IBOutlet weak var categoriesName: UILabel!
+    
 }

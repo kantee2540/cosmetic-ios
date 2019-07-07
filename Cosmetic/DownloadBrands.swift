@@ -25,6 +25,9 @@ import UIKit
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
+        let postParameter = "sql=SELECT * FROM product_brand"
+        request.httpBody = postParameter.data(using: .utf8)
+        
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
             

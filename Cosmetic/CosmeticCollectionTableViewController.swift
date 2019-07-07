@@ -19,6 +19,7 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
     var categories_id :String!
     var categories_name :String!
     var resultItem :[ProductModel] = []
+    var session :URLSession!
     
     @IBOutlet var resultTable: UITableView!
     @IBOutlet weak var titleText: UILabel!
@@ -66,13 +67,37 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         cell.detailTextView.text = item.product_description
         cell.priceTextView.text = "Price : " + item.product_price! + " Baht"
         
+        //DownloadImage
         let imageURL = URL(string: item.product_img!)
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: imageURL!)
-            DispatchQueue.main.async {
-                cell.productImage.image = UIImage(data: data!)
+            self.session = URLSession(configuration: .default)
+            
+            let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
+                if let e = error{
+                    print("Error = \(e)")
+                }
+                else {
+                    if (responds as? HTTPURLResponse) != nil {
+                        if let imageData = data {
+                            
+                            DispatchQueue.main.async {
+                                cell.productImage.image = UIImage(data: imageData)
+                            }
+                        }
+                        else{
+                            print("Image file is currupted")
+                        }
+                    }
+                    else{
+                        print("No response from server")
+                    }
+                }
             }
+            
+            getImageFromUrl.resume()
         }
+        
+        //
         
         // Configure the cell...
 

@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol{
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return resultItem.count
     }
@@ -72,6 +73,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item :CategoriesModel = resultItem[indexPath.row]
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollection", for: indexPath) as! HomeCollectionViewCell
+    
         collectionCell.collectionLabel.text = item.categories_name
         collectionCell.layer.cornerRadius = 8
         

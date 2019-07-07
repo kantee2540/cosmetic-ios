@@ -18,13 +18,13 @@ class DownloadProductByCategories: NSObject {
     var DB_URL:String!
     
     func downloadItem(categories_id :String){
-        DB_URL = getAddress.getProductOnSearchURL()
+        DB_URL = getAddress.getProductURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
-        let postParameter = "categories_id=" + categories_id
+        let postParameter = "sql=SELECT * FROM product p JOIN product_brand b ON p.brand_id = b.brand_id JOIN categories c ON p.categories_id = c.categories_id WHERE p.categories_id = " + categories_id
         request.httpBody = postParameter.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){
@@ -80,7 +80,10 @@ class DownloadProductByCategories: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: products)
+            if products != nil{
+                self.delegate.itemDownloaded(item: products)
+            }
+            
         })
         
     }
