@@ -8,7 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadCategoriesProtocol{
+class HomeViewController: UIViewController, DownloadCategoriesProtocol, DownloadLastestProductProtocol{
+    func itemDownloadedProductLastest(item: NSMutableArray) {
+        resultProductItem = item as! [ProductModel]
+        topCollection.reloadData()
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [CategoriesModel]
         collection.reloadData()
@@ -16,8 +21,12 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol{
     }
     
     var resultItem : [CategoriesModel] = []
-    let itemCollection = ["Lips", "Face", "Eyes", "Nails"]
+    var resultProductItem : [ProductModel] = []
+    var session :URLSession!
+    
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var topCollection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,12 +35,19 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol{
         
         collection.delegate = self
         collection.dataSource = self
+        topCollection.delegate = self
+        topCollection.dataSource = self
         
         //Camera Button
         cammerabtn.image = cammerabtn_image
         tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
         
         self.showSpinner(onView: self.view)
+        
+        let downloadProductLastest = DownloadProductLastest()
+        downloadProductLastest.delegate = self
+        downloadProductLastest.downloadItem()
+        
         let downloadCategories = DownloadCategories()
         downloadCategories.delegate = self
         downloadCategories.downloadItem()
@@ -67,28 +83,108 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol{
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resultItem.count
+        if collectionView == collection{
+            return resultItem.count
+        }
+        if collectionView == topCollection{
+            return resultProductItem.count
+        }
+        
+        return 0
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item :CategoriesModel = resultItem[indexPath.row]
-        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollection", for: indexPath) as! HomeCollectionViewCell
-    
-        collectionCell.collectionLabel.text = item.categories_name
-        collectionCell.layer.cornerRadius = 8
+        let cell = UICollectionViewCell()
         
-        //Color
+        if collectionView == collection{
+            let item :CategoriesModel = resultItem[indexPath.row]
+            let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollection", for: indexPath) as! HomeCollectionViewCell
+        
+            collectionCell.collectionLabel.text = item.categories_name
+            collectionCell.layer.cornerRadius = 8
+            
+            return collectionCell
+        }
+        
+        if collectionView == topCollection{
+            let item: ProductModel = resultProductItem[indexPath.row]
+            let collectionProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "topViewCollectionCell", for: indexPath) as! TopCollectionViewCell
+            
+            collectionProductCell.topTitle.text = item.product_name
+            collectionProductCell.topDescription.text = item.product_description
+            let imageURL = URL(string: item.product_img!)
+            
+            DispatchQueue.global().async {
+                self.session = URLSession(configuration: .default)
+                
+                let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
+                    if let e = error{
+                        print("Error = \(e)")
+                    }
+                    else {
+                        if (responds as? HTTPURLResponse) != nil {
+                            if let imageData = data {
+                                
+                                DispatchQueue.main.async {
+                                    collectionProductCell.topImage.image = UIImage(data: imageData)
+                                    collectionProductCell.topImage.clipsToBounds = true
+                                }
+                            }
+                            else{
+                                print("Image file is currupted")
+                            }
+                        }
+                        else{
+                            print("No response from server")
+                        }
+                    }
+                }
+                
+                getImageFromUrl.resume()
+            }
+            
+            collectionProductCell.contentView.layer.cornerRadius = 15
+            collectionProductCell.contentView.layer.borderWidth = 1.0
+            collectionProductCell.contentView.layer.borderColor =  UIColor.clear.cgColor
+            collectionProductCell.contentView.layer.masksToBounds = true
+            collectionProductCell.layer.cornerRadius = 15
+            collectionProductCell.layer.shadowColor = UIColor.lightGray.cgColor
+            collectionProductCell.layer.shadowOffset = CGSize(width: 0, height: 5.0)
+            collectionProductCell.layer.shadowRadius = 10
+            collectionProductCell.layer.shadowOpacity = 1.0
+            collectionProductCell.layer.masksToBounds = false
+            
+            return collectionProductCell
+        }
         
         
-        return collectionCell
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "cosmeticCollection")) as? CosmeticCollectionTableViewController
-        vc?.categories_id = resultItem[indexPath.row].categories_id
-        vc?.categories_name = resultItem[indexPath.row].categories_name
-        navigationController?.pushViewController(vc!, animated: true)
+        if collectionView == collection{
+            let vc = (self.storyboard?.instantiateViewController(withIdentifier: "cosmeticCollection")) as? CosmeticCollectionTableViewController
+            let item: CategoriesModel = resultItem[indexPath.row]
+            vc?.categories_id = item.categories_id
+            vc?.categories_name = item.categories_name
+            navigationController?.pushViewController(vc!, animated: true)
+        }
+        
+        if collectionView == topCollection{
+            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
+            let item :ProductModel = resultProductItem[indexPath.row]
+            
+            infoVC.product_name = item.product_name
+            infoVC.product_description = item.product_description
+            infoVC.product_price = item.product_price
+            infoVC.categories_name = item.categories_name
+            infoVC.brand_name = item.brand_name
+            infoVC.product_img = item.product_img
+            navigationController?.pushViewController(infoVC, animated: true)
+            
+        }
     }
     
     

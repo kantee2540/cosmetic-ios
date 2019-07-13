@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 @objc public protocol DownloadLastestProductProtocol: class {
-    func itemDownloaded(item: NSMutableArray)
+    func itemDownloadedProductLastest(item: NSMutableArray)
 }
 
 @objc class DownloadProductLastest: NSObject {
@@ -28,7 +28,7 @@ import UIKit
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
-        let postParameter = "sql=SELECT * FROM product p JOIN product_brand b ON p.brand_id = b.brand_id JOIN categories c ON p.categories_id = c.categories_id"
+        let postParameter = "sql=SELECT * FROM product p JOIN product_brand b ON p.brand_id = b.brand_id JOIN categories c ON p.categories_id = c.categories_id LIMIT 5"
         request.httpBody = postParameter.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){
@@ -84,7 +84,7 @@ import UIKit
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: products)
+            self.delegate.itemDownloadedProductLastest(item: products)
         })
         
     }
