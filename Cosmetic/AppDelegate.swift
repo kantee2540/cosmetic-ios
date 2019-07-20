@@ -49,8 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if shortcutItem.type == "cameraAction" {
             guard let navC = window?.rootViewController as? UINavigationController else { return }
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CameraView")
-            navC.pushViewController(vc, animated: false)
+            let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
+            navC.present(vc, animated: true, completion: nil)
         }
             
        
