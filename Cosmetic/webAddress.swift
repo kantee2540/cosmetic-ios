@@ -11,8 +11,8 @@ import UIKit
 class webAddress {
     
     //Change server must be change this string
-    //var prefixString: String = "http://192.168.1.175/webService/" //FOR internal Test
-    var prefixString: String = "https://cococosmetic.000webhostapp.com/"
+    var prefixString: String = "http://192.168.1.175:8080/webService/" //FOR internal Test
+    //var prefixString: String = "https://cococosmetic.000webhostapp.com/"
     
     func getProductURL() -> String{
         let webFile = prefixString + "getProduct.php"

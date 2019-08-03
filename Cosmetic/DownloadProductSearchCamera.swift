@@ -24,7 +24,7 @@ class DownloadProductSearchCamera: NSObject {
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
-        let postParameter = "sql=SELECT * FROM product p JOIN product_brand b ON p.brand_id = b.brand_id JOIN categories c ON p.categories_id = c.categories_id WHERE p.product_name LIKE \"%\(searchKeyword)%\""
+        let postParameter = "searchbyproduct=" + searchKeyword
         request.httpBody = postParameter.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){

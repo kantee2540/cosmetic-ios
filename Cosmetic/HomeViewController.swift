@@ -64,7 +64,7 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol, Download
     }
     
     @objc func openCamera(_ :UIBarButtonItem){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "cameraViewController")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "cameraCaptureRoot")
         self.navigationController?.present(vc!, animated: true, completion: nil)
     }
     

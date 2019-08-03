@@ -21,6 +21,7 @@
 		B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F3228C4F9700196E3B /* CategoriesModel.swift */; };
 		B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F5228C50D600196E3B /* DownloadCategories.swift */; };
 		B342F0F8228C5A4000196E3B /* DownloadProductByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F7228C5A4000196E3B /* DownloadProductByCategories.swift */; };
+		B349614122F5E83500262096 /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349613F22F5E83500262096 /* CameraCaptureViewController.swift */; };
 		B349E13C22D2179F00943A1D /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */; };
 		B349E13E22D2213000943A1D /* DownloadProductSearchCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13D22D2213000943A1D /* DownloadProductSearchCamera.swift */; };
 		B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */; };
@@ -93,6 +94,7 @@
 		B342F0F3228C4F9700196E3B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		B342F0F5228C50D600196E3B /* DownloadCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCategories.swift; sourceTree = "<group>"; };
 		B342F0F7228C5A4000196E3B /* DownloadProductByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductByCategories.swift; sourceTree = "<group>"; };
+		B349613F22F5E83500262096 /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B349E13D22D2213000943A1D /* DownloadProductSearchCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductSearchCamera.swift; sourceTree = "<group>"; };
 		B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				B338526222B2788F00255AD6 /* CameraResultViewController.xib */,
 				B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */,
 				B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */,
+				B349613F22F5E83500262096 /* CameraCaptureViewController.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				B349E13C22D2179F00943A1D /* cameraResultTableViewController.swift in Sources */,
 				B342F0F2228C4D8A00196E3B /* CosmeticCollectionTableViewController.swift in Sources */,
 				B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */,
+				B349614122F5E83500262096 /* CameraCaptureViewController.swift in Sources */,
 				B349E13E22D2213000943A1D /* DownloadProductSearchCamera.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
