@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,7 +33,6 @@
 		B39F272322CF9D9D006DBA5E /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */; };
 		B3A4099F22801D310034B953 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4099E22801D310034B953 /* SearchDetailViewController.swift */; };
 		B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */; };
-		B3A5C61722D4FB1C00FD50BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */; };
 		B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */; };
 		B3AF0FD0227C071300C37F63 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */; };
 		B3AF0FDB227C202400C37F63 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCA227C06C800C37F63 /* AssetsLibrary.framework */; };
@@ -41,6 +40,8 @@
 		B3AF0FDD227C203600C37F63 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3AF0FDE227C203C00C37F63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCC227C06D100C37F63 /* Accelerate.framework */; };
 		B3AF0FE4227C58C100C37F63 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */; };
+		B3B68A18232A919700AB4F94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */; };
+		B3B68A1B232A91D200AB4F94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */; };
 		B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */; };
 		B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F22245002C0054EE16 /* Main.storyboard */; };
 		B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F52245002E0054EE16 /* Assets.xcassets */; };
@@ -106,7 +107,7 @@
 		B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		B3A4099E22801D310034B953 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +116,7 @@
 		B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cosmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3C2F9E92245002C0054EE16 /* Cosmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C2F9F32245002C0054EE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		B3C2F9EB2245002C0054EE16 /* Cosmetic */ = {
 			isa = PBXGroup;
 			children = (
+				B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */,
 				B338526522B2789800255AD6 /* Camera */,
 				B342F0F0228C43AF00196E3B /* Home */,
 				B34A6C2822796BFB002892A7 /* Login */,
@@ -432,12 +435,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */,
-				B3A5C61722D4FB1C00FD50BD /* GoogleService-Info.plist in Resources */,
+				B3B68A1B232A91D200AB4F94 /* GoogleService-Info.plist in Resources */,
 				B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */,
 				B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */,
 				B338526422B2788F00255AD6 /* CameraResultViewController.xib in Resources */,
 				B3E891A82277317800117375 /* Login.storyboard in Resources */,
 				B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */,
+				B3B68A18232A919700AB4F94 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,16 +468,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVTextDetectorResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVTextDetectorResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -530,26 +529,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
