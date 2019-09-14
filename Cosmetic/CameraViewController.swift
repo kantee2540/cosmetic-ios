@@ -157,9 +157,6 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
                     for element in line.elements{
                         self.resultTextView.text = element.text
                         self.resultOutputText = element.text
-                        
-                        
-                        
                     }
                 }
                 

@@ -335,6 +335,7 @@
 				B3C2F9E72245002C0054EE16 /* Resources */,
 				A5190F1B2D1638E5E7CED0C0 /* [CP] Embed Pods Frameworks */,
 				6749ECD03776483150307B8D /* [CP] Copy Pods Resources */,
+				B3478843232BFFA2003438BC /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -539,6 +540,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cosmetic/Pods-Cosmetic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B3478843232BFFA2003438BC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		BB768C3A30F775BED65E1AE9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -776,6 +796,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = MPJF3QG6MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

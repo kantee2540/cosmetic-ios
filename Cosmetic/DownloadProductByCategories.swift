@@ -80,10 +80,7 @@ class DownloadProductByCategories: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            if products != nil{
-                self.delegate.itemDownloaded(item: products)
-            }
-            
+            self.delegate.itemDownloaded(item: products)
         })
         
     }

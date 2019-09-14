@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol, Download
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Home"
+        self.tabBarController?.navigationItem.title = "Coco"
         
         
         
@@ -186,9 +186,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         }
     }
-    
-    
-    
     
 }
 
