@@ -27,6 +27,7 @@
 		B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */; };
 		B34A6C2A2279C8C3002892A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34A6C292279C8C3002892A7 /* HomeViewController.swift */; };
 		B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B4001229D0BE20045DF9A /* webAddress.swift */; };
+		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
 		B387FFBE22762A9E00DE55FD /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */; };
 		B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
@@ -40,8 +41,6 @@
 		B3AF0FDD227C203600C37F63 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3AF0FDE227C203C00C37F63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCC227C06D100C37F63 /* Accelerate.framework */; };
 		B3AF0FE4227C58C100C37F63 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */; };
-		B3B68A18232A919700AB4F94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */; };
-		B3B68A1B232A91D200AB4F94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */; };
 		B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */; };
 		B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F22245002C0054EE16 /* Main.storyboard */; };
 		B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F52245002E0054EE16 /* Assets.xcassets */; };
@@ -101,13 +100,13 @@
 		B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultTableViewCell.swift; sourceTree = "<group>"; };
 		B34A6C292279C8C3002892A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
+		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
 		B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		B3A4099E22801D310034B953 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -116,7 +115,6 @@
 		B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cosmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3AF0FE3227C58C100C37F63 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3C2F9E92245002C0054EE16 /* Cosmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C2F9F32245002C0054EE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 		B3C2F9EB2245002C0054EE16 /* Cosmetic */ = {
 			isa = PBXGroup;
 			children = (
-				B3B68A1A232A91D200AB4F94 /* GoogleService-Info.plist */,
 				B338526522B2789800255AD6 /* Camera */,
 				B342F0F0228C43AF00196E3B /* Home */,
 				B34A6C2822796BFB002892A7 /* Login */,
@@ -284,8 +281,8 @@
 				B329BD3622CE38DB00B1AEE9 /* CollectionTableViewCell.swift */,
 				B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */,
 				B3C2F9F52245002E0054EE16 /* Assets.xcassets */,
-				B3A5C61622D4FB1C00FD50BD /* GoogleService-Info.plist */,
 				B3C2F9FA2245002E0054EE16 /* Info.plist */,
+				B37E34D0232D783300FD4780 /* GoogleService-Info.plist */,
 				B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */,
 			);
 			path = Cosmetic;
@@ -436,13 +433,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */,
-				B3B68A1B232A91D200AB4F94 /* GoogleService-Info.plist in Resources */,
 				B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */,
 				B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */,
 				B338526422B2788F00255AD6 /* CameraResultViewController.xib in Resources */,
 				B3E891A82277317800117375 /* Login.storyboard in Resources */,
 				B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */,
-				B3B68A18232A919700AB4F94 /* GoogleService-Info.plist in Resources */,
+				B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

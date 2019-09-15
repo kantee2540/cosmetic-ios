@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>635063429102-cljfb4ji1uv9tqu89mn9fm30ibuee8ep.apps.googleusercontent.com</string>
+	<string>335439058679-rjgvcfdq49b5ner5fe6ioc41tdb9k90m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.635063429102-cljfb4ji1uv9tqu89mn9fm30ibuee8ep</string>
+	<string>com.googleusercontent.apps.335439058679-rjgvcfdq49b5ner5fe6ioc41tdb9k90m</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAflq0-3-tNrrysYXhsTqC49vUfEj5yMIg</string>
+	<string>AIzaSyDbQRLXf_vne9R5h8YlDdBC6l_Fo5pyFR0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>635063429102</string>
+	<string>335439058679</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>coco.Cosmetic</string>
 	<key>PROJECT_ID</key>
-	<string>cosmetic-e5c1c</string>
+	<string>cosmetic-dfa8b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cosmetic-e5c1c.appspot.com</string>
+	<string>cosmetic-dfa8b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:635063429102:ios:e755a88824089a6c</string>
+	<string>1:335439058679:ios:629a1d418bef044ebc25f2</string>
 	<key>DATABASE_URL</key>
-	<string>https://cosmetic-e5c1c.firebaseio.com</string>
+	<string>https://cosmetic-dfa8b.firebaseio.com</string>
 </dict>
 </plist>
