@@ -38,7 +38,6 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         downloadProduct.delegate = self
         downloadProduct.downloadItem(categories_id: categories_id)
         
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -96,10 +95,6 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
             
             getImageFromUrl.resume()
         }
-        
-        //
-        
-        // Configure the cell...
 
         return cell
     }
@@ -115,10 +110,6 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         infoVC.product_img = item.product_img
         navigationController?.pushViewController(infoVC, animated: true)
     }
-    
-
-    
-
 }
 
 var vSpinnerCollection :UIView?

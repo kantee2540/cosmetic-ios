@@ -108,26 +108,19 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
         if searching{
             item = filtered[indexPath.row]
-            infoVC.product_name = item.product_name
-            infoVC.product_description = item.product_description
-            infoVC.product_price = item.product_price
-            infoVC.categories_name = item.categories_name
-            infoVC.brand_name = item.brand_name
-            infoVC.product_img = item.product_img
         }
         else{
             item = resultItem[indexPath.row]
-            infoVC.product_name = item.product_name
-            infoVC.product_description = item.product_description
-            infoVC.product_price = item.product_price
-            infoVC.categories_name = item.categories_name
-            infoVC.brand_name = item.brand_name
-            infoVC.product_img = item.product_img
         }
         
+        infoVC.product_name = item.product_name
+        infoVC.product_description = item.product_description
+        infoVC.product_price = item.product_price
+        infoVC.categories_name = item.categories_name
+        infoVC.brand_name = item.brand_name
+        infoVC.product_img = item.product_img
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
         
         navigationController?.pushViewController(infoVC, animated: true)
     }
@@ -144,14 +137,11 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    
-    
 }
 
 extension SearchTableViewController: UISearchBarDelegate{
     //SEARCH
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
         
         filtered = resultItem.filter(){
             return ($0.product_name ?? "").contains(searchText)
