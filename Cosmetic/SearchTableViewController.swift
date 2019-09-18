@@ -45,10 +45,6 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         cammerabtn.image = cammerabtn_image
         tabBarController?.navigationItem.rightBarButtonItem = cammerabtn
         
-        
-        
-        searchBar.delegate = self
-        
     }
     
     
@@ -106,12 +102,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var item:ProductModel
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-        if searching{
-            item = filtered[indexPath.row]
-        }
-        else{
-            item = resultItem[indexPath.row]
-        }
+        item = resultItem[indexPath.row]
         
         infoVC.product_name = item.product_name
         infoVC.product_description = item.product_description
@@ -137,38 +128,6 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-}
-
-extension SearchTableViewController: UISearchBarDelegate{
-    //SEARCH
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filtered = resultItem.filter(){
-            return ($0.product_name ?? "").contains(searchText)
-        }
-        //print(filtered)
-        searchBar.showsCancelButton = true
-        if searchText == ""{
-            searching = false
-        }
-        else{
-            searching = true
-        }
-        
-        stockResultsFeed.reloadData()
-        
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-        searching = false
-        stockResultsFeed.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
 }
 
 var vSpinner :UIView?

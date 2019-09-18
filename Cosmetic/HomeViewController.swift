@@ -149,9 +149,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             collectionProductCell.contentView.layer.borderColor =  UIColor.clear.cgColor
             collectionProductCell.contentView.layer.masksToBounds = true
             collectionProductCell.layer.cornerRadius = 15
-            collectionProductCell.layer.shadowColor = UIColor.lightGray.cgColor
-            collectionProductCell.layer.shadowOffset = CGSize(width: 0, height: 5.0)
-            collectionProductCell.layer.shadowRadius = 10
+            collectionProductCell.layer.shadowColor = UIColor.systemGray.cgColor
+            collectionProductCell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+            collectionProductCell.layer.shadowRadius = 5
             collectionProductCell.layer.shadowOpacity = 1.0
             collectionProductCell.layer.masksToBounds = false
             
