@@ -18,7 +18,6 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
     var resultProductItem : [ProductModel] = []
     var session :URLSession!
     
-    @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var topCollection: UICollectionView!
     
     override func viewDidLoad() {
@@ -119,10 +118,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             collectionProductCell.contentView.layer.borderColor =  UIColor.clear.cgColor
             collectionProductCell.contentView.layer.masksToBounds = true
             collectionProductCell.layer.cornerRadius = 15
-            collectionProductCell.layer.shadowColor = UIColor.systemGray.cgColor
+            collectionProductCell.layer.shadowColor = UIColor.black.cgColor
             collectionProductCell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
             collectionProductCell.layer.shadowRadius = 5
-            collectionProductCell.layer.shadowOpacity = 1.0
+            collectionProductCell.layer.shadowOpacity = 0.3
             collectionProductCell.layer.masksToBounds = false
             
             return collectionProductCell
