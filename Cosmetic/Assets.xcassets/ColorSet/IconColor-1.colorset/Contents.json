@@ -7,6 +7,19 @@
     {
       "idiom" : "universal",
       "color" : {
+        "platform" : "ios",
+        "reference" : "darkTextColor"
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
         "color-space" : "srgb",
         "components" : {
           "red" : "1.000",

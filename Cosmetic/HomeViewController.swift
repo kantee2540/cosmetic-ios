@@ -8,19 +8,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadCategoriesProtocol, DownloadLastestProductProtocol{
+class HomeViewController: UIViewController, DownloadLastestProductProtocol{
     func itemDownloadedProductLastest(item: NSMutableArray) {
+        removeSpinner()
         resultProductItem = item as! [ProductModel]
         topCollection.reloadData()
     }
-    
-    func itemDownloaded(item: NSMutableArray) {
-        resultItem = item as! [CategoriesModel]
-        collection.reloadData()
-        self.removeSpinner()
-    }
-    
-    var resultItem : [CategoriesModel] = []
+
     var resultProductItem : [ProductModel] = []
     var session :URLSession!
     
@@ -33,8 +27,6 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol, Download
         let cammerabtn_image = UIImage(named: "cameraicon")
         let cammerabtn = UIBarButtonItem(title: "pp", style: .done, target: self, action: #selector(openCamera(_:)))
         
-        collection.delegate = self
-        collection.dataSource = self
         topCollection.delegate = self
         topCollection.dataSource = self
         
@@ -47,10 +39,6 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol, Download
         let downloadProductLastest = DownloadProductLastest()
         downloadProductLastest.delegate = self
         downloadProductLastest.downloadItem()
-        
-        let downloadCategories = DownloadCategories()
-        downloadCategories.delegate = self
-        downloadCategories.downloadItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,29 +71,11 @@ class HomeViewController: UIViewController, DownloadCategoriesProtocol, Download
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == collection{
-            return resultItem.count
-        }
-        if collectionView == topCollection{
-            return resultProductItem.count
-        }
-        
-        return 0
-        
+        return resultProductItem.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = UICollectionViewCell()
-        
-        if collectionView == collection{
-            let item :CategoriesModel = resultItem[indexPath.row]
-            let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCollection", for: indexPath) as! HomeCollectionViewCell
-        
-            collectionCell.collectionLabel.text = item.categories_name
-            collectionCell.layer.cornerRadius = 8
-            
-            return collectionCell
-        }
         
         if collectionView == topCollection{
             let item: ProductModel = resultProductItem[indexPath.row]
@@ -163,14 +133,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if collectionView == collection{
-            let vc = (self.storyboard?.instantiateViewController(withIdentifier: "cosmeticCollection")) as? CosmeticCollectionTableViewController
-            let item: CategoriesModel = resultItem[indexPath.row]
-            vc?.categories_id = item.categories_id
-            vc?.categories_name = item.categories_name
-            navigationController?.pushViewController(vc!, animated: true)
-        }
         
         if collectionView == topCollection{
             let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController

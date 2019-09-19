@@ -24,7 +24,7 @@ import UIKit
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
