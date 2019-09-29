@@ -131,6 +131,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         let vision = Vision.vision()
@@ -152,17 +153,18 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
 
             //let resultText = result.text
             for block in result.blocks{
-                
                 for line in block.lines{
                     for element in line.elements{
-                        self.resultTextView.text = element.text
-                        self.resultOutputText = element.text
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            self.resultTextView.text = element.text
+                        })
                     }
                 }
                 
             }
         }
     }
+    
     
     private func addFrameView(featureFrame: CGRect, imageSize: CGSize, viewFrame: CGRect, text: String? = nil){
         

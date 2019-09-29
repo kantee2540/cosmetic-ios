@@ -21,7 +21,6 @@
 		B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F3228C4F9700196E3B /* CategoriesModel.swift */; };
 		B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F5228C50D600196E3B /* DownloadCategories.swift */; };
 		B342F0F8228C5A4000196E3B /* DownloadProductByCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F7228C5A4000196E3B /* DownloadProductByCategories.swift */; };
-		B349614122F5E83500262096 /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349613F22F5E83500262096 /* CameraCaptureViewController.swift */; };
 		B349E13C22D2179F00943A1D /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */; };
 		B349E13E22D2213000943A1D /* DownloadProductSearchCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13D22D2213000943A1D /* DownloadProductSearchCamera.swift */; };
 		B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */; };
@@ -31,7 +30,6 @@
 		B387FFBE22762A9E00DE55FD /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */; };
 		B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
-		B39F272322CF9D9D006DBA5E /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */; };
 		B3A4099F22801D310034B953 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4099E22801D310034B953 /* SearchDetailViewController.swift */; };
 		B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */; };
 		B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */; };
@@ -94,7 +92,6 @@
 		B342F0F3228C4F9700196E3B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		B342F0F5228C50D600196E3B /* DownloadCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCategories.swift; sourceTree = "<group>"; };
 		B342F0F7228C5A4000196E3B /* DownloadProductByCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductByCategories.swift; sourceTree = "<group>"; };
-		B349613F22F5E83500262096 /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B349E13D22D2213000943A1D /* DownloadProductSearchCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductSearchCamera.swift; sourceTree = "<group>"; };
 		B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,7 +101,6 @@
 		B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
-		B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		B3A4099E22801D310034B953 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -180,7 +176,6 @@
 				B338526222B2788F00255AD6 /* CameraResultViewController.xib */,
 				B349E13B22D2179F00943A1D /* cameraResultTableViewController.swift */,
 				B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */,
-				B349613F22F5E83500262096 /* CameraCaptureViewController.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -205,7 +200,6 @@
 		B342F0F0228C43AF00196E3B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B39F272222CF9D9D006DBA5E /* HomeTableViewController.swift */,
 				B34A6C292279C8C3002892A7 /* HomeViewController.swift */,
 				B342F0EE228C439F00196E3B /* HomeCollectionViewCell.swift */,
 				B31FBCEA22D6303B00688A33 /* TopCollectionViewCell.swift */,
@@ -593,7 +587,6 @@
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
-				B39F272322CF9D9D006DBA5E /* HomeTableViewController.swift in Sources */,
 				B329BD3722CE38DC00B1AEE9 /* CollectionTableViewCell.swift in Sources */,
 				B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */,
 				B3C2FA1E22450AB40054EE16 /* LoginViewController.swift in Sources */,
@@ -609,7 +602,6 @@
 				B349E13C22D2179F00943A1D /* cameraResultTableViewController.swift in Sources */,
 				B342F0F2228C4D8A00196E3B /* CosmeticCollectionTableViewController.swift in Sources */,
 				B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */,
-				B349614122F5E83500262096 /* CameraCaptureViewController.swift in Sources */,
 				B349E13E22D2213000943A1D /* DownloadProductSearchCamera.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
