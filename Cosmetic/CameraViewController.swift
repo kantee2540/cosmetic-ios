@@ -59,7 +59,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         onStopCamera()
     }
     
-    func setupCamera(){
+    private func setupCamera(){
         captureSession = AVCaptureSession()
         //captureSession?.sessionPreset = .high
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
@@ -101,14 +101,14 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     
-    func onStartCamera(){
+    private func onStartCamera(){
         captureSession.startRunning()
         
         DispatchQueue.main.async {
             self.videoPreviewLayer.frame = self.cameraView.bounds
         }
     }
-    func onStopCamera(){
+    private func onStopCamera(){
         captureSession.stopRunning()
         
     }

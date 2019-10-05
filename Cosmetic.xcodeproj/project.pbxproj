@@ -30,7 +30,6 @@
 		B387FFBE22762A9E00DE55FD /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */; };
 		B387FFBF22762A9E00DE55FD /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
-		B3A4099F22801D310034B953 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4099E22801D310034B953 /* SearchDetailViewController.swift */; };
 		B3A52C89225BBF3C00F005E0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */; };
 		B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */; };
 		B3AF0FD0227C071300C37F63 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */; };
@@ -46,6 +45,7 @@
 		B3C2FA042245002E0054EE16 /* CosmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA032245002E0054EE16 /* CosmeticTests.swift */; };
 		B3C2FA0F2245002E0054EE16 /* CosmeticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA0E2245002E0054EE16 /* CosmeticUITests.swift */; };
 		B3C2FA1E22450AB40054EE16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA1D22450AB40054EE16 /* LoginViewController.swift */; };
+		B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */; };
 		B3D14BC4228086E400DBAF7D /* CosmeticInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D14BC3228086E400DBAF7D /* CosmeticInfoViewController.swift */; };
 		B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E891A322771C7C00117375 /* AccountTableViewController.swift */; };
 		B3E891A82277317800117375 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E891A72277317800117375 /* Login.storyboard */; };
@@ -101,7 +101,6 @@
 		B387FFBC22762A9E00DE55FD /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 		B387FFBD22762A9E00DE55FD /* SuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
-		B3A4099E22801D310034B953 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -124,6 +123,7 @@
 		B3C2FA0E2245002E0054EE16 /* CosmeticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticUITests.swift; sourceTree = "<group>"; };
 		B3C2FA102245002E0054EE16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C2FA1D22450AB40054EE16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewController.swift; sourceTree = "<group>"; };
 		B3D14BC3228086E400DBAF7D /* CosmeticInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticInfoViewController.swift; sourceTree = "<group>"; };
 		B3E891A322771C7C00117375 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		B3E891A72277317800117375 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 				B33B6EA022904052008F3AEE /* getObject */,
 				B342F0F1228C4D8A00196E3B /* CosmeticCollectionTableViewController.swift */,
 				B32BDD1D2278152600933877 /* SearchTableViewController.swift */,
-				B3A4099E22801D310034B953 /* SearchDetailViewController.swift */,
+				B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */,
 				B3E891A322771C7C00117375 /* AccountTableViewController.swift */,
 				B3A52C88225BBF3C00F005E0 /* NotificationViewController.swift */,
 				B3D14BC3228086E400DBAF7D /* CosmeticInfoViewController.swift */,
@@ -582,7 +582,6 @@
 				B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */,
 				B3D14BC4228086E400DBAF7D /* CosmeticInfoViewController.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
-				B3A4099F22801D310034B953 /* SearchDetailViewController.swift in Sources */,
 				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
@@ -592,6 +591,7 @@
 				B3C2FA1E22450AB40054EE16 /* LoginViewController.swift in Sources */,
 				B3AF0FE4227C58C100C37F63 /* CameraViewController.swift in Sources */,
 				B342F0EF228C439F00196E3B /* HomeCollectionViewCell.swift in Sources */,
+				B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */,
 				B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B32EAEBF2275EF5F009369FE /* RegisterViewController.swift in Sources */,
@@ -695,7 +695,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -712,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -767,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -927,7 +927,7 @@
 				B3C2FA122245002E0054EE16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B3C2FA132245002E0054EE16 /* Build configuration list for PBXNativeTarget "Cosmetic" */ = {
 			isa = XCConfigurationList;
@@ -936,7 +936,7 @@
 				B3C2FA152245002E0054EE16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B3C2FA162245002E0054EE16 /* Build configuration list for PBXNativeTarget "CosmeticTests" */ = {
 			isa = XCConfigurationList;
@@ -945,7 +945,7 @@
 				B3C2FA182245002E0054EE16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B3C2FA192245002E0054EE16 /* Build configuration list for PBXNativeTarget "CosmeticUITests" */ = {
 			isa = XCConfigurationList;
@@ -954,7 +954,7 @@
 				B3C2FA1B2245002E0054EE16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
