@@ -8,15 +8,25 @@
 
 import UIKit
 
-class SearchDetailTableViewController: UITableViewController {
+class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol {
 
     var allProduct: [ProductModel]!
-    private var searchedProduct: [ProductModel]!
+    private var searchedProduct: [ProductModel] = []
+    var categoriesList: [CategoriesModel] = []
     private var searching :Bool = false
+    
+    private var categories: [String] = ["S", "B", "V"]
     @IBOutlet var searchTable: UITableView!
+    @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.dataSource = self
+        let downloadCategories = DownloadCategories()
+        downloadCategories.delegate = self
+        downloadCategories.downloadItem()
 
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Cosmetic"
@@ -24,23 +34,26 @@ class SearchDetailTableViewController: UITableViewController {
         searchBar.delegate = self
         navigationItem.titleView = searchBar
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    func itemDownloaded(item: NSMutableArray) {
+        self.categoriesList = item as! [CategoriesModel]
+        categoriesCollectionView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(section == 0){
-            return 1
-        }
-        if(section == 0 && searching){
-            return 0
-        }
-        if(section == 1 && searching){
+        if(searching){
             return searchedProduct.count
         }
         else{
@@ -51,12 +64,7 @@ class SearchDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if(indexPath.section == 0){
-            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CategoriesReuse", for: indexPath)
-            return cell
-        }
-        
-        if(indexPath.section == 1 && searching){
+        if(searching){
             let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath)
             let item = searchedProduct[indexPath.row]
             cell.textLabel?.text = item.product_name
@@ -96,10 +104,28 @@ class SearchDetailTableViewController: UITableViewController {
 
 }
 
+extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoriesList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item :CategoriesModel = categoriesList[indexPath.row]
+        let collectionCategoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoriesReuse", for: indexPath) as! CategoriesDetailCollectionViewCell
+        
+        collectionCategoriesCell.categoriesName.text = item.categories_name
+        
+        
+        return collectionCategoriesCell
+    }
+    
+    
+}
+
 extension SearchDetailTableViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("x")
         
         searchedProduct = allProduct.filter(){
             return ($0.product_name ?? "").contains(searchText)

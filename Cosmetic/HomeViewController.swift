@@ -26,15 +26,14 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
         let cammerabtn_image = UIImage(named: "cameraicon")
         let cammerabtn = UIBarButtonItem(title: "pp", style: .done, target: self, action: #selector(openCamera(_:)))
         
-        topCollection.delegate = self
-        topCollection.dataSource = self
-        
         //Camera Button
         cammerabtn.image = cammerabtn_image
         tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
         
         self.showSpinner(onView: self.view)
         
+        topCollection.delegate = self
+        topCollection.dataSource = self
         let downloadProductLastest = DownloadProductLastest()
         downloadProductLastest.delegate = self
         downloadProductLastest.downloadItem()
@@ -63,7 +62,6 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
     func getCollectionList(){
         
     }
-    
 
 }
 
