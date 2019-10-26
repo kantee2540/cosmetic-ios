@@ -33,6 +33,8 @@ class CosmeticInfoViewController: UIViewController {
         let sharebtn = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(getShare(_:)))
         sharebtn.image = share_image
         self.navigationItem.rightBarButtonItem = sharebtn
+        
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

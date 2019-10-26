@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
 
 }
 
+//MARK: - Lastest product collection
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

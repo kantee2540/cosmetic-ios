@@ -15,7 +15,7 @@ import CoreML
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     let cameraRunning = false
-    var resultOutputText: String!
+    var resultOutputText: String = ""
     
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
@@ -33,21 +33,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         let layer = CALayer()
         layer.contents = UIImage(named: "item1")?.cgImage
         cameraView.layer.addSublayer(layer)
-        
-    }
-
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        print("Output processed")
-        guard let imageData = photo.fileDataRepresentation()
-            else{
-                return
-        }
-        //let image = UIImage(data: imageData)!
-        
-//        let vc = CameraResultViewController(nibName: "CameraResultViewController", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        vc.imageResult = image
         
     }
     
@@ -71,18 +56,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         do{
             let input = try AVCaptureDeviceInput(device: backCamera)
             imageOutput = AVCapturePhotoOutput()
-            
             captureSession?.addInput(input)
-            
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer.videoGravity = .resize
             cameraView.layer.addSublayer(videoPreviewLayer)
-                
             videoOutput.alwaysDiscardsLateVideoFrames = true
             videoOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
-                
             captureSession.addOutput(videoOutput)
-            
                 
             onStartCamera()
             
@@ -131,7 +111,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         let vision = Vision.vision()
@@ -156,13 +135,18 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
                 for line in block.lines{
                     for element in line.elements{
                         DispatchQueue.main.async(execute: { () -> Void in
-                            self.resultTextView.text = element.text
+                            
                         })
                     }
                 }
                 
             }
+            self.resultOutputText += "\(result.text)\n"
         }
+    }
+    
+    private func showResult(){
+        self.resultTextView.text = resultOutputText
     }
     
     
