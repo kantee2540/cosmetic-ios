@@ -99,17 +99,30 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         captureSession.stopRunning()
         photoPreviewImageView.layer.sublayers = nil
         photoPreviewImageView.image = outputImage
-        
-        captureButton.isHidden = true
-        searchButton.isHidden = false
-        retakeButton.isHidden = false
-        
+        afterCapturePhoto()
         textRecognizeOnDevice(image: outputImage)
         
     }
     
     //MARK: - Pick image from library
     @IBAction func tapLibrary(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = false
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        navigationController?.present(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        outputImage = image
+        captureSession.stopRunning()
+        photoPreviewImageView.image = outputImage
+        photoPreviewImageView.layer.sublayers = nil
+        afterCapturePhoto()
+        textRecognizeOnDevice(image: outputImage)
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Begin Search
@@ -144,9 +157,19 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     @IBAction func tapRetake(_ sender: Any) {
         setupCamera()
+        capturingPhoto()
+    }
+    
+    private func capturingPhoto(){
         captureButton.isHidden = false
         searchButton.isHidden = true
         retakeButton.isHidden = true
+    }
+    
+    private func afterCapturePhoto(){
+        captureButton.isHidden = true
+        searchButton.isHidden = false
+        retakeButton.isHidden = false
     }
     
     //MARK: - Firebase text processing
@@ -186,30 +209,26 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         
     }
     
-    private func addStringtoArray(){
-        
-    }
-    
     public static func visionImageOrientation(
       from imageOrientation: UIImage.Orientation
       ) -> VisionDetectorImageOrientation {
-      switch imageOrientation {
-      case .up:
-        return .topLeft
-      case .down:
-        return .bottomRight
-      case .left:
-        return .leftBottom
-      case .right:
-        return .rightTop
-      case .upMirrored:
-        return .topRight
-      case .downMirrored:
-        return .bottomLeft
-      case .leftMirrored:
-        return .leftTop
-      case .rightMirrored:
-        return .rightBottom
-      }
+        switch imageOrientation {
+          case .up:
+            return .topLeft
+          case .down:
+            return .bottomRight
+          case .left:
+            return .leftBottom
+          case .right:
+            return .rightTop
+          case .upMirrored:
+            return .topRight
+          case .downMirrored:
+            return .bottomLeft
+          case .leftMirrored:
+            return .leftTop
+          case .rightMirrored:
+            return .rightBottom
+        }
     }
 }
