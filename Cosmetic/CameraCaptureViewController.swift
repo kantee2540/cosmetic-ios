@@ -23,7 +23,6 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
-    @IBOutlet weak var resultTextview: UILabel!
     @IBOutlet weak var retakeButton: UIButton!
     
     var searchArray: Array<String>!
@@ -37,6 +36,10 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.captureSession.startRunning()
+    }
+    
+    @IBAction func doneButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Setup Camera
@@ -70,7 +73,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     private func setupLivePreview(){
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer.connection?.videoOrientation = .portrait
-        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.videoGravity = .resizeAspectFill
         photoPreviewImageView.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
         DispatchQueue.main.async {
@@ -131,6 +134,12 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             }
             charCount += 1
         }
+        
+        let infoVc = storyboard?.instantiateViewController(withIdentifier: "cameraResult") as? cameraResultTableViewController
+        if searchArray.count != 0{
+            infoVc!.keyword = searchArray[0]
+        }
+        navigationController?.pushViewController(infoVc!, animated: true)
     }
     
     @IBAction func tapRetake(_ sender: Any) {
@@ -173,7 +182,6 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             
             print("\(textResult.text)\n")
             self.resultText = "\(textResult.text)\n"
-            self.resultTextview.text = "\(textResult.text)\n"
         }
         
     }

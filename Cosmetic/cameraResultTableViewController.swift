@@ -103,6 +103,11 @@ class cameraResultTableViewController: UITableViewController, DownloadProductSea
         navigationController?.pushViewController(infoVC, animated: true)
     }
     
+    
+    @IBAction func doneButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
