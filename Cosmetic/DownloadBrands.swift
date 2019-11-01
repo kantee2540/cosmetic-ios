@@ -57,9 +57,9 @@ import UIKit
             jsonElement = jsonResult[i] as! NSDictionary
             let brand = BrandModel()
             
-            if let brand_id = jsonElement["brand_id"] as? String,
-                let brand_name = jsonElement["brand_name"] as? String,
-                let brand_logo = jsonElement["brand_logo"] as? String
+            if let brand_id = jsonElement[ConstantBrand.brandId] as? String,
+                let brand_name = jsonElement[ConstantBrand.brandName] as? String,
+            let brand_logo = jsonElement[ConstantBrand.brandLogo] as? String
                 
             {
                 brand.brand_id = brand_id

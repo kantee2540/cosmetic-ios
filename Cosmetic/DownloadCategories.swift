@@ -58,9 +58,9 @@ class DownloadCategories: NSObject {
             jsonElement = jsonResult[i] as! NSDictionary
             let category = CategoriesModel()
             
-            if  let categories_id = jsonElement["categories_id"] as? String,
-                let categories_name = jsonElement["categories_name"] as? String,
-                let categories_type = jsonElement["categories_type"] as? String
+            if  let categories_id = jsonElement[ConstantCategories.categoriesId] as? String,
+                let categories_name = jsonElement[ConstantCategories.categoriesName] as? String,
+                let categories_type = jsonElement[ConstantCategories.categoriesType] as? String
             {
                 category.categories_id = categories_id
                 category.categories_name = categories_name

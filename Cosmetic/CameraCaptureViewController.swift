@@ -17,25 +17,33 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
-    
     var outputImage: UIImage!
+    var searchArray: Array<String>!
+    var resultText: String = ""
+    var isCapturing: Bool = false
 
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
     
-    var searchArray: Array<String>!
-    var resultText: String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCamera()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isCapturing{
+            self.captureSession.startRunning()
+        }
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.captureSession.startRunning()
+        self.captureSession.stopRunning()
+        
     }
     
     @IBAction func doneButton(_ sender: Any) {
@@ -76,6 +84,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         videoPreviewLayer.videoGravity = .resizeAspectFill
         photoPreviewImageView.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+        capturingPhoto()
         DispatchQueue.main.async {
             self.videoPreviewLayer?.frame = self.photoPreviewImageView.bounds
         }
@@ -161,12 +170,14 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     private func capturingPhoto(){
+        isCapturing = true
         captureButton.isHidden = false
         searchButton.isHidden = true
         retakeButton.isHidden = true
     }
     
     private func afterCapturePhoto(){
+        isCapturing = false
         captureButton.isHidden = true
         searchButton.isHidden = false
         retakeButton.isHidden = false

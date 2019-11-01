@@ -63,13 +63,13 @@ import UIKit
             jsonElement = jsonResult[i] as! NSDictionary
             let product = ProductModel()
             
-            if let product_name = jsonElement["product_name"] as? String,
-                let product_description = jsonElement["description"] as? String,
-                let product_price = jsonElement["product_price"] as? String,
-                let categories_name = jsonElement["categories_name"] as? String,
-                let categories_type = jsonElement["categories_type"] as? String,
-                let brand_name = jsonElement["brand_name"] as? String,
-                let product_img = jsonElement["product_img"] as? String
+            if let product_name = jsonElement[ConstantProduct.productName] as? String,
+                let product_description = jsonElement[ConstantProduct.description] as? String,
+                let product_price = jsonElement[ConstantProduct.productPrice] as? String,
+                let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
+                let categories_type = jsonElement[ConstantProduct.categoriesType] as? String,
+                let brand_name = jsonElement[ConstantProduct.brandName] as? String,
+                let product_img = jsonElement[ConstantProduct.productImg] as? String
             {
                 product.product_name = product_name
                 product.product_description = product_description
