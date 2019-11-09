@@ -8,17 +8,49 @@
 
 import UIKit
 
-class cameraResultTableViewController: UITableViewController, DownloadProductSearch {
+class cameraResultTableViewController: UITableViewController, DownloadProductProtocol {
     
     var keyword: String = ""
+    var capturedWord: Array<String>!
     var resultItem: [ProductModel] = []
+    var searchedProduct: [ProductModel] = []
     var session :URLSession!
     
     @IBOutlet var resultTableView: UITableView!
     
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [ProductModel]
+        if capturedWord != nil{
+            for item in resultItem{
+                
+                let productName = item.product_name!
+                var exProductName: Array<String>! = Array()
+                
+                var startCount :Int = 0
+                var charCount :Int = 0
+                        
+                while charCount < productName.count {
+                    if productName[productName.index(productName.startIndex, offsetBy: charCount)] == " "{
+                        let startIndex = productName.index(productName.startIndex, offsetBy: startCount)
+                        let endIndex = productName.index(productName.startIndex, offsetBy: charCount)
+                                
+                        let exText = productName[startIndex..<endIndex]
+                        exProductName.append(String(exText.lowercased()))
+                        startCount = charCount + 1
+                    }
+                        charCount += 1
+                }
+                
+                for x in exProductName{
+                    if capturedWord.contains(x){
+                        searchedProduct.append(item)
+                    }
+                }
+            }
+            
+        }
         resultTableView.reloadData()
+            
     }
 
     override func viewDidLoad() {
@@ -27,9 +59,9 @@ class cameraResultTableViewController: UITableViewController, DownloadProductSea
         self.resultTableView.delegate = self
         self.resultTableView.dataSource = self
         
-        let downloadProductSearch = DownloadProductSearchCamera()
-        downloadProductSearch.delegate = self
-        downloadProductSearch.downloadItem(searchKeyword: keyword)
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadItem()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,12 +79,12 @@ class cameraResultTableViewController: UITableViewController, DownloadProductSea
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return resultItem.count
+        return searchedProduct.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultViewCell", for: indexPath) as! CameraResultTableViewCell
-        let item :ProductModel = resultItem[indexPath.row]
+        let item :ProductModel = searchedProduct[indexPath.row]
         
         cell.titleTextView.text = item.product_name
         cell.descriptionTextView.text = item.product_description
@@ -107,51 +139,5 @@ class cameraResultTableViewController: UITableViewController, DownloadProductSea
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

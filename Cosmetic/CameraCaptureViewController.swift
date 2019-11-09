@@ -151,7 +151,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
                 let endIndex = resultText.index(resultText.startIndex, offsetBy: charCount)
                 
                 let exText = resultText[startIndex..<endIndex]
-                searchArray.append(String(exText))
+                searchArray.append(String(exText.lowercased()))
                 startCount = charCount + 1
             }
             charCount += 1
@@ -159,7 +159,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         
         let infoVc = storyboard?.instantiateViewController(withIdentifier: "cameraResult") as? cameraResultTableViewController
         if searchArray.count != 0{
-            infoVc!.keyword = searchArray[0]
+            infoVc!.capturedWord = searchArray
         }
         navigationController?.pushViewController(infoVc!, animated: true)
     }
