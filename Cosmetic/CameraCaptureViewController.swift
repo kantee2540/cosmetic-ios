@@ -202,6 +202,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         textRecognizer?.process(visionImage){
             result, error in guard error == nil, let textResult = result else{
                 print(error as Any)
+                self.resultText = ""
                 return
             }
             

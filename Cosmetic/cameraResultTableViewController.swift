@@ -49,6 +49,13 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             }
             
         }
+        if searchedProduct.count != 0{
+            resultTableView.separatorStyle = .singleLine
+        }
+        else{
+            resultTableView.separatorStyle = .none
+        }
+        
         resultTableView.reloadData()
             
     }
@@ -134,6 +141,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noItem", for: indexPath)
+            cell.selectionStyle = .none
             return cell
         }
 
