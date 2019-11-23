@@ -1,20 +1,22 @@
 //
-//  DownloadProduct.swift
+//  File.swift
 //  Cosmetic
 //
-//  Created by Omp on 1/5/2562 BE.
+//  Created by Omp on 5/7/2562 BE.
 //  Copyright © 2562 Omp. All rights reserved.
 //
 
+import Foundation
+
 import UIKit
 
-@objc public protocol DownloadProductProtocol: class {
-    func itemDownloaded(item: NSMutableArray)
+@objc public protocol DownloadLastestProductProtocol: class {
+    func itemDownloadedProductLastest(item: NSMutableArray)
 }
 
-@objc class DownloadProduct: NSObject {
+@objc class DownloadProductLastest: NSObject {
     
-    @objc weak var delegate: DownloadProductProtocol!
+    @objc weak var delegate: DownloadLastestProductProtocol!
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -24,7 +26,10 @@ import UIKit
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
+        
+        let postParameter = "limit=5"
+        request.httpBody = postParameter.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
@@ -50,7 +55,7 @@ import UIKit
             print(error)
         }
         
-
+        
         var jsonElement = NSDictionary()
         let products = NSMutableArray()
         
@@ -79,7 +84,7 @@ import UIKit
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: products)
+            self.delegate.itemDownloadedProductLastest(item: products)
         })
         
     }

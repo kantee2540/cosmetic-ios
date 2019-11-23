@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow for Camera scan cosmetic logo</string>
+	<string>Allow for Camera scan cosmetic</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

@@ -1,30 +1,31 @@
 //
-//  DownloadProduct.swift
+//  DownloadProductSearchCamera.swift
 //  Cosmetic
 //
-//  Created by Omp on 1/5/2562 BE.
+//  Created by Omp on 7/7/2562 BE.
 //  Copyright © 2562 Omp. All rights reserved.
 //
 
 import UIKit
-
-@objc public protocol DownloadProductProtocol: class {
+protocol DownloadProductSearch : class{
     func itemDownloaded(item: NSMutableArray)
 }
 
-@objc class DownloadProduct: NSObject {
-    
-    @objc weak var delegate: DownloadProductProtocol!
+class DownloadProductSearchCamera: NSObject {
+    weak var delegate: DownloadProductSearch!
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
     
-    @objc func downloadItem(){
+    func downloadItem(searchKeyword :String){
         DB_URL = getAddress.getProductURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
+        
+        let postParameter = "searchbyproduct=" + searchKeyword
+        request.httpBody = postParameter.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
@@ -34,6 +35,7 @@ import UIKit
                 
             }else{
                 print("Data downloaded - Product")
+                print("Keyword : \(searchKeyword)")
                 self.parseJSON(data!)
             }
             
@@ -41,16 +43,16 @@ import UIKit
         task.resume()
     }
     
-    @objc func parseJSON(_ data:Data){
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{
             jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
         }catch let error as NSError{
-            print(error)
+            print("JSON : \(error)")
         }
         
-
+        
         var jsonElement = NSDictionary()
         let products = NSMutableArray()
         
@@ -80,9 +82,8 @@ import UIKit
         
         DispatchQueue.main.async(execute: { () -> Void in
             self.delegate.itemDownloaded(item: products)
+            
         })
         
     }
 }
-
-

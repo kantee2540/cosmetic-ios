@@ -13,14 +13,17 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [ProductModel]
         resultTable.reloadData()
-        self.removeSpinner()
+        removeSpinner()
     }
 
     var categories_id :String!
     var categories_name :String!
     var resultItem :[ProductModel] = []
+    var session :URLSession!
     
     @IBOutlet var resultTable: UITableView!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var descriptionText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +33,10 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         self.navigationItem.title = categories_name
         resultTable.delegate = self
         
-        self.showSpinner(onView: self.view)
+        showSpinner(onView: self.view)
         let downloadProduct = DownloadProductByCategories()
         downloadProduct.delegate = self
         downloadProduct.downloadItem(categories_id: categories_id)
-        
         
     }
     
@@ -56,13 +58,43 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! CollectionTableViewCell
         let item :ProductModel = resultItem[indexPath.row]
+//        cell.textLabel?.text = item.product_name
+//        cell.detailTextLabel?.text = item.product_description
+        cell.titleTextView.text = item.product_name
+        cell.detailTextView.text = item.product_description
+        cell.priceTextView.text = "Price : " + item.product_price! + " Baht"
         
-        cell.textLabel?.text = item.product_name
-        cell.detailTextLabel?.text = item.product_description
-
-        // Configure the cell...
+        //DownloadImage
+        let imageURL = URL(string: item.product_img!)
+        DispatchQueue.global().async {
+            self.session = URLSession(configuration: .default)
+            
+            let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
+                if let e = error{
+                    print("Error = \(e)")
+                }
+                else {
+                    if (responds as? HTTPURLResponse) != nil {
+                        if let imageData = data {
+                            
+                            DispatchQueue.main.async {
+                                cell.productImage.image = UIImage(data: imageData)
+                            }
+                        }
+                        else{
+                            print("Image file is currupted")
+                        }
+                    }
+                    else{
+                        print("No response from server")
+                    }
+                }
+            }
+            
+            getImageFromUrl.resume()
+        }
 
         return cell
     }
@@ -77,34 +109,5 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         infoVC.brand_name = item.brand_name
         infoVC.product_img = item.product_img
         navigationController?.pushViewController(infoVC, animated: true)
-    }
-    
-
-    
-
-}
-
-var vSpinnerCollection :UIView?
-extension CosmeticCollectionTableViewController{
-    func showSpinner(onView :UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        vSpinnerCollection = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            vSpinnerCollection?.removeFromSuperview()
-            vSpinnerCollection = nil
-        }
     }
 }
