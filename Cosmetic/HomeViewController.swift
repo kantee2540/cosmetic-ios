@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
         resultProductItem = item as! [ProductModel]
         topCollection.reloadData()
     }
-
+    
     var resultProductItem : [ProductModel] = []
     var session :URLSession!
     

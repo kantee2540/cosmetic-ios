@@ -79,60 +79,82 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return searchedProduct.count
+        if searchedProduct.count != 0{
+            return searchedProduct.count
+        }
+        else{
+            return 1
+        }
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultViewCell", for: indexPath) as! CameraResultTableViewCell
-        let item :ProductModel = searchedProduct[indexPath.row]
         
-        cell.titleTextView.text = item.product_name
-        cell.descriptionTextView.text = item.product_description
-        cell.priceTextView.text = "Price : \(item.product_price!) Baht"
-        
-        let imageURL = URL(string: item.product_img!)
-        
-        DispatchQueue.global().async {
-            self.session = URLSession(configuration: .default)
+        /// If have item for display
+        if searchedProduct.count != 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "resultViewCell", for: indexPath) as! CameraResultTableViewCell
+            let item :ProductModel = searchedProduct[indexPath.row]
             
-            let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
-                if let e = error{
-                    print("Error = \(e)")
-                }
-                else {
-                    if (responds as? HTTPURLResponse) != nil {
-                        if let imageData = data {
-                            
-                            DispatchQueue.main.async {
-                                cell.productImage.image = UIImage(data: imageData)
+            cell.titleTextView.text = item.product_name
+            cell.descriptionTextView.text = item.product_description
+            cell.priceTextView.text = "Price : \(item.product_price!) Baht"
+            
+            let imageURL = URL(string: item.product_img!)
+            
+            DispatchQueue.global().async {
+                self.session = URLSession(configuration: .default)
+                
+                let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
+                    if let e = error{
+                        print("Error = \(e)")
+                    }
+                    else {
+                        if (responds as? HTTPURLResponse) != nil {
+                            if let imageData = data {
+                                
+                                DispatchQueue.main.async {
+                                    cell.productImage.image = UIImage(data: imageData)
+                                }
+                            }
+                            else{
+                                print("Image file is currupted")
                             }
                         }
                         else{
-                            print("Image file is currupted")
+                            print("No response from server")
                         }
                     }
-                    else{
-                        print("No response from server")
-                    }
                 }
+                
+                getImageFromUrl.resume()
             }
             
-            getImageFromUrl.resume()
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noItem", for: indexPath)
+            return cell
         }
 
-        return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-        let item :ProductModel = resultItem[indexPath.row]
-        infoVC.product_name = item.product_name
-        infoVC.product_description = item.product_description
-        infoVC.product_price = item.product_price
-        infoVC.categories_name = item.categories_name
-        infoVC.brand_name = item.brand_name
-        infoVC.product_img = item.product_img
-        navigationController?.pushViewController(infoVC, animated: true)
+        if searchedProduct.count != 0{
+            let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
+            let item :ProductModel = resultItem[indexPath.row]
+            infoVC.product_name = item.product_name
+            infoVC.product_description = item.product_description
+            infoVC.product_price = item.product_price
+            infoVC.categories_name = item.categories_name
+            infoVC.brand_name = item.brand_name
+            infoVC.product_img = item.product_img
+            navigationController?.pushViewController(infoVC, animated: true)
+        }
+        else{
+            
+        }
     }
     
     
