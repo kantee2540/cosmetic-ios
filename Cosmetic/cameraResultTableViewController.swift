@@ -57,7 +57,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         }
         
         resultTableView.reloadData()
-            
+        removeSpinner()
     }
 
     override func viewDidLoad() {
@@ -69,6 +69,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
         downloadProduct.downloadItem()
+        showSpinner(onView: self.view)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -13,7 +13,7 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [ProductModel]
         resultTable.reloadData()
-        self.removeSpinner()
+        removeSpinner()
     }
 
     var categories_id :String!
@@ -33,7 +33,7 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         self.navigationItem.title = categories_name
         resultTable.delegate = self
         
-        self.showSpinner(onView: self.view)
+        showSpinner(onView: self.view)
         let downloadProduct = DownloadProductByCategories()
         downloadProduct.delegate = self
         downloadProduct.downloadItem(categories_id: categories_id)
@@ -109,30 +109,5 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
         infoVC.brand_name = item.brand_name
         infoVC.product_img = item.product_img
         navigationController?.pushViewController(infoVC, animated: true)
-    }
-}
-
-var vSpinnerCollection :UIView?
-extension CosmeticCollectionTableViewController{
-    func showSpinner(onView :UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        vSpinnerCollection = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            vSpinnerCollection?.removeFromSuperview()
-            vSpinnerCollection = nil
-        }
     }
 }
