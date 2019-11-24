@@ -73,7 +73,7 @@ import UIKit
             {
                 product.product_name = product_name
                 product.product_description = product_description
-                product.product_price = product_price
+                product.product_price = Int(product_price)
                 product.categories_name = categories_name
                 product.categories_type = categories_type
                 product.brand_name = brand_name

@@ -12,7 +12,7 @@ class CosmeticInfoViewController: UIViewController {
     
     var product_name: String!
     var product_description: String!
-    var product_price: String!
+    var product_price: Int!
     var categories_name: String?
     var categories_type: String?
     var brand_name: String?
@@ -41,7 +41,7 @@ class CosmeticInfoViewController: UIViewController {
         self.navigationItem.title = brand_name
         nameText?.text = product_name
         descriptionText?.text = product_description
-        priceText?.text = product_price
+        priceText?.text = String(product_price)
         categoriesText?.text = categories_name
         
         downloadImage(urlImage: product_img!)

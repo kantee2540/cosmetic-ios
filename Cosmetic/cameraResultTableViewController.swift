@@ -106,7 +106,10 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             
             cell.titleTextView.text = item.product_name
             cell.descriptionTextView.text = item.product_description
-            cell.priceTextView.text = "Price : \(item.product_price!) Baht"
+            let numberFormat = NumberFormatter()
+            numberFormat.numberStyle = .decimal
+            let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price ?? 0))
+            cell.priceTextView.text = "Price : " + formattedPrice! + " Baht"
             
             let imageURL = URL(string: item.product_img!)
             
@@ -152,7 +155,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchedProduct.count != 0{
             let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-            let item :ProductModel = resultItem[indexPath.row]
+            let item :ProductModel = searchedProduct[indexPath.row]
             infoVC.product_name = item.product_name
             infoVC.product_description = item.product_description
             infoVC.product_price = item.product_price

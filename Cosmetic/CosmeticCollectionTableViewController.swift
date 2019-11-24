@@ -64,7 +64,7 @@ class CosmeticCollectionTableViewController: UITableViewController, DownloadProd
 //        cell.detailTextLabel?.text = item.product_description
         cell.titleTextView.text = item.product_name
         cell.detailTextView.text = item.product_description
-        cell.priceTextView.text = "Price : " + item.product_price! + " Baht"
+        cell.priceTextView.text = "Price : " + String(item.product_price!) + " Baht"
         
         //DownloadImage
         let imageURL = URL(string: item.product_img!)
