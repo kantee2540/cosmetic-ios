@@ -41,7 +41,10 @@ class CosmeticInfoViewController: UIViewController {
         self.navigationItem.title = brand_name
         nameText?.text = product_name
         descriptionText?.text = product_description
-        priceText?.text = String(product_price)
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        let formattedPrice = numberFormat.string(from: NSNumber(value:product_price ?? 0))
+        priceText?.text = formattedPrice
         categoriesText?.text = categories_name
         
         downloadImage(urlImage: product_img!)

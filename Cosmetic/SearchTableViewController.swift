@@ -63,14 +63,14 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier: String = "BasicCell"
-        let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
+        let myCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! SearchTableViewCell
 
         let item: ProductModel = resultItem[indexPath.row]
-            
-        //Cell Edit
-        myCell.textLabel!.text = item.product_name
-        myCell.detailTextLabel?.text = item.product_description
-        myCell.imageView!.image = UIImage(named: "brashIcon")
+        
+        myCell.productTitle.text = item.product_name
+        myCell.productDescription.text = item.product_description
+        let imageUrl = URL(string: item.product_img!)!
+        myCell.productImage.downloadImage(from: imageUrl)
         
         return myCell
     }

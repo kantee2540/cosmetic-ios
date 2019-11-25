@@ -18,13 +18,23 @@ import UIKit
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
+    var postParameter: String = ""
+    
+    func downloadLimitItem(limitNum: Int){
+        postParameter = "limit=\(limitNum)"
+        downloadItem()
+    }
     
     @objc func downloadItem(){
         DB_URL = getAddress.getProductURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
+        
+        if postParameter != ""{
+            request.httpBody = postParameter.data(using: .utf8)
+        }
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in

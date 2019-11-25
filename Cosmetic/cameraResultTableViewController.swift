@@ -110,36 +110,8 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             numberFormat.numberStyle = .decimal
             let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price ?? 0))
             cell.priceTextView.text = "Price : " + formattedPrice! + " Baht"
-            
-            let imageURL = URL(string: item.product_img!)
-            
-            DispatchQueue.global().async {
-                self.session = URLSession(configuration: .default)
-                
-                let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
-                    if let e = error{
-                        print("Error = \(e)")
-                    }
-                    else {
-                        if (responds as? HTTPURLResponse) != nil {
-                            if let imageData = data {
-                                
-                                DispatchQueue.main.async {
-                                    cell.productImage.image = UIImage(data: imageData)
-                                }
-                            }
-                            else{
-                                print("Image file is currupted")
-                            }
-                        }
-                        else{
-                            print("No response from server")
-                        }
-                    }
-                }
-                
-                getImageFromUrl.resume()
-            }
+            let imageUrl = URL(string: item.product_img!)!
+            cell.productImage.downloadImage(from: imageUrl)
             
             return cell
         }
