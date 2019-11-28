@@ -9,9 +9,10 @@
 import UIKit
 
 class ProductModel: NSObject {
+    var product_id: String?
     var product_name: String?
     var product_description: String?
-    var product_price: String?
+    var product_price: Int?
     var categories_name: String?
     var categories_type: String?
     var brand_name: String?
@@ -21,7 +22,7 @@ class ProductModel: NSObject {
         
     }
     
-    init(product_name: String, product_description: String, product_price: String, categories_name: String,categories_type: String, brand_name: String, product_img: String) {
+    init(product_name: String, product_description: String, product_price: Int, categories_name: String,categories_type: String, brand_name: String, product_img: String) {
         self.product_name = product_name
         self.product_description = product_description
         self.product_price = product_price
