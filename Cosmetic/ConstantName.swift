@@ -9,6 +9,7 @@
 import Foundation
 
 struct ConstantProduct {
+    static let productId = "product_id"
     static let productName = "product_name"
     static let description = "description"
     static let productPrice = "product_price"

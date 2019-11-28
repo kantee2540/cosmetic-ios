@@ -18,13 +18,28 @@ import UIKit
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
+    var postParameter: String = ""
+    
+    func downloadSelectItem(productId id: String){
+        postParameter = "productId=\(id)"
+        downloadItem()
+    }
+    
+    func downloadLimitItem(limitNum: Int){
+        postParameter = "limit=\(limitNum)"
+        downloadItem()
+    }
     
     @objc func downloadItem(){
         DB_URL = getAddress.getProductURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "GET"
+        request.httpMethod = "POST"
+        
+        if postParameter != ""{
+            request.httpBody = postParameter.data(using: .utf8)
+        }
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
@@ -58,7 +73,8 @@ import UIKit
             jsonElement = jsonResult[i] as! NSDictionary
             let product = ProductModel()
             
-            if let product_name = jsonElement[ConstantProduct.productName] as? String,
+            if  let product_id = jsonElement[ConstantProduct.productId] as? String,
+                let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
                 let product_price = jsonElement[ConstantProduct.productPrice] as? String,
                 let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
@@ -66,9 +82,10 @@ import UIKit
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,
                 let product_img = jsonElement[ConstantProduct.productImg] as? String
             {
+                product.product_id = product_id
                 product.product_name = product_name
                 product.product_description = product_description
-                product.product_price = product_price
+                product.product_price = Int(product_price)
                 product.categories_name = categories_name
                 product.categories_type = categories_type
                 product.brand_name = brand_name

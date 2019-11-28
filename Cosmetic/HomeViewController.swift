@@ -8,16 +8,19 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadLastestProductProtocol{
-    func itemDownloadedProductLastest(item: NSMutableArray) {
+class HomeViewController: UIViewController, DownloadProductProtocol{
+    func itemDownloaded(item: NSMutableArray) {
         removeSpinner()
         resultProductItem = item as! [ProductModel]
         topCollection.reloadData()
+        featuringCollection.reloadData()
     }
     
     var resultProductItem : [ProductModel] = []
+    var todayTopic: [String] = ["Featuring Cosmetic", "Explorer Dior", "Top Search"]
     var session :URLSession!
     
+    @IBOutlet weak var featuringCollection: UICollectionView!
     @IBOutlet weak var topCollection: UICollectionView!
     
     override func viewDidLoad() {
@@ -34,17 +37,18 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
         
         topCollection.delegate = self
         topCollection.dataSource = self
-        let downloadProductLastest = DownloadProductLastest()
-        downloadProductLastest.delegate = self
-        downloadProductLastest.downloadItem()
+        featuringCollection.delegate = self
+        featuringCollection.dataSource = self
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadLimitItem(limitNum: 9)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Coco"
         
-        
-        
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         
     }
@@ -62,6 +66,15 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
     func getCollectionList(){
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeMoreDetail"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = topCollection.indexPathsForSelectedItems?.first?.item
+            let item = resultProductItem[itemIndex!]
+            destination?.productId = item.product_id
+        }
+    }
 
 }
 
@@ -69,82 +82,83 @@ class HomeViewController: UIViewController, DownloadLastestProductProtocol{
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resultProductItem.count
+        if collectionView == topCollection{
+            return resultProductItem.count
+        }
+        
+        else if collectionView == featuringCollection {
+            return todayTopic.count
+        }
+        
+        return 0
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = UICollectionViewCell()
         
+        ///Lastest Product
         if collectionView == topCollection{
             let item: ProductModel = resultProductItem[indexPath.row]
             let collectionProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "topViewCollectionCell", for: indexPath) as! TopCollectionViewCell
             
             collectionProductCell.topTitle.text = item.product_name
             collectionProductCell.topDescription.text = item.product_description
-            let imageURL = URL(string: item.product_img!)
+            let imageURL = URL(string: item.product_img!)!
+            collectionProductCell.topImage.downloadImage(from: imageURL)
             
-            DispatchQueue.global().async {
-                self.session = URLSession(configuration: .default)
-                
-                let getImageFromUrl = self.session.dataTask(with: imageURL!) { data, responds, error in
-                    if let e = error{
-                        print("Error = \(e)")
-                    }
-                    else {
-                        if (responds as? HTTPURLResponse) != nil {
-                            if let imageData = data {
-                                
-                                DispatchQueue.main.async {
-                                    collectionProductCell.topImage.image = UIImage(data: imageData)
-                                    collectionProductCell.topImage.clipsToBounds = true
-                                }
-                            }
-                            else{
-                                print("Image file is currupted")
-                            }
-                        }
-                        else{
-                            print("No response from server")
-                        }
-                    }
-                }
-                
-                getImageFromUrl.resume()
-            }
-            
-            collectionProductCell.contentView.layer.cornerRadius = 15
+            collectionProductCell.contentView.layer.cornerRadius = 8
             collectionProductCell.contentView.layer.borderWidth = 1.0
             collectionProductCell.contentView.layer.borderColor =  UIColor.clear.cgColor
             collectionProductCell.contentView.layer.masksToBounds = true
-            collectionProductCell.layer.cornerRadius = 15
+            collectionProductCell.layer.cornerRadius = 8
             collectionProductCell.layer.shadowColor = UIColor.black.cgColor
             collectionProductCell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
-            collectionProductCell.layer.shadowRadius = 5
-            collectionProductCell.layer.shadowOpacity = 0.3
+            collectionProductCell.layer.shadowRadius = 2
+            collectionProductCell.layer.shadowOpacity = 0.1
             collectionProductCell.layer.masksToBounds = false
             
             return collectionProductCell
         }
+            
+        ///Today card
+        else if collectionView == featuringCollection{
+            let item = todayTopic[indexPath.row]
+            let featuringCell = collectionView.dequeueReusableCell(withReuseIdentifier: "featuringReuse", for: indexPath) as! FeaturingCollectionViewCell
+            
+            featuringCell.topicTitle.text = item
+            featuringCell.topicTitle.layer.shadowColor = UIColor.black.cgColor
+            featuringCell.topicTitle.layer.shadowOpacity = 0.5
+            featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+            featuringCell.topicTitle.layer.shadowRadius = 3
+            
+            if indexPath.row == 0{
+                featuringCell.topicImage.image = UIImage(named: "bg2")
+            }
+            else if indexPath.row == 1{
+                featuringCell.topicImage.image = UIImage(named: "bg3")
+            }
+            else{
+                featuringCell.topicImage.image = UIImage(named: "bg4")
+            }
+            
+            featuringCell.contentView.layer.cornerRadius = 8
+            featuringCell.contentView.layer.borderWidth = 1.0
+            featuringCell.contentView.layer.borderColor =  UIColor.clear.cgColor
+            featuringCell.contentView.layer.masksToBounds = true
+            featuringCell.layer.cornerRadius = 8
+            featuringCell.layer.shadowColor = UIColor.black.cgColor
+            featuringCell.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+            featuringCell.layer.shadowRadius = 4
+            featuringCell.layer.shadowOpacity = 0.2
+            featuringCell.layer.masksToBounds = false
+            
+            return featuringCell
+            
+        }
         
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if collectionView == topCollection{
-            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-            let item :ProductModel = resultProductItem[indexPath.row]
-            
-            infoVC.product_name = item.product_name
-            infoVC.product_description = item.product_description
-            infoVC.product_price = item.product_price
-            infoVC.categories_name = item.categories_name
-            infoVC.brand_name = item.brand_name
-            infoVC.product_img = item.product_img
-            navigationController?.pushViewController(infoVC, animated: true)
-            
-        }
     }
     
 }
