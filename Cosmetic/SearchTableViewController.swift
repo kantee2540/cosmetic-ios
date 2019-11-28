@@ -47,6 +47,15 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         tabBarController?.navigationItem.titleView = nil
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeMoreDetail"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = stockResultsFeed.indexPathForSelectedRow?.row
+            let item = resultItem[itemIndex!]
+            destination?.productId = item.product_id
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -76,20 +85,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var item:ProductModel
-        let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-        item = resultItem[indexPath.row]
-        
-        infoVC.product_name = item.product_name
-        infoVC.product_description = item.product_description
-        infoVC.product_price = item.product_price
-        infoVC.categories_name = item.categories_name
-        infoVC.brand_name = item.brand_name
-        infoVC.product_img = item.product_img
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        navigationController?.pushViewController(infoVC, animated: true)
     }
     
     func itemDownloaded(item: NSMutableArray) {

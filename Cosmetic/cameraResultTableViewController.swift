@@ -24,25 +24,10 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             for item in resultItem{
                 
                 let productName = item.product_name!
-                var exProductName: Array<String>! = Array()
-                
-                var startCount :Int = 0
-                var charCount :Int = 0
-                        
-                while charCount < productName.count {
-                    if productName[productName.index(productName.startIndex, offsetBy: charCount)] == " "{
-                        let startIndex = productName.index(productName.startIndex, offsetBy: startCount)
-                        let endIndex = productName.index(productName.startIndex, offsetBy: charCount)
-                                
-                        let exText = productName[startIndex..<endIndex]
-                        exProductName.append(String(exText.lowercased()))
-                        startCount = charCount + 1
-                    }
-                        charCount += 1
-                }
+                let exProductName = extractString(toExtract: productName)
                 
                 for x in exProductName{
-                    if capturedWord.contains(x){
+                    if capturedWord.contains(where: {$0 == x}){
                         searchedProduct.append(item)
                     }
                 }
@@ -59,6 +44,29 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         resultTableView.reloadData()
         removeSpinner()
     }
+    
+    private func extractString(toExtract string: String) -> Array<String>{
+        var exString: Array<String> = Array()
+        
+        var startCount :Int = 0
+        var charCount :Int = 0
+                
+        while charCount < string.count {
+            if string[string.index(string.startIndex, offsetBy: charCount)] == " "{
+                let startIndex = string.index(string.startIndex, offsetBy: startCount)
+                let endIndex = string.index(string.startIndex, offsetBy: charCount)
+                        
+                let exText = string[startIndex..<endIndex]
+                if exText.count > 3{
+                    exString.append(String(exText.lowercased()))
+                }
+                startCount = charCount + 1
+            }
+                charCount += 1
+        }
+        
+        return exString
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +78,17 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         downloadProduct.delegate = self
         downloadProduct.downloadItem()
         showSpinner(onView: self.view)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeMoreDetail"{
+            print("OK")
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = resultTableView.indexPathForSelectedRow?.row
+            let item = searchedProduct[itemIndex!]
+            destination?.productId = item.product_id
+        }
     }
 
     // MARK: - Table view data source
@@ -121,24 +134,10 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             return cell
         }
 
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchedProduct.count != 0{
-            let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-            let item :ProductModel = searchedProduct[indexPath.row]
-            infoVC.product_name = item.product_name
-            infoVC.product_description = item.product_description
-            infoVC.product_price = item.product_price
-            infoVC.categories_name = item.categories_name
-            infoVC.brand_name = item.brand_name
-            infoVC.product_img = item.product_img
-            navigationController?.pushViewController(infoVC, animated: true)
-        }
-        else{
-            
-        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

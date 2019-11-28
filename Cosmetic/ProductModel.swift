@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductModel: NSObject {
+    var product_id: String?
     var product_name: String?
     var product_description: String?
     var product_price: Int?

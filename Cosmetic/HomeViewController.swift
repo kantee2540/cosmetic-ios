@@ -66,6 +66,15 @@ class HomeViewController: UIViewController, DownloadProductProtocol{
     func getCollectionList(){
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeMoreDetail"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = topCollection.indexPathsForSelectedItems?.first?.item
+            let item = resultProductItem[itemIndex!]
+            destination?.productId = item.product_id
+        }
+    }
 
 }
 
@@ -150,23 +159,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if collectionView == topCollection{
-            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-            let item :ProductModel = resultProductItem[indexPath.row]
-            
-            infoVC.product_name = item.product_name
-            infoVC.product_description = item.product_description
-            infoVC.product_price = item.product_price
-            infoVC.categories_name = item.categories_name
-            infoVC.brand_name = item.brand_name
-            infoVC.product_img = item.product_img
-            navigationController?.pushViewController(infoVC, animated: true)
-            
-        }
     }
     
 }

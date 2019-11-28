@@ -43,6 +43,21 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         self.categoriesList = item as! [CategoriesModel]
         categoriesCollectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeMoreDetail"{
+            
+            var item:ProductModel
+            let itemIndex = searchTable.indexPathForSelectedRow?.row
+            if searching{
+                item = searchedProduct[itemIndex!]
+            }else{
+                item = allProduct[itemIndex!]
+            }
+            let destination = segue.destination as? CosmeticDetailViewController
+            destination?.productId = item.product_id
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -81,25 +96,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var item:ProductModel
-        let infoVC = storyboard?.instantiateViewController(withIdentifier: "CosmeticInfoView") as! CosmeticInfoViewController
-        if searching{
-            item = searchedProduct[indexPath.row]
-        }else{
-            item = allProduct[indexPath.row]
-        }
-        
-        
-        infoVC.product_name = item.product_name
-        infoVC.product_description = item.product_description
-        infoVC.product_price = item.product_price
-        infoVC.categories_name = item.categories_name
-        infoVC.brand_name = item.brand_name
-        infoVC.product_img = item.product_img
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        navigationController?.pushViewController(infoVC, animated: true)
     }
 
 }

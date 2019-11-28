@@ -146,7 +146,8 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
 //        print(str[s..<e])
         
         while charCount < resultText.count {
-            if resultText[resultText.index(resultText.startIndex, offsetBy: charCount)] == "\n"{
+            if resultText[resultText.index(resultText.startIndex, offsetBy: charCount)] == "\n" ||
+                resultText[resultText.index(resultText.startIndex, offsetBy: charCount)] == " "{
                 let startIndex = resultText.index(resultText.startIndex, offsetBy: startCount)
                 let endIndex = resultText.index(resultText.startIndex, offsetBy: charCount)
                 
