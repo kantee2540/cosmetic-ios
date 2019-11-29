@@ -17,6 +17,7 @@ struct ConstantProduct {
     static let categoriesType = "categories_type"
     static let brandName = "brand_name"
     static let productImg = "product_img"
+    static let ingredient = "ingredient"
 }
 
 struct ConstantCategories {

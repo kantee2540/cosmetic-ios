@@ -80,7 +80,8 @@ import UIKit
                 let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
                 let categories_type = jsonElement[ConstantProduct.categoriesType] as? String,
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,
-                let product_img = jsonElement[ConstantProduct.productImg] as? String
+                let product_img = jsonElement[ConstantProduct.productImg] as? String,
+                let ingredient = jsonElement[ConstantProduct.ingredient] as? String
             {
                 product.product_id = product_id
                 product.product_name = product_name
@@ -90,6 +91,8 @@ import UIKit
                 product.categories_type = categories_type
                 product.brand_name = brand_name
                 product.product_img = product_img
+                product.ingredient = ingredient
+                
             }
             
             products.add(product)

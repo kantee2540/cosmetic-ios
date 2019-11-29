@@ -17,12 +17,13 @@ class ProductModel: NSObject {
     var categories_type: String?
     var brand_name: String?
     var product_img: String?
+    var ingredient: String?
     
     override init(){
         
     }
     
-    init(product_name: String, product_description: String, product_price: Int, categories_name: String,categories_type: String, brand_name: String, product_img: String) {
+    init(product_name: String, product_description: String, product_price: Int, categories_name: String,categories_type: String, brand_name: String, product_img: String, ingredient: String) {
         self.product_name = product_name
         self.product_description = product_description
         self.product_price = product_price
@@ -30,7 +31,7 @@ class ProductModel: NSObject {
         self.categories_type = categories_type
         self.brand_name = brand_name
         self.product_img = product_img
-        
+        self.ingredient = ingredient
     }
     
     override var description: String{

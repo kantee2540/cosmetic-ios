@@ -113,7 +113,6 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         
         collectionCategoriesCell.categoriesName.text = item.categories_name
         
-        
         return collectionCategoriesCell
     }
     
@@ -125,7 +124,7 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchedProduct = allProduct.filter(){
-            return ($0.product_name ?? "").contains(searchText)
+            return ($0.product_name?.lowercased() ?? "").contains(searchText.lowercased())
         }
         if(searchText.count != 0){
             searching = true
