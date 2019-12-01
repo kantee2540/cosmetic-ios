@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
 		B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */; };
+		B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840323940A96005F4D88 /* DownloadPackage.swift */; };
+		B316840823940BF1005F4D88 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840723940BF1005F4D88 /* PackageModel.swift */; };
+		B316840B23940D80005F4D88 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840A23940D80005F4D88 /* TopicModel.swift */; };
+		B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840C23940DB3005F4D88 /* DownloadTopic.swift */; };
 		B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31FBCEA22D6303B00688A33 /* TopCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
@@ -75,6 +79,10 @@
 		8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
 		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
+		B316840323940A96005F4D88 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
+		B316840723940BF1005F4D88 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
+		B316840A23940D80005F4D88 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
+		B316840C23940DB3005F4D88 /* DownloadTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTopic.swift; sourceTree = "<group>"; };
 		B31FBCEA22D6303B00688A33 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +167,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B316840923940CC4005F4D88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B3F319C22278B6C0005B2AE2 /* ProductModel.swift */,
+				B33B6E9E2290404D008F3AEE /* BrandModel.swift */,
+				B342F0F3228C4F9700196E3B /* CategoriesModel.swift */,
+				B316840723940BF1005F4D88 /* PackageModel.swift */,
+				B316840A23940D80005F4D88 /* TopicModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B328A1242354413C00915CDB /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,15 +203,15 @@
 		B33B6EA022904052008F3AEE /* getObject */ = {
 			isa = PBXGroup;
 			children = (
+				B316840923940CC4005F4D88 /* Model */,
 				B34B4001229D0BE20045DF9A /* webAddress.swift */,
-				B3F319C22278B6C0005B2AE2 /* ProductModel.swift */,
-				B33B6E9E2290404D008F3AEE /* BrandModel.swift */,
-				B342F0F3228C4F9700196E3B /* CategoriesModel.swift */,
 				B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */,
 				B3ED7149236C7B3300DD1412 /* ConstantName.swift */,
 				B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */,
 				B342F0F5228C50D600196E3B /* DownloadCategories.swift */,
 				B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */,
+				B316840323940A96005F4D88 /* DownloadPackage.swift */,
+				B316840C23940DB3005F4D88 /* DownloadTopic.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -588,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */,
+				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
@@ -603,8 +624,11 @@
 				B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,
+				B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */,
 				B34A6C2A2279C8C3002892A7 /* HomeViewController.swift in Sources */,
 				B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */,
+				B316840823940BF1005F4D88 /* PackageModel.swift in Sources */,
+				B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */,
 				B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3BE28AA23918CDA00AE22C6 /* ImageTableViewCell.swift in Sources */,

@@ -57,6 +57,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         }
         else if indexPath.row == 2{
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "image") as! ImageTableViewCell
+            imageCell.selectionStyle = .none
             
             let imgUrl = productData[0].product_img
             imageCell.productImage.downloadImage(from: URL(string: imgUrl!)!)

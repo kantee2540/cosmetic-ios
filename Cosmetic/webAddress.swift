@@ -33,4 +33,14 @@ class webAddress {
         return webFile
         
     }
+    
+    func getPackageURL() -> String{
+        let webFile = prefixString + "getPackage.php"
+        return webFile
+    }
+    
+    func getTopicURL() -> String{
+        let webFile = prefixString + "getTopic.php"
+        return webFile
+    }
 }

@@ -8,16 +8,21 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadProductProtocol{
+class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTopicProtocol{
+    func topicDownloaded(item: NSMutableArray) {
+        topicItem = item as! [TopicModel]
+        featuringCollection.reloadData()
+        
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         removeSpinner()
         resultProductItem = item as! [ProductModel]
         topCollection.reloadData()
-        featuringCollection.reloadData()
     }
     
     var resultProductItem : [ProductModel] = []
-    var todayTopic: [String] = ["Featuring Cosmetic", "Explorer Dior", "Top Search"]
+    var topicItem: [TopicModel] = []
     var session :URLSession!
     
     @IBOutlet weak var featuringCollection: UICollectionView!
@@ -39,9 +44,23 @@ class HomeViewController: UIViewController, DownloadProductProtocol{
         topCollection.dataSource = self
         featuringCollection.delegate = self
         featuringCollection.dataSource = self
+        
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
         downloadProduct.downloadLimitItem(limitNum: 9)
+        
+        //downloadProduct()
+        downloadTopic()
+    }
+    
+    private func downloadProduct(){
+        
+    }
+    
+    private func downloadTopic(){
+        let downloadTopic = DownloadTopic()
+        downloadTopic.delegate = self
+        downloadTopic.downloadItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +106,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         else if collectionView == featuringCollection {
-            return todayTopic.count
+            return topicItem.count
         }
         
         return 0
@@ -123,24 +142,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         ///Today card
         else if collectionView == featuringCollection{
-            let item = todayTopic[indexPath.row]
+            let item = topicItem[indexPath.row]
             let featuringCell = collectionView.dequeueReusableCell(withReuseIdentifier: "featuringReuse", for: indexPath) as! FeaturingCollectionViewCell
             
-            featuringCell.topicTitle.text = item
+            featuringCell.topicTitle.text = item.topic_name
             featuringCell.topicTitle.layer.shadowColor = UIColor.black.cgColor
             featuringCell.topicTitle.layer.shadowOpacity = 0.5
             featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             featuringCell.topicTitle.layer.shadowRadius = 3
             
-            if indexPath.row == 0{
-                featuringCell.topicImage.image = UIImage(named: "bg2")
-            }
-            else if indexPath.row == 1{
-                featuringCell.topicImage.image = UIImage(named: "bg3")
-            }
-            else{
-                featuringCell.topicImage.image = UIImage(named: "bg4")
-            }
+            featuringCell.topicImage.image = UIImage(named: "bg4")
             
             featuringCell.contentView.layer.cornerRadius = 8
             featuringCell.contentView.layer.borderWidth = 1.0
