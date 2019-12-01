@@ -21,7 +21,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         
         contentTable.delegate = self
         contentTable.dataSource = self
-        
+        brandName.text = productData[0].brand_name?.uppercased()
         contentTable.reloadData()
         self.removeSpinner()
     }
