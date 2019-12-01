@@ -45,16 +45,14 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
         featuringCollection.delegate = self
         featuringCollection.dataSource = self
         
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadLimitItem(limitNum: 9)
-        
-        //downloadProduct()
+        downloadProduct()
         downloadTopic()
     }
     
     private func downloadProduct(){
-        
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadLimitItem(limitNum: 9)
     }
     
     private func downloadTopic(){

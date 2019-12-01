@@ -8,7 +8,13 @@
 
 import UIKit
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadTopicProtocol {
+    func topicDownloaded(item: NSMutableArray) {
+        
+    }
+    
+    
+    var topicId: String!
     
     @IBOutlet weak var mainTable: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +35,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         mainTable.delegate = self
         mainTable.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        downloadPackage()
+    }
+    
+    private func downloadPackage(){
+        let downloadPackage = DownloadPackage()
+        downloadPackage.delegate = self as? DownloadPackageProtocol
+        //downloadPackage.downloadByTopicId(id: topicId)
     }
     
     @IBAction func tapClose(_ sender: Any) {
