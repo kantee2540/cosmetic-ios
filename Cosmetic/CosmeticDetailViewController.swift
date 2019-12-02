@@ -10,7 +10,6 @@ import UIKit
 
 class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, UITableViewDelegate, UITableViewDataSource {
     
-    
     var productId: String!
     private var productData: [ProductModel] = []
     @IBOutlet weak var brandName: UILabel!

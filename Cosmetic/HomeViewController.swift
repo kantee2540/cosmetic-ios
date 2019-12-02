@@ -91,6 +91,14 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
             let item = resultProductItem[itemIndex!]
             destination?.productId = item.product_id
         }
+        else if segue.identifier == "SeeTopTopic"{
+            let destination = segue.destination as? TopTopicViewController
+            let itemIndex = featuringCollection.indexPathsForSelectedItems?.first?.item
+            let item = topicItem[itemIndex!]
+            destination?.topicId = item.topic_id
+            destination?.topicName = item.topic_name
+            destination?.topicDescription = item.topic_description
+        }
     }
 
 }

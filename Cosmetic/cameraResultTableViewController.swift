@@ -83,7 +83,6 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
-            print("OK")
             let destination = segue.destination as? CosmeticDetailViewController
             let itemIndex = resultTableView.indexPathForSelectedRow?.row
             let item = searchedProduct[itemIndex!]
