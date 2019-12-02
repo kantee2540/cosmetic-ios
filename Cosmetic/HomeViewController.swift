@@ -58,7 +58,7 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
     private func downloadTopic(){
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.downloadItem()
+        downloadTopic.downloadLimitTopic(limit: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +98,7 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
             destination?.topicId = item.topic_id
             destination?.topicName = item.topic_name
             destination?.topicDescription = item.topic_description
+            destination?.topicImg = item.topic_img
         }
     }
 
@@ -157,7 +158,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             featuringCell.topicTitle.layer.shadowRadius = 3
             
-            featuringCell.topicImage.image = UIImage(named: "bg4")
+            featuringCell.topicImage.downloadImage(from: URL(string: item.topic_img!)!)
             
             featuringCell.contentView.layer.cornerRadius = 8
             featuringCell.contentView.layer.borderWidth = 1.0

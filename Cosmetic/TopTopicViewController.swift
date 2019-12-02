@@ -13,14 +13,19 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         topicItem = item as! [PackageModel]
         mainTable.delegate = self
         mainTable.dataSource = self
-        titleLabel.text = topicName
+        settingtitleLabel()
+        coverImage.downloadImage(from: URL(string: topicImg!)!)
         mainTable.reloadData()
+        removeSpinner()
     }
     
     var topicId: String!
     var topicName: String!
     var topicDescription: String!
+    var topicImg: String!
     private var topicItem: [PackageModel] = []
+    
+    @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainTable: UITableView!
     
@@ -69,6 +74,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showSpinner(onView: self.view)
         downloadPackage()
     }
     
@@ -76,6 +82,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         let downloadPackage = DownloadPackage()
         downloadPackage.delegate = self
         downloadPackage.downloadByTopicId(id: topicId)
+    }
+    
+    private func settingtitleLabel(){
+        titleLabel.text = topicName
+        titleLabel.layer.shadowColor = UIColor.black.cgColor
+        titleLabel.layer.shadowOpacity = 0.5
+        titleLabel.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        titleLabel.layer.shadowRadius = 3
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -87,7 +101,6 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
             let destination = segue.destination as? CosmeticDetailViewController
             let itemIndex = mainTable.indexPathForSelectedRow?.row
             let item = topicItem[itemIndex!]
-            print(item.product_id)
             destination?.productId = item.product_id
         }
     }
