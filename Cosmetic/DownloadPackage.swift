@@ -8,23 +8,33 @@
 
 import UIKit
 
-@objc public protocol DownloadPackageProtocol: class {
+public protocol DownloadPackageProtocol: class {
     func itemDownloaded(item: NSMutableArray)
 }
 
-@objc class DownloadPackage: NSObject {
+class DownloadPackage: NSObject {
     
-    @objc weak var delegate: DownloadPackageProtocol!
+    weak var delegate: DownloadPackageProtocol!
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
+    var postParameter: String = ""
     
-    @objc func downloadItem(){
+    func downloadByTopicId(id topicId: String){
+        postParameter = "topic_id=\(topicId)"
+        downloadItem()
+    }
+    
+    func downloadItem(){
         DB_URL = getAddress.getPackageURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
+        
+        if postParameter != ""{
+            request.httpBody = postParameter.data(using: .utf8)
+        }
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
@@ -41,7 +51,7 @@ import UIKit
         task.resume()
     }
     
-    @objc func parseJSON(_ data:Data){
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{

@@ -45,22 +45,20 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
         featuringCollection.delegate = self
         featuringCollection.dataSource = self
         
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadLimitItem(limitNum: 9)
-        
-        //downloadProduct()
+        downloadProduct()
         downloadTopic()
     }
     
     private func downloadProduct(){
-        
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadLimitItem(limitNum: 9)
     }
     
     private func downloadTopic(){
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.downloadItem()
+        downloadTopic.downloadLimitTopic(limit: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +90,15 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
             let itemIndex = topCollection.indexPathsForSelectedItems?.first?.item
             let item = resultProductItem[itemIndex!]
             destination?.productId = item.product_id
+        }
+        else if segue.identifier == "SeeTopTopic"{
+            let destination = segue.destination as? TopTopicViewController
+            let itemIndex = featuringCollection.indexPathsForSelectedItems?.first?.item
+            let item = topicItem[itemIndex!]
+            destination?.topicId = item.topic_id
+            destination?.topicName = item.topic_name
+            destination?.topicDescription = item.topic_description
+            destination?.topicImg = item.topic_img
         }
     }
 
@@ -151,7 +158,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             featuringCell.topicTitle.layer.shadowRadius = 3
             
-            featuringCell.topicImage.image = UIImage(named: "bg4")
+            featuringCell.topicImage.downloadImage(from: URL(string: item.topic_img!)!)
             
             featuringCell.contentView.layer.cornerRadius = 8
             featuringCell.contentView.layer.borderWidth = 1.0

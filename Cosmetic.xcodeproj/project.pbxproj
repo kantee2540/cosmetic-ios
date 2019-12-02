@@ -13,6 +13,7 @@
 		B316840823940BF1005F4D88 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840723940BF1005F4D88 /* PackageModel.swift */; };
 		B316840B23940D80005F4D88 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840A23940D80005F4D88 /* TopicModel.swift */; };
 		B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840C23940DB3005F4D88 /* DownloadTopic.swift */; };
+		B316840F239414F5005F4D88 /* TopTopicItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */; };
 		B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31FBCEA22D6303B00688A33 /* TopCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
@@ -83,6 +84,7 @@
 		B316840723940BF1005F4D88 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
 		B316840A23940D80005F4D88 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
 		B316840C23940DB3005F4D88 /* DownloadTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTopic.swift; sourceTree = "<group>"; };
+		B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicItemTableViewCell.swift; sourceTree = "<group>"; };
 		B31FBCEA22D6303B00688A33 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -205,8 +207,8 @@
 			children = (
 				B316840923940CC4005F4D88 /* Model */,
 				B34B4001229D0BE20045DF9A /* webAddress.swift */,
-				B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */,
 				B3ED7149236C7B3300DD1412 /* ConstantName.swift */,
+				B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */,
 				B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */,
 				B342F0F5228C50D600196E3B /* DownloadCategories.swift */,
 				B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */,
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */,
+				B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */,
 			);
 			name = TopTopic;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */,
 				B34A6C2A2279C8C3002892A7 /* HomeViewController.swift in Sources */,
 				B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */,
+				B316840F239414F5005F4D88 /* TopTopicItemTableViewCell.swift in Sources */,
 				B316840823940BF1005F4D88 /* PackageModel.swift in Sources */,
 				B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */,
 				B3E891A422771C7C00117375 /* AccountTableViewController.swift in Sources */,
