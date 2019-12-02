@@ -80,17 +80,25 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if(searching){
-            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath)
+            let searchingCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
             let item = searchedProduct[indexPath.row]
-            cell.textLabel?.text = item.product_name
-            return cell
+            
+            searchingCell?.productName.text = item.product_name
+            searchingCell?.productDescription.text = item.product_description
+            searchingCell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+            
+            return searchingCell!
         }
             
         else {
-            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
             let item = allProduct[indexPath.row]
-            cell.textLabel?.text = item.product_name
-            return cell
+            
+            cell?.productName.text = item.product_name
+            cell?.productDescription.text = item.product_description
+            cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+            
+            return cell!
         }
         
     }
@@ -133,5 +141,9 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
         }
         searchTable.reloadData()
 
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

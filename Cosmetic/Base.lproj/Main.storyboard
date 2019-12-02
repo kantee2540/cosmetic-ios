@@ -727,23 +727,51 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" textLabel="bH8-i1-pXZ" style="IBUITableViewCellStyleDefault" id="Q4Q-1x-QrW">
-                                <rect key="frame" x="0.0" y="156" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="109" id="Q4Q-1x-QrW" customClass="SearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="156" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4Q-1x-QrW" id="jq9-mZ-mxi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bH8-i1-pXZ">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K8M-GS-40t">
+                                            <rect key="frame" x="16" y="11" width="70" height="87"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="J1N-Ds-Aza"/>
+                                                <constraint firstAttribute="height" constant="87" id="VOK-HP-2sk"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HD4-cs-L8Y">
+                                            <rect key="frame" x="102" y="11" width="257" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6r-ZD-MIx">
+                                            <rect key="frame" x="102" y="43" width="257" height="43"/>
+                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac mauris lacus. Aliquam sagittis ligula vel dignissim laoreet. Cras volutpat dignissim posuere. Praesent et nisi vitae orci volutpat aliquam.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o6r-ZD-MIx" firstAttribute="leading" secondItem="K8M-GS-40t" secondAttribute="trailing" constant="16" id="1Xs-bb-nir"/>
+                                        <constraint firstItem="K8M-GS-40t" firstAttribute="top" secondItem="jq9-mZ-mxi" secondAttribute="topMargin" id="3dg-zp-cc9"/>
+                                        <constraint firstItem="o6r-ZD-MIx" firstAttribute="trailing" secondItem="jq9-mZ-mxi" secondAttribute="trailingMargin" id="7Z4-gf-Oyw"/>
+                                        <constraint firstItem="o6r-ZD-MIx" firstAttribute="top" secondItem="HD4-cs-L8Y" secondAttribute="bottom" constant="8" id="BLw-Jr-WY3"/>
+                                        <constraint firstItem="HD4-cs-L8Y" firstAttribute="trailing" secondItem="jq9-mZ-mxi" secondAttribute="trailingMargin" id="KSv-ZR-pEl"/>
+                                        <constraint firstItem="HD4-cs-L8Y" firstAttribute="top" secondItem="jq9-mZ-mxi" secondAttribute="topMargin" id="V0E-Q4-9at"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="o6r-ZD-MIx" secondAttribute="bottom" constant="12" id="eYo-I4-NZT"/>
+                                        <constraint firstItem="K8M-GS-40t" firstAttribute="bottom" secondItem="jq9-mZ-mxi" secondAttribute="bottomMargin" id="jdv-ja-dAg"/>
+                                        <constraint firstItem="HD4-cs-L8Y" firstAttribute="leading" secondItem="K8M-GS-40t" secondAttribute="trailing" constant="16" id="rzv-Nr-RHX"/>
+                                        <constraint firstItem="K8M-GS-40t" firstAttribute="leading" secondItem="jq9-mZ-mxi" secondAttribute="leadingMargin" id="wdU-KV-IOj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="productDescription" destination="o6r-ZD-MIx" id="Sy0-eZ-PKb"/>
+                                    <outlet property="productImg" destination="K8M-GS-40t" id="cN4-J2-ecW"/>
+                                    <outlet property="productName" destination="HD4-cs-L8Y" id="2g4-Cp-L1Z"/>
                                     <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="cHm-Ob-iaC"/>
                                 </connections>
                             </tableViewCell>
@@ -761,7 +789,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-dV-zhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="467"/>
+            <point key="canvasLocation" x="1704.8" y="466.41679160419795"/>
         </scene>
         <!--Capture your product-->
         <scene sceneID="3mA-Wo-97c">
@@ -1068,6 +1096,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FJE-kk-ecP"/>
+        <segue reference="cHm-Ob-iaC"/>
     </inferredMetricsTieBreakers>
 </document>
