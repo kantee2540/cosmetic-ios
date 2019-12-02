@@ -666,7 +666,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yBw-8X-GBW">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JC5-gV-urp">
@@ -687,11 +687,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="82" height="119"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5OT-qp-Mlv">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5OT-qp-Mlv">
                                                         <rect key="frame" x="16" y="15" width="50" height="49.5"/>
                                                         <color key="tintColor" name="main-font-color"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Liq-ME-xZX"/>
+                                                            <constraint firstAttribute="height" constant="54" id="Liq-ME-xZX"/>
                                                             <constraint firstAttribute="width" constant="50" id="rIw-Zt-ClX"/>
                                                         </constraints>
                                                     </imageView>
@@ -706,13 +706,13 @@
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="w5g-KW-ME0" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="8" id="FFO-RZ-rZV"/>
-                                                    <constraint firstItem="w5g-KW-ME0" firstAttribute="top" secondItem="5OT-qp-Mlv" secondAttribute="bottom" constant="3" id="Z9Y-Zy-zrJ"/>
-                                                    <constraint firstItem="5OT-qp-Mlv" firstAttribute="top" secondItem="cTW-ZJ-H6S" secondAttribute="top" constant="8" id="b5s-CT-dYX"/>
-                                                    <constraint firstItem="5OT-qp-Mlv" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="21" id="e3L-1E-gDd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="w5g-KW-ME0" secondAttribute="trailing" constant="8" id="fbK-9w-dwg"/>
-                                                    <constraint firstAttribute="trailing" secondItem="5OT-qp-Mlv" secondAttribute="trailing" constant="21" id="keI-oZ-PiN"/>
-                                                    <constraint firstAttribute="bottom" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="8" id="wrB-S5-z1r"/>
+                                                    <constraint firstItem="w5g-KW-ME0" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="5" id="FFO-RZ-rZV"/>
+                                                    <constraint firstItem="w5g-KW-ME0" firstAttribute="top" secondItem="5OT-qp-Mlv" secondAttribute="bottom" constant="7.5" id="Z9Y-Zy-zrJ"/>
+                                                    <constraint firstItem="5OT-qp-Mlv" firstAttribute="top" secondItem="cTW-ZJ-H6S" secondAttribute="top" constant="12.5" id="b5s-CT-dYX"/>
+                                                    <constraint firstItem="5OT-qp-Mlv" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="16" id="e3L-1E-gDd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="w5g-KW-ME0" secondAttribute="trailing" constant="4" id="fbK-9w-dwg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5OT-qp-Mlv" secondAttribute="trailing" constant="16" id="keI-oZ-PiN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="9" id="wrB-S5-z1r"/>
                                                 </constraints>
                                             </collectionViewCellContentView>
                                             <size key="customSize" width="82" height="119"/>
@@ -728,7 +728,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="109" id="Q4Q-1x-QrW" customClass="SearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="156" width="375" height="109"/>
+                                <rect key="frame" x="0.0" y="176" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4Q-1x-QrW" id="jq9-mZ-mxi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
@@ -1077,11 +1077,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bag.fill" catalog="system" width="64" height="64"/>
         <image name="bg4" width="1240.5" height="1754"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="pencil.slash" catalog="system" width="64" height="56"/>
         <image name="questionmark.diamond.fill" catalog="system" width="64" height="60"/>
         <image name="splashscreen" width="375" height="667.5"/>
         <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>
