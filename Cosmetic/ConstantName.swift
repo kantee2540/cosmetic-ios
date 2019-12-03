@@ -13,6 +13,7 @@ struct ConstantProduct {
     static let productName = "product_name"
     static let description = "description"
     static let productPrice = "product_price"
+    static let categoriesId = "categories_id"
     static let categoriesName = "categories_name"
     static let categoriesType = "categories_type"
     static let brandName = "brand_name"
