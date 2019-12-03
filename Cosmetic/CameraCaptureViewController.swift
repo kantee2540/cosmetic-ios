@@ -26,6 +26,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
+    @IBOutlet weak var controlContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,16 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupControlContainer()
         if isCapturing{
             self.captureSession.startRunning()
         }
         
+    }
+    
+    private func setupControlContainer(){
+        controlContainer.layer.cornerRadius = 8
+        controlContainer.clipsToBounds = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {

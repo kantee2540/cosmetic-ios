@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DownloadCategoriesProtocol: class {
-    func itemDownloaded(item: NSMutableArray)
+    func itemDownloadedCategories(item: NSMutableArray)
 }
 
 class DownloadCategories: NSObject {
@@ -71,7 +71,7 @@ class DownloadCategories: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: categories)
+            self.delegate.itemDownloadedCategories(item: categories)
         })
         
     }

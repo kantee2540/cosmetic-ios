@@ -8,16 +8,21 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadProductProtocol{
+class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTopicProtocol{
+    func topicDownloaded(item: NSMutableArray) {
+        topicItem = item as! [TopicModel]
+        featuringCollection.reloadData()
+        
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         removeSpinner()
         resultProductItem = item as! [ProductModel]
         topCollection.reloadData()
-        featuringCollection.reloadData()
     }
     
     var resultProductItem : [ProductModel] = []
-    var todayTopic: [String] = ["Featuring Cosmetic", "Explorer Dior", "Top Search"]
+    var topicItem: [TopicModel] = []
     var session :URLSession!
     
     @IBOutlet weak var featuringCollection: UICollectionView!
@@ -39,9 +44,21 @@ class HomeViewController: UIViewController, DownloadProductProtocol{
         topCollection.dataSource = self
         featuringCollection.delegate = self
         featuringCollection.dataSource = self
+        
+        downloadProduct()
+        downloadTopic()
+    }
+    
+    private func downloadProduct(){
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
         downloadProduct.downloadLimitItem(limitNum: 9)
+    }
+    
+    private func downloadTopic(){
+        let downloadTopic = DownloadTopic()
+        downloadTopic.delegate = self
+        downloadTopic.downloadLimitTopic(limit: 5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +91,15 @@ class HomeViewController: UIViewController, DownloadProductProtocol{
             let item = resultProductItem[itemIndex!]
             destination?.productId = item.product_id
         }
+        else if segue.identifier == "SeeTopTopic"{
+            let destination = segue.destination as? TopTopicViewController
+            let itemIndex = featuringCollection.indexPathsForSelectedItems?.first?.item
+            let item = topicItem[itemIndex!]
+            destination?.topicId = item.topic_id
+            destination?.topicName = item.topic_name
+            destination?.topicDescription = item.topic_description
+            destination?.topicImg = item.topic_img
+        }
     }
 
 }
@@ -87,7 +113,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         else if collectionView == featuringCollection {
-            return todayTopic.count
+            return topicItem.count
         }
         
         return 0
@@ -123,24 +149,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         ///Today card
         else if collectionView == featuringCollection{
-            let item = todayTopic[indexPath.row]
+            let item = topicItem[indexPath.row]
             let featuringCell = collectionView.dequeueReusableCell(withReuseIdentifier: "featuringReuse", for: indexPath) as! FeaturingCollectionViewCell
             
-            featuringCell.topicTitle.text = item
+            featuringCell.topicTitle.text = item.topic_name
             featuringCell.topicTitle.layer.shadowColor = UIColor.black.cgColor
             featuringCell.topicTitle.layer.shadowOpacity = 0.5
             featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             featuringCell.topicTitle.layer.shadowRadius = 3
             
-            if indexPath.row == 0{
-                featuringCell.topicImage.image = UIImage(named: "bg2")
-            }
-            else if indexPath.row == 1{
-                featuringCell.topicImage.image = UIImage(named: "bg3")
-            }
-            else{
-                featuringCell.topicImage.image = UIImage(named: "bg4")
-            }
+            featuringCell.topicImage.downloadImage(from: URL(string: item.topic_img!)!)
             
             featuringCell.contentView.layer.cornerRadius = 8
             featuringCell.contentView.layer.borderWidth = 1.0
