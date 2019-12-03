@@ -75,10 +75,19 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(searching){
-            return searchedProduct.count
+            if searchedProduct.count > 0{
+                return searchedProduct.count
+            }else{
+                return 1
+            }
+            
         }
         else if (searchingCategories){
-            return productByCategories.count
+            if productByCategories.count > 0{
+                return productByCategories.count
+            }else{
+                return 1
+            }
         }
         else{
             return allProduct.count
@@ -89,25 +98,39 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if(searching){
-            let searchingCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
-            let item = searchedProduct[indexPath.row]
+            if searchedProduct.count > 0{
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
+                let item = searchedProduct[indexPath.row]
+                
+                searchingCell?.productName.text = item.product_name
+                searchingCell?.productDescription.text = item.product_description
+                searchingCell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+                
+                return searchingCell!
+                
+            }else{
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                return searchingCell
+            }
             
-            searchingCell?.productName.text = item.product_name
-            searchingCell?.productDescription.text = item.product_description
-            searchingCell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
-            
-            return searchingCell!
         }
             
         else if (searchingCategories){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
-            let item = productByCategories[indexPath.row]
-            
-            cell?.productName.text = item.product_name
-            cell?.productDescription.text = item.product_description
-            cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
-            
-            return cell!
+            if productByCategories.count > 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
+                let item = productByCategories[indexPath.row]
+                
+                cell?.productName.text = item.product_name
+                cell?.productDescription.text = item.product_description
+                cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+                
+                return cell!
+                
+            }
+            else{
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                return searchingCell
+            }
         }
             
         else {

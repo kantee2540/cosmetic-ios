@@ -22,7 +22,6 @@ import UIKit
     
     func downloadByCategories(categoriesId id: String){
         postParameter = "categories_id=\(id)"
-        print(id)
         downloadItem()
     }
     
