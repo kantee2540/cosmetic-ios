@@ -14,7 +14,7 @@ public protocol DownloadPackageProtocol: class {
 
 class DownloadPackage: NSObject {
     
-    weak var delegate: DownloadPackageProtocol!
+    weak var delegate: DownloadPackageProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -94,7 +94,7 @@ class DownloadPackage: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: products)
+            self.delegate?.itemDownloaded(item: products)
         })
         
     }
