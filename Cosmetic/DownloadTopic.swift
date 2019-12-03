@@ -13,7 +13,7 @@ public protocol DownloadTopicProtocol: class{
 }
 
 class DownloadTopic: NSObject {
-    weak var delegate: DownloadTopicProtocol!
+    weak var delegate: DownloadTopicProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -85,7 +85,7 @@ class DownloadTopic: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.topicDownloaded(item: products)
+            self.delegate?.topicDownloaded(item: products)
         })
         
     }

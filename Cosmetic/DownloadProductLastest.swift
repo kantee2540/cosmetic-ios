@@ -16,7 +16,7 @@ import UIKit
 
 @objc class DownloadProductLastest: NSObject {
     
-    @objc weak var delegate: DownloadLastestProductProtocol!
+    @objc weak var delegate: DownloadLastestProductProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -84,7 +84,7 @@ import UIKit
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloadedProductLastest(item: products)
+            self.delegate?.itemDownloadedProductLastest(item: products)
         })
         
     }
