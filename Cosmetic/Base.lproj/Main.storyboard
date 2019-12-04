@@ -587,21 +587,66 @@
             </objects>
             <point key="canvasLocation" x="2255" y="-370"/>
         </scene>
-        <!--Item-->
+        <!--Package-->
         <scene sceneID="51d-3W-5SY">
             <objects>
-                <viewController id="2kK-wY-G6Z" sceneMemberID="viewController">
+                <viewController id="2kK-wY-G6Z" customClass="PackageViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KPy-BS-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Package for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHQ-JR-NTB">
+                                <rect key="frame" x="23" y="67" width="329" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" name="main-font-color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get code five digits from beauty blogger or another reviewer We'll pick the package of cosmetic for you" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3j-9X-gqn">
+                                <rect key="frame" x="23" y="119" width="329" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Insert code here" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MfN-vr-HgB">
+                                <rect key="frame" x="16" y="206.5" width="343" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="HGu-wi-fSZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="packageImage" translatesAutoresizingMaskIntoConstraints="NO" id="joe-Jz-KRV">
+                                <rect key="frame" x="78" y="323" width="219" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="pLn-FK-V9W"/>
+                                    <constraint firstAttribute="height" constant="203" id="qjA-xt-jqu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MfN-vr-HgB" firstAttribute="top" secondItem="G3j-9X-gqn" secondAttribute="bottom" constant="30" id="8sY-kH-ynU"/>
+                            <constraint firstItem="G3j-9X-gqn" firstAttribute="leading" secondItem="aZa-tk-WxP" secondAttribute="leading" constant="23" id="E8n-Hr-pWc"/>
+                            <constraint firstItem="G3j-9X-gqn" firstAttribute="top" secondItem="iHQ-JR-NTB" secondAttribute="bottom" constant="16" id="H3h-XR-ZHw"/>
+                            <constraint firstItem="joe-Jz-KRV" firstAttribute="centerX" secondItem="KPy-BS-pFU" secondAttribute="centerX" id="T8D-hi-Nfc"/>
+                            <constraint firstItem="joe-Jz-KRV" firstAttribute="centerY" secondItem="KPy-BS-pFU" secondAttribute="centerY" constant="91" id="g1L-xd-78r"/>
+                            <constraint firstItem="aZa-tk-WxP" firstAttribute="trailing" secondItem="iHQ-JR-NTB" secondAttribute="trailing" constant="23" id="gNM-fa-2yR"/>
+                            <constraint firstItem="aZa-tk-WxP" firstAttribute="trailing" secondItem="MfN-vr-HgB" secondAttribute="trailing" constant="16" id="ife-mB-Krf"/>
+                            <constraint firstItem="MfN-vr-HgB" firstAttribute="leading" secondItem="aZa-tk-WxP" secondAttribute="leading" constant="16" id="no9-Vr-lnS"/>
+                            <constraint firstItem="iHQ-JR-NTB" firstAttribute="leading" secondItem="aZa-tk-WxP" secondAttribute="leading" constant="23" id="ou3-gv-j0D"/>
+                            <constraint firstItem="iHQ-JR-NTB" firstAttribute="top" secondItem="aZa-tk-WxP" secondAttribute="top" constant="23" id="r5P-uI-0CC"/>
+                            <constraint firstItem="aZa-tk-WxP" firstAttribute="trailing" secondItem="G3j-9X-gqn" secondAttribute="trailing" constant="23" id="u3W-oq-gRc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aZa-tk-WxP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="1Gg-B1-aWQ"/>
+                    <tabBarItem key="tabBarItem" title="Package" image="bookmark.fill" catalog="system" selectedImage="bookmark.fill" id="1Gg-B1-aWQ"/>
+                    <connections>
+                        <outlet property="codeField" destination="MfN-vr-HgB" id="uZ4-Tz-KrL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgo-mn-4qc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="885"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="884.70764617691157"/>
         </scene>
         <!--Search-->
         <scene sceneID="Zpi-M2-pxM">
@@ -1150,9 +1195,11 @@
     <resources>
         <image name="bag.fill" catalog="system" width="64" height="64"/>
         <image name="bg4" width="1240.5" height="1754"/>
+        <image name="bookmark.fill" catalog="system" width="56" height="64"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="packageImage" width="400" height="400"/>
         <image name="questionmark.diamond.fill" catalog="system" width="64" height="60"/>
         <image name="splashscreen" width="375" height="667.5"/>
         <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>

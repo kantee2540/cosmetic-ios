@@ -27,6 +27,7 @@
 		B34A6C2A2279C8C3002892A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34A6C292279C8C3002892A7 /* HomeViewController.swift */; };
 		B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B4001229D0BE20045DF9A /* webAddress.swift */; };
 		B34DE405238C1132008DC9EB /* FeaturingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DE404238C1132008DC9EB /* FeaturingCollectionViewCell.swift */; };
+		B35B57622398164800AE754F /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B57612398164800AE754F /* PackageViewController.swift */; };
 		B371985423898D2E001DB6A7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371985323898D2E001DB6A7 /* Library.swift */; };
 		B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766C61236685630028B335 /* cameraResultTableViewController.swift */; };
 		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
@@ -100,6 +101,7 @@
 		B34A6C292279C8C3002892A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
 		B34DE404238C1132008DC9EB /* FeaturingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturingCollectionViewCell.swift; sourceTree = "<group>"; };
+		B35B57612398164800AE754F /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		B371985323898D2E001DB6A7 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		B3766C61236685630028B335 /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				B3C2F9FA2245002E0054EE16 /* Info.plist */,
 				B37E34D0232D783300FD4780 /* GoogleService-Info.plist */,
 				B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */,
+				B35B57612398164800AE754F /* PackageViewController.swift */,
 			);
 			path = Cosmetic;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
+				B35B57622398164800AE754F /* PackageViewController.swift in Sources */,
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,

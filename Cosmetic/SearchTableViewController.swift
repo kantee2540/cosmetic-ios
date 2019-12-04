@@ -24,7 +24,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         self.showSpinner(onView: self.view)
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadItem()
+        downloadProduct.downloadLimitItem(limitNum: 15)
  
     }
     
