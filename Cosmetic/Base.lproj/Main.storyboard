@@ -45,8 +45,9 @@
                         <color key="selectedImageTintColor" name="main-font-color"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eMo-Qj-BAO" kind="relationship" relationship="viewControllers" id="nyo-oN-OKe"/>
-                        <segue destination="BHj-ZC-OSc" kind="relationship" relationship="viewControllers" id="TxC-CJ-a3t"/>
+                        <segue destination="eMo-Qj-BAO" kind="relationship" relationship="viewControllers" destinationCreationSelector="Home" id="nyo-oN-OKe"/>
+                        <segue destination="BHj-ZC-OSc" kind="relationship" relationship="viewControllers" destinationCreationSelector="Search" id="TxC-CJ-a3t"/>
+                        <segue destination="2kK-wY-G6Z" kind="relationship" relationship="viewControllers" id="4Vb-Uw-nVv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -585,6 +586,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Car-WQ-cDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2255" y="-370"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="51d-3W-5SY">
+            <objects>
+                <viewController id="2kK-wY-G6Z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KPy-BS-pFU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aZa-tk-WxP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1Gg-B1-aWQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgo-mn-4qc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="885"/>
         </scene>
         <!--Search-->
         <scene sceneID="Zpi-M2-pxM">
@@ -1150,6 +1167,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZMJ-2g-sEO"/>
+        <segue reference="j6B-oM-jLe"/>
     </inferredMetricsTieBreakers>
 </document>

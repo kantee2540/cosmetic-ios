@@ -100,7 +100,6 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
 extension SearchTableViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let searchDetailVc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView") as! SearchDetailTableViewController
-        searchDetailVc.allProduct = resultItem
         navigationController?.pushViewController(searchDetailVc, animated: true)
     }
 }
