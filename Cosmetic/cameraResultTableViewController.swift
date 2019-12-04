@@ -27,7 +27,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
                 let exProductName = extractString(toExtract: productName)
                 
                 for x in exProductName{
-                    if capturedWord.contains(where: {$0 == x}){
+                    if capturedWord.contains(where: {$0 == x.lowercased()}){
                         searchedProduct.append(item)
                     }
                 }
