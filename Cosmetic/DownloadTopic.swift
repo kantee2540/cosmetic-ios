@@ -24,6 +24,11 @@ class DownloadTopic: NSObject {
         downloadItem()
     }
     
+    func getTopicId(code topicCode: String){
+        postParameter = "topic_code=\(topicCode)"
+        downloadItem()
+    }
+    
     func downloadItem(){
         DB_URL = getAddress.getTopicURL()
         

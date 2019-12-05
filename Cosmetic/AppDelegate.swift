@@ -52,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
             navC.present(vc, animated: true, completion: nil)
         }
-            
        
     }
 

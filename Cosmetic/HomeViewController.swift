@@ -12,7 +12,6 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
     func topicDownloaded(item: NSMutableArray) {
         topicItem = item as! [TopicModel]
         featuringCollection.reloadData()
-        
     }
     
     func itemDownloaded(item: NSMutableArray) {
@@ -130,7 +129,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             collectionProductCell.topTitle.text = item.product_name
             collectionProductCell.topDescription.text = item.product_description
-            let imageURL = URL(string: item.product_img!)!
+            let imageURL = URL(string: item.product_img ?? "")!
             collectionProductCell.topImage.downloadImage(from: imageURL)
             
             collectionProductCell.contentView.layer.cornerRadius = 8
@@ -158,7 +157,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             featuringCell.topicTitle.layer.shadowOffset = CGSize(width: 0, height: 2.0)
             featuringCell.topicTitle.layer.shadowRadius = 3
             
-            featuringCell.topicImage.downloadImage(from: URL(string: item.topic_img!)!)
+            featuringCell.topicImage.downloadImage(from: URL(string: item.topic_img ?? "")!)
             
             featuringCell.contentView.layer.cornerRadius = 8
             featuringCell.contentView.layer.borderWidth = 1.0

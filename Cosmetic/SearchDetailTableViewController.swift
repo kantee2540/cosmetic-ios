@@ -10,7 +10,7 @@ import UIKit
 
 class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol {
 
-    var allProduct: [ProductModel]!
+    private var allProduct: [ProductModel] = []
     private var productByCategories: [ProductModel] = []
     private var searchedProduct: [ProductModel] = []
     var categoriesList: [CategoriesModel] = []
@@ -24,18 +24,32 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        let downloadCategories = DownloadCategories()
-        downloadCategories.delegate = self
-        downloadCategories.downloadItem()
+        downloadCategories()
+        downloadProduct()
 
         searchBar = UISearchBar()
         searchBar.placeholder = "Search Cosmetic"
         searchBar.becomeFirstResponder()
         searchBar.delegate = self
         navigationItem.titleView = searchBar
+        
+    }
+    
+    private func downloadCategories(){
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.dataSource = self
+        let downloadCategories = DownloadCategories()
+        downloadCategories.delegate = self
+        downloadCategories.downloadItem()
+    }
+    
+    private func downloadProduct(){
+        showSpinner(onView: self.view)
+        searchTable.delegate = self
+        searchTable.dataSource = self
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -157,7 +171,11 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
 
 extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
     func itemDownloaded(item: NSMutableArray) {
-        productByCategories = item as! [ProductModel]
+        if searchingCategories{
+            productByCategories = item as! [ProductModel]
+        }else{
+            allProduct = item as! [ProductModel]
+        }
         searchTable.reloadData()
         removeSpinner()
     }
