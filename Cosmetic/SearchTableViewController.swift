@@ -24,7 +24,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
         self.showSpinner(onView: self.view)
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadItem()
+        downloadProduct.downloadLimitItem(limitNum: 15)
  
     }
     
@@ -100,7 +100,6 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol 
 extension SearchTableViewController: UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let searchDetailVc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView") as! SearchDetailTableViewController
-        searchDetailVc.allProduct = resultItem
         navigationController?.pushViewController(searchDetailVc, animated: true)
     }
 }
