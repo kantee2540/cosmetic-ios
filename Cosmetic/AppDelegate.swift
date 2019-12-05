@@ -52,13 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
             navC.present(vc, animated: true, completion: nil)
         }
-        else if shortcutItem.type == "SearchAction"{
-            guard let navC = window?.rootViewController as? UINavigationController else { return }
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "SearchDetailView")
-            navC.pushViewController(vc, animated: true)
-        }
-            
        
     }
 
