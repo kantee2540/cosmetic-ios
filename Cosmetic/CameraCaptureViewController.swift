@@ -214,14 +214,14 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
                 return
             }
             
-            for block in textResult.blocks{
-                for line in block.lines{
-                    for element in line.elements{
-                        
-                    }
-                }
-                
-            }
+//            for block in textResult.blocks{
+//                for line in block.lines{
+//                    for element in line.elements{
+//
+//                    }
+//                }
+//
+//            }
             
             print("\(textResult.text)\n")
             self.resultText = "\(textResult.text)\n"
@@ -249,6 +249,8 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             return .leftTop
           case .rightMirrored:
             return .rightBottom
+        @unknown default:
+            return .leftTop
         }
     }
 }

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cef-wc-M7l">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -120,14 +119,6 @@
                                                             <segue destination="wgc-Gb-F3f" kind="presentation" identifier="SeeTopTopic" id="BuN-G5-qJ3"/>
                                                         </connections>
                                                     </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5aA-rP-e77">
-                                                        <rect key="frame" x="350" y="175.5" width="300" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zkb-Gl-UmM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aHT-bE-uH4">
@@ -192,22 +183,6 @@
                                                             <outlet property="topTitle" destination="Rnj-PY-HV8" id="dkS-B4-OMK"/>
                                                             <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="FJE-kk-ecP"/>
                                                         </connections>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wKY-QM-AKx">
-                                                        <rect key="frame" x="15" y="136.5" width="293" height="116"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OEk-zn-FdK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="293" height="116"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MfM-2f-OQo">
-                                                        <rect key="frame" x="15" y="268" width="293" height="116"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D86-u7-N8p">
-                                                            <rect key="frame" x="0.0" y="0.0" width="293" height="116"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -1110,7 +1085,7 @@
                                                 <constraint firstAttribute="height" constant="85" id="wMS-zb-BJs"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-hm-jyW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFg-hm-jyW">
                                             <rect key="frame" x="96" y="80.5" width="263" height="16"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <color key="textColor" name="main-font-color"/>
@@ -1215,6 +1190,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="quJ-bP-uJV"/>
+        <segue reference="FJE-kk-ecP"/>
     </inferredMetricsTieBreakers>
 </document>
