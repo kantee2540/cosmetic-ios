@@ -9,12 +9,12 @@
 import UIKit
 
 protocol DownloadCategoriesProtocol: class {
-    func itemDownloaded(item: NSMutableArray)
+    func itemDownloadedCategories(item: NSMutableArray)
 }
 
 class DownloadCategories: NSObject {
     
-    weak var delegate: DownloadCategoriesProtocol!
+    weak var delegate: DownloadCategoriesProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -71,7 +71,7 @@ class DownloadCategories: NSObject {
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate.itemDownloaded(item: categories)
+            self.delegate?.itemDownloadedCategories(item: categories)
         })
         
     }

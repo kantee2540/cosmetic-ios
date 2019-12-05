@@ -26,6 +26,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
+    @IBOutlet weak var controlContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,16 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupControlContainer()
         if isCapturing{
             self.captureSession.startRunning()
         }
         
+    }
+    
+    private func setupControlContainer(){
+        controlContainer.layer.cornerRadius = 8
+        controlContainer.clipsToBounds = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,14 +214,14 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
                 return
             }
             
-            for block in textResult.blocks{
-                for line in block.lines{
-                    for element in line.elements{
-                        
-                    }
-                }
-                
-            }
+//            for block in textResult.blocks{
+//                for line in block.lines{
+//                    for element in line.elements{
+//
+//                    }
+//                }
+//
+//            }
             
             print("\(textResult.text)\n")
             self.resultText = "\(textResult.text)\n"
@@ -242,6 +249,8 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             return .leftTop
           case .rightMirrored:
             return .rightBottom
+        @unknown default:
+            return .leftTop
         }
     }
 }

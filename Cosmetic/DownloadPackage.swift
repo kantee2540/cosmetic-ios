@@ -1,35 +1,40 @@
 //
-//  File.swift
+//  DownloadPackage.swift
 //  Cosmetic
 //
-//  Created by Omp on 5/7/2562 BE.
+//  Created by Omp on 1/12/2562 BE.
 //  Copyright © 2562 Omp. All rights reserved.
 //
 
-import Foundation
-
 import UIKit
 
-@objc public protocol DownloadLastestProductProtocol: class {
-    func itemDownloadedProductLastest(item: NSMutableArray)
+public protocol DownloadPackageProtocol: class {
+    func itemDownloaded(item: NSMutableArray)
 }
 
-@objc class DownloadProductLastest: NSObject {
+class DownloadPackage: NSObject {
     
-    @objc weak var delegate: DownloadLastestProductProtocol?
+    weak var delegate: DownloadPackageProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
+    var postParameter: String = ""
     
-    @objc func downloadItem(){
-        DB_URL = getAddress.getProductURL()
+    func downloadByTopicId(id topicId: String){
+        postParameter = "topic_id=\(topicId)"
+        downloadItem()
+    }
+    
+    func downloadItem(){
+        DB_URL = getAddress.getPackageURL()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
-        let postParameter = "limit=5"
-        request.httpBody = postParameter.data(using: .utf8)
+        if postParameter != ""{
+            request.httpBody = postParameter.data(using: .utf8)
+        }
         
         let task = URLSession.shared.dataTask(with: request){
             data, response, error in
@@ -38,7 +43,7 @@ import UIKit
                 print("Failed to Download data")
                 
             }else{
-                print("Data downloaded - Product")
+                print("Data downloaded - Package")
                 self.parseJSON(data!)
             }
             
@@ -46,7 +51,7 @@ import UIKit
         task.resume()
     }
     
-    @objc func parseJSON(_ data:Data){
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{
@@ -55,39 +60,42 @@ import UIKit
             print(error)
         }
         
-        
+
         var jsonElement = NSDictionary()
         let products = NSMutableArray()
         
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
-            let product = ProductModel()
+            let product = PackageModel()
             
-            if let product_name = jsonElement[ConstantProduct.productName] as? String,
+            if  let product_id = jsonElement[ConstantProduct.productId] as? String,
+                let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
                 let product_price = jsonElement[ConstantProduct.productPrice] as? String,
-                let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
-                let categories_type = jsonElement[ConstantProduct.categoriesType] as? String,
-                let brand_name = jsonElement[ConstantProduct.brandName] as? String,
-                let product_img = jsonElement[ConstantProduct.productImg] as? String
+                let product_img = jsonElement[ConstantProduct.productImg] as? String,
+                let topic_id = jsonElement[ConstantProduct.topicId] as? String,
+                let topic_name = jsonElement[ConstantProduct.topicName] as? String,
+                let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
+                let topic_code = jsonElement[ConstantProduct.topic_code] as? String
             {
+                product.product_id = product_id
                 product.product_name = product_name
                 product.product_description = product_description
                 product.product_price = Int(product_price)
-                product.categories_name = categories_name
-                product.categories_type = categories_type
-                product.brand_name = brand_name
                 product.product_img = product_img
+                product.topic_id = topic_id
+                product.topic_name = topic_name
+                product.topic_description = topic_description
+                product.topic_code = topic_code
+                
             }
             
             products.add(product)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.itemDownloadedProductLastest(item: products)
+            self.delegate?.itemDownloaded(item: products)
         })
         
     }
 }
-
-

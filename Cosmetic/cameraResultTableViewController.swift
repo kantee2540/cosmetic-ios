@@ -27,7 +27,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
                 let exProductName = extractString(toExtract: productName)
                 
                 for x in exProductName{
-                    if capturedWord.contains(where: {$0 == x}){
+                    if capturedWord.contains(where: {$0 == x.lowercased()}){
                         searchedProduct.append(item)
                     }
                 }
@@ -83,7 +83,6 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
-            print("OK")
             let destination = segue.destination as? CosmeticDetailViewController
             let itemIndex = resultTableView.indexPathForSelectedRow?.row
             let item = searchedProduct[itemIndex!]
