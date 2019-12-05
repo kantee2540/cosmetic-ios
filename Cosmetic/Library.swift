@@ -12,10 +12,11 @@ class Library {
     
 }
 
-//MARK: - Spinner
+
 var spinView: UIView!
 extension UIViewController{
     
+    //MARK: - Spinner
     func showSpinner(onView :UIView) {
         
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -38,10 +39,23 @@ extension UIViewController{
             spinView = nil
         }
     }
+    
+    //MARK: - Tap any screen to hide keyboard
+    func hideKeyboardWhenTappedAround(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dimissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dimissKeyboard(){
+        view.endEditing(true)
+    }
 }
 
-//MARK: - DownloadImage
+
 extension UIImageView{
+    
+    //MARK: - DownloadImage
     func getData(from url:URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()){
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
@@ -59,8 +73,10 @@ extension UIImageView{
     }
 }
 
-//MARK: - TextField
+
 extension UITextField{
+    
+    //MARK: - TextField Underlined
     func setUnderLine(){
         let border = CALayer()
         let width = CGFloat(2)

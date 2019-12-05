@@ -37,6 +37,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         codeField.delegate = self
         codeField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         codeField.setUnderLine()
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
