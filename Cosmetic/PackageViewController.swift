@@ -8,7 +8,28 @@
 
 import UIKit
 
-class PackageViewController: UIViewController, UITextFieldDelegate {
+class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopicProtocol {
+    func topicDownloaded(item: NSMutableArray) {
+        if item.count >= 1{
+            let topicVc = storyboard?.instantiateViewController(withIdentifier: "TopTopic") as? TopTopicViewController
+            var topicItem :[TopicModel] = []
+            topicItem = item as! [TopicModel]
+            topicVc?.topicId = topicItem[0].topic_id
+            topicVc?.topicName = topicItem[0].topic_name
+            topicVc?.topicDescription = topicItem[0].topic_description
+            topicVc?.topicImg = topicItem[0].topic_img
+            
+            self.present(topicVc!, animated: true)
+        }
+        
+        else{
+            let alert = UIAlertController(title: "Your code has't package code", message: "Please try another code to get cosmetic package", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
+    }
+    
 
     @IBOutlet weak var codeField: UITextField!
     override func viewDidLoad() {
@@ -26,6 +47,24 @@ class PackageViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text?.count == 6{
+            let downloadTopic = DownloadTopic()
+            downloadTopic.delegate = self
+            downloadTopic.getTopicId(code: textField.text ?? "")
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 6
     }
     
     /*
