@@ -19,6 +19,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     
     @IBOutlet var searchTable: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var clearButton: UIButton!
     
     var searchBar: UISearchBar!
     
@@ -89,6 +90,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if(searching){
+            clearButton.isEnabled = true
             if searchedProduct.count > 0{
                 return searchedProduct.count
             }else{
@@ -104,6 +106,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             }
         }
         else{
+            clearButton.isEnabled = false
             return allProduct.count
         }
         
@@ -163,6 +166,13 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    @IBAction func tapClear(_ sender: Any) {
+        searching = false
+        searchBar.text = ""
+        searchTable.reloadData()
+    }
+    
     
     var selectedCollectionCell: IndexPath!
     var previousSelect: IndexPath!
