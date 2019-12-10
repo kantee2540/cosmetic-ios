@@ -757,7 +757,7 @@
                                                     <constraint firstItem="5OT-qp-Mlv" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="16" id="e3L-1E-gDd"/>
                                                     <constraint firstAttribute="trailing" secondItem="w5g-KW-ME0" secondAttribute="trailing" constant="4" id="fbK-9w-dwg"/>
                                                     <constraint firstAttribute="trailing" secondItem="5OT-qp-Mlv" secondAttribute="trailing" constant="16" id="keI-oZ-PiN"/>
-                                                    <constraint firstAttribute="bottom" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="9" id="wrB-S5-z1r"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="9" id="wrB-S5-z1r"/>
                                                 </constraints>
                                             </collectionViewCellContentView>
                                             <size key="customSize" width="100" height="119"/>
@@ -777,9 +777,12 @@
                                         <segment title="Category"/>
                                         <segment title="Brand"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="segmentAction:" destination="4zo-uX-Trl" eventType="valueChanged" id="YFp-fz-ap2"/>
+                                    </connections>
                                 </segmentedControl>
-                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R29-vv-OTo">
-                                    <rect key="frame" x="337" y="11.5" width="30" height="30.5"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R29-vv-OTo">
+                                    <rect key="frame" x="337" y="11.5" width="30" height="29"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31.5" id="7i7-CZ-Pzt"/>
                                         <constraint firstAttribute="width" constant="30" id="p0g-Wm-cEK"/>
@@ -905,6 +908,7 @@
                         <outlet property="categoriesCollectionView" destination="JC5-gV-urp" id="mrt-Hg-pVW"/>
                         <outlet property="clearButton" destination="R29-vv-OTo" id="Iqf-p1-JeQ"/>
                         <outlet property="searchTable" destination="3Yc-iN-sap" id="zI0-Rd-lt7"/>
+                        <outlet property="selectionSegment" destination="Jvp-x6-j8W" id="1Ln-iJ-s2c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-dV-zhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
