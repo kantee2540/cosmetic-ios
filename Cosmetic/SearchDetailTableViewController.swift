@@ -167,9 +167,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: - Tap clear
     @IBAction func tapClear(_ sender: Any) {
-        searching = false
-        searchBar.text = ""
+        clearSearchCategory()
         searchTable.reloadData()
     }
     
@@ -179,6 +179,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
 
 }
 
+//MARK: - Category collection
 extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
     func itemDownloaded(item: NSMutableArray) {
         if searchingCategories{
@@ -226,6 +227,7 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Selected Cell
+        clearButton.isEnabled = true
         let cell = collectionView.cellForItem(at: indexPath) as! CategoriesDetailCollectionViewCell
         cell.backgroundColor = UIColor.init(named: "main-font-color")
         cell.categoriesIcon.tintColor = UIColor.white
@@ -234,20 +236,8 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         //Search Product by categories Id
         
         if selectedCollectionCell == indexPath{
-            selectedCollectionCell = nil
-            searchingCategories = false
-            searchBar.placeholder = "Search Cosmetic"
-            searchTable.reloadData()
+            clearSearchCategory()
             
-            let cell = collectionView.cellForItem(at: indexPath) as? CategoriesDetailCollectionViewCell
-            cell?.backgroundColor = nil
-            cell?.categoriesIcon.tintColor = UIColor.init(named: "main-font-color")
-            if #available(iOS 13.0, *) {
-                cell?.categoriesName.textColor = UIColor.label
-            } else {
-                // Fallback on earlier versions
-                cell?.categoriesName.textColor = UIColor.black
-            }
         }else{
             selectedCollectionCell = indexPath
             showSpinner(onView: self.view)
@@ -264,6 +254,26 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
             searchBar.resignFirstResponder()
             
         }
+    }
+    
+    private func clearSearchCategory(){
+        let cell = categoriesCollectionView.cellForItem(at: selectedCollectionCell) as? CategoriesDetailCollectionViewCell
+        cell?.backgroundColor = nil
+        cell?.categoriesIcon.tintColor = UIColor.init(named: "main-font-color")
+        if #available(iOS 13.0, *) {
+            cell?.categoriesName.textColor = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            cell?.categoriesName.textColor = UIColor.black
+        }
+        clearButton.isEnabled = false
+        selectedCollectionCell = nil
+        searchingCategories = false
+        searching = false
+        searchBar.placeholder = "Search Cosmetic"
+        searchBar.text = ""
+        
+        searchTable.reloadData()
     }
     
     
