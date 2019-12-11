@@ -359,14 +359,16 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     }
     
     private func clearSearchCategory(){
-        let cell = categoriesCollectionView.cellForItem(at: selectedCollectionCell) as? CategoriesDetailCollectionViewCell
-        cell?.backgroundColor = nil
-        cell?.categoriesIcon.tintColor = UIColor.init(named: "main-font-color")
-        if #available(iOS 13.0, *) {
-            cell?.categoriesName.textColor = UIColor.label
-        } else {
-            // Fallback on earlier versions
-            cell?.categoriesName.textColor = UIColor.black
+        if searchingCategories || searchingBrand{
+            let cell = categoriesCollectionView.cellForItem(at: selectedCollectionCell) as? CategoriesDetailCollectionViewCell
+            cell?.backgroundColor = nil
+            cell?.categoriesIcon.tintColor = UIColor.init(named: "main-font-color")
+            if #available(iOS 13.0, *) {
+                cell?.categoriesName.textColor = UIColor.label
+            } else {
+                // Fallback on earlier versions
+                cell?.categoriesName.textColor = UIColor.black
+            }
         }
         clearButton.isEnabled = false
         selectedCollectionCell = nil

@@ -781,8 +781,8 @@
                                         <action selector="segmentAction:" destination="4zo-uX-Trl" eventType="valueChanged" id="YFp-fz-ap2"/>
                                     </connections>
                                 </segmentedControl>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R29-vv-OTo">
-                                    <rect key="frame" x="337" y="11.5" width="30" height="29"/>
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R29-vv-OTo">
+                                    <rect key="frame" x="337" y="11.5" width="30" height="30.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31.5" id="7i7-CZ-Pzt"/>
                                         <constraint firstAttribute="width" constant="30" id="p0g-Wm-cEK"/>
