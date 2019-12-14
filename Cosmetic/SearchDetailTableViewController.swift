@@ -8,22 +8,33 @@
 
 import UIKit
 
-class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol {
+class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol, DownloadBrandProtocol {
 
     private var allProduct: [ProductModel] = []
     private var productByCategories: [ProductModel] = []
+    private var productByBrands: [ProductModel] = []
     private var searchedProduct: [ProductModel] = []
-    var categoriesList: [CategoriesModel] = []
+    private var categoriesList: [CategoriesModel] = []
+    private var brandsList: [BrandModel] = []
     private var searching :Bool = false
     private var searchingCategories :Bool = false
+    private var searchingBrand: Bool = false
+    
+    private var downloadProducts = DownloadProduct()
     
     @IBOutlet var searchTable: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var selectionSegment: UISegmentedControl!
     
     var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.dataSource = self
+        
         downloadCategories()
         downloadProduct()
 
@@ -35,21 +46,27 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         
     }
     
+    //MARK: - Download Categories list
     private func downloadCategories(){
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
         let downloadCategories = DownloadCategories()
         downloadCategories.delegate = self
         downloadCategories.downloadItem()
     }
     
+    //MARK: - Download Products list
     private func downloadProduct(){
         showSpinner(onView: self.view)
         searchTable.delegate = self
         searchTable.dataSource = self
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadItem()
+        downloadProducts = DownloadProduct()
+        downloadProducts.delegate = self
+        downloadProducts.downloadItem()
+    }
+    
+    private func downloadBrand(){
+        let downloadBrand = DownloadBrands()
+        downloadBrand.delegate = self
+        downloadBrand.downloadItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +75,11 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     
     func itemDownloadedCategories(item: NSMutableArray) {
         self.categoriesList = item as! [CategoriesModel]
+        categoriesCollectionView.reloadData()
+    }
+    
+    func itemDownloadedBrands(item: NSMutableArray) {
+        self.brandsList = item as! [BrandModel]
         categoriesCollectionView.reloadData()
     }
     
@@ -71,7 +93,11 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             }
             else if searchingCategories{
                 item = productByCategories[itemIndex!]
-            }else{
+            }
+            else if searchingBrand{
+                item = productByBrands[itemIndex!]
+            }
+            else{
                 item = allProduct[itemIndex!]
             }
             let destination = segue.destination as? CosmeticDetailViewController
@@ -88,7 +114,8 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(searching){
+        if searching{
+            clearButton.isEnabled = true
             if searchedProduct.count > 0{
                 return searchedProduct.count
             }else{
@@ -96,21 +123,31 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             }
             
         }
-        else if (searchingCategories){
+        else if searchingCategories{
             if productByCategories.count > 0{
                 return productByCategories.count
             }else{
                 return 1
             }
         }
+            
+        else if searchingBrand{
+            if productByBrands.count > 0{
+                return productByBrands.count
+            }else{
+                return 1
+            }
+        }
+            
         else{
+            clearButton.isEnabled = false
             return allProduct.count
         }
         
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        //MARK: - Searching Cell
         if(searching){
             if searchedProduct.count > 0{
                 let searchingCell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
@@ -128,7 +165,8 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             }
             
         }
-            
+        
+        //MARK: - Searching Category
         else if (searchingCategories){
             if productByCategories.count > 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
@@ -147,6 +185,25 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             }
         }
             
+        else if searchingBrand {
+            if productByBrands.count > 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
+                let item = productByBrands[indexPath.row]
+                           
+                cell?.productName.text = item.product_name
+                cell?.productDescription.text = item.product_description
+                cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+                           
+                return cell!
+                           
+            }
+            else{
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                return searchingCell
+            }
+        }
+        
+        //MARK: - Nothing search
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
             let item = allProduct[indexPath.row]
@@ -164,16 +221,42 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: - Tap clear
+    @IBAction func tapClear(_ sender: Any) {
+        clearSearchCategory()
+        searchTable.reloadData()
+    }
+    
+    
+    @IBAction func segmentAction(_ sender: Any) {
+        if searchingCategories || searchingBrand{
+            clearSearchCategory()
+        }
+        
+        if selectionSegment.selectedSegmentIndex == 0{
+            downloadCategories()
+        }
+        else if selectionSegment.selectedSegmentIndex == 1{
+            downloadBrand()
+        }
+    }
+    
     var selectedCollectionCell: IndexPath!
     var previousSelect: IndexPath!
 
 }
 
+//MARK: - Category collection
 extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
     func itemDownloaded(item: NSMutableArray) {
         if searchingCategories{
             productByCategories = item as! [ProductModel]
-        }else{
+        }
+        else if searchingBrand{
+            productByBrands = item as! [ProductModel]
+        }
+        
+        else{
             allProduct = item as! [ProductModel]
         }
         searchTable.reloadData()
@@ -181,11 +264,22 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesList.count
+        if selectionSegment.selectedSegmentIndex == 0{
+            return categoriesList.count
+        }
+        
+        else if selectionSegment.selectedSegmentIndex == 1{
+            return brandsList.count
+        }
+        
+        else{
+            return 1
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item :CategoriesModel = categoriesList[indexPath.row]
+        
         let collectionCategoriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoriesReuse", for: indexPath) as! CategoriesDetailCollectionViewCell
         
         collectionCategoriesCell.layer.cornerRadius = 8
@@ -208,14 +302,26 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
                 collectionCategoriesCell.categoriesName.textColor = UIColor.black
             }
         }
+        if selectionSegment.selectedSegmentIndex == 0{
+            let item :CategoriesModel = categoriesList[indexPath.row]
+            collectionCategoriesCell.categoriesName.text = item.categories_name
+            collectionCategoriesCell.categoriesIcon.backgroundColor = nil
+            collectionCategoriesCell.categoriesIcon.image = UIImage.init(systemName: "bag.fill")
+        }
         
-        collectionCategoriesCell.categoriesName.text = item.categories_name
+        else if selectionSegment.selectedSegmentIndex == 1{
+            let item :BrandModel = brandsList[indexPath.row]
+            collectionCategoriesCell.categoriesName.text = item.brand_name
+            collectionCategoriesCell.categoriesIcon.backgroundColor = UIColor.white
+            collectionCategoriesCell.categoriesIcon.downloadImage(from: URL(string: item.brand_logo!)!)
+        }
         
         return collectionCategoriesCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Selected Cell
+        clearButton.isEnabled = true
         let cell = collectionView.cellForItem(at: indexPath) as! CategoriesDetailCollectionViewCell
         cell.backgroundColor = UIColor.init(named: "main-font-color")
         cell.categoriesIcon.tintColor = UIColor.white
@@ -224,12 +330,37 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         //Search Product by categories Id
         
         if selectedCollectionCell == indexPath{
-            selectedCollectionCell = nil
-            searchingCategories = false
-            searchBar.placeholder = "Search Cosmetic"
-            searchTable.reloadData()
+            clearSearchCategory()
             
-            let cell = collectionView.cellForItem(at: indexPath) as? CategoriesDetailCollectionViewCell
+        }else{
+            selectedCollectionCell = indexPath
+            showSpinner(onView: self.view)
+            
+            searching = false
+            
+            if selectionSegment.selectedSegmentIndex == 0{
+                searchingCategories = true
+                let item = categoriesList[indexPath.row]
+                downloadProducts.downloadByCategories(categoriesId: item.categories_id!)
+                searchBar.placeholder = "Search \(String(item.categories_name!))"
+            }
+            
+            else if selectionSegment.selectedSegmentIndex == 1{
+                searchingBrand = true
+                let item = brandsList[indexPath.row]
+                downloadProducts.downloadByBrands(brandId: item.brand_id!)
+                searchBar.placeholder = "Search \(String(item.brand_name!))"
+            }
+            
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+            
+        }
+    }
+    
+    private func clearSearchCategory(){
+        if searchingCategories || searchingBrand{
+            let cell = categoriesCollectionView.cellForItem(at: selectedCollectionCell) as? CategoriesDetailCollectionViewCell
             cell?.backgroundColor = nil
             cell?.categoriesIcon.tintColor = UIColor.init(named: "main-font-color")
             if #available(iOS 13.0, *) {
@@ -238,22 +369,16 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
                 // Fallback on earlier versions
                 cell?.categoriesName.textColor = UIColor.black
             }
-        }else{
-            selectedCollectionCell = indexPath
-            showSpinner(onView: self.view)
-            searchingCategories = true
-            searching = false
-            
-            let item = categoriesList[indexPath.row]
-            let downloadProduct = DownloadProduct()
-            downloadProduct.delegate = self
-            downloadProduct.downloadByCategories(categoriesId: item.categories_id!)
-            
-            searchBar.placeholder = "Search \(String(item.categories_name!))"
-            searchBar.text = ""
-            searchBar.resignFirstResponder()
-            
         }
+        clearButton.isEnabled = false
+        selectedCollectionCell = nil
+        searchingCategories = false
+        searchingBrand = false
+        searching = false
+        searchBar.placeholder = "Search Cosmetic"
+        searchBar.text = ""
+        
+        searchTable.reloadData()
     }
     
     
@@ -271,6 +396,7 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     
 }
 
+//MARK: - Searchbar
 extension SearchDetailTableViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -278,7 +404,14 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
             searchedProduct = productByCategories.filter(){
                 return ($0.product_name?.lowercased() ?? "").contains(searchText.lowercased())
             }
-        }else{
+        }
+        else if searchingBrand{
+            searchedProduct = productByBrands.filter(){
+                return ($0.product_name?.lowercased() ?? "").contains(searchText.lowercased())
+            }
+        }
+        
+        else{
             searchedProduct = allProduct.filter(){
                 return ($0.product_name?.lowercased() ?? "").contains(searchText.lowercased())
             }

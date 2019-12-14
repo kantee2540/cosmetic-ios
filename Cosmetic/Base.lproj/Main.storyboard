@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cef-wc-M7l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cef-wc-M7l">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -709,14 +709,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yBw-8X-GBW">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JC5-gV-urp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <rect key="frame" x="0.0" y="51" width="375" height="128"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="128" id="aWq-dw-Rwe"/>
+                                        <constraint firstAttribute="height" constant="128" id="nvp-yr-hpa"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="imc-Bk-VgP">
                                         <size key="itemSize" width="97" height="119"/>
@@ -757,7 +757,7 @@
                                                     <constraint firstItem="5OT-qp-Mlv" firstAttribute="leading" secondItem="cTW-ZJ-H6S" secondAttribute="leading" constant="16" id="e3L-1E-gDd"/>
                                                     <constraint firstAttribute="trailing" secondItem="w5g-KW-ME0" secondAttribute="trailing" constant="4" id="fbK-9w-dwg"/>
                                                     <constraint firstAttribute="trailing" secondItem="5OT-qp-Mlv" secondAttribute="trailing" constant="16" id="keI-oZ-PiN"/>
-                                                    <constraint firstAttribute="bottom" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="9" id="wrB-S5-z1r"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="w5g-KW-ME0" secondAttribute="bottom" constant="9" id="wrB-S5-z1r"/>
                                                 </constraints>
                                             </collectionViewCellContentView>
                                             <size key="customSize" width="100" height="119"/>
@@ -768,17 +768,47 @@
                                         </collectionViewCell>
                                     </cells>
                                 </collectionView>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-x6-j8W">
+                                    <rect key="frame" x="41.5" y="11" width="260" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="pU2-IC-CIb"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="Category"/>
+                                        <segment title="Brand"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentAction:" destination="4zo-uX-Trl" eventType="valueChanged" id="YFp-fz-ap2"/>
+                                    </connections>
+                                </segmentedControl>
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R29-vv-OTo">
+                                    <rect key="frame" x="337" y="11.5" width="30" height="30.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="31.5" id="7i7-CZ-Pzt"/>
+                                        <constraint firstAttribute="width" constant="30" id="p0g-Wm-cEK"/>
+                                    </constraints>
+                                    <color key="tintColor" name="main-font-color"/>
+                                    <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="tapClear:" destination="4zo-uX-Trl" eventType="touchUpInside" id="AAE-0P-JDa"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstItem="JC5-gV-urp" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" id="Kur-aQ-LcE"/>
-                                <constraint firstItem="JC5-gV-urp" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" id="fFe-0r-cxb"/>
-                                <constraint firstAttribute="trailing" secondItem="JC5-gV-urp" secondAttribute="trailing" id="tTx-DP-x6y"/>
+                                <constraint firstItem="JC5-gV-urp" firstAttribute="top" secondItem="R29-vv-OTo" secondAttribute="bottom" constant="8.5" id="JDc-cQ-gru"/>
+                                <constraint firstItem="JC5-gV-urp" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" id="JzB-SP-DHS"/>
+                                <constraint firstItem="R29-vv-OTo" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" constant="11" id="Pkt-XU-UTm"/>
+                                <constraint firstAttribute="trailing" secondItem="JC5-gV-urp" secondAttribute="trailing" id="TFa-we-W8U"/>
+                                <constraint firstAttribute="trailing" secondItem="R29-vv-OTo" secondAttribute="trailing" constant="8" id="knr-sb-KJe"/>
+                                <constraint firstItem="Jvp-x6-j8W" firstAttribute="centerX" secondItem="yBw-8X-GBW" secondAttribute="centerX" constant="-16" id="qDc-2Y-MDC"/>
+                                <constraint firstAttribute="bottom" secondItem="JC5-gV-urp" secondAttribute="bottom" constant="8" id="skc-gG-wpa"/>
+                                <constraint firstItem="Jvp-x6-j8W" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" constant="11" id="vjJ-fc-bvH"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="109" id="Q4Q-1x-QrW" customClass="SearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="176" width="375" height="109"/>
+                                <rect key="frame" x="0.0" y="215" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4Q-1x-QrW" id="jq9-mZ-mxi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
@@ -826,7 +856,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoItem" id="d5t-Q0-1XP">
-                                <rect key="frame" x="0.0" y="285" width="375" height="147.5"/>
+                                <rect key="frame" x="0.0" y="324" width="375" height="147.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d5t-Q0-1XP" id="5ij-zl-S5o">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="147.5"/>
@@ -876,12 +906,14 @@
                     </tableView>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="JC5-gV-urp" id="mrt-Hg-pVW"/>
+                        <outlet property="clearButton" destination="R29-vv-OTo" id="Iqf-p1-JeQ"/>
                         <outlet property="searchTable" destination="3Yc-iN-sap" id="zI0-Rd-lt7"/>
+                        <outlet property="selectionSegment" destination="Jvp-x6-j8W" id="1Ln-iJ-s2c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-dV-zhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704.8" y="466.41679160419795"/>
+            <point key="canvasLocation" x="1702.5" y="464.78873239436621"/>
         </scene>
         <!--Capture your product-->
         <scene sceneID="3mA-Wo-97c">
@@ -1142,7 +1174,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWG-hN-mcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3511" y="-801"/>
+            <point key="canvasLocation" x="3327" y="-770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WEd-pM-gZ0">
@@ -1190,6 +1222,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FJE-kk-ecP"/>
+        <segue reference="cHm-Ob-iaC"/>
     </inferredMetricsTieBreakers>
 </document>
