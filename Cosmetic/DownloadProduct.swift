@@ -25,6 +25,11 @@ import UIKit
         downloadItem()
     }
     
+    func downloadByBrands(brandId id: String){
+        postParameter = "brand_id=\(id)"
+        downloadItem()
+    }
+    
     func downloadSelectItem(productId id: String){
         postParameter = "productId=\(id)"
         downloadItem()
