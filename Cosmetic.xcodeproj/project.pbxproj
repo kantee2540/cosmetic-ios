@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
+		B305BD0423B4F5100072F760 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B305BD0323B4F5100072F760 /* RegisterViewController.swift */; };
 		B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */; };
 		B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840323940A96005F4D88 /* DownloadPackage.swift */; };
 		B316840823940BF1005F4D88 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840723940BF1005F4D88 /* PackageModel.swift */; };
@@ -81,6 +82,7 @@
 		7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
 		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B305BD0323B4F5100072F760 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		B316840323940A96005F4D88 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
 		B316840723940BF1005F4D88 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			children = (
 				B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */,
 				B3D326D323B3BB59006404B2 /* LoginViewController.swift */,
+				B305BD0323B4F5100072F760 /* RegisterViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
 				B34DE405238C1132008DC9EB /* FeaturingCollectionViewCell.swift in Sources */,
+				B305BD0423B4F5100072F760 /* RegisterViewController.swift in Sources */,
 				B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */,
 				B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */,
 				B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */,
