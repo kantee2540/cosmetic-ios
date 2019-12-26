@@ -36,6 +36,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         super.viewDidLoad()
         codeField.delegate = self
         codeField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+        codeField.delegate = self
         codeField.setUnderLine()
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
@@ -56,6 +57,14 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
             downloadTopic.delegate = self
             downloadTopic.getTopicId(code: textField.text ?? "")
         }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setUnderLine()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setUnderLine()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
