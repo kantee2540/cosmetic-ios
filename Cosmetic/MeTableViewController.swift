@@ -14,7 +14,8 @@ class MeTableViewController: UITableViewController {
     @IBOutlet var mainTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mainTable.delegate = self
+        mainTable.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,8 +25,6 @@ class MeTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "MyAccount"
-        mainTable.delegate = self
-        mainTable.dataSource = self
         setAccountUser()
     }
     
@@ -66,8 +65,6 @@ class MeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if indexPath.section == 0 && indexPath.row == 0{
             if Auth.auth().currentUser != nil{
                 let signinVc = storyboard?.instantiateViewController(withIdentifier: "accountsetting")

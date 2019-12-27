@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		900D62435C1B66D0508ABF78 /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6384585E0F908B36BDEE38BC /* Pods_Cosmetic.framework */; };
-		B305BD0423B4F5100072F760 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B305BD0323B4F5100072F760 /* RegisterViewController.swift */; };
 		B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */; };
 		B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840323940A96005F4D88 /* DownloadPackage.swift */; };
 		B316840823940BF1005F4D88 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840723940BF1005F4D88 /* PackageModel.swift */; };
@@ -43,6 +42,8 @@
 		B3AF0FDD227C203600C37F63 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3AF0FDE227C203C00C37F63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCC227C06D100C37F63 /* Accelerate.framework */; };
 		B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */; };
+		B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */; };
+		B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */; };
 		B3BE28AA23918CDA00AE22C6 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BE28A923918CDA00AE22C6 /* ImageTableViewCell.swift */; };
 		B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */; };
 		B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F22245002C0054EE16 /* Main.storyboard */; };
@@ -84,7 +85,6 @@
 		7652040A26C3EF9D84B72582 /* Pods_CosmeticUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5211EF20C7DEFCCF68C47F /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
 		AA3702F2ADF9E8A375781BAB /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B305BD0323B4F5100072F760 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		B316840323940A96005F4D88 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
 		B316840723940BF1005F4D88 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
@@ -121,6 +121,8 @@
 		B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cosmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicViewController.swift; sourceTree = "<group>"; };
+		B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessViewController.swift; sourceTree = "<group>"; };
+		B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		B3BE28A923918CDA00AE22C6 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		B3C2F9E92245002C0054EE16 /* Cosmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -352,9 +354,10 @@
 			children = (
 				B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */,
 				B3D326D323B3BB59006404B2 /* LoginViewController.swift */,
-				B305BD0323B4F5100072F760 /* RegisterViewController.swift */,
+				B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */,
 				B31D758A23B5146600363057 /* AccountTableViewCell.swift */,
 				B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */,
+				B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -636,6 +639,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */,
+				B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */,
+				B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */,
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
@@ -649,7 +654,6 @@
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,
 				B34DE405238C1132008DC9EB /* FeaturingCollectionViewCell.swift in Sources */,
-				B305BD0423B4F5100072F760 /* RegisterViewController.swift in Sources */,
 				B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */,
 				B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */,
 				B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */,
