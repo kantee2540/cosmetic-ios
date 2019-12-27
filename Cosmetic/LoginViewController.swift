@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AuthenticationServices
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -16,20 +16,46 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var usernameIcon: UIImageView!
     @IBOutlet weak var passwordIcon: UIImageView!
+    @IBOutlet weak var incorrectLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView(){
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        incorrectLabel.text = ""
         usernameTextField.setUnderLine()
         passwordTextField.setUnderLine()
         self.hideKeyboardWhenTappedAround()
         signinButton.roundedCorner()
-        
+    }
+    
+    @IBAction func tapSignin(_ sender: Any) {
+        signinProcess()
     }
     
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func signinProcess(){
+        self.showSpinner(onView: self.view)
+        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!){ [weak self] authResult, error in
+            guard self != nil else { return }
+            if let error = error{
+                print("SIGNIN ERROR = \(error)")
+                self?.incorrectLabel.isHidden = false
+                self?.incorrectLabel.text = error.localizedDescription
+                self?.removeSpinner()
+                return
+            }
+            print("LOGGEDIN!")
+            self?.removeSpinner()
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 }
@@ -53,5 +79,14 @@ extension LoginViewController: UITextFieldDelegate{
             passwordIcon.tintColor = UIColor.lightGray
         }
         textField.setUnderLine()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField{
+            nextField.becomeFirstResponder()
+        }else{
+            textField.resignFirstResponder()
+        }
+        return false
     }
 }

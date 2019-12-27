@@ -1,122 +1,61 @@
 //
-//  MeTableViewController.swift
+//  AccountSettingsTableViewController.swift
 //  Cosmetic
 //
-//  Created by Omp on 25/12/2562 BE.
+//  Created by Omp on 27/12/2562 BE.
 //  Copyright © 2562 Omp. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 
-class MeTableViewController: UITableViewController {
+class AccountSettingsTableViewController: UITableViewController {
 
-    @IBOutlet var mainTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "MyAccount"
-        mainTable.delegate = self
-        mainTable.dataSource = self
-        setAccountUser()
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
-        
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-        if section == 0{
-            return 1
-        }
-        else if section == 1{
-            return 3
-        }
-        else if section == 2{
-            return 3
-        }
-        else if section == 3{
-            return 2
-        }
-        else{
-            return 0
-        }
-        
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if indexPath.section == 0 && indexPath.row == 0{
-            if Auth.auth().currentUser != nil{
-                let signinVc = storyboard?.instantiateViewController(withIdentifier: "accountsetting")
-                self.navigationController?.pushViewController(signinVc!, animated: true)
-            }
-            else{
-                let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
-                self.navigationController?.pushViewController(accountVc!, animated: true)
+            let firebaseAuth = Auth.auth()
+            do{
+                try firebaseAuth.signOut()
+                print("LOGGEDOUT!")
+                self.navigationController?.popViewController(animated: true)
+                
+            }catch let signoutError as NSError{
+                print("Error Signout : \(signoutError)")
             }
         }
-        
     }
-    
-    func setAccountUser(){
-        let accountCell = self.mainTable.cellForRow(at: IndexPath(row: 0, section: 0))
-        if Auth.auth().currentUser != nil{
-            let user = Auth.auth().currentUser
-            if let user = user{
-                accountCell?.textLabel?.text = user.email
-                accountCell?.detailTextLabel?.text = user.uid
-            }
-        }
-        else{
-            accountCell?.textLabel?.text = "Sign in"
-            accountCell?.detailTextLabel?.text = "Save your cosmetics list"
-        }
-        mainTable.reloadData()
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(mainTable, cellForRowAt: indexPath)
-        switch (indexPath.section, indexPath.row) {
-        case (0, 0):
-            if Auth.auth().currentUser != nil{
-                let user = Auth.auth().currentUser
-                if let user = user{
-                    cell.textLabel?.text = user.email
-                    cell.detailTextLabel?.text = user.uid
-                }
-            }else{
-                cell.textLabel?.text = "Sign in"
-                cell.detailTextLabel?.text = "Save your cosmetics list"
-            }
 
-        default: break
-        }
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.

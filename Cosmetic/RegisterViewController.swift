@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var confirmTextfield: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var errorMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +33,39 @@ class RegisterViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         registerButton.roundedCorner()
     }
+    
+    private func createAccount(email:String, password:String){
+        Auth.auth().createUser(withEmail: email, password: password){
+            (user, error) in if let error = error{
+                print("CREATE USER ERROR = \(error)")
+            }
+        }
+    }
+    
+    private func checkPasswordPolicy(){
+        if (passwordTextfield.text == confirmTextfield.text)
+            && (passwordTextfield.text != "" && confirmTextfield.text != "" && emailTextfield.text != ""){
+            print("OK")
+            
+        }else{
+            if passwordTextfield.text != confirmTextfield.text{
+                errorMessage.text = "Password and Confirm Password not matched. Please try again."
+            }
+            else if passwordTextfield.text == "" && confirmTextfield.text == "" && emailTextfield.text == ""{
+                errorMessage.text = "Do not leave the text field blank. Please fill information."
+            }
+            else{
+                errorMessage.text = "Try again"
+            }
+        }
+    }
+    
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tapRegister(_ sender: Any) {
+        checkPasswordPolicy()
     }
 }
 
