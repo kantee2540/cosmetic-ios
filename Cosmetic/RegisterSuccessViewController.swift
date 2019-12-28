@@ -22,6 +22,7 @@ class RegisterSuccessViewController: UIViewController {
     
     private func setupView(){
         successEmail.text = email
+        self.navigationItem.setHidesBackButton(true, animated: true)
         gobackButton.roundedCorner()
     }
     
