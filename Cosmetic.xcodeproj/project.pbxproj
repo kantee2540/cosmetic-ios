@@ -54,6 +54,7 @@
 		B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */; };
 		B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */; };
 		B3D326D423B3BB59006404B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D323B3BB59006404B2 /* LoginViewController.swift */; };
+		B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */; };
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
@@ -140,6 +141,7 @@
 		B3D326CF23B3B45A006404B2 /* Cosmetic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cosmetic.entitlements; sourceTree = "<group>"; };
 		B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		B3D326D323B3BB59006404B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				B31D758A23B5146600363057 /* AccountTableViewCell.swift */,
 				B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */,
 				B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */,
+				B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B35B57622398164800AE754F /* PackageViewController.swift in Sources */,
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
+				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,

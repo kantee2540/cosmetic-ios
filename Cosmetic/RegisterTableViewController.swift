@@ -47,8 +47,8 @@ class RegisterTableViewController: UITableViewController {
             (user, error) in
             if let error = error{
                 print("CREATE USER ERROR = \(error)")
-                self.errorMessage.isHidden = false
                 self.errorMessage.text = error.localizedDescription
+                self.formTable.reloadData()
                 self.removeSpinner()
                 return
             }
@@ -122,15 +122,9 @@ extension RegisterTableViewController: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == passwordTextfield || textField == confirmPasswordTextfield{
-            // Underlined green when greater than 8 characters
+        // Underlined green when greater than 8 characters
             if textField.text!.count >= 8{
-                let border = CALayer()
-                let width = CGFloat(2)
-                border.borderColor = UIColor.green.cgColor
-                border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width: UIScreen.main.bounds.width, height: textField.frame.size.height)
-                border.borderWidth = width
-                textField.layer.addSublayer(border)
-                textField.layer.masksToBounds = true
+                textField.setGreenUnderline()
             }else{
                 textField.setUnderLine()
             }
@@ -138,6 +132,17 @@ extension RegisterTableViewController: UITextFieldDelegate{
             textField.setUnderLine()
         }
         
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == passwordTextfield || textField == confirmPasswordTextfield{
+        // Underlined green when greater than 8 characters
+            if textField.text!.count >= 8{
+                textField.setGreenUnderline()
+            }else{
+                textField.setUnderLine()
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
