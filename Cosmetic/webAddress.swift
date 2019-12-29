@@ -43,4 +43,14 @@ class webAddress {
         let webFile = prefixString + "getTopic.php"
         return webFile
     }
+    
+    func getCollectUserdata() -> String{
+        let webFile = prefixString + "collectUserData.php"
+        return webFile
+    }
+    
+    func getUserURL() -> String{
+        let webFile = prefixString + "getUser.php"
+        return webFile
+    }
 }

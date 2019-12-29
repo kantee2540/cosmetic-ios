@@ -48,15 +48,15 @@ class RegisterTableViewController: UITableViewController {
             if let error = error{
                 print("CREATE USER ERROR = \(error)")
                 self.errorMessage.text = error.localizedDescription
+                self.showError = true
                 self.formTable.reloadData()
                 self.removeSpinner()
                 return
             }
             print("CREATED!")
-            let successVc = self.storyboard?.instantiateViewController(withIdentifier: "registersuccess") as! RegisterSuccessViewController
-            successVc.email = email
+            let profileVc = self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileTableViewController
             self.removeSpinner()
-            self.navigationController?.pushViewController(successVc, animated: true)
+            self.navigationController?.pushViewController(profileVc, animated: true)
         }
     }
     

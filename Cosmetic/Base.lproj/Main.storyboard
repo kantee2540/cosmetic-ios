@@ -898,6 +898,7 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="escape" catalog="system" id="eaN-pA-JfR">
                                                     <rect key="frame" x="18" y="15.5" width="20" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1148,7 +1149,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="1Pc-cw-sDd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1181,7 +1182,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="8pm-oG-9e5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1275,7 +1276,7 @@
         <!--Profile Table View Controller-->
         <scene sceneID="l90-gt-tzL">
             <objects>
-                <tableViewController id="CSM-iF-paz" customClass="ProfileTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profile" id="CSM-iF-paz" customClass="ProfileTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="58k-Yd-7c2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1448,12 +1449,34 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="67" id="u08-43-CUx">
+                                        <rect key="frame" x="0.0" y="528" width="375" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u08-43-CUx" id="MTO-So-0uH">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save profile error please try again" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxC-h3-0mH">
+                                                    <rect key="frame" x="16" y="11" width="343" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cxC-h3-0mH" firstAttribute="bottom" secondItem="MTO-So-0uH" secondAttribute="bottomMargin" id="dKK-Un-hey"/>
+                                                <constraint firstItem="cxC-h3-0mH" firstAttribute="trailing" secondItem="MTO-So-0uH" secondAttribute="trailingMargin" id="k1C-SM-f1m"/>
+                                                <constraint firstItem="cxC-h3-0mH" firstAttribute="top" secondItem="MTO-So-0uH" secondAttribute="topMargin" id="oeB-Dh-4PX"/>
+                                                <constraint firstItem="cxC-h3-0mH" firstAttribute="leading" secondItem="MTO-So-0uH" secondAttribute="leadingMargin" id="v7x-hW-E99"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="1g9-V3-cgC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="78" id="1Iw-Ze-1zw">
-                                        <rect key="frame" x="0.0" y="584" width="375" height="78"/>
+                                        <rect key="frame" x="0.0" y="651" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Iw-Ze-1zw" id="qnz-yT-evR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>

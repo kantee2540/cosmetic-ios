@@ -37,3 +37,13 @@ struct ConstantBrand {
     static let brandName = "brand_name"
     static let brandLogo = "brand_logo"
 }
+
+struct ConstantUser {
+    static let userId = "user_id"
+    static let firstName = "first_name"
+    static let lastName = "last_name"
+    static let nickName = "nickname"
+    static let email = "email"
+    static let gender = "gender"
+    static let birthday = "birthday"
+}

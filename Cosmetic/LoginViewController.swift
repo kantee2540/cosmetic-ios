@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, DownloadUserProtocol {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -37,10 +37,6 @@ class LoginViewController: UIViewController {
         signinProcess()
     }
     
-    @IBAction func tapClose(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     private func signinProcess(){
         self.showSpinner(onView: self.view)
         Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!){ [weak self] authResult, error in
@@ -53,9 +49,22 @@ class LoginViewController: UIViewController {
                 return
             }
             print("LOGGEDIN!")
+            let downloadUser = DownloadUser()
+            downloadUser.delegate = self
+            downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
             self?.removeSpinner()
-            self?.navigationController?.popToRootViewController(animated: true)
+            
         }
+    }
+    
+    func itemDownloadUser(item: UserModel) {
+        UserDefaults.standard.set(item.firstName ?? "Not set", forKey: ConstantUser.firstName)
+        UserDefaults.standard.set(item.lastName ?? "Not set", forKey: ConstantUser.lastName)
+        UserDefaults.standard.set(item.nickname ?? "Not set", forKey: ConstantUser.nickName)
+        UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)
+        UserDefaults.standard.set(item.gender ?? "Other", forKey: ConstantUser.gender)
+        UserDefaults.standard.set(item.birthday ?? "Not set", forKey: ConstantUser.birthday)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }

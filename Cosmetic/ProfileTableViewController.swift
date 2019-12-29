@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, CollectUserdataDelegate, DownloadUserProtocol {
 
     @IBOutlet var profileTable: UITableView!
     @IBOutlet weak var firstnameTextfield: UITextField!
@@ -19,18 +20,28 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     private var genderList = ["Male", "Female", "Other"]
+    var email: String?
+    var uid: String?
+    var birthday: String?
+    private var saveError: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Profile"
         setupView()
         createPickerView()
         createBirthdayPicker()
         dimissPickerView()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if Auth.auth().currentUser != nil{
+            let user = Auth.auth().currentUser
+            if let user = user{
+                email = user.email
+                uid = user.uid
+            }
+        }else{
+            
+        }
     }
     
     //MARK: - Picker view
@@ -38,20 +49,32 @@ class ProfileTableViewController: UITableViewController {
         let pickerView = UIPickerView()
         pickerView.delegate = self
         genderPicker.inputView = pickerView
+        genderPicker.text = genderList[0]
     }
     
     //MARK: - Birthday picker
     private func createBirthdayPicker(){
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.calendar = Calendar(identifier: .gregorian)
         birthdayPicker.inputView = datePicker
+        handleDatePicker(sender: datePicker)
         datePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
     }
     
     @objc func handleDatePicker(sender: UIDatePicker){
         let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = "dd/MM/yyyy"
         birthdayPicker.text = dateFormatter.string(from: sender.date)
+        birthday = birthdayForCollectData(date: sender.date)
+    }
+    
+    private func birthdayForCollectData(date :Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
     
     private func dimissPickerView(){
@@ -85,6 +108,7 @@ class ProfileTableViewController: UITableViewController {
         birthdayPicker.delegate = self
         
         self.hideKeyboardWhenTappedAround()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
 
     // MARK: - Table view data source
@@ -96,8 +120,11 @@ class ProfileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0{
+        if section == 0 && !saveError{
             return 5
+        }
+        else if section == 0 && saveError{
+            return 6
         }
         else{
             return 1
@@ -105,6 +132,44 @@ class ProfileTableViewController: UITableViewController {
     }
     
     @IBAction func tapSave(_ sender: Any) {
+        self.showSpinner(onView: self.view)
+        let firstName = firstnameTextfield.text
+        let lastName = lastnameTextfield.text
+        let nickname = displaynameTextfield.text
+        let myEmail = email
+        let gender = genderPicker.text
+        let myBirthday = birthday
+        let myUid = uid
+        
+        let collectUserData = CollectUserdata()
+        collectUserData.delegate = self
+        collectUserData.collectUserdata(firstname: firstName!, lastName: lastName!, nickname: nickname!, email: myEmail!, gender: gender!, birthday: myBirthday!, uid: myUid!)
+    }
+    
+    func insertDataSuccess() {
+        self.removeSpinner()
+        let downloadUser = DownloadUser()
+        downloadUser.delegate = self
+        downloadUser.getCurrentUserprofile(uid: uid!)
+    }
+    
+    func insertDataFailed() {
+        self.removeSpinner()
+        saveError = true
+        profileTable.reloadData()
+    }
+    
+    func itemDownloadUser(item: UserModel) {
+        UserDefaults.standard.set(item.firstName ?? "Not set", forKey: ConstantUser.firstName)
+        UserDefaults.standard.set(item.lastName ?? "Not set", forKey: ConstantUser.lastName)
+        UserDefaults.standard.set(item.nickname ?? "Not set", forKey: ConstantUser.nickName)
+        UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)
+        UserDefaults.standard.set(item.gender ?? "Other", forKey: ConstantUser.gender)
+        UserDefaults.standard.set(item.birthday ?? "Not set", forKey: ConstantUser.birthday)
+        
+        let successVc = self.storyboard?.instantiateViewController(withIdentifier: "registersuccess") as! RegisterSuccessViewController
+        successVc.email = email
+        self.navigationController?.pushViewController(successVc, animated: true)
     }
     
 }

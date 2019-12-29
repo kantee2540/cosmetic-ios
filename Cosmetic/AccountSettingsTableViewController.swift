@@ -13,7 +13,9 @@ class AccountSettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
+        self.navigationItem.title = nickname
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,15 +37,33 @@ class AccountSettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0{
-            let firebaseAuth = Auth.auth()
-            do{
-                try firebaseAuth.signOut()
-                print("LOGGEDOUT!")
-                self.navigationController?.popViewController(animated: true)
-                
-            }catch let signoutError as NSError{
-                print("Error Signout : \(signoutError)")
-            }
+            tableView.deselectRow(at: indexPath, animated: true)
+            let logoutMenu = UIAlertController(title: "Signout",
+                                               message: "Do you want to logout?",
+                                               preferredStyle: .actionSheet)
+            logoutMenu.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { (UIAlertAction) in
+                self.logout()
+            }))
+            logoutMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
+            self.present(logoutMenu, animated: true, completion: nil)
+        }
+    }
+    
+    private func logout(){
+        let firebaseAuth = Auth.auth()
+        do{
+            try firebaseAuth.signOut()
+            print("LOGGEDOUT!")
+            UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.email)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
+            self.navigationController?.popViewController(animated: true)
+            
+        }catch let signoutError as NSError{
+            print("Error Signout : \(signoutError)")
         }
     }
 

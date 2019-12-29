@@ -25,7 +25,7 @@ class MeTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "MyAccount"
-        setAccountUser()
+        mainTable.reloadData()
     }
     
     
@@ -65,6 +65,7 @@ class MeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 && indexPath.row == 0{
             if Auth.auth().currentUser != nil{
                 let signinVc = storyboard?.instantiateViewController(withIdentifier: "accountsetting")
@@ -78,32 +79,17 @@ class MeTableViewController: UITableViewController {
         
     }
     
-    func setAccountUser(){
-        let accountCell = self.mainTable.cellForRow(at: IndexPath(row: 0, section: 0))
-        if Auth.auth().currentUser != nil{
-            let user = Auth.auth().currentUser
-            if let user = user{
-                accountCell?.textLabel?.text = user.email
-                accountCell?.detailTextLabel?.text = user.uid
-            }
-        }
-        else{
-            accountCell?.textLabel?.text = "Sign in"
-            accountCell?.detailTextLabel?.text = "Save your cosmetics list"
-        }
-        mainTable.reloadData()
-        
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(mainTable, cellForRowAt: indexPath)
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             if Auth.auth().currentUser != nil{
                 let user = Auth.auth().currentUser
-                if let user = user{
-                    cell.textLabel?.text = user.email
-                    cell.detailTextLabel?.text = user.uid
+                if user != nil{
+                    let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
+                    let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
+                    cell.textLabel?.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
+                    cell.detailTextLabel?.text = firstName! + " " + lastName!
                 }
             }else{
                 cell.textLabel?.text = "Sign in"
