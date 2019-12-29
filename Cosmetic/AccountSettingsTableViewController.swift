@@ -11,10 +11,20 @@ import FirebaseAuth
 
 class AccountSettingsTableViewController: UITableViewController {
 
+    @IBOutlet var accountTable: UITableView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
-        self.navigationItem.title = nickname
+        let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
+        let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
+        self.navigationItem.title = "Account Settings"
+        nickNameLabel.text = nickname
+        fullNameLabel.text = firstName! + " " + lastName!
+        profileImage.makeRounded()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -27,17 +37,22 @@ class AccountSettingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        switch section {
+        case 1:
+            return 4
+        default:
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0{
-            tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 2 && indexPath.row == 0{
             let logoutMenu = UIAlertController(title: "Signout",
                                                message: "Do you want to logout?",
                                                preferredStyle: .actionSheet)
@@ -67,15 +82,22 @@ class AccountSettingsTableViewController: UITableViewController {
         }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = super.tableView(accountTable, cellForRowAt: indexPath)
+        
+        switch (indexPath.section, indexPath.row) {
+        case (0,0):
+            cell.selectionStyle = .none
+        default:
+            break
+        }
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

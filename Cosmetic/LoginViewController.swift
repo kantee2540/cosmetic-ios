@@ -52,7 +52,6 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
             let downloadUser = DownloadUser()
             downloadUser.delegate = self
             downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
-            self?.removeSpinner()
             
         }
     }
@@ -64,6 +63,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
         UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)
         UserDefaults.standard.set(item.gender ?? "Other", forKey: ConstantUser.gender)
         UserDefaults.standard.set(item.birthday ?? "Not set", forKey: ConstantUser.birthday)
+        self.removeSpinner()
         self.navigationController?.popToRootViewController(animated: true)
     }
     

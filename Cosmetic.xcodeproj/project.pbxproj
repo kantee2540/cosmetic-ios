@@ -35,6 +35,9 @@
 		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
 		B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
+		B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */; };
+		B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */; };
+		B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */; };
 		B3AF0FCF227C070C00C37F63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */; };
 		B3AF0FD0227C071300C37F63 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */; };
 		B3AF0FDB227C202400C37F63 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCA227C06C800C37F63 /* AssetsLibrary.framework */; };
@@ -117,6 +120,9 @@
 		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
+		B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
+		B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewController.swift; sourceTree = "<group>"; };
+		B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoficationTableViewController.swift; sourceTree = "<group>"; };
 		B3AF0FC4227C06A600C37F63 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B3AF0FC6227C06B200C37F63 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -370,6 +376,9 @@
 				B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */,
 				B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */,
 				B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */,
+				B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */,
+				B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */,
+				B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -665,6 +674,7 @@
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
+				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,
@@ -684,12 +694,14 @@
 				B316840F239414F5005F4D88 /* TopTopicItemTableViewCell.swift in Sources */,
 				B316840823940BF1005F4D88 /* PackageModel.swift in Sources */,
 				B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */,
+				B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3BE28AA23918CDA00AE22C6 /* ImageTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
+				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
