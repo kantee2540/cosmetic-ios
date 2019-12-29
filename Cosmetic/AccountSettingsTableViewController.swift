@@ -41,7 +41,7 @@ class AccountSettingsTableViewController: UITableViewController {
             let logoutMenu = UIAlertController(title: "Signout",
                                                message: "Do you want to logout?",
                                                preferredStyle: .actionSheet)
-            logoutMenu.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { (UIAlertAction) in
+            logoutMenu.addAction(UIAlertAction(title: "Signout", style: .destructive, handler: { (UIAlertAction) in
                 self.logout()
             }))
             logoutMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))

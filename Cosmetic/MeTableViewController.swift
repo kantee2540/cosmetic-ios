@@ -12,6 +12,7 @@ import FirebaseAuth
 class MeTableViewController: UITableViewController {
 
     @IBOutlet var mainTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTable.delegate = self
@@ -50,10 +51,19 @@ class MeTableViewController: UITableViewController {
             return 1
         }
         else if section == 1{
-            return 3
+            if Auth.auth().currentUser != nil{
+                return 3
+            }else{
+                return 0
+            }
+
         }
         else if section == 2{
-            return 3
+            if Auth.auth().currentUser != nil{
+                return 3
+            }else{
+                return 0
+            }
         }
         else if section == 3{
             return 2
@@ -88,17 +98,69 @@ class MeTableViewController: UITableViewController {
                 if user != nil{
                     let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
                     let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
-                    cell.textLabel?.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
-                    cell.detailTextLabel?.text = firstName! + " " + lastName!
+                    if firstName != "Not set"{
+                        cell.textLabel?.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
+                        cell.detailTextLabel?.text = (firstName ?? "Not set") + " " + (lastName ?? "???")
+                    }else{
+                        let profileVc = self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileTableViewController
+                        self.navigationController?.pushViewController(profileVc, animated: true)
+                    }
                 }
             }else{
                 cell.textLabel?.text = "Sign in"
                 cell.detailTextLabel?.text = "Save your cosmetics list"
+                
             }
 
         default: break
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            if Auth.auth().currentUser == nil{
+                return "Join today to save your cosmetics to your desk and share the cosmetics to your friends!"
+            }else{
+                return nil
+            }
+        default:
+            return nil
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0{
+            return 70
+        }
+        if indexPath.section == 1 && Auth.auth().currentUser == nil{
+            return 0.01
+        }else if indexPath.section == 2 && Auth.auth().currentUser == nil{
+            return 0.01
+        }else{
+            return 50
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 && Auth.auth().currentUser == nil{
+            return 0.01
+        }else if section == 2 && Auth.auth().currentUser == nil{
+            return 0.01
+        }else{
+            return UITableView.automaticDimension
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 && Auth.auth().currentUser == nil{
+            return 0.0
+        }else if section == 2 && Auth.auth().currentUser == nil{
+            return 0.0
+        }else{
+            return UITableView.automaticDimension
+        }
     }
 
     /*
