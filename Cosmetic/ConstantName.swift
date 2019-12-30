@@ -47,3 +47,10 @@ struct ConstantUser {
     static let gender = "gender"
     static let birthday = "birthday"
 }
+
+struct ConstantNotification {
+    static let notiId = "noti_id"
+    static let notiTitle = "noti_title"
+    static let notiContent = "noti_content"
+    static let notiDate = "noti_date"
+}

@@ -61,6 +61,9 @@
 		B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */; };
 		B3D326D423B3BB59006404B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D323B3BB59006404B2 /* LoginViewController.swift */; };
 		B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */; };
+		B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30823BA640B0041D69A /* NotificationModel.swift */; };
+		B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30A23BA64980041D69A /* DownloadNotification.swift */; };
+		B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */; };
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
@@ -154,6 +157,9 @@
 		B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		B3D326D323B3BB59006404B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		B3EBF30823BA640B0041D69A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		B3EBF30A23BA64980041D69A /* DownloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNotification.swift; sourceTree = "<group>"; };
+		B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				B316840723940BF1005F4D88 /* PackageModel.swift */,
 				B316840A23940D80005F4D88 /* TopicModel.swift */,
 				B3BFDD7323B8A24A00BC0035 /* UserModel.swift */,
+				B3EBF30823BA640B0041D69A /* NotificationModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -245,6 +252,7 @@
 				B316840C23940DB3005F4D88 /* DownloadTopic.swift */,
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
 				B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */,
+				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 		B3D326D023B3B498006404B2 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				B3EBF30C23BA69700041D69A /* Notification */,
 				B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */,
 				B3D326D323B3BB59006404B2 /* LoginViewController.swift */,
 				B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */,
@@ -378,9 +387,17 @@
 				B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */,
 				B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */,
 				B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */,
-				B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */,
 			);
 			name = Account;
+			sourceTree = "<group>";
+		};
+		B3EBF30C23BA69700041D69A /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */,
+				B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		C4E91E0CC0B260FA4778BBCA /* Pods */ = {
@@ -677,6 +694,7 @@
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
+				B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */,
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,
 				B34DE405238C1132008DC9EB /* FeaturingCollectionViewCell.swift in Sources */,
 				B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */,
@@ -685,6 +703,7 @@
 				B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */,
 				B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */,
 				B31D758B23B5146600363057 /* AccountTableViewCell.swift in Sources */,
+				B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,
 				B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */,
@@ -698,6 +717,7 @@
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3BE28AA23918CDA00AE22C6 /* ImageTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
+				B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */,
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,

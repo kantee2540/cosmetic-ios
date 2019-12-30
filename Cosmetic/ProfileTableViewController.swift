@@ -19,6 +19,7 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     @IBOutlet weak var birthdayPicker: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
+    private var updateMode = false
     private var genderList = ["Male", "Female", "Other"]
     var email: String?
     var uid: String?
@@ -49,17 +50,32 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         let pickerView = UIPickerView()
         pickerView.delegate = self
         genderPicker.inputView = pickerView
-        genderPicker.text = genderList[0]
+        if updateMode{
+            genderPicker.text = UserDefaults.standard.string(forKey: ConstantUser.gender)
+        }else{
+            genderPicker.text = genderList[0]
+        }
     }
     
     //MARK: - Birthday picker
     private func createBirthdayPicker(){
+        var first = true
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.calendar = Calendar(identifier: .gregorian)
         birthdayPicker.inputView = datePicker
         handleDatePicker(sender: datePicker)
         datePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+        
+        if updateMode && first{
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "yyyy-MM-dd"
+            dateFormat.locale = Locale.init(identifier: "en_GB")
+            let dateObj = dateFormat.date(from: UserDefaults.standard.string(forKey: ConstantUser.birthday)!)
+            dateFormat.dateFormat = "dd/MM/yyyy"
+            birthdayPicker.text = dateFormat.string(from: dateObj!)
+            first = false
+        }
     }
     
     @objc func handleDatePicker(sender: UIDatePicker){
@@ -108,7 +124,19 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         birthdayPicker.delegate = self
         
         self.hideKeyboardWhenTappedAround()
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        if UserDefaults.standard.string(forKey: ConstantUser.firstName) != nil{
+            //if update
+            firstnameTextfield.text = UserDefaults.standard.string(forKey: ConstantUser.firstName)
+            lastnameTextfield.text = UserDefaults.standard.string(forKey: ConstantUser.lastName)
+            displaynameTextfield.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
+            genderPicker.text = UserDefaults.standard.string(forKey: ConstantUser.gender)
+            birthdayPicker.text = UserDefaults.standard.string(forKey: ConstantUser.birthday)
+            saveButton.setTitle("Update", for: .normal)
+            updateMode = true
+        }else{
+            self.navigationItem.setHidesBackButton(true, animated: true)
+        }
     }
 
     // MARK: - Table view data source
@@ -143,7 +171,14 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         
         let collectUserData = CollectUserdata()
         collectUserData.delegate = self
-        collectUserData.collectUserdata(firstname: firstName!, lastName: lastName!, nickname: nickname!, email: myEmail!, gender: gender!, birthday: myBirthday!, uid: myUid!)
+        
+        if updateMode{
+            collectUserData.updateUserdata(firstname: firstName!, lastName: lastName!, nickname: nickname!, email: myEmail!, gender: gender!, birthday: myBirthday!, uid: myUid!)
+        }else{
+            collectUserData.collectUserdata(firstname: firstName!, lastName: lastName!, nickname: nickname!, email: myEmail!, gender: gender!, birthday: myBirthday!, uid: myUid!)
+        }
+        
+        
     }
     
     func insertDataSuccess() {
@@ -160,7 +195,7 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     }
     
     func itemDownloadUser(item: UserModel) {
-        UserDefaults.standard.set(item.firstName ?? "Not set", forKey: ConstantUser.firstName)
+        UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
         UserDefaults.standard.set(item.lastName ?? "Not set", forKey: ConstantUser.lastName)
         UserDefaults.standard.set(item.nickname ?? "Not set", forKey: ConstantUser.nickName)
         UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)

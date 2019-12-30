@@ -44,7 +44,9 @@ class AccountSettingsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 1:
-            return 4
+            return 3
+        case 2:
+            return 2
         default:
             return 1
         }
@@ -52,7 +54,7 @@ class AccountSettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 2 && indexPath.row == 0{
+        if indexPath.section == 2 && indexPath.row == 1{
             let logoutMenu = UIAlertController(title: "Signout",
                                                message: "Do you want to logout?",
                                                preferredStyle: .actionSheet)

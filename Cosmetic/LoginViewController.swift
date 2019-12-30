@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
     }
     
     func itemDownloadUser(item: UserModel) {
-        UserDefaults.standard.set(item.firstName ?? "Not set", forKey: ConstantUser.firstName)
+        UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
         UserDefaults.standard.set(item.lastName ?? "Not set", forKey: ConstantUser.lastName)
         UserDefaults.standard.set(item.nickname ?? "Not set", forKey: ConstantUser.nickName)
         UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)
