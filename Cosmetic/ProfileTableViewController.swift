@@ -20,6 +20,7 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     @IBOutlet weak var saveButton: UIButton!
     
     private var updateMode = false
+    private var first = true
     private var genderList = ["Male", "Female", "Other"]
     var email: String?
     var uid: String?
@@ -59,7 +60,6 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     
     //MARK: - Birthday picker
     private func createBirthdayPicker(){
-        var first = true
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.calendar = Calendar(identifier: .gregorian)
@@ -67,6 +67,12 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         handleDatePicker(sender: datePicker)
         datePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
         
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         if updateMode && first{
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "yyyy-MM-dd"
@@ -74,16 +80,13 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
             let dateObj = dateFormat.date(from: UserDefaults.standard.string(forKey: ConstantUser.birthday)!)
             dateFormat.dateFormat = "dd/MM/yyyy"
             birthdayPicker.text = dateFormat.string(from: dateObj!)
+            birthday = birthdayForCollectData(date: dateObj!)
             first = false
+        }else{
+            birthdayPicker.text = dateFormatter.string(from: sender.date)
+            birthday = birthdayForCollectData(date: sender.date)
         }
-    }
-    
-    @objc func handleDatePicker(sender: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Calendar(identifier: .gregorian)
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        birthdayPicker.text = dateFormatter.string(from: sender.date)
-        birthday = birthdayForCollectData(date: sender.date)
+        
     }
     
     private func birthdayForCollectData(date :Date) -> String{
@@ -122,7 +125,7 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         displaynameTextfield.delegate = self
         genderPicker.delegate = self
         birthdayPicker.delegate = self
-        
+        profileTable.delegate = self
         self.hideKeyboardWhenTappedAround()
         
         if UserDefaults.standard.string(forKey: ConstantUser.firstName) != nil{
@@ -202,9 +205,14 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         UserDefaults.standard.set(item.gender ?? "Other", forKey: ConstantUser.gender)
         UserDefaults.standard.set(item.birthday ?? "Not set", forKey: ConstantUser.birthday)
         
-        let successVc = self.storyboard?.instantiateViewController(withIdentifier: "registersuccess") as! RegisterSuccessViewController
-        successVc.email = email
-        self.navigationController?.pushViewController(successVc, animated: true)
+        if updateMode{
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            let successVc = self.storyboard?.instantiateViewController(withIdentifier: "registersuccess") as! RegisterSuccessViewController
+            successVc.email = email
+            self.navigationController?.pushViewController(successVc, animated: true)
+        }
+       
     }
     
 }

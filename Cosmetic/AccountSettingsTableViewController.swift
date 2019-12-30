@@ -18,12 +18,7 @@ class AccountSettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
-        let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
-        let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
-        self.navigationItem.title = "Account Settings"
-        nickNameLabel.text = nickname
-        fullNameLabel.text = firstName! + " " + lastName!
+        accountTable.delegate = self
         profileImage.makeRounded()
         
         // Uncomment the following line to preserve selection between presentations
@@ -31,6 +26,16 @@ class AccountSettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
+        let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
+        let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
+        self.navigationItem.title = "Account Settings"
+        nickNameLabel.text = nickname
+        fullNameLabel.text = firstName! + " " + lastName!
+        accountTable.reloadData()
     }
 
     // MARK: - Table view data source
