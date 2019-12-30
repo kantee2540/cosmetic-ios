@@ -77,9 +77,14 @@ class MeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 && indexPath.row == 0{
-            if Auth.auth().currentUser != nil{
+            if Auth.auth().currentUser != nil && UserDefaults.standard.string(forKey: ConstantUser.firstName) != nil{
                 let signinVc = storyboard?.instantiateViewController(withIdentifier: "accountsetting")
                 self.navigationController?.pushViewController(signinVc!, animated: true)
+                
+            }else if Auth.auth().currentUser != nil && UserDefaults.standard.string(forKey: ConstantUser.firstName) == nil{
+                let profileVc = self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileTableViewController
+                self.navigationController?.pushViewController(profileVc, animated: true)
+                
             }
             else{
                 let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
@@ -98,12 +103,12 @@ class MeTableViewController: UITableViewController {
                 if user != nil{
                     let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
                     let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
-                    if firstName != "Not set"{
+                    if firstName != nil{
                         cell.textLabel?.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
                         cell.detailTextLabel?.text = (firstName ?? "Not set") + " " + (lastName ?? "???")
                     }else{
-                        let profileVc = self.storyboard?.instantiateViewController(withIdentifier: "profile") as! ProfileTableViewController
-                        self.navigationController?.pushViewController(profileVc, animated: true)
+                        cell.textLabel?.text = user?.email
+                        cell.detailTextLabel?.text = "Please complete your information"
                     }
                 }
             }else{
