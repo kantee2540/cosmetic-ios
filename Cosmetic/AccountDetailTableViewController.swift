@@ -49,7 +49,7 @@ class AccountDetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,8 +57,10 @@ class AccountDetailTableViewController: UITableViewController {
         switch section {
         case 0:
             return 7
-        default:
+        case 1:
             return 2
+        default:
+            return 1
         }
     }
 
@@ -101,6 +103,13 @@ class AccountDetailTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = dateFormat.string(from: createdUserDate!)
             case 1:
                 cell.detailTextLabel?.text = dateFormat.string(from: lastSigninDate!)
+            default:
+                break
+            }
+        }else if indexPath.section == 2{
+            switch indexPath.row {
+            case 0:
+                cell.selectionStyle = .blue
             default:
                 break
             }

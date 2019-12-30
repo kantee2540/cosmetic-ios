@@ -13,15 +13,40 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
     var productId: String!
     private var productData: [ProductModel] = []
     @IBOutlet weak var brandName: UILabel!
-    @IBOutlet weak var contentTable: UITableView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productDescriptionLabel: UILabel!
+    @IBOutlet weak var productImage: UIImageView!
+    
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryTypeLabel: UILabel!
+    @IBOutlet weak var ingredient: UILabel!
+    
+    @IBOutlet weak var saveButton: UIButton!
     
     func itemDownloaded(item: NSMutableArray) {
         productData = item as! [ProductModel]
-        
-        contentTable.delegate = self
-        contentTable.dataSource = self
         brandName.text = productData[0].brand_name?.uppercased()
-        contentTable.reloadData()
+        productNameLabel.text = productData[0].product_name
+        productDescriptionLabel.text = productData[0].product_description
+        productImage.downloadImage(from: URL(string: productData[0].product_img!)!)
+        
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        let formattedPrice = numberFormat.string(from: NSNumber(value:productData[0].product_price ?? 0))
+        priceLabel.text = formattedPrice! + " Baht"
+        
+        categoryLabel.text = productData[0].categories_name
+        categoryTypeLabel.text = productData[0].categories_type
+        if productData[0].ingredient != "n/a"{
+            ingredient.text = productData[0].ingredient
+        }else{
+            ingredient.text = "Ingredient not available"
+        }
+        
         self.removeSpinner()
     }
     
@@ -32,7 +57,12 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
         downloadProduct.downloadSelectItem(productId: productId)
+        
+        priceView.makeRoundedView()
+        categoryView.makeRoundedView()
+        saveButton.roundedCorner()
     }
+    
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -99,7 +129,8 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         
     }
     
-
+    
+    
     
     //MARK: - Show Detail after loaded
 //    func showDetail(){

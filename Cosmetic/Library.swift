@@ -12,7 +12,6 @@ class Library {
     
 }
 
-
 var spinView: UIView!
 extension UIViewController{
     
@@ -112,5 +111,13 @@ extension UITextField{
 extension UIButton{
     func roundedCorner(){
         self.layer.cornerRadius = 5
+    }
+    
+}
+
+extension UIView{
+    
+    func makeRoundedView(){
+        self.layer.cornerRadius = 8
     }
 }
