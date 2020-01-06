@@ -31,6 +31,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var productTableHeight: NSLayoutConstraint!
+    @IBOutlet weak var topicScroll: UIScrollView!
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
@@ -70,7 +71,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 180{
+        if scrollView.contentOffset.y > 178{
             doneButton.tintColor = UIColor.label
         }else{
             doneButton.tintColor = UIColor.white
@@ -82,6 +83,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         productTable.delegate = self
         productTable.dataSource = self
         showSpinner(onView: self.view)
+        topicScroll.delegate = self
         downloadPackage()
     }
     
@@ -117,14 +119,5 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

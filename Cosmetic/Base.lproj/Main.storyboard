@@ -435,6 +435,7 @@
                         <outlet property="saveButton" destination="52Z-C8-7BN" id="BqN-31-EyH"/>
                         <outlet property="shareButton" destination="Hdf-Q2-eTC" id="Rmd-Hr-88D"/>
                         <outlet property="titleLabel" destination="Wla-Tp-u7D" id="dPf-dv-U9B"/>
+                        <outlet property="topicScroll" destination="JY6-Xy-JvX" id="Ld1-gh-qdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9y3-dJ-dH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
