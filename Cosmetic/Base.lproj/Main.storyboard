@@ -366,7 +366,7 @@
                                     <constraint firstAttribute="width" constant="31" id="QAe-cs-6O1"/>
                                     <constraint firstAttribute="height" constant="32" id="WdP-GF-tCz"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="tapClose:" destination="jmB-xZ-ZUV" eventType="touchUpInside" id="QwU-ay-cWb"/>
@@ -388,6 +388,7 @@
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="coverImage" destination="R2H-S6-qWI" id="xcf-Ia-Qbv"/>
+                        <outlet property="doneButton" destination="D0i-Z8-zlv" id="CzL-Zc-izK"/>
                         <outlet property="mainTable" destination="xW0-DF-ZSt" id="yP0-qk-wMc"/>
                         <outlet property="titleLabel" destination="vcf-rX-49d" id="BCV-tK-Qnj"/>
                     </connections>
@@ -769,6 +770,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="77X-Dv-tuK" kind="show" id="eSV-eu-0aI"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="Chq-qB-MwH" imageView="kXi-a4-Ibb" rowHeight="50" style="IBUITableViewCellStyleDefault" id="glI-xU-t83">
                                         <rect key="frame" x="0.0" y="174" width="375" height="50"/>
@@ -1419,6 +1423,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1q-4c-dPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2881" y="2538"/>
+        </scene>
+        <!--Cosmetic Desk-->
+        <scene sceneID="zSY-Rn-Fi7">
+            <objects>
+                <tableViewController id="77X-Dv-tuK" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wag-Ti-WyR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Zpg-zV-fvD">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zpg-zV-fvD" id="im2-a2-T9h">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="77X-Dv-tuK" id="fP3-Sg-WFQ"/>
+                            <outlet property="delegate" destination="77X-Dv-tuK" id="D4J-C8-7FB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cosmetic Desk" id="TP6-bR-zdN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3W1-PG-04d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-276" y="1744"/>
         </scene>
         <!--Notification-->
         <scene sceneID="g0U-BG-2O2">
@@ -2839,6 +2872,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="quJ-bP-uJV"/>
     </inferredMetricsTieBreakers>
 </document>

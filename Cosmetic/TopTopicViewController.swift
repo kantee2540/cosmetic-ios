@@ -28,6 +28,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainTable: UITableView!
+    @IBOutlet weak var doneButton: UIButton!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -69,6 +70,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 180{
+            doneButton.tintColor = UIColor.label
+        }else{
+            doneButton.tintColor = UIColor.white
+        }
     }
 
     override func viewDidLoad() {
