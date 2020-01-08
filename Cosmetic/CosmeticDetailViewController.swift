@@ -7,9 +7,13 @@
 //
 
 import UIKit
+protocol CosmeticDetailDelegate {
+    func dismissFromCosmeticDetail()
+}
 
-class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, UITableViewDelegate, UITableViewDataSource {
+class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, InsertItemToDeskDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    var delegate: CosmeticDetailDelegate?
     var productId: String!
     private var productData: [ProductModel] = []
     @IBOutlet weak var brandName: UILabel!
@@ -75,6 +79,27 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         self.present(activityViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func tapSave(_ sender: Any) {
+        if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
+            let insertItem = InsertItemToDesk()
+            insertItem.delegate = self
+            insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+        }else{
+            dismiss(animated: true, completion: nil)
+            self.delegate?.dismissFromCosmeticDetail()
+        }
+    }
+    
+    func insertDataSuccess() {
+        saveButton.backgroundColor = UIColor.gray
+        saveButton.isEnabled = false
+    }
+    
+    func insertDataFailed() {
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7

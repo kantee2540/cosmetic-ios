@@ -8,7 +8,16 @@
 
 import UIKit
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol {
+protocol TopTopicDelegate {
+    func dismissFromTopTopic()
+}
+
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate {
+    func dismissFromCosmeticDetail() {
+        dismiss(animated: true, completion: nil)
+        self.delegate?.dismissFromTopTopic()
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         topicItem = item as! [PackageModel]
         settingtitleLabel()
@@ -16,7 +25,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         removeSpinner()
         productTable.reloadData()
     }
-    
+    var delegate: TopTopicDelegate?
     var topicId: String!
     var topicName: String!
     var topicDescription: String!
@@ -123,6 +132,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
             let destination = segue.destination as? CosmeticDetailViewController
             let itemIndex = productTable.indexPathForSelectedRow?.row
             let item = topicItem[itemIndex!]
+            destination?.delegate = self
             destination?.productId = item.product_id
         }
     }

@@ -8,8 +8,14 @@
 
 import UIKit
 
-class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopicProtocol {
+class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopicProtocol, TopTopicDelegate {
+    func dismissFromTopTopic() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
+        loadingIndicator.isHidden = true
         if item.count >= 1{
             let topicVc = storyboard?.instantiateViewController(withIdentifier: "TopTopic") as? TopTopicViewController
             var topicItem :[TopicModel] = []
@@ -18,7 +24,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
             topicVc?.topicName = topicItem[0].topic_name
             topicVc?.topicDescription = topicItem[0].topic_description
             topicVc?.topicImg = topicItem[0].topic_img
-            
+            topicVc?.delegate = self
             self.present(topicVc!, animated: true)
         }
         
@@ -31,6 +37,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
     }
     
 
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var codeField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +60,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text?.count == 6{
+            loadingIndicator.isHidden = false
             let downloadTopic = DownloadTopic()
             downloadTopic.delegate = self
             downloadTopic.getTopicId(code: textField.text ?? "")

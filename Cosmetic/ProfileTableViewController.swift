@@ -198,12 +198,13 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     }
     
     func itemDownloadUser(item: UserModel) {
+        UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
         UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
-        UserDefaults.standard.set(item.lastName ?? "Not set", forKey: ConstantUser.lastName)
-        UserDefaults.standard.set(item.nickname ?? "Not set", forKey: ConstantUser.nickName)
-        UserDefaults.standard.set(item.email ?? "No set", forKey: ConstantUser.email)
-        UserDefaults.standard.set(item.gender ?? "Other", forKey: ConstantUser.gender)
-        UserDefaults.standard.set(item.birthday ?? "Not set", forKey: ConstantUser.birthday)
+        UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
+        UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
+        UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
+        UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
+        UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
         
         if updateMode{
             self.navigationController?.popViewController(animated: true)

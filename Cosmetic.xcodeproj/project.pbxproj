@@ -33,6 +33,7 @@
 		B371985423898D2E001DB6A7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371985323898D2E001DB6A7 /* Library.swift */; };
 		B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766C61236685630028B335 /* cameraResultTableViewController.swift */; };
 		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
+		B386F54D23C60F67005F58C9 /* InsertItemToDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */; };
 		B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
 		B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */; };
@@ -121,6 +122,7 @@
 		B371985323898D2E001DB6A7 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		B3766C61236685630028B335 /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertItemToDesk.swift; sourceTree = "<group>"; };
 		B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
 		B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
 				B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */,
 				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
+				B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
+				B386F54D23C60F67005F58C9 /* InsertItemToDesk.swift in Sources */,
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,

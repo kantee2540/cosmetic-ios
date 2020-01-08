@@ -65,13 +65,15 @@ class DownloadUser: NSObject {
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
             
-            if let firstName = jsonElement[ConstantUser.firstName] as? String,
+            if let userid = jsonElement[ConstantUser.userId] as? String,
+                let firstName = jsonElement[ConstantUser.firstName] as? String,
                 let lastName = jsonElement[ConstantUser.lastName] as? String,
                 let nickName = jsonElement[ConstantUser.nickName] as? String,
                 let email = jsonElement[ConstantUser.email] as? String,
                 let gender = jsonElement[ConstantUser.gender] as? String,
                 let birthday = jsonElement[ConstantUser.birthday] as? String
             {
+                users.userId = userid
                 users.firstName = firstName
                 users.lastName = lastName
                 users.nickname = nickName

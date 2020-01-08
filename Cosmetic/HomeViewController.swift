@@ -8,7 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTopicProtocol{
+class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTopicProtocol, CosmeticDetailDelegate, TopTopicDelegate{
+    func dismissFromTopTopic() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
+    
+    func dismissFromCosmeticDetail() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
         topicItem = item as! [TopicModel]
         featuringCollection.reloadData()
@@ -87,6 +97,7 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
         if segue.identifier == "SeeMoreDetail"{
             let destination = segue.destination as? CosmeticDetailViewController
             let itemIndex = topCollection.indexPathsForSelectedItems?.first?.item
+            destination?.delegate = self
             let item = resultProductItem[itemIndex!]
             destination?.productId = item.product_id
         }
@@ -94,6 +105,7 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
             let destination = segue.destination as? TopTopicViewController
             let itemIndex = featuringCollection.indexPathsForSelectedItems?.first?.item
             let item = topicItem[itemIndex!]
+            destination?.delegate = self
             destination?.topicId = item.topic_id
             destination?.topicName = item.topic_name
             destination?.topicDescription = item.topic_description

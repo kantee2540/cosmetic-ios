@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol, DownloadBrandProtocol {
+class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol, DownloadBrandProtocol, CosmeticDetailDelegate {
+    func dismissFromCosmeticDetail() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
 
     private var allProduct: [ProductModel] = []
     private var productByCategories: [ProductModel] = []
@@ -101,6 +105,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 item = allProduct[itemIndex!]
             }
             let destination = segue.destination as? CosmeticDetailViewController
+            destination?.delegate = self
             destination?.productId = item.product_id
         }
     }

@@ -76,6 +76,7 @@ class AccountSettingsTableViewController: UITableViewController {
         do{
             try firebaseAuth.signOut()
             print("LOGGEDOUT!")
+            UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
             UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
             UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
             UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
