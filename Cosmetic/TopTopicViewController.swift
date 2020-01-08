@@ -109,6 +109,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func tapShare(_ sender: Any) {
+        let titleActivity: String = topicName
+        let description: String = topicDescription
+        let image: UIImage = coverImage.image!
+        let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = sender as? UIView
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{

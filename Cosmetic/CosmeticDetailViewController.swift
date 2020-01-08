@@ -67,6 +67,15 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, U
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func tapShare(_ sender: Any) {
+        let titleActivity: String = productData[0].product_name!
+        let description: String = productData[0].product_description!
+        let image: UIImage = productImage.image!
+        let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = sender as? UIView
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
