@@ -11,7 +11,7 @@ protocol CosmeticDetailDelegate {
     func dismissFromCosmeticDetail()
 }
 
-class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, InsertItemToDeskDelegate, UITableViewDelegate, UITableViewDataSource {
+class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, InsertItemToDeskDelegate, DownloadCosmeticDeskListDelegate{
     
     var delegate: CosmeticDetailDelegate?
     var productId: String!
@@ -30,6 +30,12 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, I
     @IBOutlet weak var ingredient: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
+    
+    func itemCosmeticDeskDownloaded(item: NSMutableArray) {
+        if item.count > 0{
+            disableSaveButton()
+        }
+    }
     
     func itemDownloaded(item: NSMutableArray) {
         productData = item as! [ProductModel]
@@ -56,15 +62,23 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, I
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setProduct()
+        priceView.makeRoundedView()
+        categoryView.makeRoundedView()
+        saveButton.roundedCorner()
+    }
+    
+    private func setProduct(){
         self.showSpinner(onView: self.view)
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
         downloadProduct.downloadSelectItem(productId: productId)
         
-        priceView.makeRoundedView()
-        categoryView.makeRoundedView()
-        saveButton.roundedCorner()
+        if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
+            let downloadDesk = DownloadCosmeticDeskList()
+            downloadDesk.delegate = self
+            downloadDesk.checkCosmeticIsSaved(userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!, productId: productId)
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -92,92 +106,16 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, I
     }
     
     func insertDataSuccess() {
-        saveButton.backgroundColor = UIColor.gray
-        saveButton.isEnabled = false
+        disableSaveButton()
     }
     
     func insertDataFailed() {
         
     }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell :UITableViewCell!
-        
-        if indexPath.row == 0{
-            cell = tableView.dequeueReusableCell(withIdentifier: "title")!
-            cell.textLabel?.text = productData[0].product_name
-        }
-            
-        else if indexPath.row == 1{
-            cell = tableView.dequeueReusableCell(withIdentifier: "description")!
-            cell.textLabel?.text = productData[0].product_description
-        }
-        else if indexPath.row == 2{
-            let imageCell = tableView.dequeueReusableCell(withIdentifier: "image") as! ImageTableViewCell
-            imageCell.selectionStyle = .none
-            
-            let imgUrl = productData[0].product_img
-            imageCell.productImage.downloadImage(from: URL(string: imgUrl!)!)
-            
-            return imageCell
-        }
-        
-        else if indexPath.row == 3{
-            cell = tableView.dequeueReusableCell(withIdentifier: "information")
-            cell.textLabel?.text = "Price :"
-            
-            let numberFormat = NumberFormatter()
-            numberFormat.numberStyle = .decimal
-            let formattedPrice = numberFormat.string(from: NSNumber(value:productData[0].product_price ?? 0))
-            
-            cell.detailTextLabel?.text = formattedPrice! + " Baht"
-        }
-        
-        else if indexPath.row == 4{
-            cell = tableView.dequeueReusableCell(withIdentifier: "information")
-            cell.textLabel?.text = "Categories :"
-            cell.detailTextLabel?.text = productData[0].categories_name
-        }
-        
-        else if indexPath.row == 5{
-            cell = tableView.dequeueReusableCell(withIdentifier: "information")
-            cell.textLabel?.text = "Categories Type :"
-            cell.detailTextLabel?.text = productData[0].categories_type
-        }
-        
-        else if indexPath.row == 6{
-            cell = tableView.dequeueReusableCell(withIdentifier: "ingredient")
-            cell.textLabel?.text = "Ingredient :"
-            cell.detailTextLabel?.text = productData[0].ingredient
-            
-        }
-        
-        cell.selectionStyle = .none
-        return cell
-        
-    }
-    
-    
-    
-    
-    //MARK: - Show Detail after loaded
-//    func showDetail(){
-//        productName.text = productData[0].product_name
-//        productDescription.text = productData[0].product_description
-//        coverImage.downloadImage(from: URL(string: productData[0].product_img!)!)
-//        brandName.text = productData[0].brand_name?.uppercased()
-//        let numberFormat = NumberFormatter()
-//        numberFormat.numberStyle = .decimal
-//        let formattedPrice = numberFormat.string(from: NSNumber(value:productData[0].product_price ?? 0))
-//        price.text = formattedPrice
-//    }
-    
-    
 
+    private func disableSaveButton(){
+        saveButton.backgroundColor = UIColor.gray
+        saveButton.setTitle("Saved", for: .disabled)
+        saveButton.isEnabled = false
+    }
 }

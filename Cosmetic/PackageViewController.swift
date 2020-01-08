@@ -36,7 +36,6 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         
     }
     
-
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var codeField: UITextField!
     override func viewDidLoad() {
@@ -51,6 +50,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Package"
+        codeField.text = ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
