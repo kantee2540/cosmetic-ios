@@ -11,7 +11,7 @@ protocol CosmeticDetailDelegate {
     func dismissFromCosmeticDetail()
 }
 
-class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, InsertItemToDeskDelegate, DownloadCosmeticDeskListDelegate{
+class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, CosmeticDeskDelegate, DownloadCosmeticDeskListDelegate{
     
     var delegate: CosmeticDetailDelegate?
     var productId: String!
@@ -96,7 +96,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, I
     
     @IBAction func tapSave(_ sender: Any) {
         if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
-            let insertItem = InsertItemToDesk()
+            let insertItem = CosmeticDesk()
             insertItem.delegate = self
             insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
         }else{
@@ -105,11 +105,11 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, I
         }
     }
     
-    func insertDataSuccess() {
+    func onSuccess() {
         disableSaveButton()
     }
     
-    func insertDataFailed() {
+    func onFailed() {
         
     }
 

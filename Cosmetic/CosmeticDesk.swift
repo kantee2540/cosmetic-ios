@@ -8,24 +8,31 @@
 
 import UIKit
 
-protocol InsertItemToDeskDelegate {
-    func insertDataSuccess()
-    func insertDataFailed()
+protocol CosmeticDeskDelegate {
+    func onSuccess()
+    func onFailed()
 }
 
-class InsertItemToDesk: NSObject {
-    var delegate: InsertItemToDeskDelegate?
+class CosmeticDesk: NSObject {
+    var delegate: CosmeticDeskDelegate?
     let getAddress = webAddress()
     var DB_URL:String!
     var postParameter: String = ""
     
     func insertToDesk(productId: String, userId: String){
+        DB_URL = getAddress.getInsertItemToDesk()
         postParameter = "user_id=\(userId)&product_id=\(productId)"
-        insertData()
+        processing()
     }
     
-    private func insertData(){
-        DB_URL = getAddress.getInsertItemToDesk()
+    func deleteFromDesk(productId: String, userId: String) {
+        DB_URL = getAddress.getDeleteItemFromDesk()
+        postParameter = "user_id=\(userId)&product_id=\(productId)"
+        processing()
+    }
+    
+    private func processing(){
+        
         var request = URLRequest(url: URL(string: DB_URL)!)
         request.httpMethod = "POST"
         
@@ -39,13 +46,13 @@ class InsertItemToDesk: NSObject {
             if error != nil{
                 print("Failed to Download data")
                 DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.insertDataFailed()
+                    self.delegate?.onFailed()
                 })
                 
             }else{
                 print("Inserted user data")
                 DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.insertDataSuccess()
+                    self.delegate?.onSuccess()
                 })
             }
             

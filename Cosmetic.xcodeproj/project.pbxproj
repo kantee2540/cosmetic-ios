@@ -33,7 +33,7 @@
 		B371985423898D2E001DB6A7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371985323898D2E001DB6A7 /* Library.swift */; };
 		B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766C61236685630028B335 /* cameraResultTableViewController.swift */; };
 		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
-		B386F54D23C60F67005F58C9 /* InsertItemToDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */; };
+		B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */; };
 		B386F54F23C6244D005F58C9 /* DownloadCosmeticDeskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */; };
 		B386F55223C62AE6005F58C9 /* CosmeticDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */; };
 		B386F55423C62B1F005F58C9 /* DeskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F55323C62B1F005F58C9 /* DeskCollectionViewCell.swift */; };
@@ -125,7 +125,7 @@
 		B371985323898D2E001DB6A7 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		B3766C61236685630028B335 /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertItemToDesk.swift; sourceTree = "<group>"; };
+		B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDesk.swift; sourceTree = "<group>"; };
 		B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCosmeticDeskList.swift; sourceTree = "<group>"; };
 		B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDeskViewController.swift; sourceTree = "<group>"; };
 		B386F55323C62B1F005F58C9 /* DeskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
 				B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */,
 				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
-				B386F54C23C60F67005F58C9 /* InsertItemToDesk.swift */,
+				B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */,
 				B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */,
 			);
 			name = getObject;
@@ -711,7 +711,7 @@
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
-				B386F54D23C60F67005F58C9 /* InsertItemToDesk.swift in Sources */,
+				B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */,
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,

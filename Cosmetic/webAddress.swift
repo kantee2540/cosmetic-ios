@@ -64,6 +64,11 @@ class webAddress {
         return webFile
     }
     
+    func getDeleteItemFromDesk() -> String{
+        let webFile = prefixString + "deleteCosmeticDesk.php"
+        return webFile
+    }
+    
     func getCosmeticDeskList() -> String{
         let webFile = prefixString + "getCosmeticDeskList.php"
         return webFile
