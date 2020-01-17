@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate {
+class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate {
     
     @IBOutlet weak var noCosmetic: UILabel!
     @IBOutlet weak var welcomeNameLabel: UILabel!
@@ -43,15 +43,23 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         return deskCell
     }
     
-    func tapAction(userId: String, productId: String, indexPath: IndexPath) {
+    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath) {
         let item = deskList[indexPath.row]
         
         let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
         deskItemAction.addAction(UIAlertAction(title: "Share", style: .default, handler: {
             (UIAlertAction) in
+            //Tap share
+            let titleActivity: String = item.product_name!
+            let description: String = item.product_description!
+            let image = image
+            let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+            self.present(activityViewController, animated: true, completion: nil)
+            
         }))
         deskItemAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
             (UIAlertAction) in
+            //Delete this product item
             self.showSpinner(onView: self.view)
             let cosmeticDesk = CosmeticDesk()
             cosmeticDesk.delegate = self
@@ -104,6 +112,22 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         allNumber.layer.cornerRadius = allNumber.frame.height / 2
         allNumber.clipsToBounds = true
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "SeeMoreDetail"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = deskCollection.indexPathsForSelectedItems?.first
+            let item = deskList[itemIndex!.row]
+            destination?.delegate = self
+            destination?.productId = item.product_id
+            
+        }
+    }
+    
+    func dismissFromCosmeticDetail() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
     }
     
     private func downloadCosmeticList(){

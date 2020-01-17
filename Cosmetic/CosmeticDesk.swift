@@ -44,13 +44,18 @@ class CosmeticDesk: NSObject {
             data, response, error in
             
             if error != nil{
-                print("Failed to Download data")
+                print("Failed to Save or remove cosmetic")
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.delegate?.onFailed()
                 })
                 
             }else{
-                print("Inserted user data")
+                if self.DB_URL == self.getAddress.getInsertItemToDesk(){
+                    print("Saved cosmetic to list!")
+                }else{
+                    print("Deleted cosmetic from list!")
+                }
+                
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.delegate?.onSuccess()
                 })

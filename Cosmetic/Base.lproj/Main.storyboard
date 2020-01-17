@@ -482,7 +482,7 @@
                                                 <color key="textColor" name="main-font-color"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSp-eJ-hxt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSp-eJ-hxt">
                                                 <rect key="frame" x="23" y="77.5" width="329" height="183"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean odio justo, ultrices ac ornare nec, laoreet id quam. Praesent quis massa maximus, ullamcorper est eu, fermentum leo. Nullam bibendum laoreet erat nec ultricies. Morbi vulputate convallis ligula, nec facilisis ipsum ornare vel. Proin sagittis metus neque, ut tincidunt justo aliquet ullamcorper.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -871,6 +871,7 @@
                                                             <outlet property="productImage" destination="LdG-q2-LsL" id="1LO-qf-TVm"/>
                                                             <outlet property="productName" destination="DXk-PE-seA" id="KC0-EB-0jc"/>
                                                             <outlet property="productPrice" destination="OMo-gp-ZQE" id="nx3-9D-u1K"/>
+                                                            <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="tfX-uD-L2L"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -3129,6 +3130,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j6B-oM-jLe"/>
+        <segue reference="tfX-uD-L2L"/>
     </inferredMetricsTieBreakers>
 </document>
