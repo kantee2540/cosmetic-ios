@@ -9,7 +9,23 @@
 import UIKit
 import FirebaseAuth
 
-class MeTableViewController: UITableViewController {
+class MeTableViewController: UITableViewController, DownloadUserProtocol {
+    func itemDownloadUser(item: UserModel) {
+        if item.userId != nil{
+            UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
+            UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
+            UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
+            UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
+            UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
+            UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
+            UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
+            removeSpinner()
+            mainTable.reloadData()
+        }else{
+            removeSpinner()
+        }
+    }
+    
 
     @IBOutlet var mainTable: UITableView!
     
@@ -107,6 +123,12 @@ class MeTableViewController: UITableViewController {
                         cell.textLabel?.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)
                         cell.detailTextLabel?.text = (firstName ?? "Not set") + " " + (lastName ?? "???")
                     }else{
+                        //Check user again
+                        showSpinner(onView: self.view)
+                        let downloadUser = DownloadUser()
+                        downloadUser.delegate = self
+                        downloadUser.getCurrentUserprofile(uid: user!.uid)
+                        ///
                         cell.textLabel?.text = user?.email
                         cell.detailTextLabel?.text = "Please complete your information"
                     }

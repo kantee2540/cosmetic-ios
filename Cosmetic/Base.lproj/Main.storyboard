@@ -355,7 +355,7 @@
                                                     <action selector="tapShare:" destination="wgc-Gb-F3f" eventType="touchUpInside" id="eQW-Sd-lfG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52Z-C8-7BN">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52Z-C8-7BN">
                                                 <rect key="frame" x="195" y="510" width="157" height="50"/>
                                                 <color key="backgroundColor" name="second-color"/>
                                                 <constraints>
@@ -3130,6 +3130,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tfX-uD-L2L"/>
+        <segue reference="zvl-aX-vqg"/>
     </inferredMetricsTieBreakers>
 </document>
