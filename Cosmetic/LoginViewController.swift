@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
     @IBOutlet weak var usernameIcon: UIImageView!
     @IBOutlet weak var passwordIcon: UIImageView!
     @IBOutlet weak var incorrectLabel: UILabel!
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +39,18 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
     }
     
     private func signinProcess(){
-        self.showSpinner(onView: self.view)
+        loadingActivity.isHidden = false
+        signinButton.isEnabled = false
+        signinButton.backgroundColor = UIColor.systemGray
         Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!){ [weak self] authResult, error in
             guard self != nil else { return }
             if let error = error{
                 print("SIGNIN ERROR = \(error)")
                 self?.incorrectLabel.isHidden = false
                 self?.incorrectLabel.text = error.localizedDescription
-                self?.removeSpinner()
+                self?.loadingActivity.isHidden = true
+                self?.signinButton.isEnabled = true
+                self?.signinButton.backgroundColor = UIColor.init(named: "main-font-color")
                 return
             }
             print("LOGGEDIN!")
@@ -64,7 +69,6 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
         UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
         UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
         UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
-        self.removeSpinner()
         self.navigationController?.popToRootViewController(animated: true)
     }
     

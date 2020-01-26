@@ -10,6 +10,7 @@ import UIKit
 
 class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate {
     
+    @IBOutlet var deskView: UIView!
     @IBOutlet weak var noCosmetic: UILabel!
     @IBOutlet weak var welcomeNameLabel: UILabel!
     @IBOutlet weak var allNumber: UILabel!
@@ -25,7 +26,6 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deskCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cartitem", for: indexPath) as! DeskCollectionViewCell
         let item = deskList[indexPath.row]
-        
         deskCell.delegate = self
         deskCell.productId = item.product_id
         deskCell.userId = userId
@@ -100,18 +100,37 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         self.viewWillLayoutSubviews()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        showSpinner(onView: self.view)
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
-        
-        downloadCosmeticList()
-        
-        welcomeNameLabel.text = "Hi, " + UserDefaults.standard.string(forKey: ConstantUser.nickName)!
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Cosmetic Desk"
         allNumber.layer.masksToBounds = false
         allNumber.layer.cornerRadius = allNumber.frame.height / 2
         allNumber.clipsToBounds = true
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        
+        if userId != nil{
+            showSpinner(onView: self.view)
+            downloadCosmeticList()
+            welcomeNameLabel.text = "Hi, " + UserDefaults.standard.string(forKey: ConstantUser.nickName)!
+        }else{
+            deskList.removeAll()
+            deskCollection.reloadData()
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let nologinVc = (self.storyboard?.instantiateViewController(identifier: "nologin")) as! NoLoginViewController
+        let viewControllers: [UIViewController] = self.children
+        if userId != nil{
+            for vcs in viewControllers{
+                vcs.willMove(toParent: nil)
+                vcs.view.removeFromSuperview()
+                vcs.removeFromParent()
+            }
+        }else{
+            add(nologinVc)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -49,6 +49,12 @@ extension UIViewController{
     @objc func dimissKeyboard(){
         view.endEditing(true)
     }
+    
+    func add(_ child: UIViewController){
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
 }
 
 
