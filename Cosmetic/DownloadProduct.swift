@@ -24,6 +24,10 @@ import UIKit
         postParameter = "categories_id=\(id)"
         downloadItem()
     }
+    func searchByKeyword(_ keyword: String){
+        postParameter = "keyword=\(keyword)"
+        downloadItem()
+    }
     
     func downloadByBrands(brandId id: String){
         postParameter = "brand_id=\(id)"
