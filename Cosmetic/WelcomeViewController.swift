@@ -8,9 +8,16 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, CosmeticDetailDelegate {
+    
+    func dismissFromCosmeticDetail() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
 
+    @IBOutlet weak var pickYouCollectionView: UICollectionView!
     @IBOutlet weak var startSearchTextfield: UITextField!
+    private var pickForYouProduct: [ProductModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         let cammerabtn_image = UIImage(named: "cameraicon")
@@ -19,9 +26,16 @@ class WelcomeViewController: UIViewController {
         //Camera Button
         cammerabtn.image = cammerabtn_image
         tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
-        startSearchTextfield.setUnderLine()
         self.hideKeyboardWhenTappedAround()
-        // Do any additional setup after loading the view.
+        
+        startSearchTextfield.delegate = self
+        startSearchTextfield.layer.cornerRadius = 6
+        
+        pickYouCollectionView.delegate = self
+        pickYouCollectionView.dataSource = self
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadLimitItem(limitNum: 10)
     }
     
     @objc func openCamera(_ :UIBarButtonItem){
@@ -33,15 +47,43 @@ class WelcomeViewController: UIViewController {
         self.tabBarController?.navigationItem.title = "Coco"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "Seemoredetail"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = pickYouCollectionView.indexPathsForSelectedItems?.first?.item
+            destination?.delegate = self
+            let item = pickForYouProduct[itemIndex!]
+            destination?.productId = item.product_id
+        }
     }
-    */
 
+}
+
+extension WelcomeViewController: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+}
+
+extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
+    func itemDownloaded(item: NSMutableArray) {
+        pickForYouProduct = item as! [ProductModel]
+        pickYouCollectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pickForYouProduct.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickcell", for: indexPath) as! PickforyouCollectionViewCell
+        let item = pickForYouProduct[indexPath.row]
+        pickCell.productName.text = item.product_name
+        pickCell.productBrand.text = item.brand_name
+        pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+        return pickCell
+    }
+    
+    
 }
