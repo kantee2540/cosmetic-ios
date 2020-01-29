@@ -53,6 +53,7 @@
 		B3AF0FDD227C203600C37F63 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FC8227C06C000C37F63 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B3AF0FDE227C203C00C37F63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCC227C06D100C37F63 /* Accelerate.framework */; };
 		B3B058C523E1E7E500D4786C /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B058C423E1E7E500D4786C /* CustomTextfield.swift */; };
+		B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */; };
 		B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */; };
 		B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */; };
 		B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */; };
@@ -150,6 +151,7 @@
 		B3AF0FCE227C070C00C37F63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cosmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3B058C423E1E7E500D4786C /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
+		B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifySearchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicViewController.swift; sourceTree = "<group>"; };
 		B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */,
 				B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */,
 				B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */,
+				B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
+				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,
 			);

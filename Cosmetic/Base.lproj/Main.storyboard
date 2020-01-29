@@ -2978,7 +2978,7 @@
                                     <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="cHm-Ob-iaC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoItem" id="d5t-Q0-1XP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoItem" id="d5t-Q0-1XP" customClass="NotifySearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="324" width="375" height="147.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d5t-Q0-1XP" id="5ij-zl-S5o">
@@ -2999,7 +2999,7 @@
                                             <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please try search another word to search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-5K-5lY">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Please try search another word to search" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-5K-5lY">
                                             <rect key="frame" x="16" y="107.5" width="343" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3019,6 +3019,11 @@
                                         <constraint firstItem="Wjb-5K-5lY" firstAttribute="leading" secondItem="5ij-zl-S5o" secondAttribute="leadingMargin" id="zhu-ld-J7y"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="icon" destination="bRe-eT-z0G" id="Ekv-n1-RLe"/>
+                                    <outlet property="notifyDescription" destination="Wjb-5K-5lY" id="Pyk-qF-nFD"/>
+                                    <outlet property="title" destination="hhz-m4-tSC" id="waa-hL-KtN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

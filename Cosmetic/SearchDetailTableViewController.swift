@@ -23,6 +23,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     private var searching :Bool = false
     private var searchingCategories :Bool = false
     private var searchingBrand: Bool = false
+    private var first: Bool = true
     
     private var downloadProducts = DownloadProduct()
     
@@ -148,7 +149,13 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             if allProduct.count > 0{
                 clearButton.isEnabled = true
                 return allProduct.count
-            }else{
+            
+            }else if !first{
+                clearButton.isEnabled = true
+                return 1
+            }
+            
+            else{
                 clearButton.isEnabled = false
                 return 1
             }
@@ -170,7 +177,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 return searchingCell!
                 
             }else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
             
@@ -190,7 +199,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 
             }
             else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
         }
@@ -208,7 +219,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                            
             }
             else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
         }
@@ -224,8 +237,20 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
                 return cell!
             }else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
-                return searchingCell
+                
+                if first{
+                    let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                    searchingCell.title.text = "Search Cosmetic"
+                    searchingCell.notifyDescription.text = "Type your keyword or choose the brand or category of cosmetics"
+                    return searchingCell
+                    
+                }else{
+                    let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                    searchingCell.title.text = "Product Not Found"
+                    searchingCell.notifyDescription.text = "Please try search another word to search"
+                    return searchingCell
+                }
+                
             }
         }
         
@@ -238,6 +263,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     //MARK: - Tap clear
     @IBAction func tapClear(_ sender: Any) {
         clearSearchCategory()
+        first = true
         allProduct.removeAll()
         searchTable.reloadData()
     }
@@ -337,6 +363,7 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Selected Cell
+        first = false
         clearButton.isEnabled = true
         let cell = collectionView.cellForItem(at: indexPath) as! CategoriesDetailCollectionViewCell
         cell.backgroundColor = UIColor.init(named: "main-font-color")
@@ -441,6 +468,7 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !searchingBrand || !searchingCategories{
             downloadProducts.searchByKeyword(searchBar.text?.lowercased() ?? "")
+            first = false
             searchBar.resignFirstResponder()
             
         }else{
