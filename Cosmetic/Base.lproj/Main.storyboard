@@ -199,7 +199,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Hv2-Fc-Ti2"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rRY-uN-pUO" firstAttribute="bottom" secondItem="1mW-gu-09U" secondAttribute="bottom" id="7HQ-lD-OU3"/>
                             <constraint firstAttribute="trailing" secondItem="rRY-uN-pUO" secondAttribute="trailing" id="EGb-YL-wG2"/>
@@ -3379,6 +3379,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="alj-iG-gXm"/>
     </inferredMetricsTieBreakers>
 </document>

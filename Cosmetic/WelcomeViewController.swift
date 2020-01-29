@@ -79,6 +79,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickcell", for: indexPath) as! PickforyouCollectionViewCell
         let item = pickForYouProduct[indexPath.row]
+        pickCell.layer.cornerRadius = 5
         pickCell.productName.text = item.product_name
         pickCell.productBrand.text = item.brand_name
         pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
