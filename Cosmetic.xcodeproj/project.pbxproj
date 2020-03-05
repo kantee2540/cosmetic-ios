@@ -42,6 +42,7 @@
 		B386F55623C637DE005F58C9 /* CosmeticDeskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */; };
 		B38E22F723DDE40E002A19FD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */; };
 		B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */; };
+		B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */; };
 		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
 		B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */; };
 		B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */; };
@@ -139,6 +140,7 @@
 		B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDeskModel.swift; sourceTree = "<group>"; };
 		B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCollectionViewCell.swift; sourceTree = "<group>"; };
 		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
 		B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
 		B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				B3BE28A1239177BC00AE22C6 /* TopTopic */,
 				B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */,
 				B348223623E1D88F008BD770 /* PickforyouCollectionViewCell.swift */,
+				B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 		B3C2F9EB2245002C0054EE16 /* Cosmetic */ = {
 			isa = PBXGroup;
 			children = (
+				B386F55023C62AC3005F58C9 /* CosmeticDesk */,
 				B3D326D023B3B498006404B2 /* Account */,
 				B3D326CF23B3B45A006404B2 /* Cosmetic.entitlements */,
 				B371985223898959001DB6A7 /* Library */,
@@ -419,7 +423,6 @@
 		B3D326D023B3B498006404B2 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				B386F55023C62AC3005F58C9 /* CosmeticDesk */,
 				B3EBF30C23BA69700041D69A /* Notification */,
 				B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */,
 				B3D326D323B3BB59006404B2 /* LoginViewController.swift */,
@@ -774,6 +777,7 @@
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
 				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
+				B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
