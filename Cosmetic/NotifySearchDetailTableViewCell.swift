@@ -1,16 +1,18 @@
 //
-//  ImageTableViewCell.swift
+//  NotifySearchDetailTableViewCell.swift
 //  Cosmetic
 //
-//  Created by Omp on 30/11/2562 BE.
-//  Copyright © 2562 Omp. All rights reserved.
+//  Created by Omp on 30/1/2563 BE.
+//  Copyright © 2563 Omp. All rights reserved.
 //
 
 import UIKit
 
-class ImageTableViewCell: UITableViewCell {
+class NotifySearchDetailTableViewCell: UITableViewCell {
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var notifyDescription: UILabel!
     
-    @IBOutlet weak var productImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

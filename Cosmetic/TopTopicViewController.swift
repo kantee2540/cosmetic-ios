@@ -8,17 +8,24 @@
 
 import UIKit
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol {
-    func itemDownloaded(item: NSMutableArray) {
-        topicItem = item as! [PackageModel]
-        mainTable.delegate = self
-        mainTable.dataSource = self
-        settingtitleLabel()
-        coverImage.downloadImage(from: URL(string: topicImg!)!)
-        mainTable.reloadData()
-        removeSpinner()
+protocol TopTopicDelegate {
+    func dismissFromTopTopic()
+}
+
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate {
+    func dismissFromCosmeticDetail() {
+        dismiss(animated: true, completion: nil)
+        self.delegate?.dismissFromTopTopic()
     }
     
+    func itemDownloaded(item: NSMutableArray) {
+        topicItem = item as! [PackageModel]
+        settingtitleLabel()
+        coverImage.downloadImage(from: URL(string: topicImg!)!)
+        removeSpinner()
+        productTable.reloadData()
+    }
+    var delegate: TopTopicDelegate?
     var topicId: String!
     var topicName: String!
     var topicDescription: String!
@@ -27,54 +34,65 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var mainTable: UITableView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var productTableHeight: NSLayoutConstraint!
+    @IBOutlet weak var topicScroll: UIScrollView!
+    
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+        self.productTableHeight.constant = self.productTable.contentSize.height
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0{
-            return 1
-        }else{
-            return topicItem.count
-        }
+        return topicItem.count
         
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let itemCell = tableView.dequeueReusableCell(withIdentifier: "topicitem") as! TopTopicItemTableViewCell
+        let item = topicItem[indexPath.row]
+        itemCell.itemProduct.text = item.product_name
+        itemCell.itemDescription.text = item.product_description
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+        itemCell.itemPrice.text = "Price: \(formattedPrice ?? "0") Baht"
+        itemCell.itemImage.downloadImage(from: URL(string: item.product_img!)!)
+            
+        return itemCell
         
-        if indexPath.section == 0{
-            let contentCell = tableView.dequeueReusableCell(withIdentifier: "Content")!
-            contentCell.selectionStyle = .none
-            contentCell.textLabel?.text = topicDescription
-            return contentCell
-            
-        }
-        else{
-            let itemCell = tableView.dequeueReusableCell(withIdentifier: "productTopic") as! TopTopicItemTableViewCell
-            let item = topicItem[indexPath.row]
-            itemCell.itemProduct.text = item.product_name
-            itemCell.itemDescription.text = item.product_description
-            let numberFormat = NumberFormatter()
-            numberFormat.numberStyle = .decimal
-            let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
-            itemCell.itemPrice.text = "Price: \(formattedPrice ?? "0") Baht"
-            itemCell.itemImage.downloadImage(from: URL(string: item.product_img!)!)
-            
-            return itemCell
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 178{
+            doneButton.tintColor = UIColor.label
+        }else{
+            doneButton.tintColor = UIColor.white
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        productTable.delegate = self
+        productTable.dataSource = self
         showSpinner(onView: self.view)
+        topicScroll.delegate = self
         downloadPackage()
     }
     
@@ -90,29 +108,34 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         titleLabel.layer.shadowOpacity = 0.5
         titleLabel.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         titleLabel.layer.shadowRadius = 3
+        descriptionLabel.text = topicDescription
+        shareButton.roundedCorner()
+        saveButton.roundedCorner()
+        
+        
     }
     
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func tapShare(_ sender: Any) {
+        let titleActivity: String = topicName
+        let description: String = topicDescription
+        let image: UIImage = coverImage.image!
+        let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = sender as? UIView
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
             let destination = segue.destination as? CosmeticDetailViewController
-            let itemIndex = mainTable.indexPathForSelectedRow?.row
+            let itemIndex = productTable.indexPathForSelectedRow?.row
             let item = topicItem[itemIndex!]
+            destination?.delegate = self
             destination?.productId = item.product_id
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

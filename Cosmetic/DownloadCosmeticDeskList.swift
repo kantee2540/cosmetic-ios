@@ -1,51 +1,37 @@
 //
-//  DownloadProduct.swift
+//  DownloadCosmeticDeskList.swift
 //  Cosmetic
 //
-//  Created by Omp on 1/5/2562 BE.
-//  Copyright © 2562 Omp. All rights reserved.
+//  Created by Omp on 8/1/2563 BE.
+//  Copyright © 2563 Omp. All rights reserved.
 //
 
 import UIKit
 
-@objc public protocol DownloadProductProtocol: class {
-    func itemDownloaded(item: NSMutableArray)
+protocol DownloadCosmeticDeskListDelegate {
+    func itemCosmeticDeskDownloaded(item: NSMutableArray)
 }
 
-@objc class DownloadProduct: NSObject {
-    
-    @objc weak var delegate: DownloadProductProtocol?
+class DownloadCosmeticDeskList: NSObject {
+
+    var delegate: DownloadCosmeticDeskListDelegate?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
     var postParameter: String = ""
     
-    func downloadByCategories(categoriesId id: String){
-        postParameter = "categories_id=\(id)"
-        downloadItem()
-    }
-    func searchByKeyword(_ keyword: String){
-        postParameter = "keyword=\(keyword)"
+    func getCosmeticDeskByUserid(userId: String){
+        postParameter = "user_id=\(userId)"
         downloadItem()
     }
     
-    func downloadByBrands(brandId id: String){
-        postParameter = "brand_id=\(id)"
+    func checkCosmeticIsSaved(userId: String, productId: String){
+        postParameter = "user_id=\(userId)&product_id=\(productId)"
         downloadItem()
     }
     
-    func downloadSelectItem(productId id: String){
-        postParameter = "productId=\(id)"
-        downloadItem()
-    }
-    
-    func downloadLimitItem(limitNum: Int){
-        postParameter = "limit=\(limitNum)"
-        downloadItem()
-    }
-    
-    @objc func downloadItem(){
-        DB_URL = getAddress.getProductURL()
+    private func downloadItem(){
+        DB_URL = getAddress.getCosmeticDeskList()
         
         //Get data from database
         var request = URLRequest(url: URL(string: DB_URL)!)
@@ -70,7 +56,7 @@ import UIKit
         task.resume()
     }
     
-    @objc func parseJSON(_ data:Data){
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{
@@ -78,47 +64,43 @@ import UIKit
         }catch let error as NSError{
             print(error)
         }
-        
 
         var jsonElement = NSDictionary()
         let products = NSMutableArray()
         
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
-            let product = ProductModel()
+            let product = CosmeticDeskModel()
             
             if  let product_id = jsonElement[ConstantProduct.productId] as? String,
                 let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
                 let product_price = jsonElement[ConstantProduct.productPrice] as? String,
                 let categories_id = jsonElement[ConstantProduct.categoriesId] as? String,
-                let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
-                let categories_type = jsonElement[ConstantProduct.categoriesType] as? String,
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,
                 let product_img = jsonElement[ConstantProduct.productImg] as? String,
-                let ingredient = jsonElement[ConstantProduct.ingredient] as? String
+                let ingredient = jsonElement[ConstantProduct.ingredient] as? String,
+                let user_id = jsonElement[ConstantUser.userId] as? String,
+                let desk_id = jsonElement[ConstantProduct.deskId] as? String
             {
                 product.product_id = product_id
                 product.product_name = product_name
                 product.product_description = product_description
                 product.product_price = Int(product_price)
                 product.categories_id = categories_id
-                product.categories_name = categories_name
-                product.categories_type = categories_type
                 product.brand_name = brand_name
                 product.product_img = product_img
                 product.ingredient = ingredient
-                
+                product.user_id = user_id
+                product.desk_id = desk_id
             }
             
             products.add(product)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.itemDownloaded(item: products)
+            self.delegate?.itemCosmeticDeskDownloaded(item: products)
         })
         
     }
 }
-
-

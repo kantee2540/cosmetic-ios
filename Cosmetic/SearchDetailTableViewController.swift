@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol, DownloadBrandProtocol {
+class SearchDetailTableViewController: UITableViewController, DownloadCategoriesProtocol, DownloadBrandProtocol, CosmeticDetailDelegate {
+    func dismissFromCosmeticDetail() {
+        let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
+        self.navigationController?.pushViewController(accountVc!, animated: true)
+    }
 
     private var allProduct: [ProductModel] = []
     private var productByCategories: [ProductModel] = []
@@ -19,6 +23,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     private var searching :Bool = false
     private var searchingCategories :Bool = false
     private var searchingBrand: Bool = false
+    private var first: Bool = true
     
     private var downloadProducts = DownloadProduct()
     
@@ -55,12 +60,11 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     
     //MARK: - Download Products list
     private func downloadProduct(){
-        showSpinner(onView: self.view)
         searchTable.delegate = self
         searchTable.dataSource = self
-        downloadProducts = DownloadProduct()
+//        downloadProducts = DownloadProduct()
         downloadProducts.delegate = self
-        downloadProducts.downloadItem()
+//        downloadProducts.downloadItem()
     }
     
     private func downloadBrand(){
@@ -101,6 +105,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 item = allProduct[itemIndex!]
             }
             let destination = segue.destination as? CosmeticDetailViewController
+            destination?.delegate = self
             destination?.productId = item.product_id
         }
     }
@@ -140,8 +145,20 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         }
             
         else{
-            clearButton.isEnabled = false
-            return allProduct.count
+            
+            if allProduct.count > 0{
+                clearButton.isEnabled = true
+                return allProduct.count
+            
+            }else if !first{
+                clearButton.isEnabled = true
+                return 1
+            }
+            
+            else{
+                clearButton.isEnabled = false
+                return 1
+            }
         }
         
     }
@@ -160,7 +177,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 return searchingCell!
                 
             }else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
             
@@ -180,7 +199,9 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                 
             }
             else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
         }
@@ -198,21 +219,39 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
                            
             }
             else{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath)
+                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                searchingCell.title.text = "Product Not Found"
+                searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
         }
         
         //MARK: - Nothing search
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
-            let item = allProduct[indexPath.row]
-            
-            cell?.productName.text = item.product_name
-            cell?.productDescription.text = item.product_description
-            cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
-            
-            return cell!
+            if allProduct.count > 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
+                let item = allProduct[indexPath.row]
+                
+                cell?.productName.text = item.product_name
+                cell?.productDescription.text = item.product_description
+                cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+                return cell!
+            }else{
+                
+                if first{
+                    let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                    searchingCell.title.text = "Search Cosmetic"
+                    searchingCell.notifyDescription.text = "Type your keyword or choose the brand or category of cosmetics"
+                    return searchingCell
+                    
+                }else{
+                    let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                    searchingCell.title.text = "Product Not Found"
+                    searchingCell.notifyDescription.text = "Please try search another word to search"
+                    return searchingCell
+                }
+                
+            }
         }
         
     }
@@ -224,6 +263,8 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     //MARK: - Tap clear
     @IBAction func tapClear(_ sender: Any) {
         clearSearchCategory()
+        first = true
+        allProduct.removeAll()
         searchTable.reloadData()
     }
     
@@ -248,6 +289,8 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
 
 //MARK: - Category collection
 extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
+    
+    //MARK: - Search Finished
     func itemDownloaded(item: NSMutableArray) {
         if searchingCategories{
             productByCategories = item as! [ProductModel]
@@ -260,7 +303,6 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
             allProduct = item as! [ProductModel]
         }
         searchTable.reloadData()
-        removeSpinner()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -321,6 +363,7 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Selected Cell
+        first = false
         clearButton.isEnabled = true
         let cell = collectionView.cellForItem(at: indexPath) as! CategoriesDetailCollectionViewCell
         cell.backgroundColor = UIColor.init(named: "main-font-color")
@@ -334,7 +377,6 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
             
         }else{
             selectedCollectionCell = indexPath
-            showSpinner(onView: self.view)
             
             searching = false
             
@@ -412,11 +454,9 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
         }
         
         else{
-            searchedProduct = allProduct.filter(){
-                return ($0.product_name?.lowercased() ?? "").contains(searchText.lowercased())
-            }
+            
         }
-        if(searchText.count != 0){
+        if(searchText.count != 0 && (searchingCategories || searchingBrand)){
             searching = true
         }else{
             searching = false
@@ -426,6 +466,13 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        if !searchingBrand || !searchingCategories{
+            downloadProducts.searchByKeyword(searchBar.text?.lowercased() ?? "")
+            first = false
+            searchBar.resignFirstResponder()
+            
+        }else{
+            searchBar.resignFirstResponder()
+        }
     }
 }
