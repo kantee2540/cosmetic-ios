@@ -28,12 +28,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     private var recommendedSet: [TopicModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cammerabtn_image = UIImage(named: "cameraicon")
-        let cammerabtn = UIBarButtonItem(title: "pp", style: .done, target: self, action: #selector(openCamera(_:)))
         
-        //Camera Button
-        cammerabtn.image = cammerabtn_image
-        tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
         self.hideKeyboardWhenTappedAround()
         
         startSearchTextfield.delegate = self
@@ -61,6 +56,16 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Coco"
+        tabBarController?.navigationItem.leftBarButtonItem = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let cammerabtn_image = UIImage(named: "cameraicon")
+        let cammerabtn = UIBarButtonItem(title: "pp", style: .done, target: self, action: #selector(openCamera(_:)))
+        
+        //Camera Button
+        cammerabtn.image = cammerabtn_image
+        tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
