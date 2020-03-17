@@ -10,67 +10,77 @@ import UIKit
 
 class webAddress {
     
-    //Change server must be change this string
-    //var prefixString: String = "http://192.168.1.175:8080/webService/" //FOR internal Test
-    var prefixString: String = "https://cococosmetic.000webhostapp.com/"
+    func getInfoDictionary() -> [String: AnyObject]? {
+        guard let infoDictPath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+            return nil
+        }
+        return NSDictionary(contentsOfFile: infoDictPath) as? [String : AnyObject]
+    }
+    
+    func getrootURL() -> String{
+        guard let rootURLString = getInfoDictionary()?["Server_URL"] else {
+            return "!"
+        }
+        return rootURLString as! String
+    }
     
     func getProductURL() -> String{
-        let webFile = prefixString + "getProduct.php"
+        let webFile = getrootURL() + "getProduct.php"
         return webFile
     }
     func getProductOnSearchURL() -> String {
-        let webFile = prefixString + "getProductOnSearch.php"
+        let webFile = getrootURL() + "getProductOnSearch.php"
         return webFile
     }
     
     func getCategoriesURL() -> String {
-        let webFile = prefixString + "getCategories.php"
+        let webFile = getrootURL() + "getCategories.php"
         return webFile
     }
     
     func getBrandURL() -> String{
-        let webFile = prefixString + "getBrand.php"
+        let webFile = getrootURL() + "getBrand.php"
         return webFile
         
     }
     
     func getPackageURL() -> String{
-        let webFile = prefixString + "getPackage.php"
+        let webFile = getrootURL() + "getPackage.php"
         return webFile
     }
     
     func getTopicURL() -> String{
-        let webFile = prefixString + "getTopic.php"
+        let webFile = getrootURL() + "getTopic.php"
         return webFile
     }
     
     func getCollectUserdata() -> String{
-        let webFile = prefixString + "collectUserData.php"
+        let webFile = getrootURL() + "collectUserData.php"
         return webFile
     }
     
     func getUserURL() -> String{
-        let webFile = prefixString + "getUser.php"
+        let webFile = getrootURL() + "getUser.php"
         return webFile
     }
     
     func getNotificationURL() -> String{
-        let webFile = prefixString + "getNotification.php"
+        let webFile = getrootURL() + "getNotification.php"
         return webFile
     }
     
     func getInsertItemToDesk() -> String{
-        let webFile = prefixString + "insertCosmeticDesk.php"
+        let webFile = getrootURL() + "insertCosmeticDesk.php"
         return webFile
     }
     
     func getDeleteItemFromDesk() -> String{
-        let webFile = prefixString + "deleteCosmeticDesk.php"
+        let webFile = getrootURL() + "deleteCosmeticDesk.php"
         return webFile
     }
     
     func getCosmeticDeskList() -> String{
-        let webFile = prefixString + "getCosmeticDeskList.php"
+        let webFile = getrootURL() + "getCosmeticDeskList.php"
         return webFile
     }
 }

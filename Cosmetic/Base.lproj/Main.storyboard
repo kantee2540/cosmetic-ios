@@ -30,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pV-Q2-PBJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-815" y="0.0"/>
+            <point key="canvasLocation" x="-1367" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -53,7 +53,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-276" y="0.0"/>
         </scene>
         <!--Home-->
         <scene sceneID="TlZ-xi-sVX">
@@ -324,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTJ-mW-hiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="98.400000000000006" y="-783.05847076461771"/>
+            <point key="canvasLocation" x="-276" y="-867"/>
         </scene>
         <!--Home-->
         <scene sceneID="x1G-Mf-Roh">
@@ -967,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Car-WQ-cDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="-517"/>
+            <point key="canvasLocation" x="1865" y="-360"/>
         </scene>
         <!--Package-->
         <scene sceneID="51d-3W-5SY">
@@ -1341,7 +1341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMc-Uh-0oE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1366" y="885"/>
+            <point key="canvasLocation" x="894" y="-360"/>
         </scene>
         <!--Me-->
         <scene sceneID="2S7-2Z-JyX">
@@ -1462,6 +1462,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YrC-VE-d7U" kind="show" id="aAe-2W-7IP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="I46-5V-rg7" imageView="LKX-5c-4eG" rowHeight="50" style="IBUITableViewCellStyleDefault" id="S4e-LP-ngt">
                                         <rect key="frame" x="0.0" y="310" width="375" height="50"/>
@@ -1605,9 +1608,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-1Q-xmn">
-                                                    <rect key="frame" x="147.5" y="11" width="80" height="81"/>
-                                                    <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-1Q-xmn">
+                                                    <rect key="frame" x="147.5" y="11.5" width="80" height="80"/>
+                                                    <color key="tintColor" name="main-font-color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="81" id="QNc-ko-d0J"/>
                                                         <constraint firstAttribute="width" constant="80" id="aUq-rA-8EK"/>
@@ -2925,7 +2928,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
             </objects>
-            <point key="canvasLocation" x="895" y="242"/>
+            <point key="canvasLocation" x="894" y="378"/>
         </scene>
         <!--Search Detail Table View Controller-->
         <scene sceneID="7UK-jZ-A55">
@@ -3146,7 +3149,31 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-dV-zhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="339"/>
+            <point key="canvasLocation" x="1863" y="377"/>
+        </scene>
+        <!--Write topic-->
+        <scene sceneID="mtj-6F-xW1">
+            <objects>
+                <viewController id="YrC-VE-d7U" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4jF-St-GOF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-p7-d9K">
+                                <rect key="frame" x="16" y="63" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="g6u-A2-1wy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Write topic" id="8dL-gA-NAM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NoI-3b-odP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2892" y="369.26536731634184"/>
         </scene>
         <!--Capture your product-->
         <scene sceneID="3mA-Wo-97c">
@@ -3437,7 +3464,6 @@
         <image name="ant.fill" catalog="system" width="52" height="64"/>
         <image name="bag.fill" catalog="system" width="64" height="64"/>
         <image name="bell.fill" catalog="system" width="64" height="62"/>
-        <image name="bg" width="500" height="351"/>
         <image name="bg4" width="1240.5" height="1754"/>
         <image name="bookmark" catalog="system" width="56" height="64"/>
         <image name="bookmark.fill" catalog="system" width="56" height="64"/>
@@ -3455,6 +3481,7 @@
         <image name="packageImage" width="400" height="400"/>
         <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="64" height="60"/>
+        <image name="person.circle" catalog="system" width="64" height="60"/>
         <image name="person.circle.fill" catalog="system" width="64" height="60"/>
         <image name="person.crop.square.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
@@ -3482,7 +3509,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tfX-uD-L2L"/>
-        <segue reference="BuN-G5-qJ3"/>
+        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="c3A-7h-gg6"/>
     </inferredMetricsTieBreakers>
 </document>

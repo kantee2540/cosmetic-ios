@@ -1,0 +1,14 @@
+//
+//  Config.xcconfig
+//  Cosmetic
+//
+//  Created by Omp on 17/3/2563 BE.
+//  Copyright © 2563 Omp. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"
+
+SERVER_URL = https:/$()/cococosmetic.000webhostapp.com/
