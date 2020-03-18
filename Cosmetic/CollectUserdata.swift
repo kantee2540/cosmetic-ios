@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol CollectUserdataDelegate {
     func insertDataSuccess()
@@ -18,61 +19,53 @@ class CollectUserdata: NSObject {
     var delegate: CollectUserdataDelegate?
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: Any] = [:]
     
     func collectUserdata(firstname: String, lastName: String, nickname: String, email: String, gender: String, birthday: String, uid: String){
         print("Insert")
-        postParameter = "first_name=\(firstname)&" +
-        "last_name=\(lastName)&" +
-        "nick_name=\(nickname)&" +
-        "email=\(email)&" +
-        "gender=\(gender)&" +
-        "birthday=\(birthday)&" +
-        "uid=\(uid)&" +
-        "option=0"
-        print(postParameter)
+        postParameter = ["first_name" : firstname,
+                         "last_name" : lastName,
+                         "nick_name" : nickname,
+                         "email" : email,
+                         "gender" : gender,
+                         "birthday" : birthday,
+                         "uid" : uid,
+                         "option" : 0]
         insertData()
     }
     
     func updateUserdata(firstname: String, lastName: String, nickname: String, email: String, gender: String, birthday: String, uid: String){
         print("Update")
-        postParameter = "first_name=\(firstname)&" +
-        "last_name=\(lastName)&" +
-        "nick_name=\(nickname)&" +
-        "email=\(email)&" +
-        "gender=\(gender)&" +
-        "birthday=\(birthday)&" +
-        "uid=\(uid)&" +
-        "option=1"
+        postParameter = ["first_name" : firstname,
+                         "last_name" : lastName,
+                         "nick_name" : nickname,
+                         "email" : email,
+                         "gender" : gender,
+                         "birthday" : birthday,
+                         "uid" : uid,
+                         "option" : 1]
         insertData()
     }
     
     func insertData(){
         DB_URL = getAddress.getCollectUserdata()
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
+        manager.post(DB_URL, parameters: postParameter, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            print("Inserted Product")
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.delegate?.insertDataSuccess()
+            })
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.delegate?.insertDataFailed()
+            })
             
-            if error != nil{
-                print("Failed to Download data")
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.insertDataFailed()
-                })
-                
-            }else{
-                print("Inserted user data")
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.insertDataSuccess()
-                })
-            }
-            
-        }
-        task.resume()
+        })
     }
 }

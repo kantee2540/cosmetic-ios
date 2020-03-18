@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 public protocol DownloadPackageProtocol: class {
     func itemDownloaded(item: NSMutableArray)
@@ -28,27 +29,16 @@ class DownloadPackage: NSObject {
     func downloadItem(){
         DB_URL = getAddress.getPackageURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Package")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        manager.post(DB_URL, parameters: nil, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
     }
     
     func parseJSON(_ data:Data){

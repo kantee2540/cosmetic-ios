@@ -374,6 +374,9 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         
         if selectedCollectionCell == indexPath{
             clearSearchCategory()
+            first = true
+            allProduct.removeAll()
+            searchTable.reloadData()
             
         }else{
             selectedCollectionCell = indexPath

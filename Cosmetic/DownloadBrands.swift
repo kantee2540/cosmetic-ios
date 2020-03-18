@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 @objc protocol DownloadBrandProtocol: class {
     func itemDownloadedBrands(item: NSMutableArray)
@@ -21,23 +22,16 @@ import UIKit
     @objc func downloadItem(){
         DB_URL = getAddress.getBrandURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Brands")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        manager.post(DB_URL, parameters: nil, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
     }
     
     @objc func parseJSON(_ data:Data){

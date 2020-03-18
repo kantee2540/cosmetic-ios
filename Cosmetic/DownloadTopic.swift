@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 public protocol DownloadTopicProtocol: class{
     func topicDownloaded(item: NSMutableArray)
@@ -17,42 +18,32 @@ class DownloadTopic: NSObject {
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: Any] = [:]
     
     func downloadLimitTopic(limit lim: Int){
-        postParameter = "topic_limit=\(lim)"
+        postParameter["topic_limit"] = lim
         downloadItem()
     }
     
     func getTopicId(code topicCode: String){
-        postParameter = "topic_code=\(topicCode)"
+        postParameter["topic_code"] = topicCode
         downloadItem()
     }
     
     func downloadItem(){
         DB_URL = getAddress.getTopicURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
+        manager.post(DB_URL, parameters: postParameter, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
         
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Package")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
     }
     
     @objc func parseJSON(_ data:Data){

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 @objc public protocol DownloadProductProtocol: class {
     func itemDownloaded(item: NSMutableArray)
@@ -18,56 +19,45 @@ import UIKit
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: Any] = [:]
     
     func downloadByCategories(categoriesId id: String){
-        postParameter = "categories_id=\(id)"
+        postParameter["categories_id"] = id
         downloadItem()
     }
     func searchByKeyword(_ keyword: String){
-        postParameter = "keyword=\(keyword)"
+        postParameter["keyword"] = keyword
         downloadItem()
     }
     
     func downloadByBrands(brandId id: String){
-        postParameter = "brand_id=\(id)"
+        postParameter["brand_id"] = id
         downloadItem()
     }
     
     func downloadSelectItem(productId id: String){
-        postParameter = "productId=\(id)"
+        postParameter["productId"] = id
         downloadItem()
     }
     
     func downloadLimitItem(limitNum: Int){
-        postParameter = "limit=\(limitNum)"
+        postParameter["limit"] = limitNum
         downloadItem()
     }
     
     @objc func downloadItem(){
         DB_URL = getAddress.getProductURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Product")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        manager.post(DB_URL, parameters: postParameter, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
     }
     
     @objc func parseJSON(_ data:Data){
@@ -78,7 +68,6 @@ import UIKit
         }catch let error as NSError{
             print(error)
         }
-        
 
         var jsonElement = NSDictionary()
         let products = NSMutableArray()

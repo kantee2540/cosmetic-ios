@@ -43,7 +43,6 @@
 		B38E22F723DDE40E002A19FD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */; };
 		B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */; };
 		B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */; };
-		B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */; };
 		B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */; };
 		B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */; };
 		B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */; };
@@ -61,7 +60,6 @@
 		B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */; };
 		B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7323B8A24A00BC0035 /* UserModel.swift */; };
 		B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */; };
-		B3C0500E2420D40A00F1536B /* WriteTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C0500D2420D40A00F1536B /* WriteTopicViewController.swift */; };
 		B3C050192420DE0100F1536B /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B3C050162420DE0100F1536B /* Release.xcconfig */; };
 		B3C0501A2420DE0100F1536B /* DebugLocal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B3C050172420DE0100F1536B /* DebugLocal.xcconfig */; };
 		B3C0501B2420DE0100F1536B /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B3C050182420DE0100F1536B /* Debug.xcconfig */; };
@@ -81,6 +79,8 @@
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
+		B3FC3AC82421051C004E098D /* WriteTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */; };
+		B3FC3ACA24210D26004E098D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC3AC924210D26004E098D /* CustomTextView.swift */; };
 		D930FC79BDBF034BE061C6FA /* Pods_Cosmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034D30E1FE172915DBC29E7D /* Pods_Cosmetic.framework */; };
 		FD715C26817A4AD9D0D46142 /* Pods_CosmeticUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A94A1D9C16D2110EEF0B94 /* Pods_CosmeticUITests.framework */; };
 /* End PBXBuildFile section */
@@ -145,7 +145,6 @@
 		B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCollectionViewCell.swift; sourceTree = "<group>"; };
-		B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProductLastest.swift; sourceTree = "<group>"; };
 		B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionViewController.swift; sourceTree = "<group>"; };
 		B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewController.swift; sourceTree = "<group>"; };
 		B3A8A86323B92AFA009AFEA3 /* NoficationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoficationTableViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectUserdata.swift; sourceTree = "<group>"; };
 		B3BFDD7323B8A24A00BC0035 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadUser.swift; sourceTree = "<group>"; };
-		B3C0500D2420D40A00F1536B /* WriteTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTopicViewController.swift; sourceTree = "<group>"; };
 		B3C050162420DE0100F1536B /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B3C050172420DE0100F1536B /* DebugLocal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugLocal.xcconfig; sourceTree = "<group>"; };
 		B3C050182420DE0100F1536B /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -191,6 +189,8 @@
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
+		B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTopicViewController.swift; sourceTree = "<group>"; };
+		B3FC3AC924210D26004E098D /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		B65FD65C685F74B208611222 /* Pods-CosmeticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD89E303650BD6330D2513EB /* Pods-Cosmetic.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debuglocal.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debuglocal.xcconfig"; sourceTree = "<group>"; };
 		EB41A8A18D5CA00313318940 /* Pods-CosmeticUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticUITests.debug.xcconfig"; path = "Target Support Files/Pods-CosmeticUITests/Pods-CosmeticUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 				B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */,
 				B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */,
 				B342F0F5228C50D600196E3B /* DownloadCategories.swift */,
-				B39F272022CF9BCA006DBA5E /* DownloadProductLastest.swift */,
 				B316840323940A96005F4D88 /* DownloadPackage.swift */,
 				B316840C23940DB3005F4D88 /* DownloadTopic.swift */,
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
@@ -318,6 +317,7 @@
 			children = (
 				B371985323898D2E001DB6A7 /* Library.swift */,
 				B3B058C423E1E7E500D4786C /* CustomTextfield.swift */,
+				B3FC3AC924210D26004E098D /* CustomTextView.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -353,7 +353,7 @@
 			children = (
 				B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */,
 				B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */,
-				B3C0500D2420D40A00F1536B /* WriteTopicViewController.swift */,
+				B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */,
 			);
 			name = TopTopic;
 			sourceTree = "<group>";
@@ -743,7 +743,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B39F272122CF9BCA006DBA5E /* DownloadProductLastest.swift in Sources */,
 				B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */,
 				B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */,
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
@@ -767,7 +766,7 @@
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,
 				B34DE405238C1132008DC9EB /* FeaturingCollectionViewCell.swift in Sources */,
 				B386F55623C637DE005F58C9 /* CosmeticDeskModel.swift in Sources */,
-				B3C0500E2420D40A00F1536B /* WriteTopicViewController.swift in Sources */,
+				B3FC3AC82421051C004E098D /* WriteTopicViewController.swift in Sources */,
 				B386F55223C62AE6005F58C9 /* CosmeticDeskViewController.swift in Sources */,
 				B38E22F723DDE40E002A19FD /* WelcomeViewController.swift in Sources */,
 				B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */,
@@ -801,6 +800,7 @@
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,
+				B3FC3ACA24210D26004E098D /* CustomTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

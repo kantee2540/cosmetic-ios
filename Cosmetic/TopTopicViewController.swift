@@ -21,7 +21,13 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     func itemDownloaded(item: NSMutableArray) {
         topicItem = item as! [PackageModel]
         settingtitleLabel()
-        coverImage.downloadImage(from: URL(string: topicImg!)!)
+        if topicImg != ""{
+            coverImage.downloadImage(from: URL(string: topicImg ?? "")!)
+        }else{
+            coverImage.image = UIImage.init(named: "bg4")
+        }
+        
+        
         removeSpinner()
         productTable.reloadData()
     }

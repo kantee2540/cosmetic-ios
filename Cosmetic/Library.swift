@@ -69,6 +69,9 @@ extension UIImageView{
         getData(from: url){
             data, response, error in
             guard let data = data, error == nil else{
+                DispatchQueue.main.async {
+                    self.image = UIImage.init(named: "bg4")
+                }
                 return
             }
             DispatchQueue.main.async {

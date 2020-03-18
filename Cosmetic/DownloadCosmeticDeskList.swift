@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol DownloadCosmeticDeskListDelegate {
     func itemCosmeticDeskDownloaded(item: NSMutableArray)
@@ -15,45 +16,34 @@ protocol DownloadCosmeticDeskListDelegate {
 class DownloadCosmeticDeskList: NSObject {
 
     var delegate: DownloadCosmeticDeskListDelegate?
-    //Change this if URL of database is changed
+    
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: String] = [:]
     
     func getCosmeticDeskByUserid(userId: String){
-        postParameter = "user_id=\(userId)"
+        postParameter["user_id"] = userId
         downloadItem()
     }
     
     func checkCosmeticIsSaved(userId: String, productId: String){
-        postParameter = "user_id=\(userId)&product_id=\(productId)"
+        postParameter = ["user_id" : userId, "product_id" : productId]
         downloadItem()
     }
     
     private func downloadItem(){
         DB_URL = getAddress.getCosmeticDeskList()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
-        
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Product")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+               
+        manager.post(DB_URL, parameters: postParameter, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
     }
     
     func parseJSON(_ data:Data){

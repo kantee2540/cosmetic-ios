@@ -32,7 +32,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.hideKeyboardWhenTappedAround()
         
         startSearchTextfield.delegate = self
-        startSearchTextfield.layer.cornerRadius = 6
         tipofday.layer.cornerRadius = 6
         
         pickYouCollectionView.delegate = self
@@ -125,14 +124,23 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             pickCell.layer.cornerRadius = 5
             pickCell.productName.text = item.product_name
             pickCell.productBrand.text = item.brand_name
-            pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+            if item.product_img != ""{
+                pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+            }else{
+                pickCell.productImage.image = UIImage.init(named: "bg4")
+            }
             return pickCell
         }
         else if collectionView == setCollectionview{
             let setCell = collectionView.dequeueReusableCell(withReuseIdentifier: "setcell", for: indexPath) as! SetCollectionViewCell
             let item = recommendedSet[indexPath.row]
             setCell.layer.cornerRadius = 5
-            setCell.setImage.downloadImage(from: URL(string: item.topic_img!)!)
+            if item.topic_img != ""{
+                setCell.setImage.downloadImage(from: URL(string: item.topic_img ?? "")!)
+            }else{
+                setCell.setImage.image = UIImage.init(named: "bg4")
+            }
+            
             setCell.setName.text = item.topic_name
             return setCell
         }else{

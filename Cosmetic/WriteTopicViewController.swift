@@ -8,11 +8,16 @@
 
 import UIKit
 
-class WriteTopicViewController: UIViewController {
-
+class WriteTopicViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var detailTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        titleTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     

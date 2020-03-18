@@ -15,13 +15,29 @@ class CustomTextfield: UITextField {
         textRect.origin.x += leftPadding
         return textRect
     }
+    
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var textRect = super.rightViewRect(forBounds: bounds)
+        textRect.origin.x -= rightPadding
+        return textRect
+    }
 
     @IBInspectable var leftPadding: CGFloat = 0
+    @IBInspectable var rightPadding: CGFloat = 0
+    @IBInspectable var cornerRadius: CGFloat = 0{
+        didSet{
+            setcornerRadius()
+        }
+    }
     
     @IBInspectable var leftImage: UIImage?{
         didSet{
             updateView()
         }
+    }
+    
+    func setcornerRadius(){
+        layer.cornerRadius = cornerRadius
     }
     
     func updateView() {

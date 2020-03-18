@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol DownloadCategoriesProtocol: class {
     func itemDownloadedCategories(item: NSMutableArray)
@@ -22,23 +23,16 @@ class DownloadCategories: NSObject {
     func downloadItem(){
         DB_URL = getAddress.getCategoriesURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded all Categories")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        manager.post(DB_URL, parameters: nil, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            self.parseJSON(responseObject as! Data)
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+        })
     }
     
     func parseJSON(_ data:Data){

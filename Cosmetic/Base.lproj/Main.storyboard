@@ -90,6 +90,9 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm1-QG-30D">
@@ -3154,26 +3157,106 @@
         <!--Write topic-->
         <scene sceneID="mtj-6F-xW1">
             <objects>
-                <viewController id="YrC-VE-d7U" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writetopic" id="YrC-VE-d7U" customClass="WriteTopicViewController" customModule="Cosmetic" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jF-St-GOF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-p7-d9K">
-                                <rect key="frame" x="16" y="63" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-p7-d9K" customClass="CustomTextfield" customModule="Cosmetic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="60" width="343" height="55"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <color key="tintColor" name="main-font-color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="HtA-qG-Jbi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="doc.text.fill" catalog="system"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-yP-OOy" customClass="CustomTextView" customModule="Cosmetic" customModuleProvider="target">
+                                <rect key="frame" x="16" y="131" width="343" height="516"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xdm-p7-d9K" firstAttribute="top" secondItem="g6u-A2-1wy" secondAttribute="top" constant="16" id="9Nu-nI-ekv"/>
+                            <constraint firstItem="xdm-p7-d9K" firstAttribute="leading" secondItem="g6u-A2-1wy" secondAttribute="leading" constant="16" id="D1D-iL-BuJ"/>
+                            <constraint firstItem="4PK-yP-OOy" firstAttribute="leading" secondItem="g6u-A2-1wy" secondAttribute="leading" constant="16" id="KB4-ex-6Nf"/>
+                            <constraint firstItem="4PK-yP-OOy" firstAttribute="top" secondItem="xdm-p7-d9K" secondAttribute="bottom" constant="16" id="KS8-ea-hLH"/>
+                            <constraint firstItem="g6u-A2-1wy" firstAttribute="bottom" secondItem="4PK-yP-OOy" secondAttribute="bottom" constant="20" id="dGx-eA-wLA"/>
+                            <constraint firstItem="g6u-A2-1wy" firstAttribute="trailing" secondItem="4PK-yP-OOy" secondAttribute="trailing" constant="16" id="pg3-1O-cTX"/>
+                            <constraint firstItem="g6u-A2-1wy" firstAttribute="trailing" secondItem="xdm-p7-d9K" secondAttribute="trailing" constant="16" id="zsS-FI-uST"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g6u-A2-1wy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Write topic" id="8dL-gA-NAM"/>
+                    <navigationItem key="navigationItem" title="Write topic" id="8dL-gA-NAM">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="y6G-1r-MVS">
+                            <connections>
+                                <segue destination="S2t-5g-PyV" kind="show" id="FAh-Jg-LMR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailTextView" destination="4PK-yP-OOy" id="x1r-PM-Fsf"/>
+                        <outlet property="titleTextField" destination="xdm-p7-d9K" id="lar-Op-f4L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NoI-3b-odP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2892" y="369.26536731634184"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="BwQ-Q6-k5c">
+            <objects>
+                <tableViewController id="S2t-5g-PyV" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1ws-gg-ePn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TuF-Hq-z5I">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TuF-Hq-z5I" id="k4E-zx-0Z4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="S2t-5g-PyV" id="zH3-8e-BJj"/>
+                            <outlet property="delegate" destination="S2t-5g-PyV" id="jnI-b2-wiJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lz5-aZ-oeS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNp-db-afD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3753" y="369"/>
         </scene>
         <!--Capture your product-->
         <scene sceneID="3mA-Wo-97c">
@@ -3491,6 +3574,7 @@
         <image name="shield.fill" catalog="system" width="64" height="56"/>
         <image name="splashscreen" width="375" height="667.5"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+        <image name="square.and.pencil" catalog="system" width="64" height="58"/>
         <image name="square.fill.on.square.fill" catalog="system" width="64" height="56"/>
         <image name="tag.fill" catalog="system" width="64" height="58"/>
         <image name="welcomeIcon" width="302.5" height="302.5"/>
@@ -3509,7 +3593,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="alj-iG-gXm"/>
         <segue reference="c3A-7h-gg6"/>
     </inferredMetricsTieBreakers>
 </document>

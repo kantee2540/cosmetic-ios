@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol CosmeticDeskDelegate {
     func onSuccess()
@@ -17,51 +18,43 @@ class CosmeticDesk: NSObject {
     var delegate: CosmeticDeskDelegate?
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: String] = [:]
     
     func insertToDesk(productId: String, userId: String){
         DB_URL = getAddress.getInsertItemToDesk()
-        postParameter = "user_id=\(userId)&product_id=\(productId)"
+        postParameter = ["user_id": userId, "product_id": productId]
         processing()
     }
     
     func deleteFromDesk(productId: String, userId: String) {
         DB_URL = getAddress.getDeleteItemFromDesk()
-        postParameter = "user_id=\(userId)&product_id=\(productId)"
+        postParameter = ["user_id" : userId, "product_id": productId]
         processing()
     }
     
     private func processing(){
         
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Save or remove cosmetic")
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.onFailed()
-                })
-                
+        manager.post(DB_URL, parameters: postParameter, success: {
+            (operation: AFHTTPRequestOperation, responseObject: Any) in
+            if self.DB_URL == self.getAddress.getInsertItemToDesk(){
+                print("Saved cosmetic to list!")
             }else{
-                if self.DB_URL == self.getAddress.getInsertItemToDesk(){
-                    print("Saved cosmetic to list!")
-                }else{
-                    print("Deleted cosmetic from list!")
-                }
-                
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.delegate?.onSuccess()
-                })
+                print("Deleted cosmetic from list!")
             }
             
-        }
-        task.resume()
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.delegate?.onSuccess()
+            })
+            
+        }, failure: {
+            (opefation: AFHTTPRequestOperation?, error: Error) in
+            print("Error = \(error)")
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.delegate?.onFailed()
+            })
+        })
     }
 }
