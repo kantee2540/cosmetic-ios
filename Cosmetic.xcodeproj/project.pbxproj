@@ -58,6 +58,8 @@
 		B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */; };
 		B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */; };
 		B3BFC8BD2422713B00C7C430 /* ChooseProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */; };
+		B3BFC8BF2423312900C7C430 /* DrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */; };
+		B3BFC8C1242333A900C7C430 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8C0242333A900C7C430 /* Network.swift */; };
 		B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */; };
 		B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7323B8A24A00BC0035 /* UserModel.swift */; };
 		B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */; };
@@ -162,6 +164,8 @@
 		B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductTableViewController.swift; sourceTree = "<group>"; };
+		B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3BFC8C0242333A900C7C430 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectUserdata.swift; sourceTree = "<group>"; };
 		B3BFDD7323B8A24A00BC0035 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadUser.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
 				B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */,
 				B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */,
+				B3BFC8C0242333A900C7C430 /* Network.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */,
 				B386F55323C62B1F005F58C9 /* DeskCollectionViewCell.swift */,
 				B37A609223DB5895001FE027 /* NoLoginViewController.swift */,
+				B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */,
 			);
 			name = CosmeticDesk;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
+				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
 				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
@@ -799,6 +806,7 @@
 				B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */,
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B31FBCEB22D6303B00688A33 /* TopCollectionViewCell.swift in Sources */,
+				B3BFC8BF2423312900C7C430 /* DrawerCollectionViewCell.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
 				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,

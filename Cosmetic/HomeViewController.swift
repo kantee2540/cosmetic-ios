@@ -30,6 +30,10 @@ class HomeViewController: UIViewController, DownloadProductProtocol, DownloadTop
         topCollection.reloadData()
     }
     
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
+    
     var resultProductItem : [ProductModel] = []
     var topicItem: [TopicModel] = []
     var session :URLSession!

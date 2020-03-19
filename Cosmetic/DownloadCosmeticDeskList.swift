@@ -7,13 +7,20 @@
 //
 
 import UIKit
-import AFNetworking
 
 protocol DownloadCosmeticDeskListDelegate {
     func itemCosmeticDeskDownloaded(item: NSMutableArray)
 }
 
-class DownloadCosmeticDeskList: NSObject {
+class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
 
     var delegate: DownloadCosmeticDeskListDelegate?
     
@@ -34,16 +41,9 @@ class DownloadCosmeticDeskList: NSObject {
     private func downloadItem(){
         DB_URL = getAddress.getCosmeticDeskList()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-               
-        manager.post(DB_URL, parameters: postParameter, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            self.parseJSON(responseObject as! Data)
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: postParameter)
     }
     
     func parseJSON(_ data:Data){

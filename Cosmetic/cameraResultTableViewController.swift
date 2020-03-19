@@ -45,6 +45,10 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
         removeSpinner()
     }
     
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
+    
     private func extractString(toExtract string: String) -> Array<String>{
         var exString: Array<String> = Array()
         

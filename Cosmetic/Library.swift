@@ -9,7 +9,11 @@
 import UIKit
 
 class Library {
-    
+    static func displayAlert(targetVC: UIViewController, title:String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in}))
+        targetVC.present(alert, animated: true, completion: nil)
+    }
 }
 
 var spinView: UIView!

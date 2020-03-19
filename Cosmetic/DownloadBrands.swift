@@ -7,13 +7,20 @@
 //
 
 import UIKit
-import AFNetworking
 
 @objc protocol DownloadBrandProtocol: class {
     func itemDownloadedBrands(item: NSMutableArray)
 }
 
-@objc class DownloadBrands: NSObject {
+@objc class DownloadBrands: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     @objc weak var delegate: DownloadBrandProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
@@ -22,16 +29,9 @@ import AFNetworking
     @objc func downloadItem(){
         DB_URL = getAddress.getBrandURL()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
-        manager.post(DB_URL, parameters: nil, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            self.parseJSON(responseObject as! Data)
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: [:])
     }
     
     @objc func parseJSON(_ data:Data){

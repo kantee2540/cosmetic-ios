@@ -305,6 +305,10 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         searchTable.reloadData()
     }
     
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectionSegment.selectedSegmentIndex == 0{
             return categoriesList.count

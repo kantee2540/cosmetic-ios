@@ -7,14 +7,25 @@
 //
 
 import UIKit
-import AFNetworking
 
 protocol CollectUserdataDelegate {
     func insertDataSuccess()
     func insertDataFailed()
 }
 
-class CollectUserdata: NSObject {
+class CollectUserdata: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.delegate?.insertDataSuccess()
+        })
+    }
+    
+    func downloadFailed(error: String) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.delegate?.insertDataFailed()
+        })
+    }
+    
     
     var delegate: CollectUserdataDelegate?
     let getAddress = webAddress()
@@ -50,22 +61,8 @@ class CollectUserdata: NSObject {
     func insertData(){
         DB_URL = getAddress.getCollectUserdata()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
-        manager.post(DB_URL, parameters: postParameter, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            print("Inserted Product")
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.delegate?.insertDataSuccess()
-            })
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.delegate?.insertDataFailed()
-            })
-            
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: postParameter)
     }
 }

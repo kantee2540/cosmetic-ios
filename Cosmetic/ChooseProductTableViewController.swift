@@ -15,6 +15,10 @@ class ChooseProductTableViewController: UITableViewController, DownloadProductPr
     func itemDownloaded(item: NSMutableArray) {
         productList = item as! [ProductModel]
     }
+    
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,13 +7,20 @@
 //
 
 import UIKit
-import AFNetworking
 
 protocol DownloadCategoriesProtocol: class {
     func itemDownloadedCategories(item: NSMutableArray)
 }
 
-class DownloadCategories: NSObject {
+class DownloadCategories: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     
     weak var delegate: DownloadCategoriesProtocol?
     //Change this if URL of database is changed
@@ -23,16 +30,9 @@ class DownloadCategories: NSObject {
     func downloadItem(){
         DB_URL = getAddress.getCategoriesURL()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
-        manager.post(DB_URL, parameters: nil, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            self.parseJSON(responseObject as! Data)
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: [:])
     }
     
     func parseJSON(_ data:Data){

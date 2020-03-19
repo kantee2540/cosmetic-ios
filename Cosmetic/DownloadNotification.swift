@@ -7,13 +7,20 @@
 //
 
 import UIKit
-import AFNetworking
 
 protocol DownloadNotificationDelegate {
     func itemDownloaded(item: NSMutableArray)
 }
 
-class DownloadNotification: NSObject {
+class DownloadNotification: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     var delegate: DownloadNotificationDelegate?
     //Change this if URL of database is changed
     let getAddress = webAddress()
@@ -22,16 +29,9 @@ class DownloadNotification: NSObject {
     @objc func downloadItem(){
         DB_URL = getAddress.getNotificationURL()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
-        manager.post(DB_URL, parameters: nil, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            self.parseJSON(responseObject as! Data)
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: [:])
     }
     
     @objc func parseJSON(_ data:Data){

@@ -7,38 +7,38 @@
 //
 
 import UIKit
-import AFNetworking
 
 public protocol DownloadPackageProtocol: class {
     func itemDownloaded(item: NSMutableArray)
 }
 
-class DownloadPackage: NSObject {
+class DownloadPackage: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     
     weak var delegate: DownloadPackageProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: String] = [:]
     
     func downloadByTopicId(id topicId: String){
-        postParameter = "topic_id=\(topicId)"
+        postParameter["topic_id"] = topicId
         downloadItem()
     }
     
     func downloadItem(){
         DB_URL = getAddress.getPackageURL()
         
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        
-        manager.post(DB_URL, parameters: nil, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            self.parseJSON(responseObject as! Data)
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print("Error = \(error)")
-        })
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: postParameter)
     }
     
     func parseJSON(_ data:Data){

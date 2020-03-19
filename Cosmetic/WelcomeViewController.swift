@@ -97,6 +97,10 @@ extension WelcomeViewController: UITextFieldDelegate{
 }
 
 extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol{
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
         recommendedSet = item as! [TopicModel]
         setCollectionview.reloadData()

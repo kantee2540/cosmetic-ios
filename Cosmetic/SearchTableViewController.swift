@@ -100,6 +100,10 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol,
         searchBar.isUserInteractionEnabled = true
     }
     
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+    }
+    
 }
 
 extension SearchTableViewController: UISearchBarDelegate{

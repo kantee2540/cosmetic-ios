@@ -1231,7 +1231,7 @@
                                                             <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="tfX-uD-L2L"/>
                                                         </connections>
                                                     </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="draweritem" id="TEB-0x-KEX">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="draweritem" id="TEB-0x-KEX" customClass="DrawerCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
                                                         <rect key="frame" x="194" y="87.5" width="171" height="124"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ife-vB-6LX">
@@ -3684,7 +3684,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="cosmetic-color">
-            <color red="1" green="0.54477715548062466" blue="0.78553247451782227" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.54500001668930054" blue="0.78600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="main-font-color">
             <color red="0.86799997091293335" green="0.25200000405311584" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
