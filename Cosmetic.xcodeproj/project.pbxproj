@@ -57,6 +57,7 @@
 		B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */; };
 		B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */; };
 		B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */; };
+		B3BFC8BD2422713B00C7C430 /* ChooseProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */; };
 		B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */; };
 		B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7323B8A24A00BC0035 /* UserModel.swift */; };
 		B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */; };
@@ -160,6 +161,7 @@
 		B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicViewController.swift; sourceTree = "<group>"; };
 		B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
+		B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductTableViewController.swift; sourceTree = "<group>"; };
 		B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectUserdata.swift; sourceTree = "<group>"; };
 		B3BFDD7323B8A24A00BC0035 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadUser.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */,
 				B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */,
 				B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */,
+				B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */,
 			);
 			name = TopTopic;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				B386F55423C62B1F005F58C9 /* DeskCollectionViewCell.swift in Sources */,
 				B386F54F23C6244D005F58C9 /* DownloadCosmeticDeskList.swift in Sources */,
 				B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */,
+				B3BFC8BD2422713B00C7C430 /* ChooseProductTableViewController.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,
 				B348223723E1D890008BD770 /* PickforyouCollectionViewCell.swift in Sources */,
