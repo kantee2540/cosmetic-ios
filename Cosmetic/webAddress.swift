@@ -83,4 +83,14 @@ class webAddress {
         let webFile = getrootURL() + "getCosmeticDeskList.php"
         return webFile
     }
+    
+    func getDrawerURL() -> String{
+        let webFile = getrootURL() + "getDrawer.php"
+        return webFile
+    }
+    
+    func getAddDrawerURL() -> String{
+        let webFile = getrootURL() + "insertDrawer.php"
+        return webFile
+    }
 }

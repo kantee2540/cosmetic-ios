@@ -54,12 +54,17 @@
 		B3AF0FDE227C203C00C37F63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AF0FCC227C06D100C37F63 /* Accelerate.framework */; };
 		B3B058C523E1E7E500D4786C /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B058C423E1E7E500D4786C /* CustomTextfield.swift */; };
 		B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */; };
+		B3B19B392423BBCC00501426 /* AddDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B19B382423BBCC00501426 /* AddDrawer.swift */; };
+		B3B19B3F2423C94700501426 /* AddDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B19B3E2423C94700501426 /* AddDrawerTableViewController.swift */; };
 		B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */; };
 		B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */; };
 		B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */; };
 		B3BFC8BD2422713B00C7C430 /* ChooseProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */; };
 		B3BFC8BF2423312900C7C430 /* DrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */; };
 		B3BFC8C1242333A900C7C430 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8C0242333A900C7C430 /* Network.swift */; };
+		B3BFC8C32423407B00C7C430 /* DownloadDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8C22423407B00C7C430 /* DownloadDrawer.swift */; };
+		B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8C4242341BF00C7C430 /* DrawerModel.swift */; };
+		B3BFC8C72423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFC8C62423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift */; };
 		B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */; };
 		B3BFDD7423B8A24A00BC0035 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7323B8A24A00BC0035 /* UserModel.swift */; };
 		B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */; };
@@ -160,12 +165,17 @@
 		B3AF0FD7227C1B9300C37F63 /* Cosmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cosmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3B058C423E1E7E500D4786C /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifySearchDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B3B19B382423BBCC00501426 /* AddDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrawer.swift; sourceTree = "<group>"; };
+		B3B19B3E2423C94700501426 /* AddDrawerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDrawerTableViewController.swift; sourceTree = "<group>"; };
 		B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicViewController.swift; sourceTree = "<group>"; };
 		B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessViewController.swift; sourceTree = "<group>"; };
 		B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		B3BFC8BC2422713B00C7C430 /* ChooseProductTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductTableViewController.swift; sourceTree = "<group>"; };
 		B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3BFC8C0242333A900C7C430 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B3BFC8C22423407B00C7C430 /* DownloadDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDrawer.swift; sourceTree = "<group>"; };
+		B3BFC8C4242341BF00C7C430 /* DrawerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerModel.swift; sourceTree = "<group>"; };
+		B3BFC8C62423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectUserdata.swift; sourceTree = "<group>"; };
 		B3BFDD7323B8A24A00BC0035 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadUser.swift; sourceTree = "<group>"; };
@@ -250,6 +260,7 @@
 				B3BFDD7323B8A24A00BC0035 /* UserModel.swift */,
 				B3EBF30823BA640B0041D69A /* NotificationModel.swift */,
 				B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */,
+				B3BFC8C4242341BF00C7C430 /* DrawerModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -294,6 +305,8 @@
 				B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */,
 				B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */,
 				B3BFC8C0242333A900C7C430 /* Network.swift */,
+				B3BFC8C22423407B00C7C430 /* DownloadDrawer.swift */,
+				B3B19B382423BBCC00501426 /* AddDrawer.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -336,6 +349,8 @@
 				B386F55323C62B1F005F58C9 /* DeskCollectionViewCell.swift */,
 				B37A609223DB5895001FE027 /* NoLoginViewController.swift */,
 				B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */,
+				B3BFC8C62423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift */,
+				B3B19B3E2423C94700501426 /* AddDrawerTableViewController.swift */,
 			);
 			name = CosmeticDesk;
 			sourceTree = "<group>";
@@ -755,6 +770,7 @@
 				B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */,
 				B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */,
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
+				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
@@ -767,6 +783,7 @@
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
+				B3B19B392423BBCC00501426 /* AddDrawer.swift in Sources */,
 				B3B058C523E1E7E500D4786C /* CustomTextfield.swift in Sources */,
 				B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */,
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
@@ -792,6 +809,7 @@
 				B3BFC8BD2422713B00C7C430 /* ChooseProductTableViewController.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,
+				B3BFC8C32423407B00C7C430 /* DownloadDrawer.swift in Sources */,
 				B348223723E1D890008BD770 /* PickforyouCollectionViewCell.swift in Sources */,
 				B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */,
 				B34A6C2A2279C8C3002892A7 /* HomeViewController.swift in Sources */,
@@ -801,6 +819,7 @@
 				B316840823940BF1005F4D88 /* PackageModel.swift in Sources */,
 				B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */,
 				B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */,
+				B3BFC8C72423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */,
@@ -812,6 +831,7 @@
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,
+				B3B19B3F2423C94700501426 /* AddDrawerTableViewController.swift in Sources */,
 				B3FC3ACA24210D26004E098D /* CustomTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

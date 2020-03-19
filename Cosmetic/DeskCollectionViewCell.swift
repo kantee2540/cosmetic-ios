@@ -27,4 +27,24 @@ class DeskCollectionViewCell: UICollectionViewCell {
     @IBAction func tapAction(_ sender: Any) {
         delegate?.tapAction(userId: userId!, productId: productId!, image: productImage.image!, indexPath: indexPath!)
     }
+    
+    override var isHighlighted: Bool{
+        didSet{
+            if self.isHighlighted{
+                backgroundColor = UIColor.tertiaryLabel
+            }else{
+                backgroundColor = UIColor.secondarySystemGroupedBackground
+            }
+        }
+    }
+    
+    override var isSelected: Bool{
+        didSet{
+            if self.isSelected{
+                backgroundColor = UIColor.tertiaryLabel
+            }else{
+                backgroundColor = UIColor.secondarySystemGroupedBackground
+            }
+        }
+    }
 }

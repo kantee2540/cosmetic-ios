@@ -8,12 +8,12 @@
 
 import UIKit
 
-@objc public protocol DownloadProductProtocol: class {
+public protocol DownloadProductProtocol: class {
     func itemDownloaded(item: NSMutableArray)
     func itemDownloadFailed(error_mes: String)
 }
 
-@objc class DownloadProduct: NSObject, NetworkDelegate {
+class DownloadProduct: NSObject, NetworkDelegate {
     func downloadSuccess(data: Data) {
         self.parseJSON(data)
     }
@@ -23,7 +23,7 @@ import UIKit
     }
     
     
-    @objc weak var delegate: DownloadProductProtocol?
+    weak var delegate: DownloadProductProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
@@ -53,7 +53,7 @@ import UIKit
         downloadItem()
     }
     
-    @objc func downloadItem(){
+    func downloadItem(){
         DB_URL = getAddress.getProductURL()
         
         let network = Network()
@@ -61,7 +61,7 @@ import UIKit
         network.downloadData(URL: DB_URL, param: postParameter)
     }
     
-    @objc func parseJSON(_ data:Data){
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{

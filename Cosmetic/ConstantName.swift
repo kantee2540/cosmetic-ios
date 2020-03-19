@@ -8,6 +8,7 @@
 
 import Foundation
 
+//If column key has changed please change this string
 struct ConstantProduct {
     static let productId = "product_id"
     static let productName = "product_name"
@@ -54,4 +55,10 @@ struct ConstantNotification {
     static let notiTitle = "noti_title"
     static let notiContent = "noti_content"
     static let notiDate = "noti_date"
+}
+
+struct ConstantDrawer {
+    static let drawerId = "drawer_id"
+    static let drawerName = "drawer_name"
+    static let userId = "user_id"
 }

@@ -30,6 +30,7 @@ class Network: NSObject {
             })
         }, failure: {
             (opefation: AFHTTPRequestOperation?, error: Error) in
+            print(error)
             DispatchQueue.main.async(execute: { () -> Void in
                 self.delegate?.downloadFailed(error: error.localizedDescription)
             })
