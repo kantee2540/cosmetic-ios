@@ -26,10 +26,15 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
     
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: [String: String] = [:]
+    var postParameter: [String: Any] = [:]
     
     func getCosmeticDeskByUserid(userId: String){
         postParameter["user_id"] = userId
+        downloadItem()
+    }
+    
+    func getCosmeticByLimit(userId: String, limit: Int){
+        postParameter = ["user_id": userId, "limit": limit]
         downloadItem()
     }
     

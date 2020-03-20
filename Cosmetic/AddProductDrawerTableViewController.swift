@@ -21,6 +21,7 @@ class AddProductDrawerTableViewController: UITableViewController, DownloadCosmet
     private var cosmeticDeskList: [CosmeticDeskModel] = []
     private var selectedItem: CosmeticDeskModel?
     var drawerId: String?
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,7 @@ class AddProductDrawerTableViewController: UITableViewController, DownloadCosmet
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        doneButton.isEnabled = true
         let item = cosmeticDeskList[indexPath.row]
         selectedItem = item
     }

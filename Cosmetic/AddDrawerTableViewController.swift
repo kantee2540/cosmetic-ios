@@ -23,6 +23,8 @@ class AddDrawerTableViewController: UITableViewController, DrawerDelegate, UITex
     }
     
     func itemAddFailed() {
+        loadingActivity.isHidden = true
+        doneButton.isEnabled = true
         Library.displayAlert(targetVC: self, title: "Error", message: "Add Drawer item failed!")
     }
     

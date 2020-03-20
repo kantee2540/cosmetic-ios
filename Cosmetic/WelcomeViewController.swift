@@ -20,12 +20,18 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.navigationController?.pushViewController(accountVc!, animated: true)
     }
 
+    @IBOutlet weak var cosmeticDeskTitle: UILabel!
+    @IBOutlet weak var cosmeticdeskCollectionview: UICollectionView!
     @IBOutlet weak var tipofday: UIView!
     @IBOutlet weak var pickYouCollectionView: UICollectionView!
     @IBOutlet weak var setCollectionview: UICollectionView!
     @IBOutlet weak var startSearchTextfield: UITextField!
+    
+    private var cosmeticList: [CosmeticDeskModel] = []
     private var pickForYouProduct: [ProductModel] = []
     private var recommendedSet: [TopicModel] = []
+    private var userId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +44,8 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         pickYouCollectionView.dataSource = self
         setCollectionview.delegate = self
         setCollectionview.dataSource = self
+        cosmeticdeskCollectionview.delegate = self
+        cosmeticdeskCollectionview.dataSource = self
         
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
@@ -46,6 +54,17 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
         downloadTopic.downloadLimitTopic(limit: 4)
+        
+        if userId != nil{
+            downloadCosmeticDeskList()
+        }
+    }
+    
+    private func downloadCosmeticDeskList(){
+        
+        let downloadCosmeticDesk = DownloadCosmeticDeskList()
+        downloadCosmeticDesk.delegate = self
+        downloadCosmeticDesk.getCosmeticByLimit(userId: userId ?? "", limit: 5)
     }
     
     @objc func openCamera(_ :UIBarButtonItem){
@@ -56,6 +75,15 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Coco"
         tabBarController?.navigationItem.leftBarButtonItem = nil
+        
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        
+        if userId == nil{
+            cosmeticdeskCollectionview.visibility = .gone
+            cosmeticDeskTitle.visibility = .gone
+        }else{
+            downloadCosmeticDeskList()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,6 +95,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         tabBarController?.navigationItem.leftBarButtonItem = cammerabtn
     }
     
+    //MARK: - Prepare for another viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Seemoredetail"{
             let destination = segue.destination as? CosmeticDetailViewController
@@ -74,7 +103,16 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
             destination?.delegate = self
             let item = pickForYouProduct[itemIndex!]
             destination?.productId = item.product_id
-        }else if segue.identifier == "Seetopic"{
+            
+        }else if segue.identifier == "Seemoredetailfromdesk"{
+            let destination = segue.destination as? CosmeticDetailViewController
+            let itemIndex = cosmeticdeskCollectionview.indexPathsForSelectedItems?.first?.item
+            destination?.delegate = self
+            let item = cosmeticList[itemIndex!]
+            destination?.productId = item.product_id
+        }
+        
+        else if segue.identifier == "Seetopic"{
             let destination = segue.destination as? TopTopicViewController
             let itemIndex = setCollectionview.indexPathsForSelectedItems?.first?.item
             destination?.delegate = self
@@ -96,7 +134,20 @@ extension WelcomeViewController: UITextFieldDelegate{
     }
 }
 
-extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol{
+extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol, DownloadCosmeticDeskListDelegate{
+    func itemCosmeticDeskDownloaded(item: NSMutableArray) {
+        cosmeticList = item as! [CosmeticDeskModel]
+        cosmeticdeskCollectionview.reloadData()
+        
+        if cosmeticList.count > 0{
+            cosmeticdeskCollectionview.visibility = .visible
+            cosmeticDeskTitle.visibility = .visible
+        }else{
+            cosmeticdeskCollectionview.visibility = .gone
+            cosmeticDeskTitle.visibility = .gone
+        }
+    }
+    
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
     }
@@ -116,11 +167,15 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             return pickForYouProduct.count
         }else if collectionView == setCollectionview{
             return recommendedSet.count
-        }else{
+        }else if collectionView == cosmeticdeskCollectionview && userId != nil{
+            return cosmeticList.count
+        }
+        else{
             return 0
         }
     }
     
+    //MARK: - Fetch item to collectionview
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView ==  pickYouCollectionView{
             let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickcell", for: indexPath) as! PickforyouCollectionViewCell
@@ -147,7 +202,22 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             setCell.setName.text = item.topic_name
             return setCell
-        }else{
+            
+        }else if collectionView == cosmeticdeskCollectionview && userId != nil{
+            let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deskcell", for: indexPath) as! PickforyouCollectionViewCell
+            let item = cosmeticList[indexPath.row]
+            pickCell.layer.cornerRadius = 5
+            pickCell.productName.text = item.product_name
+            pickCell.productBrand.text = item.brand_name
+            if item.product_img != ""{
+                pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+            }else{
+                pickCell.productImage.image = UIImage.init(named: "bg4")
+            }
+            return pickCell
+        }
+        
+        else{
             let cell = collectionView.cellForItem(at: indexPath)!
             return cell
         }
