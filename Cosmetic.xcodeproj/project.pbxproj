@@ -374,10 +374,10 @@
 				B3B19B3E2423C94700501426 /* AddDrawerTableViewController.swift */,
 				B3D7D3EC2424F0FE00F6B95B /* AddItemtoDrawerTableViewController.swift */,
 				B36CD6322424AFBD00D33F31 /* DrawerCollectionCollectionViewController.swift */,
-				B3D7D3EA2424ED9600F6B95B /* NoItemInDrawerViewController.swift */,
 				B3D7D3EE2424F29700F6B95B /* ChooseDrawerTableViewController.swift */,
 				B3D7D3F02425060C00F6B95B /* AddProductDrawerTableViewCell.swift */,
 				B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */,
+				B3D7D3EA2424ED9600F6B95B /* NoItemInDrawerViewController.swift */,
 			);
 			name = CosmeticDesk;
 			sourceTree = "<group>";

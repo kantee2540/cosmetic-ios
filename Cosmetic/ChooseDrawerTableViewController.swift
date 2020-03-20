@@ -11,11 +11,13 @@ import UIKit
 class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDelegate, DrawerCollectionDelegate {
     func onSuccess() {
         self.navigationController?.popViewController(animated: true)
+        removeSpinner()
     }
     
     func itemDrawerDownloaded(item: NSMutableArray) {
         drawerList = item as! [DrawerModel]
         self.tableView.reloadData()
+        removeSpinner()
     }
     
     private var drawerList: [DrawerModel] = []
@@ -29,7 +31,7 @@ class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDele
         self.tableView.dataSource = self
         
         let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
-        
+        showSpinner(onView: self.view)
         let downloadDrawer = DownloadDrawer()
         downloadDrawer.delegate = self
         downloadDrawer.downloadDrawer(userid: userId!)
@@ -54,7 +56,7 @@ class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDele
         let item = drawerList[indexPath.row]
         // Configure the cell...
         cell.textLabel?.text = item.drawer_name
-
+        cell.detailTextLabel?.text = item.countitem! + " Cosmetics"
         return cell
     }
     
@@ -66,6 +68,7 @@ class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDele
     
 
     @IBAction func tapOK(_ sender: Any) {
+        showSpinner(onView: self.view)
         let drawerCollection = DrawerCollection()
         drawerCollection.delegate = self
         drawerCollection.addToCollection(drawerId: selectedItem!.drawer_id!, deskId: deskId!)

@@ -53,6 +53,7 @@ class DrawerCollectionCollectionViewController: UICollectionViewController, Down
     }
     
     func itemDrawerCollectionSuccess(item: NSMutableArray) {
+        removeSpinner()
         drawerCollectionList = item as! [DrawerCollectionModel]
         collectionView.reloadData()
         
@@ -91,6 +92,7 @@ class DrawerCollectionCollectionViewController: UICollectionViewController, Down
     }
     
     private func downloadCollectionList(){
+        showSpinner(onView: self.view)
         let drawerCollection = DownloadDrawerCollection()
         drawerCollection.delegate = self
         drawerCollection.downloadDrawerCollection(userId: userId!, drawerId: drawerId!)

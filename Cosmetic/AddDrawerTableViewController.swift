@@ -48,6 +48,7 @@ class AddDrawerTableViewController: UITableViewController, DrawerDelegate, UITex
 
     @IBAction func tapDone(_ sender: Any) {
         loadingActivity.isHidden = false
+        doneButton.isEnabled = false
         let drawerName = drawerNameTextField.text!
         let addDrawer = Drawer()
         addDrawer.delegate = self
