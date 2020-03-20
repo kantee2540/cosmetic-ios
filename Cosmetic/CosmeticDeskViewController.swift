@@ -23,6 +23,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     private var userId: String?
     private var spinnerIsShow: Bool = false
     
+    //MARK: - Number of item in collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if menuSegment.selectedSegmentIndex == 1{
             return drawerList.count + 1
@@ -31,11 +32,18 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
+    //MARK: - Fetch item to cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if menuSegment.selectedSegmentIndex == 1{
             if indexPath.row < drawerList.count{
                 let drawerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "draweritem", for: indexPath) as! DrawerCollectionViewCell
                 let item = drawerList[indexPath.row]
+                drawerCell.delegate = self
+                drawerCell.userId = userId
+                drawerCell.drawerId = item.drawer_id
+                drawerCell.drawerName = item.drawer_name
+                
+                drawerCell.countLabel.text = item.countitem! + " Cosmetics"
                 drawerCell.drawerNameLabel.text = item.drawer_name
                 drawerCell.layer.cornerRadius = 8
                 
@@ -73,6 +81,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
+    //MARK: - Tap Action from cosmetic desk item
     func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath) {
         let item = deskList[indexPath.row]
         
@@ -87,6 +96,12 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
             self.present(activityViewController, animated: true, completion: nil)
             
         }))
+        deskItemAction.addAction(UIAlertAction(title: "Add to my drawer", style: .default, handler: {(UIAlertAction) in
+            let chooseDrawerVC = self.storyboard?.instantiateViewController(identifier: "choosedrawer") as! ChooseDrawerTableViewController
+            chooseDrawerVC.deskId = item.desk_id
+            self.navigationController?.pushViewController(chooseDrawerVC, animated: true)
+        }))
+        
         deskItemAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
             (UIAlertAction) in
             //Delete this product item
@@ -99,7 +114,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         self.present(deskItemAction, animated: true, completion: nil)
     }
     
-    
+    //MARK: - Change segment
     @IBAction func changeMenuSegment(_ sender: Any) {
         showSpinner(onView: self.view)
         if menuSegment.selectedSegmentIndex == 0{
@@ -124,6 +139,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         self.viewDidLayoutSubviews()
     }
     
+    //MARK: - Didload
     override func viewDidLoad() {
         let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         if userId != nil{
@@ -132,6 +148,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
+    //MARK: - willAppear
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Cosmetic Desk"
@@ -173,6 +190,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
+    //MARK: - Go to another viewcontroller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "SeeMoreDetail"{
             let destination = segue.destination as? CosmeticDetailViewController
@@ -181,7 +199,14 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
             destination?.delegate = self
             destination?.productId = item.product_id
             
-         }
+         }else if segue.identifier == "drawercollection"{
+            let destination = segue.destination as? DrawerCollectionCollectionViewController
+            let itemIndex = deskCollection.indexPathsForSelectedItems?.first
+            let item = drawerList[itemIndex!.row]
+            destination?.drawerId = item.drawer_id
+            destination?.drawerName = item.drawer_name
+            destination?.userId = userId
+        }
     }
     
     func dismissFromCosmeticDetail() {
@@ -204,7 +229,29 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
 
 }
 
-extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate{
+extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate, DrawerCollectionViewCellDelegate, DrawerDelegate{
+    func tapActionDrawer(userId: String, drawerId: String, drawerName: String) {
+        print("\(userId) AND\(drawerId)")
+        let drawerAction = UIAlertController(title: "Drawer : \"\(drawerName)\"", message: "Do you want to delete this drawer?", preferredStyle: .actionSheet)
+        
+        drawerAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (UIAlertAction) in
+            let drawer = Drawer()
+            drawer.delegate = self
+            drawer.deleteDrawer(userid: userId, drawer_id: drawerId)
+            
+        }))
+        drawerAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
+        self.present(drawerAction, animated: true, completion: nil)
+    }
+    
+    //Deleted Success
+    func itemAddSuccess() {
+        downloadDrawerList()
+    }
+    
+    func itemAddFailed() {
+        
+    }
     
     func itemDrawerDownloaded(item: NSMutableArray) {
         drawerList = item as! [DrawerModel]

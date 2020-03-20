@@ -60,5 +60,6 @@ struct ConstantNotification {
 struct ConstantDrawer {
     static let drawerId = "drawer_id"
     static let drawerName = "drawer_name"
+    static let countitem = "countitem"
     static let userId = "user_id"
 }

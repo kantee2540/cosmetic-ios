@@ -93,4 +93,24 @@ class webAddress {
         let webFile = getrootURL() + "insertDrawer.php"
         return webFile
     }
+    
+    func getDrawerCollectionURL() -> String {
+        let webFile = getrootURL() + "getDrawerCollection.php"
+        return webFile
+    }
+    
+    func getDeleteDrawerURL() -> String{
+        let webFile = getrootURL() + "deleteDrawer.php"
+        return webFile
+    }
+    
+    func getDeleteCollectionURL() -> String{
+        let webFile = getrootURL() + "deleteDrawerCollection.php"
+        return webFile
+    }
+    
+    func getAddCollectionURL() -> String{
+        let webFile = getrootURL() + "insertDrawerCollection.php"
+        return webFile
+    }
 }

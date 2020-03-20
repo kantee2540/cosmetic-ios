@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDrawerTableViewController: UITableViewController, AddDrawerDelegate, UITextFieldDelegate {
+class AddDrawerTableViewController: UITableViewController, DrawerDelegate, UITextFieldDelegate {
     
     private var userId :String?
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
@@ -49,7 +49,7 @@ class AddDrawerTableViewController: UITableViewController, AddDrawerDelegate, UI
     @IBAction func tapDone(_ sender: Any) {
         loadingActivity.isHidden = false
         let drawerName = drawerNameTextField.text!
-        let addDrawer = AddDrawer()
+        let addDrawer = Drawer()
         addDrawer.delegate = self
         addDrawer.addDrawer(userid: userId!, drawer_name: drawerName)
     }

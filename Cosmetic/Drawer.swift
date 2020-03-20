@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol AddDrawerDelegate {
+protocol DrawerDelegate {
     func itemAddSuccess()
     func itemAddFailed()
 }
 
-class AddDrawer: NSObject, NetworkDelegate {
+class Drawer: NSObject, NetworkDelegate {
     func downloadSuccess(data: Data) {
         DispatchQueue.main.async(execute: { () -> Void in
             self.delegate?.itemAddSuccess()
@@ -26,7 +26,7 @@ class AddDrawer: NSObject, NetworkDelegate {
         })
     }
     
-    var delegate: AddDrawerDelegate?
+    var delegate: DrawerDelegate?
     let getAddress = webAddress()
     
     func addDrawer(userid id: String, drawer_name name: String){
@@ -37,5 +37,14 @@ class AddDrawer: NSObject, NetworkDelegate {
         network.delegate = self
         network.downloadData(URL: DB_URL, param: postParam)
         
+    }
+    
+    func deleteDrawer(userid id: String, drawer_id draw_id: String){
+        let DB_URL = getAddress.getDeleteDrawerURL()
+        let postParam = ["user_id": id, "drawer_id": draw_id]
+        
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: postParam)
     }
 }

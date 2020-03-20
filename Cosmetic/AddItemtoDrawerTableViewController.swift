@@ -1,31 +1,18 @@
 //
-//  ChooseProductTableViewController.swift
+//  AddItemtoDrawerTableViewController.swift
 //  Cosmetic
 //
-//  Created by Omp on 18/3/2563 BE.
+//  Created by Omp on 20/3/2563 BE.
 //  Copyright © 2563 Omp. All rights reserved.
 //
 
 import UIKit
 
-class ChooseProductTableViewController: UITableViewController, DownloadProductProtocol {
-    
-    private var productList: [ProductModel] = []
-    
-    func itemDownloaded(item: NSMutableArray) {
-        productList = item as! [ProductModel]
-    }
-    
-    func itemDownloadFailed(error_mes: String) {
-        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
-    }
+class AddItemtoDrawerTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadItem()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,7 +36,7 @@ class ChooseProductTableViewController: UITableViewController, DownloadProductPr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-         Configure the cell...
+        // Configure the cell...
 
         return cell
     }

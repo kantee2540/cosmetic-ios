@@ -12,4 +12,5 @@ class DrawerModel: NSObject {
     var drawer_id: String?
     var drawer_name: String?
     var user_id: String?
+    var countitem: String?
 }

@@ -52,11 +52,13 @@ class DownloadDrawer: NSObject, NetworkDelegate {
             
             if let drawer_id = jsonElement[ConstantDrawer.drawerId] as? String,
                 let drawer_name = jsonElement[ConstantDrawer.drawerName] as? String,
-                let user_id = jsonElement[ConstantDrawer.userId] as? String
+                let user_id = jsonElement[ConstantDrawer.userId] as? String,
+                let countitem = jsonElement[ConstantDrawer.countitem] as? String
             {
                 drawer.drawer_id = drawer_id
                 drawer.drawer_name = drawer_name
                 drawer.user_id = user_id
+                drawer.countitem = countitem
                 
             }
             drawers.add(drawer)
