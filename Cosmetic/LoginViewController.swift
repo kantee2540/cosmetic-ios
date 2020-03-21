@@ -72,6 +72,21 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    func itemUserError(error: String) {
+        
+        let firebaseAuth = Auth.auth()
+        do{
+            try firebaseAuth.signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+            Library.displayAlert(targetVC: self, title: "Error", message: error)
+            
+        }catch let signoutError as NSError{
+            print("Error Signout : \(signoutError)")
+        }
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate{

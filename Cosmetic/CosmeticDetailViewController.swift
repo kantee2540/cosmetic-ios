@@ -38,6 +38,10 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         }
     }
     
+    func itemCosmeticDeskFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         productData = item as! [ProductModel]
         brandName.text = productData[0].brand_name?.uppercased()

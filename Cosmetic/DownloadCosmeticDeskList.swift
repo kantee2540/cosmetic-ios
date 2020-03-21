@@ -10,6 +10,7 @@ import UIKit
 
 protocol DownloadCosmeticDeskListDelegate {
     func itemCosmeticDeskDownloaded(item: NSMutableArray)
+    func itemCosmeticDeskFailed(error: String)
 }
 
 class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
@@ -18,7 +19,7 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        
+        self.delegate?.itemCosmeticDeskFailed(error: error)
     }
     
 

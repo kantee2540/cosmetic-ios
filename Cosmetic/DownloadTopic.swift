@@ -10,6 +10,7 @@ import UIKit
 
 public protocol DownloadTopicProtocol: class{
     func topicDownloaded(item: NSMutableArray)
+    func topicError(error: String)
 }
 
 class DownloadTopic: NSObject, NetworkDelegate {
@@ -18,7 +19,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        
+        delegate?.topicError(error: error)
     }
     
     weak var delegate: DownloadTopicProtocol?

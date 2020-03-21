@@ -10,6 +10,7 @@ import UIKit
 
 protocol DownloadDrawerCollectionDelegate {
     func itemDrawerCollectionSuccess(item: NSMutableArray)
+    func itemDrawerCollectionFailed(error: String)
 }
 
 class DownloadDrawerCollection: NSObject, NetworkDelegate {
@@ -18,7 +19,7 @@ class DownloadDrawerCollection: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        
+        delegate?.itemDrawerCollectionFailed(error: error)
     }
     
     

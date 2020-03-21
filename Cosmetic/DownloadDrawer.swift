@@ -10,6 +10,7 @@ import UIKit
 
 protocol DownloadDrawerDelegate {
     func itemDrawerDownloaded(item: NSMutableArray)
+    func itemDrawerFailed(error: String)
 }
 
 class DownloadDrawer: NSObject, NetworkDelegate {
@@ -18,7 +19,7 @@ class DownloadDrawer: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        
+        delegate?.itemDrawerFailed(error: error)
     }
     
     let getWebAddress = webAddress()

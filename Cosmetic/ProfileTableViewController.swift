@@ -194,6 +194,16 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     func insertDataFailed() {
         self.removeSpinner()
         saveError = true
+        Library.displayAlert(targetVC: self, title: "Error", message: "Can't signup please try again")
+        let user = Auth.auth().currentUser
+        user?.delete(completion: { error in
+            if let error = error{
+                Library.displayAlert(targetVC: self, title: "Error", message: error as! String)
+            }
+            else{
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        })
         profileTable.reloadData()
     }
     
@@ -214,6 +224,24 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
             self.navigationController?.pushViewController(successVc, animated: true)
         }
        
+    }
+    
+    func itemUserError(error: String) {
+        if updateMode{
+            Library.displayAlert(targetVC: self, title: "Error", message: "Can't update profile")
+        }else{
+            Library.displayAlert(targetVC: self, title: "Error", message: "Can't signup please try again")
+            let user = Auth.auth().currentUser
+            user?.delete(completion: { error in
+                if let error = error{
+                    Library.displayAlert(targetVC: self, title: "Error", message: error as! String)
+                }
+                else{
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        }
+        
     }
     
 }

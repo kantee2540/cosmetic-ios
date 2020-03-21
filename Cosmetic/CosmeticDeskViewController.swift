@@ -10,6 +10,7 @@ import UIKit
 
 class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet var deskView: UIView!
     @IBOutlet weak var noCosmetic: UILabel!
     @IBOutlet weak var welcomeNameLabel: UILabel!
@@ -22,6 +23,17 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     private var drawerList: [DrawerModel] = []
     private var userId: String?
     private var spinnerIsShow: Bool = false
+    
+    lazy var deskRefreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handlerRefresh(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
+    
+    @objc private func handlerRefresh(_ refreshControl: UIRefreshControl){
+        downloadDesk()
+        
+    }
     
     //MARK: - Number of item in collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -146,6 +158,8 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
             showSpinner(onView: self.view)
             spinnerIsShow = true
         }
+        
+        scrollview.addSubview(deskRefreshControl)
     }
     
     //MARK: - willAppear
@@ -156,16 +170,20 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
         if userId != nil{
-            if menuSegment.selectedSegmentIndex == 0{
-                downloadCosmeticList()
-            }else if menuSegment.selectedSegmentIndex == 1{
-                downloadDrawerList()
-            }
-            welcomeNameLabel.text = "Hi, " + UserDefaults.standard.string(forKey: ConstantUser.nickName)!
+            downloadDesk()
         }else{
             deskList.removeAll()
             deskCollection.reloadData()
         }
+    }
+    
+    private func downloadDesk(){
+        if menuSegment.selectedSegmentIndex == 0{
+            downloadCosmeticList()
+        }else if menuSegment.selectedSegmentIndex == 1{
+            downloadDrawerList()
+        }
+        welcomeNameLabel.text = "Hi, " + UserDefaults.standard.string(forKey: ConstantUser.nickName)!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -230,6 +248,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
 }
 
 extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate, DrawerCollectionViewCellDelegate, DrawerDelegate{
+    
     func tapActionDrawer(userId: String, drawerId: String, drawerName: String) {
         print("\(userId) AND\(drawerId)")
         let drawerAction = UIAlertController(title: "Drawer : \"\(drawerName)\"", message: "Do you want to delete this drawer?", preferredStyle: .actionSheet)
@@ -250,13 +269,20 @@ extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDe
     }
     
     func itemAddFailed() {
-        
+        Library.displayAlert(targetVC: self, title: "Error", message: "Delete failed try again")
     }
     
     func itemDrawerDownloaded(item: NSMutableArray) {
         drawerList = item as! [DrawerModel]
         deskCollection.reloadData()
         removeSpinner()
+        deskRefreshControl.endRefreshing()
+    }
+    
+    func itemDrawerFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        removeSpinner()
+        deskRefreshControl.endRefreshing()
     }
     
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
@@ -271,7 +297,13 @@ extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDe
         }
         deskCollection.reloadData()
         removeSpinner()
-        
+        deskRefreshControl.endRefreshing()
+    }
+    
+    func itemCosmeticDeskFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        removeSpinner()
+        deskRefreshControl.endRefreshing()
     }
     
     func onSuccess() {

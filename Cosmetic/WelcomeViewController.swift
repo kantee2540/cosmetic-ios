@@ -105,6 +105,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         if userId == nil{
             cosmeticdeskCollectionview.visibility = .gone
             cosmeticDeskTitle.visibility = .gone
+            deskload.visibility = .gone
         }else{
             downloadCosmeticDeskList()
         }
@@ -159,6 +160,7 @@ extension WelcomeViewController: UITextFieldDelegate{
 }
 
 extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol, DownloadCosmeticDeskListDelegate{
+    
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         cosmeticList = item as! [CosmeticDeskModel]
         cosmeticdeskCollectionview.reloadData()
@@ -176,6 +178,11 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         deskload.isHidden = true
     }
     
+    func itemCosmeticDeskFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        deskload.isHidden = true
+    }
+    
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
         refreshControl.endRefreshing()
@@ -185,6 +192,11 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
     func topicDownloaded(item: NSMutableArray) {
         recommendedSet = item as! [TopicModel]
         setCollectionview.reloadData()
+        recommendsetload.isHidden = true
+    }
+    
+    func topicError(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
         recommendsetload.isHidden = true
     }
     

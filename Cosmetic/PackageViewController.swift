@@ -36,6 +36,11 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         
     }
     
+    func topicError(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        loadingIndicator.isHidden = true
+    }
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var codeField: UITextField!
     override func viewDidLoad() {

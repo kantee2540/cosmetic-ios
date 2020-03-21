@@ -9,6 +9,7 @@
 import UIKit
 
 class AddProductDrawerTableViewController: UITableViewController, DownloadCosmeticDeskListDelegate, DrawerCollectionDelegate {
+    
     func onSuccess() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -16,6 +17,10 @@ class AddProductDrawerTableViewController: UITableViewController, DownloadCosmet
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         cosmeticDeskList = item as! [CosmeticDeskModel]
         self.tableView.reloadData()
+    }
+    
+    func itemCosmeticDeskFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
     }
     
     private var cosmeticDeskList: [CosmeticDeskModel] = []

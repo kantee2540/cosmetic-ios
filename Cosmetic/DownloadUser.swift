@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol DownloadUserProtocol: class {
     func itemDownloadUser(item: UserModel)
+    func itemUserError(error: String)
 }
 
 class DownloadUser: NSObject, NetworkDelegate {
@@ -18,7 +19,7 @@ class DownloadUser: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        
+        delegate?.itemUserError(error: error)
     }
     
     var delegate: DownloadUserProtocol?

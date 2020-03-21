@@ -71,6 +71,11 @@ class DrawerCollectionCollectionViewController: UICollectionViewController, Down
         
     }
     
+    func itemDrawerCollectionFailed(error: String){
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        removeSpinner()
+    }
+    
     var drawerId :String?
     var drawerName: String?
     var userId: String?

@@ -20,6 +20,10 @@ class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDele
         removeSpinner()
     }
     
+    func itemDrawerFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+    }
+    
     private var drawerList: [DrawerModel] = []
     private var selectedItem :DrawerModel?
     var deskId: String?

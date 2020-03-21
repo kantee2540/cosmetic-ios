@@ -26,6 +26,10 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         }
     }
     
+    func itemUserError(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+    }
+    
 
     @IBOutlet var mainTable: UITableView!
     
