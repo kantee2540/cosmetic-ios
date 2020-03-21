@@ -64,6 +64,11 @@ class webAddress {
         return webFile
     }
     
+    func getDeleteUserURL() -> String{
+        let webFile = getrootURL() + "deleteuser.php"
+        return webFile
+    }
+    
     func getNotificationURL() -> String{
         let webFile = getrootURL() + "getNotification.php"
         return webFile
@@ -113,4 +118,5 @@ class webAddress {
         let webFile = getrootURL() + "insertDrawerCollection.php"
         return webFile
     }
+    
 }

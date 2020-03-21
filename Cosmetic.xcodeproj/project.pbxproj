@@ -87,6 +87,8 @@
 		B3D7D3EF2424F29700F6B95B /* ChooseDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3EE2424F29700F6B95B /* ChooseDrawerTableViewController.swift */; };
 		B3D7D3F12425060C00F6B95B /* AddProductDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3F02425060C00F6B95B /* AddProductDrawerTableViewCell.swift */; };
 		B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */; };
+		B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */; };
+		B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749D2426422500CB241F /* DeleteUser.swift */; };
 		B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30823BA640B0041D69A /* NotificationModel.swift */; };
 		B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30A23BA64980041D69A /* DownloadNotification.swift */; };
 		B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */; };
@@ -211,6 +213,8 @@
 		B3D7D3EE2424F29700F6B95B /* ChooseDrawerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDrawerTableViewController.swift; sourceTree = "<group>"; };
 		B3D7D3F02425060C00F6B95B /* AddProductDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductDrawerTableViewController.swift; sourceTree = "<group>"; };
+		B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountTableViewController.swift; sourceTree = "<group>"; };
+		B3DB749D2426422500CB241F /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		B3EBF30823BA640B0041D69A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		B3EBF30A23BA64980041D69A /* DownloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNotification.swift; sourceTree = "<group>"; };
 		B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				B3B19B382423BBCC00501426 /* Drawer.swift */,
 				B3D7D3E82424E23100F6B95B /* DrawerCollection.swift */,
 				B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */,
+				B3DB749D2426422500CB241F /* DeleteUser.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */,
 				B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */,
 				B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */,
+				B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -778,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */,
+				B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */,
 				B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */,
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
@@ -800,6 +807,7 @@
 				B3B058C523E1E7E500D4786C /* CustomTextfield.swift in Sources */,
 				B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */,
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
+				B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */,
 				B3D7D3E72424C28F00F6B95B /* DrawerCollectionModel.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,

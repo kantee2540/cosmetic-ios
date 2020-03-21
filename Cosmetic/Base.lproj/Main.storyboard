@@ -2089,6 +2089,7 @@
                             <outlet property="delegate" destination="aKS-hY-yQh" id="Swg-ra-8M2"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="IY6-SQ-hT9"/>
                     <connections>
                         <outlet property="accountTable" destination="cBS-Fw-mju" id="7jE-sB-28I"/>
                         <outlet property="fullNameLabel" destination="L9p-gA-TM3" id="cfs-u3-6oi"/>
@@ -2100,12 +2101,12 @@
             </objects>
             <point key="canvasLocation" x="1864" y="1889"/>
         </scene>
-        <!--Account Detail Table View Controller-->
+        <!--Account Detail-->
         <scene sceneID="A5K-qn-ZRW">
             <objects>
                 <tableViewController id="cAz-Us-hvg" customClass="AccountDetailTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="a3O-An-nY7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2352,6 +2353,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="SQX-7u-tMD" kind="show" id="Rpd-UV-HDR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2361,7 +2365,7 @@
                             <outlet property="delegate" destination="cAz-Us-hvg" id="iTi-oM-iTo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="miE-up-Pvt"/>
+                    <navigationItem key="navigationItem" title="Account Detail" id="miE-up-Pvt"/>
                     <connections>
                         <outlet property="accountDetailTable" destination="a3O-An-nY7" id="DEE-t6-dFE"/>
                     </connections>
@@ -2369,6 +2373,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1q-4c-dPN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2881" y="1889"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7So-VS-taa">
+            <objects>
+                <navigationController id="O4W-pW-H66" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RZP-zh-DJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aKS-hY-yQh" kind="relationship" relationship="rootViewController" id="OGl-0j-8yg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edv-Cx-FK6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="2750"/>
+        </scene>
+        <!--Remove account-->
+        <scene sceneID="13E-kf-daL">
+            <objects>
+                <tableViewController id="SQX-7u-tMD" customClass="RemoveAccountTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9b6-6G-wUd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection headerTitle="Type your email to confirm" footerTitle="Remember if you remove this account you can't recover this account" id="haz-8I-RcH">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="VsU-eQ-DCk">
+                                        <rect key="frame" x="16" y="55.5" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VsU-eQ-DCk" id="mPs-6r-66S">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-6y-JFn">
+                                                    <rect key="frame" x="15" y="5" width="313" height="34"/>
+                                                    <color key="tintColor" name="main-font-color"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-mm-7AJ">
+                                                    <rect key="frame" x="308" y="13" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="750" constant="20" id="HCO-dH-lal"/>
+                                                        <constraint firstAttribute="width" priority="750" constant="20" id="joP-mo-svu"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WhW-mm-7AJ" firstAttribute="top" secondItem="mPs-6r-66S" secondAttribute="topMargin" constant="2" id="B1y-GV-FkX"/>
+                                                <constraint firstItem="FcM-6y-JFn" firstAttribute="top" secondItem="mPs-6r-66S" secondAttribute="top" constant="5" id="JaL-q4-MxM"/>
+                                                <constraint firstAttribute="trailing" secondItem="FcM-6y-JFn" secondAttribute="trailing" constant="15" id="TqD-ay-wrE"/>
+                                                <constraint firstItem="FcM-6y-JFn" firstAttribute="leading" secondItem="mPs-6r-66S" secondAttribute="leading" constant="15" id="Vir-wz-uuq"/>
+                                                <constraint firstItem="WhW-mm-7AJ" firstAttribute="trailing" secondItem="mPs-6r-66S" secondAttribute="trailingMargin" id="c2t-r1-eZL"/>
+                                                <constraint firstItem="WhW-mm-7AJ" firstAttribute="bottom" secondItem="mPs-6r-66S" secondAttribute="bottomMargin" id="icE-JW-Zie"/>
+                                                <constraint firstAttribute="bottom" secondItem="FcM-6y-JFn" secondAttribute="bottom" constant="5" id="kIP-mb-cI5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="SQX-7u-tMD" id="s3c-vx-pXK"/>
+                            <outlet property="delegate" destination="SQX-7u-tMD" id="4lS-tY-yvv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Remove account" id="20b-bN-2ac">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ogg-9Q-I8k">
+                            <connections>
+                                <action selector="tapCancel:" destination="SQX-7u-tMD" id="hVz-2M-FIv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Remove" style="done" id="pss-Xs-lwd">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="tapRemove:" destination="SQX-7u-tMD" id="2uX-AO-Q9m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="ogg-9Q-I8k" id="8Da-tj-GKW"/>
+                        <outlet property="emailTextfield" destination="FcM-6y-JFn" id="SoB-iL-lnX"/>
+                        <outlet property="loadActivity" destination="WhW-mm-7AJ" id="E9D-Ql-2bz"/>
+                        <outlet property="removeButton" destination="pss-Xs-lwd" id="OoS-db-vzr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tG1-LL-TqF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3716" y="1888.6056971514245"/>
         </scene>
         <!--Notification-->
         <scene sceneID="g0U-BG-2O2">
@@ -2450,11 +2544,11 @@
             <objects>
                 <viewController title="Term and Condition" id="Y8Y-ch-4K4" customClass="TermAndConditionViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O22-f0-pKh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fOP-a0-ZJj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="tintColor" name="main-font-color"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -2854,7 +2948,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="profile" id="CSM-iF-paz" customClass="ProfileTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="58k-Yd-7c2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -3840,7 +3934,7 @@
         <scene sceneID="XfK-rJ-obq">
             <objects>
                 <tableViewController id="s4A-QP-YHl" customClass="AddProductDrawerTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7P8-lX-BYc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" id="7P8-lX-BYc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -4096,6 +4190,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tfX-uD-L2L"/>
+        <segue reference="wzQ-eO-vBc"/>
     </inferredMetricsTieBreakers>
 </document>
