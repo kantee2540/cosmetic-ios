@@ -15,21 +15,17 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol,
     }
 
     var resultItem :[ProductModel] = []
-    
     var searchBar :UISearchBar = UISearchBar()
-    @IBOutlet var stockResultsFeed: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stockResultsFeed.delegate = self
-        self.stockResultsFeed.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         self.showSpinner(onView: self.view)
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadLimitItem(limitNum: 15)
- 
+        self.tableView.addSubview(searchRefreshControl)
+        downloadProduct()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +51,7 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
             let destination = segue.destination as? CosmeticDetailViewController
-            let itemIndex = stockResultsFeed.indexPathForSelectedRow?.row
+            let itemIndex = self.tableView.indexPathForSelectedRow?.row
             let item = resultItem[itemIndex!]
             destination?.delegate = self
             destination?.productId = item.product_id
@@ -93,15 +89,33 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol,
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    lazy var searchRefreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handlerRefresh(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
+    
+    @objc private func handlerRefresh(_ refreshControl: UIRefreshControl){
+        downloadProduct()
+    }
+    
+    private func downloadProduct(){
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadLimitItem(limitNum: 15)
+    }
+    
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [ProductModel]
-        self.stockResultsFeed.reloadData()
+        self.tableView.reloadData()
         self.removeSpinner()
         searchBar.isUserInteractionEnabled = true
+        searchRefreshControl.endRefreshing()
     }
     
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+        searchRefreshControl.endRefreshing()
     }
     
 }

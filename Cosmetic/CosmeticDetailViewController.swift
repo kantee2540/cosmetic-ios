@@ -30,6 +30,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     @IBOutlet weak var ingredient: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         if item.count > 0{
@@ -62,6 +63,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -100,6 +102,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     
     @IBAction func tapSave(_ sender: Any) {
         if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
+            loadingActivity.isHidden = false
             let insertItem = CosmeticDesk()
             insertItem.delegate = self
             insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
@@ -114,10 +117,11 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     func onFailed() {
-        
+        Library.displayAlert(targetVC: self, title: "Error", message: "Save cosmetic to desk fail please try again.")
     }
 
     private func disableSaveButton(){
+        loadingActivity.isHidden = true
         saveButton.backgroundColor = UIColor.gray
         saveButton.setTitle("Saved", for: .disabled)
         saveButton.isEnabled = false

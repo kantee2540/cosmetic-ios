@@ -20,7 +20,11 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.navigationController?.pushViewController(accountVc!, animated: true)
     }
 
+    @IBOutlet weak var pickforyouload: UIActivityIndicatorView!
+    @IBOutlet weak var recommendsetload: UIActivityIndicatorView!
+    @IBOutlet weak var deskload: UIActivityIndicatorView!
     @IBOutlet weak var cosmeticDeskTitle: UILabel!
+    @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var cosmeticdeskCollectionview: UICollectionView!
     @IBOutlet weak var tipofday: UIView!
     @IBOutlet weak var pickYouCollectionView: UICollectionView!
@@ -46,6 +50,26 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         setCollectionview.dataSource = self
         cosmeticdeskCollectionview.delegate = self
         cosmeticdeskCollectionview.dataSource = self
+        
+        self.scrollview.addSubview(self.refreshControl)
+        downloadContent()
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+       let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handlerRefresh(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
+    
+    @objc private func handlerRefresh(_ refreshControl: UIRefreshControl){
+        downloadContent()
+        
+    }
+    
+    private func downloadContent(){
+        deskload.isHidden = false
+        pickforyouload.isHidden = false
+        recommendsetload.isHidden = false
         
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
@@ -142,24 +166,32 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         if cosmeticList.count > 0{
             cosmeticdeskCollectionview.visibility = .visible
             cosmeticDeskTitle.visibility = .visible
+            deskload.visibility = .visible
         }else{
             cosmeticdeskCollectionview.visibility = .gone
             cosmeticDeskTitle.visibility = .gone
+            deskload.visibility = .gone
         }
+        refreshControl.endRefreshing()
+        deskload.isHidden = true
     }
     
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
+        refreshControl.endRefreshing()
+        pickforyouload.isHidden = true
     }
     
     func topicDownloaded(item: NSMutableArray) {
         recommendedSet = item as! [TopicModel]
         setCollectionview.reloadData()
+        recommendsetload.isHidden = true
     }
     
     func itemDownloaded(item: NSMutableArray) {
         pickForYouProduct = item as! [ProductModel]
         pickYouCollectionView.reloadData()
+        pickforyouload.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
