@@ -63,3 +63,7 @@ struct ConstantDrawer {
     static let countitem = "countitem"
     static let userId = "user_id"
 }
+
+struct ConstantDefaultURL {
+    static let defaultImageURL = "https://cococosmetic.000webhostapp.com/defaulticon.png"
+}

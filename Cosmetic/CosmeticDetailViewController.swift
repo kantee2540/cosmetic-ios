@@ -47,7 +47,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         brandName.text = productData[0].brand_name?.uppercased()
         productNameLabel.text = productData[0].product_name
         productDescriptionLabel.text = productData[0].product_description
-        productImage.downloadImage(from: URL(string: productData[0].product_img!)!)
+        productImage.downloadImage(from: URL(string: productData[0].product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         
         let numberFormat = NumberFormatter()
         numberFormat.numberStyle = .decimal

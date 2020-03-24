@@ -154,7 +154,11 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
             cell?.selectionStyle = .default
             cell?.productName.text = item.product_name
                 //cell?.productDescription.text = item.product_description
-            cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+            if item.product_img != ""{
+                cell?.productImg.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+            }else{
+                cell?.productImg.image = UIImage.init(named: "AppIcon")
+            }
             return cell!
                 
         }
