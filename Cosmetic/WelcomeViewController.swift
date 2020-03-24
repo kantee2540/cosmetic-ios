@@ -157,6 +157,11 @@ extension WelcomeViewController: UITextFieldDelegate{
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView")
         self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.isEditing = false
+    }
+    
 }
 
 extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol, DownloadCosmeticDeskListDelegate{
