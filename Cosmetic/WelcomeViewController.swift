@@ -153,13 +153,8 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
 
 extension WelcomeViewController: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.isEditing = false
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView")
         self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.isEditing = false
     }
     
 }
@@ -233,7 +228,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             pickCell.productName.text = item.product_name
             pickCell.productBrand.text = item.brand_name
             if item.product_img != ""{
-                pickCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+                pickCell.productImage.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             }else{
                 pickCell.productImage.image = UIImage.init(named: "bg4")
             }
