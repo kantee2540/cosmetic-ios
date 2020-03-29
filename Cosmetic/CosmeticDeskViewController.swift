@@ -101,10 +101,14 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         deskItemAction.addAction(UIAlertAction(title: "Share", style: .default, handler: {
             (UIAlertAction) in
             //Tap share
-            let titleActivity: String = item.product_name!
-            let description: String = item.product_description!
-            let image = image
-            let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+//            let titleActivity: String = item.product_name!
+//            let description: String = item.product_description!
+//            let image = image
+            let productId: String = item.product_id!
+            let getAddress = webAddress()
+            let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+            
+            let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
             self.present(activityViewController, animated: true, completion: nil)
             
         }))

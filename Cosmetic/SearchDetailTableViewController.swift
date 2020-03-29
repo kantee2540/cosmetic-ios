@@ -35,6 +35,7 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
         categoriesCollectionView.delegate = self

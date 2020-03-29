@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        if let url = launchOptions?[.url] as? URL{
+            print(url)
+        }
+        
         return true
     }
 
@@ -54,7 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
        
     }
-
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let nav = window?.rootViewController as? UINavigationController
+        
+        if url.host == "cosmetic"{
+            var param: [String: String] = [:]
+            
+            URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach{
+                param[$0.name] = $0.value
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "productdetail") as? CosmeticDetailViewController
+            vc?.productId = param["id"]
+            nav?.present(vc!, animated: true, completion: nil)
+            
+        }
+        return true
+    }
 
 }
 

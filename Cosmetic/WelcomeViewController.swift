@@ -157,6 +157,10 @@ extension WelcomeViewController: UITextFieldDelegate{
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
 }
 
 extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol, DownloadCosmeticDeskListDelegate{

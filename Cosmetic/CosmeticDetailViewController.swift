@@ -39,27 +39,39 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     func itemCosmeticDeskFailed(error: String) {
-        Library.displayAlert(targetVC: self, title: "Error", message: error)
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func itemDownloaded(item: NSMutableArray) {
-        productData = item as! [ProductModel]
-        brandName.text = productData[0].brand_name?.uppercased()
-        productNameLabel.text = productData[0].product_name
-        productDescriptionLabel.text = productData[0].product_description
-        productImage.downloadImage(from: URL(string: productData[0].product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
-        
-        let numberFormat = NumberFormatter()
-        numberFormat.numberStyle = .decimal
-        let formattedPrice = numberFormat.string(from: NSNumber(value:productData[0].product_price ?? 0))
-        priceLabel.text = formattedPrice! + " Baht"
-        
-        categoryLabel.text = productData[0].categories_name
-        categoryTypeLabel.text = productData[0].categories_type
-        if productData[0].ingredient != "n/a"{
-            ingredient.text = productData[0].ingredient
+        if item.count > 0{
+            productData = item as! [ProductModel]
+            brandName.text = productData[0].brand_name?.uppercased()
+            productNameLabel.text = productData[0].product_name
+            productDescriptionLabel.text = productData[0].product_description
+            productImage.downloadImage(from: URL(string: productData[0].product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+            
+            let numberFormat = NumberFormatter()
+            numberFormat.numberStyle = .decimal
+            let formattedPrice = numberFormat.string(from: NSNumber(value:productData[0].product_price ?? 0))
+            priceLabel.text = formattedPrice! + " Baht"
+            
+            categoryLabel.text = productData[0].categories_name
+            categoryTypeLabel.text = productData[0].categories_type
+            if productData[0].ingredient != "n/a"{
+                ingredient.text = productData[0].ingredient
+            }else{
+                ingredient.text = "Ingredient not available"
+            }
         }else{
-            ingredient.text = "Ingredient not available"
+            let alert = UIAlertController(title: "No Product", message: "Sorry, Product you're looking not found.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         
         self.removeSpinner()
@@ -96,10 +108,15 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     @IBAction func tapShare(_ sender: Any) {
-        let titleActivity: String = productData[0].product_name!
-        let description: String = productData[0].product_description!
-        let image: UIImage = productImage.image!
-        let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+        
+//        let titleActivity: String = productData[0].product_name!
+//        let description: String = productData[0].product_description!
+//        let image: UIImage = productImage.image!
+        let productId: String = productData[0].product_id!
+        let getAddress = webAddress()
+        let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+        
+        let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         self.present(activityViewController, animated: true, completion: nil)
     }
