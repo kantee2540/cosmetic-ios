@@ -51,6 +51,10 @@ class SearchDetailTableViewController: UITableViewController, DownloadCategories
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     //MARK: - Download Categories list
     private func downloadCategories(){
         let downloadCategories = DownloadCategories()
