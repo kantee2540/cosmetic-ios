@@ -243,7 +243,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             let item = recommendedSet[indexPath.row]
             setCell.layer.cornerRadius = 5
             if item.topic_img != ""{
-                setCell.setImage.downloadImage(from: URL(string: item.topic_img ?? "")!)
+                setCell.setImage.downloadImage(from: URL(string: item.topic_img ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             }else{
                 setCell.setImage.image = UIImage.init(named: "bg4")
             }

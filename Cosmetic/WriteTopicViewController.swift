@@ -13,6 +13,7 @@ class WriteTopicViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,21 @@ class WriteTopicViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gochooseimage"{
+            let destination = segue.destination as? ChooseImageViewController
+            destination?.titleTopic = titleTextField.text
+            destination?.descriptionTopic = detailTextView.text
+        }
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text!.count > 0{
+            nextButton.isEnabled = true
+        }else{
+            nextButton.isEnabled = false
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -119,4 +119,9 @@ class webAddress {
         return webFile
     }
     
+    func getInsertTopicURL() -> String{
+        let webFile = getrootURL() + "insertTopic.php"
+        return webFile
+    }
+    
 }

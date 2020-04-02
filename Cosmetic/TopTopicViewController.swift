@@ -22,7 +22,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         topicItem = item as! [PackageModel]
         settingtitleLabel()
         if topicImg != ""{
-            coverImage.downloadImage(from: URL(string: topicImg ?? "")!)
+            coverImage.downloadImage(from: URL(string: topicImg ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         }else{
             coverImage.image = UIImage.init(named: "bg4")
         }
@@ -32,10 +32,10 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         productTable.reloadData()
     }
     var delegate: TopTopicDelegate?
-    var topicId: String!
-    var topicName: String!
-    var topicDescription: String!
-    var topicImg: String!
+    var topicId: String?
+    var topicName: String?
+    var topicDescription: String?
+    var topicImg: String?
     private var topicItem: [PackageModel] = []
     
     @IBOutlet weak var coverImage: UIImageView!
@@ -75,7 +75,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         numberFormat.numberStyle = .decimal
         let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
         itemCell.itemPrice.text = "Price: \(formattedPrice ?? "0") Baht"
-        itemCell.itemImage.downloadImage(from: URL(string: item.product_img!)!)
+        itemCell.itemImage.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             
         return itemCell
         
@@ -105,7 +105,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     private func downloadPackage(){
         let downloadPackage = DownloadPackage()
         downloadPackage.delegate = self
-        downloadPackage.downloadByTopicId(id: topicId)
+        downloadPackage.downloadByTopicId(id: topicId ?? "")
     }
     
     private func settingtitleLabel(){
@@ -125,8 +125,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         dismiss(animated: true, completion: nil)
     }
     @IBAction func tapShare(_ sender: Any) {
-        let titleActivity: String = topicName
-        let description: String = topicDescription
+        let titleActivity: String = topicName!
+        let description: String = topicDescription!
         let image: UIImage = coverImage.image!
         let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView

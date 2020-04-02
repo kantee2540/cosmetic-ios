@@ -21,10 +21,14 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadProd
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    private var productList: [ProductModel] = []
+    private var selectedProduct: [ProductModel] = []
+    
     var titleTopic: String?
     var descriptionTopic: String?
-    private var productList: [ProductModel] = []
+    var selectedImage: UIImage?
+    var isSelectedCustomImage: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +65,28 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadProd
         }
         // Configure the cell...
         return cell!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = productList[indexPath.row]
+        selectedProduct.append(item)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let index = selectedProduct.lastIndex(of: productList[indexPath.row]){
+            selectedProduct.remove(at: index)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gopreview"{
+            let destination = segue.destination as? PreviewTopicViewController
+            destination?.titleTopic = titleTopic
+            destination?.descriptionTopic = descriptionTopic
+            destination?.selectedImage = selectedImage
+            destination?.isSelectedCustomImage = isSelectedCustomImage!
+            destination?.productSet = selectedProduct
+        }
     }
     
 }
