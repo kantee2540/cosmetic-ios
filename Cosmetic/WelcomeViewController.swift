@@ -143,9 +143,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
             destination?.delegate = self
             let item = recommendedSet[itemIndex!]
             destination?.topicId = item.topic_id
-            destination?.topicImg = item.topic_img
-            destination?.topicDescription = item.topic_description
-            destination?.topicName = item.topic_name
         }
     }
 

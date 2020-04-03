@@ -12,13 +12,7 @@ class AddTopicResultViewController: UIViewController, DownloadTopicProtocol {
     
     func topicDownloaded(item: NSMutableArray) {
         topicList = item as! [TopicModel]
-        let topicDetail = storyboard?.instantiateViewController(identifier: "TopTopic") as? TopTopicViewController
-        let item = topicList[0]
-        topicDetail?.topicId = item.topic_id
-        topicDetail?.topicImg = item.topic_img
-        topicDetail?.topicDescription = item.topic_description
-        topicDetail?.topicName = item.topic_name
-        self.present(topicDetail!, animated: true, completion: nil)
+        removeSpinner()
     }
     
     func topicError(error: String) {
@@ -37,10 +31,15 @@ class AddTopicResultViewController: UIViewController, DownloadTopicProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showSpinner(onView: self.view)
         goBackButton.makeRoundedView()
         // Do any additional setup after loading the view.
         topicCodeTextfield.text = topicCode
+        
+        let downloadTopic = DownloadTopic()
+        downloadTopic.delegate = self
+        downloadTopic.getTopicId(code: topicCode)
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
@@ -49,9 +48,10 @@ class AddTopicResultViewController: UIViewController, DownloadTopicProtocol {
     }
     
     @IBAction func tapSeeTopic(_ sender: Any) {
-        let downloadTopic = DownloadTopic()
-        downloadTopic.delegate = self
-        downloadTopic.getTopicId(code: topicCode)
+        let topicDetail = storyboard?.instantiateViewController(identifier: "TopTopic") as? TopTopicViewController
+        let item = topicList[0]
+        topicDetail?.topicId = item.topic_id
+        self.present(topicDetail!, animated: true, completion: nil)
     }
     
 }

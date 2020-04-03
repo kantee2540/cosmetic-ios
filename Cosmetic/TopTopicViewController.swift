@@ -12,7 +12,29 @@ protocol TopTopicDelegate {
     func dismissFromTopTopic()
 }
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate {
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol {
+    func topicDownloaded(item: NSMutableArray) {
+        topicHeadItem = item as! [TopicModel]
+        let item = topicHeadItem[0]
+        titleLabel.text = item.topic_name
+        descriptionLabel.text = item.topic_description
+        personLabel.text = item.nickname
+        
+        if item.topic_img != ""{
+            coverImage.downloadImage(from: URL(string: item.topic_img ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+        }else{
+            coverImage.image = UIImage.init(named: "bg4")
+        }
+    }
+    
+    func topicError(error: String) {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func dismissFromCosmeticDetail() {
         dismiss(animated: true, completion: nil)
         self.delegate?.dismissFromTopTopic()
@@ -21,27 +43,23 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     func itemDownloaded(item: NSMutableArray) {
         topicItem = item as! [PackageModel]
         settingtitleLabel()
-        if topicImg != ""{
-            coverImage.downloadImage(from: URL(string: topicImg ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
-        }else{
-            coverImage.image = UIImage.init(named: "bg4")
-        }
+        
         
         
         removeSpinner()
         productTable.reloadData()
     }
+    
     var delegate: TopTopicDelegate?
     var topicId: String?
-    var topicName: String?
-    var topicDescription: String?
-    var topicImg: String?
+    private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var personLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
@@ -99,6 +117,11 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         productTable.dataSource = self
         showSpinner(onView: self.view)
         topicScroll.delegate = self
+        
+        let downloadTopic = DownloadTopic()
+        downloadTopic.delegate = self
+        downloadTopic.getTopicById(topicId: topicId!)
+        
         downloadPackage()
     }
     
@@ -109,12 +132,10 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func settingtitleLabel(){
-        titleLabel.text = topicName
         titleLabel.layer.shadowColor = UIColor.black.cgColor
         titleLabel.layer.shadowOpacity = 0.5
         titleLabel.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         titleLabel.layer.shadowRadius = 3
-        descriptionLabel.text = topicDescription
         shareButton.roundedCorner()
         saveButton.roundedCorner()
         
@@ -125,8 +146,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         dismiss(animated: true, completion: nil)
     }
     @IBAction func tapShare(_ sender: Any) {
-        let titleActivity: String = topicName!
-        let description: String = topicDescription!
+        let titleActivity: String = topicHeadItem[0].topic_name!
+        let description: String = topicHeadItem[0].topic_description!
         let image: UIImage = coverImage.image!
         let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView

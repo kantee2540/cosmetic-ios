@@ -54,6 +54,11 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seemytopic"{
+            let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+            let destination = segue.destination as? MyTopicTableViewController
+            destination?.userId = userId
+        }
     }
 
     // MARK: - Table view data source

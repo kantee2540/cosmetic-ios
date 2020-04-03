@@ -21,9 +21,6 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
             var topicItem :[TopicModel] = []
             topicItem = item as! [TopicModel]
             topicVc?.topicId = topicItem[0].topic_id
-            topicVc?.topicName = topicItem[0].topic_name
-            topicVc?.topicDescription = topicItem[0].topic_description
-            topicVc?.topicImg = topicItem[0].topic_img
             topicVc?.delegate = self
             self.present(topicVc!, animated: true)
         }
@@ -89,15 +86,5 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 6
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
