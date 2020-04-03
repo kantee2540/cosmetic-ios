@@ -39,7 +39,7 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "seetopic"{
-            let index = self.tableView.indexPathForSelectedRow?.first
+            let index = self.tableView.indexPathForSelectedRow?.row
             let item = topicList[index!]
             let destination = segue.destination as? TopTopicViewController
             destination?.topicId = item.topic_id
