@@ -210,21 +210,21 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setcell" id="IGY-91-Wr2" customClass="SetCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="29" width="129.5" height="172"/>
+                                                        <rect key="frame" x="0.0" y="29" width="130" height="172"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dvS-vd-N3h">
-                                                            <rect key="frame" x="0.0" y="0.0" width="129.5" height="172"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="130" height="172"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TnA-uG-maU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="114"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="114"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" priority="750" constant="114" id="OKf-yG-mW6"/>
-                                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="130" id="Qjg-9R-7Rf"/>
+                                                                        <constraint firstAttribute="width" priority="750" constant="130" id="Qjg-9R-7Rf"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-0S-lJb">
-                                                                    <rect key="frame" x="8" y="122" width="113.5" height="36"/>
+                                                                    <rect key="frame" x="8" y="122" width="114" height="36"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" priority="750" constant="36" id="By7-YT-fVs"/>
                                                                     </constraints>
@@ -4594,7 +4594,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="alj-iG-gXm"/>
-        <segue reference="mCg-qs-FNI"/>
+        <segue reference="c3A-7h-gg6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ant.fill" catalog="system" width="107" height="128"/>

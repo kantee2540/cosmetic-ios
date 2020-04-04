@@ -150,8 +150,12 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
 
 extension WelcomeViewController: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchDetailView")
         self.navigationController?.pushViewController(vc!, animated: true)
+        return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

@@ -76,6 +76,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc?.productId = param["id"]
             nav?.present(vc!, animated: true, completion: nil)
             
+        }else if url.host == "topic"{
+            var param: [String: String] = [:]
+            
+            URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach{
+                param[$0.name] = $0.value
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "TopTopic") as? TopTopicViewController
+            vc?.topicId = param["id"]
+            nav?.present(vc!, animated: true, completion: nil)
+            
         }
         return true
     }

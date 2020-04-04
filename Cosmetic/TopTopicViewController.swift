@@ -14,16 +14,24 @@ protocol TopTopicDelegate {
 
 class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol {
     func topicDownloaded(item: NSMutableArray) {
-        topicHeadItem = item as! [TopicModel]
-        let item = topicHeadItem[0]
-        titleLabel.text = item.topic_name
-        descriptionLabel.text = item.topic_description
-        personLabel.text = item.nickname
-        
-        if item.topic_img != ""{
-            coverImage.downloadImage(from: URL(string: item.topic_img ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+        if item.count > 0{
+            topicHeadItem = item as! [TopicModel]
+            let item = topicHeadItem[0]
+            titleLabel.text = item.topic_name
+            descriptionLabel.text = item.topic_description
+            personLabel.text = item.nickname
+            
+            if item.topic_img != ""{
+                coverImage.downloadImage(from: URL(string: item.topic_img ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+            }else{
+                coverImage.image = UIImage.init(named: "bg4")
+            }
         }else{
-            coverImage.image = UIImage.init(named: "bg4")
+            let alert = UIAlertController(title: "Topic Not found", message: "This topic has been removed or not avaliable.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -146,10 +154,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         dismiss(animated: true, completion: nil)
     }
     @IBAction func tapShare(_ sender: Any) {
-        let titleActivity: String = topicHeadItem[0].topic_name!
-        let description: String = topicHeadItem[0].topic_description!
-        let image: UIImage = coverImage.image!
-        let activityViewController = UIActivityViewController(activityItems: [titleActivity, description, image], applicationActivities: nil)
+//        let titleActivity: String = topicHeadItem[0].topic_name!
+//        let description: String = topicHeadItem[0].topic_description!
+//        let image: UIImage = coverImage.image!
+        
+        let getAddress = webAddress()
+        let url = URL(string: getAddress.getrootURL() + "?topicId=\(topicHeadItem[0].topic_id ?? "0")")
+        
+        let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         self.present(activityViewController, animated: true, completion: nil)
     }
