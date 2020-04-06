@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
                 self?.incorrectLabel.text = error.localizedDescription
                 self?.loadingActivity.isHidden = true
                 self?.signinButton.isEnabled = true
-                self?.signinButton.backgroundColor = UIColor.init(named: "main-font-color")
+                self?.signinButton.backgroundColor = UIColor.init(named: "cosmetic-color")
                 return
             }
             print("LOGGEDIN!")

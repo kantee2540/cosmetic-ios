@@ -20,6 +20,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.navigationController?.pushViewController(accountVc!, animated: true)
     }
 
+    @IBOutlet weak var startSearchview: UIView!
     @IBOutlet weak var pickforyouload: UIActivityIndicatorView!
     @IBOutlet weak var recommendsetload: UIActivityIndicatorView!
     @IBOutlet weak var deskload: UIActivityIndicatorView!
@@ -29,7 +30,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     @IBOutlet weak var tipofday: UIView!
     @IBOutlet weak var pickYouCollectionView: UICollectionView!
     @IBOutlet weak var setCollectionview: UICollectionView!
-    @IBOutlet weak var startSearchTextfield: UITextField!
     
     private var cosmeticList: [CosmeticDeskModel] = []
     private var pickForYouProduct: [ProductModel] = []
@@ -41,8 +41,8 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         
         self.hideKeyboardWhenTappedAround()
         
-        startSearchTextfield.delegate = self
         tipofday.layer.cornerRadius = 6
+        startSearchview.layer.cornerRadius = 8
         
         pickYouCollectionView.delegate = self
         pickYouCollectionView.dataSource = self
@@ -67,7 +67,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     }
     
     private func downloadContent(){
-        deskload.isHidden = false
         pickforyouload.isHidden = false
         recommendsetload.isHidden = false
         
@@ -179,7 +178,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             cosmeticDeskTitle.visibility = .gone
             deskload.visibility = .gone
         }
-        refreshControl.endRefreshing()
+        
         deskload.isHidden = true
     }
     
@@ -209,6 +208,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         pickForYouProduct = item as! [ProductModel]
         pickYouCollectionView.reloadData()
         pickforyouload.isHidden = true
+        refreshControl.endRefreshing()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

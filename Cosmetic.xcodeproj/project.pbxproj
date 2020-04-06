@@ -98,6 +98,10 @@
 		B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */; };
 		B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */; };
 		B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749D2426422500CB241F /* DeleteUser.swift */; };
+		B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */; };
+		B3E6D5A3243B3AAB009BF6DD /* SearchFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */; };
+		B3E6D5A5243B468A009BF6DD /* SearchFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */; };
+		B3E6D5A7243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */; };
 		B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30823BA640B0041D69A /* NotificationModel.swift */; };
 		B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30A23BA64980041D69A /* DownloadNotification.swift */; };
 		B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */; };
@@ -233,6 +237,10 @@
 		B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductDrawerTableViewController.swift; sourceTree = "<group>"; };
 		B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountTableViewController.swift; sourceTree = "<group>"; };
 		B3DB749D2426422500CB241F /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
+		B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTableViewController.swift; sourceTree = "<group>"; };
+		B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTableViewCell.swift; sourceTree = "<group>"; };
+		B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterBrandTableViewCell.swift; sourceTree = "<group>"; };
 		B3EBF30823BA640B0041D69A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		B3EBF30A23BA64980041D69A /* DownloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNotification.swift; sourceTree = "<group>"; };
 		B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +317,9 @@
 				B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */,
 				B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */,
 				B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */,
+				B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */,
+				B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */,
+				B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -366,6 +377,7 @@
 				B371985323898D2E001DB6A7 /* Library.swift */,
 				B3B058C423E1E7E500D4786C /* CustomTextfield.swift */,
 				B3FC3AC924210D26004E098D /* CustomTextView.swift */,
+				B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -819,6 +831,7 @@
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
 				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
+				B3E6D5A3243B3AAB009BF6DD /* SearchFilterTableViewController.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
@@ -826,6 +839,7 @@
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
 				B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */,
+				B3E6D5A7243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift in Sources */,
 				B35B57622398164800AE754F /* PackageViewController.swift in Sources */,
 				B36CD6332424AFBD00D33F31 /* DrawerCollectionCollectionViewController.swift in Sources */,
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
@@ -842,6 +856,7 @@
 				B387F29224378BD0006E139F /* MyTopicTableViewController.swift in Sources */,
 				B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */,
 				B3D7D3E72424C28F00F6B95B /* DrawerCollectionModel.swift in Sources */,
+				B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */,
 				B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
@@ -877,6 +892,7 @@
 				B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */,
 				B3A71EFC243658C3000A501B /* AddTopicResultViewController.swift in Sources */,
 				B3BFC8C72423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift in Sources */,
+				B3E6D5A5243B468A009BF6DD /* SearchFilterTableViewCell.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */,
