@@ -75,7 +75,7 @@ class ChooseDrawerTableViewController: UITableViewController, DownloadDrawerDele
         showSpinner(onView: self.view)
         let drawerCollection = DrawerCollection()
         drawerCollection.delegate = self
-        drawerCollection.addToCollection(drawerId: selectedItem!.drawer_id!, deskId: deskId!)
+        drawerCollection.addToOneCollection(drawerId: (selectedItem?.drawer_id)!, deskId: deskId!)
     }
 
 }

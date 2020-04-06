@@ -34,12 +34,29 @@ class DrawerCollection: NSObject, NetworkDelegate {
         
     }
     
-    func addToCollection(drawerId: String, deskId: String){
+    func addToOneCollection(drawerId: String, deskId: String){
         let DB_URL = getAddress.getAddCollectionURL()
         let param = ["desk_id": deskId, "drawer_id": drawerId]
-        
         let network = Network()
         network.delegate = self
         network.downloadData(URL: DB_URL, param: param)
+    }
+    
+    func addToCollection(drawerId: String, deskIdSet: [String]){
+        let DB_URL = getAddress.getAddCollectionURL()
+        let deskSet = convertToJson(object: deskIdSet)
+        let param = ["desk_set": deskSet, "drawer_id": drawerId]
+        
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: param as [String : Any])
+    }
+    
+    func convertToJson(object: [String]) -> String?{
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else{
+            return nil
+        }
+        
+        return String(data: data, encoding: String.Encoding.utf8)
     }
 }

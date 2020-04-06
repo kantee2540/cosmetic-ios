@@ -30,6 +30,7 @@
 		B348223723E1D890008BD770 /* PickforyouCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B348223623E1D88F008BD770 /* PickforyouCollectionViewCell.swift */; };
 		B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */; };
 		B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B4001229D0BE20045DF9A /* webAddress.swift */; };
+		B34CE3172439FB49007228FC /* DrawerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34CE3162439FB49007228FC /* DrawerCollectionViewController.swift */; };
 		B35B57622398164800AE754F /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B57612398164800AE754F /* PackageViewController.swift */; };
 		B36CD6332424AFBD00D33F31 /* DrawerCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CD6322424AFBD00D33F31 /* DrawerCollectionCollectionViewController.swift */; };
 		B36CD6352424B46800D33F31 /* DownloadDrawerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */; };
@@ -156,6 +157,7 @@
 		B348223623E1D88F008BD770 /* PickforyouCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickforyouCollectionViewCell.swift; sourceTree = "<group>"; };
 		B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultTableViewCell.swift; sourceTree = "<group>"; };
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
+		B34CE3162439FB49007228FC /* DrawerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCollectionViewController.swift; sourceTree = "<group>"; };
 		B35B57612398164800AE754F /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
 		B36CD6322424AFBD00D33F31 /* DrawerCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDrawerCollection.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */,
 				B386F55323C62B1F005F58C9 /* DeskCollectionViewCell.swift */,
 				B37A609223DB5895001FE027 /* NoLoginViewController.swift */,
+				B34CE3162439FB49007228FC /* DrawerCollectionViewController.swift */,
 				B3BFC8BE2423312900C7C430 /* DrawerCollectionViewCell.swift */,
 				B3BFC8C62423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift */,
 				B3B19B3E2423C94700501426 /* AddDrawerTableViewController.swift */,
@@ -880,6 +883,7 @@
 				B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */,
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B3BFC8BF2423312900C7C430 /* DrawerCollectionViewCell.swift in Sources */,
+				B34CE3172439FB49007228FC /* DrawerCollectionViewController.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
 				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
@@ -1013,7 +1017,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1205,7 +1209,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1238,7 +1242,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

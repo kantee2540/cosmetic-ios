@@ -222,11 +222,12 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
             destination?.productId = item.product_id
             
          }else if segue.identifier == "drawercollection"{
-            let destination = segue.destination as? DrawerCollectionCollectionViewController
+            let destination = segue.destination as? DrawerCollectionViewController
             let itemIndex = deskCollection.indexPathsForSelectedItems?.first
             let item = drawerList[itemIndex!.row]
             destination?.drawerId = item.drawer_id
             destination?.drawerName = item.drawer_name
+            
             destination?.userId = userId
         }
     }

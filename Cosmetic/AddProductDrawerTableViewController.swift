@@ -24,7 +24,7 @@ class AddProductDrawerTableViewController: UITableViewController, DownloadCosmet
     }
     
     private var cosmeticDeskList: [CosmeticDeskModel] = []
-    private var selectedItem: CosmeticDeskModel?
+    private var selectedItem: [String] = []
     var drawerId: String?
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
@@ -73,13 +73,23 @@ class AddProductDrawerTableViewController: UITableViewController, DownloadCosmet
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         doneButton.isEnabled = true
         let item = cosmeticDeskList[indexPath.row]
-        selectedItem = item
+        selectedItem.append(item.desk_id!)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let index = selectedItem.lastIndex(of: cosmeticDeskList[indexPath.row].desk_id!){
+            selectedItem.remove(at: index)
+        }
+        if selectedItem.count == 0{
+            doneButton.isEnabled = false
+        }
     }
 
     @IBAction func tapDone(_ sender: Any) {
         let drawerCollection = DrawerCollection()
         drawerCollection.delegate = self
-        drawerCollection.addToCollection(drawerId: drawerId!, deskId: selectedItem!.desk_id!)
+        drawerCollection.addToCollection(drawerId: drawerId!, deskIdSet: selectedItem)
     }
 
 }
