@@ -86,7 +86,11 @@ class DrawerCollectionViewController: UIViewController, UICollectionViewDelegate
     }
     
     func itemDrawerCollectionFailed(error: String) {
-        
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {

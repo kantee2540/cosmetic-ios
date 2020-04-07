@@ -81,14 +81,6 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-    
     private func downloadProductByCategory(categoryId: String){
         let downloadProducts = DownloadProduct()
         downloadProducts.delegate = self
@@ -206,7 +198,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
                 
                 searchingCell.selectionStyle = .none
                 searchingCell.title.text = "Search Cosmetic"
-                searchingCell.notifyDescription.text = "Type your keyword or choose the brand or category of cosmetics"
+                searchingCell.notifyDescription.text = "Type your keyword or Filter by category or brand from filter search menu"
                 return searchingCell
                     
             }else{

@@ -14,15 +14,18 @@ protocol SearchFilterTableViewControllerDelegate {
 
 class SearchFilterTableViewController: UITableViewController, DownloadBrandProtocol, DownloadCategoriesProtocol {
     func itemDownloadedBrands(item: NSMutableArray) {
+        loadingActivity.stopAnimating()
         brandsList = item as! [BrandModel]
         self.tableView.reloadData()
     }
     
     func itemDownloadedCategories(item: NSMutableArray) {
+        loadingActivity.stopAnimating()
         categoriesList = item as! [CategoriesModel]
         self.tableView.reloadData()
     }
     
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     @IBOutlet weak var optionSegment: UISegmentedControl!
     @IBOutlet weak var applyButton: UIBarButtonItem!
     
@@ -39,6 +42,7 @@ class SearchFilterTableViewController: UITableViewController, DownloadBrandProto
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        loadingActivity.startAnimating()
         super.viewDidLoad()
         if categoryFilter{
             downloadCategories()
@@ -118,6 +122,7 @@ class SearchFilterTableViewController: UITableViewController, DownloadBrandProto
     }
     
     @IBAction func optionChange(_ sender: Any) {
+        loadingActivity.startAnimating()
         applyButton.isEnabled = false
         if optionSegment.selectedSegmentIndex == 0{
             brandFilter = false
