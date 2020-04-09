@@ -197,8 +197,8 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         Library.displayAlert(targetVC: self, title: "Error", message: "Can't signup please try again")
         let user = Auth.auth().currentUser
         user?.delete(completion: { error in
-            if let error = error{
-                Library.displayAlert(targetVC: self, title: "Error", message: error as! String)
+            if error != nil{
+                
             }
             else{
                 self.navigationController?.popToRootViewController(animated: true)
@@ -233,8 +233,8 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
             Library.displayAlert(targetVC: self, title: "Error", message: "Can't signup please try again")
             let user = Auth.auth().currentUser
             user?.delete(completion: { error in
-                if let error = error{
-                    Library.displayAlert(targetVC: self, title: "Error", message: error as! String)
+                if error != nil{
+                    
                 }
                 else{
                     self.navigationController?.popViewController(animated: true)
