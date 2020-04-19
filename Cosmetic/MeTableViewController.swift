@@ -77,7 +77,7 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         }
         else if section == 1{
             if Auth.auth().currentUser != nil{
-                return 2
+                return 1
             }else{
                 return 0
             }
@@ -85,7 +85,7 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         }
         else if section == 2{
             if Auth.auth().currentUser != nil{
-                return 2
+                return 3    
             }else{
                 return 0
             }

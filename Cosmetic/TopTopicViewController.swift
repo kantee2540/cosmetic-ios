@@ -12,7 +12,34 @@ protocol TopTopicDelegate {
     func dismissFromTopTopic()
 }
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol {
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol, SaveTopicDelegate, DownloadSaveTopicDelegate {
+    func downloadSaveTopicSuccess(item: NSMutableArray) {
+        if item.count > 0{
+            savedButtonState()
+        }
+    }
+    
+    func downloadSaveTopicFailed() {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Save Topic Failed!")
+    }
+    
+    func saveTopicSuccess() {
+        savedButtonState()
+    }
+    
+    private func savedButtonState(){
+        saveActivity.stopAnimating()
+        saveButton.titleLabel?.text = "Saved"
+        saveButton.setTitleColor(UIColor.white, for: .disabled)
+        saveButton.isEnabled = false
+        saveButton.backgroundColor = UIColor.systemGray
+        saveButton.tintColor = UIColor.white
+    }
+    
+    func saveTopicFailed() {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Save Topic Failed!")
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
         if item.count > 0{
             topicHeadItem = item as! [TopicModel]
@@ -52,8 +79,6 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         topicItem = item as! [PackageModel]
         settingtitleLabel()
         
-        
-        
         removeSpinner()
         productTable.reloadData()
     }
@@ -63,6 +88,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
     
+    @IBOutlet weak var saveActivity: UIActivityIndicatorView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -130,7 +156,17 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         downloadTopic.delegate = self
         downloadTopic.getTopicById(topicId: topicId!)
         
+        checkSaveTopic()
         downloadPackage()
+    }
+    
+    private func checkSaveTopic(){
+        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        if userId != nil{
+            let downloadSaveTopic = DownloadSaveTopic()
+            downloadSaveTopic.delegate = self
+            downloadSaveTopic.checkTopicIsSaved(userId: userId!, topicId: topicId!)
+        }
     }
     
     private func downloadPackage(){
@@ -148,6 +184,19 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         saveButton.roundedCorner()
         
         
+    }
+    @IBAction func tapSave(_ sender: Any) {
+        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        
+        if userId != nil{
+            saveActivity.startAnimating()
+            let saveTopic = SaveTopic()
+            saveTopic.delegate = self
+            saveTopic.saveTopic(topicId: topicId!, userId: userId!)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+            delegate?.dismissFromTopTopic()
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {

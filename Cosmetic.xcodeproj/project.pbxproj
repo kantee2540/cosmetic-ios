@@ -20,6 +20,7 @@
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */; };
+		B335250E2445DB6C005E0838 /* SaveTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */; };
 		B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338E7F5238BFD83007D5506 /* SearchTableViewCell.swift */; };
 		B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */; };
 		B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9E2290404D008F3AEE /* BrandModel.swift */; };
@@ -32,6 +33,8 @@
 		B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B4001229D0BE20045DF9A /* webAddress.swift */; };
 		B34CE3172439FB49007228FC /* DrawerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34CE3162439FB49007228FC /* DrawerCollectionViewController.swift */; };
 		B35B57622398164800AE754F /* PackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B57612398164800AE754F /* PackageViewController.swift */; };
+		B3687AA0244707EA00FB909D /* SaveTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3687A9F244707EA00FB909D /* SaveTopic.swift */; };
+		B3687AA2244711E800FB909D /* DownloadSaveTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3687AA1244711E800FB909D /* DownloadSaveTopic.swift */; };
 		B36CD6352424B46800D33F31 /* DownloadDrawerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */; };
 		B371985423898D2E001DB6A7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371985323898D2E001DB6A7 /* Library.swift */; };
 		B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766C61236685630028B335 /* cameraResultTableViewController.swift */; };
@@ -150,6 +153,7 @@
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDetailViewController.swift; sourceTree = "<group>"; };
+		B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTopicTableViewController.swift; sourceTree = "<group>"; };
 		B338E7F5238BFD83007D5506 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBrands.swift; sourceTree = "<group>"; };
 		B33B6E9E2290404D008F3AEE /* BrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
 		B34CE3162439FB49007228FC /* DrawerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerCollectionViewController.swift; sourceTree = "<group>"; };
 		B35B57612398164800AE754F /* PackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewController.swift; sourceTree = "<group>"; };
+		B3687A9F244707EA00FB909D /* SaveTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTopic.swift; sourceTree = "<group>"; };
+		B3687AA1244711E800FB909D /* DownloadSaveTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSaveTopic.swift; sourceTree = "<group>"; };
 		B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDrawerCollection.swift; sourceTree = "<group>"; };
 		B371985323898D2E001DB6A7 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		B3766C61236685630028B335 /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +362,8 @@
 				B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */,
 				B3DB749D2426422500CB241F /* DeleteUser.swift */,
 				B3A71EF924362776000A501B /* AddTopic.swift */,
+				B3687A9F244707EA00FB909D /* SaveTopic.swift */,
+				B3687AA1244711E800FB909D /* DownloadSaveTopic.swift */,
 			);
 			name = getObject;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 				B3A71EFB243658C3000A501B /* AddTopicResultViewController.swift */,
 				B387F29124378BD0006E139F /* MyTopicTableViewController.swift */,
 				B387F29324378DA7006E139F /* MyTopicTableViewCell.swift */,
+				B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */,
 			);
 			name = TopTopic;
 			sourceTree = "<group>";
@@ -821,6 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3687AA0244707EA00FB909D /* SaveTopic.swift in Sources */,
 				B3A71EFA24362776000A501B /* AddTopic.swift in Sources */,
 				B3B6E01323B6534200478E51 /* RegisterSuccessViewController.swift in Sources */,
 				B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */,
@@ -886,6 +896,7 @@
 				B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */,
 				B316840F239414F5005F4D88 /* TopTopicItemTableViewCell.swift in Sources */,
 				B316840823940BF1005F4D88 /* PackageModel.swift in Sources */,
+				B3687AA2244711E800FB909D /* DownloadSaveTopic.swift in Sources */,
 				B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */,
 				B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */,
 				B3A71EFC243658C3000A501B /* AddTopicResultViewController.swift in Sources */,
@@ -900,6 +911,7 @@
 				B34CE3172439FB49007228FC /* DrawerCollectionViewController.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
 				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
+				B335250E2445DB6C005E0838 /* SaveTopicTableViewController.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,

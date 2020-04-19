@@ -124,4 +124,14 @@ class webAddress {
         return webFile
     }
     
+    func getSaveTopicURL() -> String {
+        let webFile = getrootURL() + "getSaveTopic.php"
+        return webFile
+    }
+    
+    func getInsertSaveTopicURL() -> String{
+        let webFile = getrootURL() + "insertSaveTopic.php"
+        return webFile
+    }
+    
 }
