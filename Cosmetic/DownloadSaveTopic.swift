@@ -10,7 +10,7 @@ import UIKit
 
 protocol DownloadSaveTopicDelegate {
     func downloadSaveTopicSuccess(item: NSMutableArray)
-    func downloadSaveTopicFailed()
+    func downloadSaveTopicFailed(error: String)
 }
 
 class DownloadSaveTopic: NSObject, NetworkDelegate {
@@ -19,7 +19,7 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
     }
     
     func downloadFailed(error: String) {
-        delegate?.downloadSaveTopicFailed()
+        delegate?.downloadSaveTopicFailed(error: error)
     }
     
     

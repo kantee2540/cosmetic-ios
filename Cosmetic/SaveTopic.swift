@@ -23,7 +23,9 @@ class SaveTopic: NSObject, NetworkDelegate {
     }
     
     var delegate: SaveTopicDelegate?
+    
     let getAddress = webAddress()
+    var DB_URL: String?
     
     func saveTopic(topicId: String, userId: String){
         
@@ -35,5 +37,12 @@ class SaveTopic: NSObject, NetworkDelegate {
         network.downloadData(URL: DB_URL, param: param)
     }
         
-    
+    func deleteTopic(topicId: String, userId: String){
+        let DB_URL = getAddress.getDeleteSaveTopicURL()
+        let param = ["topic_id": topicId, "user_id": userId]
+        
+        let network = Network()
+        network.delegate = self
+        network.downloadData(URL: DB_URL, param: param)
+    }
 }

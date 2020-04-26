@@ -134,4 +134,9 @@ class webAddress {
         return webFile
     }
     
+    func getDeleteSaveTopicURL() -> String{
+        let webFile = getrootURL() + "deleteSaveTopic.php"
+        return webFile
+    }
+    
 }

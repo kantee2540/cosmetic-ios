@@ -8,16 +8,36 @@
 
 import UIKit
 
-class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDelegate {
+class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDelegate, SaveTopicDelegate {
+    func saveTopicSuccess() {
+        self.tableView.reloadData()
+        downloadSaveTopic(userId: userId!)
+        removeSpinner()
+    }
+    
+    func saveTopicFailed() {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Cannot delete this save topic")
+    }
+    
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         savedItem = item as! [TopicModel]
         self.tableView.reloadData()
     }
     
-    func downloadSaveTopicFailed() {
+    func downloadSaveTopicFailed(error: String) {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: {(action) -> Void in
+            self.downloadSaveTopic(userId: self.userId!)
+        }))
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
+    private var userId: String?
     private var savedItem: [TopicModel] = []
 
     override func viewDidLoad() {
@@ -26,17 +46,15 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
+        downloadSaveTopic(userId: userId!)
+    }
+    
+    private func downloadSaveTopic(userId: String){
         let downloadSaveTopic = DownloadSaveTopic()
         downloadSaveTopic.delegate = self
-        downloadSaveTopic.downloadSaveTopic(userId: userId!)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        downloadSaveTopic.downloadSaveTopic(userId: userId)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,5 +95,16 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            showSpinner(onView: self.view)
+            let item = savedItem[indexPath.row]
+            
+            let saveTopic = SaveTopic()
+            saveTopic.delegate = self
+            saveTopic.deleteTopic(topicId: item.topic_id!, userId: userId!)
+        }
     }
 }

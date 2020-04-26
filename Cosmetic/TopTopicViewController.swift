@@ -19,8 +19,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func downloadSaveTopicFailed() {
-        Library.displayAlert(targetVC: self, title: "Error", message: "Save Topic Failed!")
+    func downloadSaveTopicFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
     }
     
     func saveTopicSuccess() {
