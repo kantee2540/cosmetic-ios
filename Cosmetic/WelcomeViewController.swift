@@ -27,7 +27,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     @IBOutlet weak var cosmeticDeskTitle: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var cosmeticdeskCollectionview: UICollectionView!
-    @IBOutlet weak var tipofday: UIView!
     @IBOutlet weak var pickYouCollectionView: UICollectionView!
     @IBOutlet weak var setCollectionview: UICollectionView!
     
@@ -41,7 +40,6 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         
         self.hideKeyboardWhenTappedAround()
         
-        tipofday.layer.cornerRadius = 6
         startSearchview.layer.cornerRadius = 8
         
         pickYouCollectionView.delegate = self

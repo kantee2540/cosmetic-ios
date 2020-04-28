@@ -21,6 +21,7 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
     
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         savedItem = item as! [TopicModel]
+        countLabel.text = "You have \(savedItem.count) saved topics"
         self.tableView.reloadData()
     }
     
@@ -36,6 +37,7 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
         
         self.present(alert, animated: true, completion: nil)
     }
+    @IBOutlet weak var countLabel: UILabel!
     
     private var userId: String?
     private var savedItem: [TopicModel] = []
