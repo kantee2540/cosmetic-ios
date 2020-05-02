@@ -8,42 +8,46 @@
 
 import UIKit
 
-class SearchDetailTableViewController: UITableViewController, CosmeticDetailDelegate, SearchFilterTableViewControllerDelegate {
-    
-    func filterResultCategory(item: CategoriesModel) {
-        searchBrand = false
+class SearchDetailTableViewController: UITableViewController, CosmeticDetailDelegate, FilterTableViewControllerDelegate {
+    func applyFilter(brandId: String, categoryId: String) {
+        loadingActivity.startAnimating()
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadByCategoriesAndBrand(categoriesId: categoryId, brandId: brandId)
         searchCategory = true
-        
-        searchResultLabel.text = "Search Result from \(item.categories_name ?? "")"
-        searchBar.placeholder = "Search \(item.categories_name ?? "")"
-        
-        loadingActivity.startAnimating()
+        searchBrand = true
         clearButton.isHidden = false
-        let downloadProduct = DownloadProduct()
-        downloadProduct.delegate = self
-        downloadProduct.downloadByCategories(categoriesId: item.categories_id!)
+        first = false
     }
     
-    func filterResultBrand(item: BrandModel) {
-        searchBrand = true
-        searchCategory = false
-        
-        searchResultLabel.text = "Search Result from \(item.brand_name ?? "")"
-        searchBar.placeholder = "Search \(item.brand_name ?? "")"
-        
+    func applyCategory(categoryId: String) {
         loadingActivity.startAnimating()
-        clearButton.isHidden = false
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByBrands(brandId: item.brand_id!)
+        downloadProduct.downloadByCategories(categoriesId: categoryId)
+        searchCategory = true
+        clearButton.isHidden = false
+        first = false
         
     }
+    
+    func applyBrand(brandId: String) {
+        loadingActivity.startAnimating()
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadByBrands(brandId: brandId)
+        searchBrand = true
+        clearButton.isHidden = false
+        first = false
+    }
+    
     
     func dismissFromCosmeticDetail() {
         let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
         self.navigationController?.pushViewController(accountVc!, animated: true)
     }
 
+    private var filtedItem: [String] = []
     private var allProduct: [ProductModel] = []
     private var searchedProduct: [ProductModel] = []
     
@@ -58,7 +62,6 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
     @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var clearButton: UIButton!
-    @IBOutlet weak var filterCollectionview: UICollectionView!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
@@ -69,9 +72,6 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        filterCollectionview.delegate = self
-        filterCollectionview.dataSource = self
         
         searchBar = UISearchBar()
         searchBar.placeholder = "Search Cosmetic"
@@ -105,7 +105,6 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
     //MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
-            
             var item:ProductModel
             let itemIndex = self.tableView.indexPathForSelectedRow?.row
             item = allProduct[itemIndex!]
@@ -115,15 +114,8 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
             destination?.productId = item.product_id
             
         }else if segue.identifier == "filter"{
-            let destination = segue.destination as! SearchFilterTableViewController
-            destination.delegate = self
-            if filterCollectionview.indexPathsForSelectedItems?.first?.row == 0{
-                destination.brandFilter = true
-            }else if filterCollectionview.indexPathsForSelectedItems?.first?.row == 1{
-                destination.categoryFilter = true
-            }else{
-                destination.categoryFilter = true
-            }
+            let destination = segue.destination as? FilterTableViewController
+            destination?.delegate = self
         }
     }
 
@@ -230,69 +222,19 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
 }
 
 //MARK: - Category collection
-extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol{
+extension SearchDetailTableViewController: DownloadProductProtocol{
     
     //MARK: - Search Finished
     func itemDownloaded(item: NSMutableArray) {
         first = false
         allProduct = item as! [ProductModel]
         setCountLabel(count: allProduct.count)
-        filterCollectionview.reloadData()
         self.tableView.reloadData()
         loadingActivity.stopAnimating()
     }
     
     func itemDownloadFailed(error_mes: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.row == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! CategoriesDetailCollectionViewCell
-            cell.filterLabel.text = "Brand"
-            cell.icon.image = UIImage.init(named: "search-brand")
-            cell.layer.cornerRadius = 8
-            if searchBrand{
-                cell.filterLabel.textColor = UIColor.white
-                cell.backgroundColor = UIColor.init(named: "cosmetic-color")
-            }else{
-                cell.filterLabel.textColor = UIColor.label
-                cell.backgroundColor = nil
-            }
-            return cell
-            
-        }else if indexPath.row == 1{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! CategoriesDetailCollectionViewCell
-            cell.filterLabel.text = "Categories"
-            cell.icon.image = UIImage.init(named: "search-categories")
-            cell.layer.cornerRadius = 8
-            if searchCategory{
-                cell.filterLabel.textColor = UIColor.white
-                cell.backgroundColor = UIColor.init(named: "cosmetic-color")
-            }else{
-                cell.filterLabel.textColor = UIColor.label
-                cell.backgroundColor = nil
-            }
-            return cell
-            
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! CategoriesDetailCollectionViewCell
-            cell.filterLabel.text = "Filter"
-            cell.icon.image = UIImage.init(named: "search-filter")
-            cell.filterLabel.textColor = UIColor.label
-            cell.backgroundColor = nil
-            cell.layer.cornerRadius = 8
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     private func clearSearchCategory(){
@@ -308,13 +250,7 @@ extension SearchDetailTableViewController: UICollectionViewDelegate, UICollectio
         searchBar.placeholder = "Search Cosmetic"
         searchBar.text = ""
         searchResultLabel.text = "Search Result"
-        
-        filterCollectionview.reloadData()
         self.tableView.reloadData()
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
     
 }

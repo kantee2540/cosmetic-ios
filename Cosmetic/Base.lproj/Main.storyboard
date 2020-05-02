@@ -58,7 +58,7 @@
         <!--Home-->
         <scene sceneID="TlZ-xi-sVX">
             <objects>
-                <viewController id="QX2-9g-o7C" customClass="WelcomeViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QX2-9g-o7C" customClass="WelcomeViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mW-gu-09U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,7 +95,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pickcell" id="J1f-C1-yGg" customClass="PickforyouCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pickcell" id="J1f-C1-yGg" customClass="PickforyouCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="19" width="130" height="192"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IYl-Mb-Lxg">
@@ -165,7 +165,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setcell" id="IGY-91-Wr2" customClass="SetCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setcell" id="IGY-91-Wr2" customClass="SetCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="130" height="172"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dvS-vd-N3h">
@@ -227,7 +227,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="deskcell" id="mSC-pD-TvG" customClass="PickforyouCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="deskcell" id="mSC-pD-TvG" customClass="PickforyouCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="19" width="130" height="192"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KwH-8v-YBw">
@@ -418,7 +418,7 @@
         <!--Top Topic View Controller-->
         <scene sceneID="Zdo-aB-3FE">
             <objects>
-                <viewController storyboardIdentifier="TopTopic" id="wgc-Gb-F3f" customClass="TopTopicViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopTopic" id="wgc-Gb-F3f" customClass="TopTopicViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V3M-F6-vZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,7 +455,7 @@
                                                     <constraint firstAttribute="height" constant="417" id="s7W-zp-j8T"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topicitem" rowHeight="130" id="Y4p-GU-A3Z" customClass="TopTopicItemTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topicitem" rowHeight="130" id="Y4p-GU-A3Z" customClass="TopTopicItemTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y4p-GU-A3Z" id="2uT-0u-bwD">
@@ -659,7 +659,7 @@
         <!--Cosmetic Detail View Controller-->
         <scene sceneID="vEn-9W-x1o">
             <objects>
-                <viewController storyboardIdentifier="productdetail" id="jmB-xZ-ZUV" customClass="CosmeticDetailViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="productdetail" id="jmB-xZ-ZUV" customClass="CosmeticDetailViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tx5-W9-2qQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -921,170 +921,159 @@
             <point key="canvasLocation" x="1862" y="-403"/>
         </scene>
         <!--Filter-->
-        <scene sceneID="1LJ-9V-vHs">
+        <scene sceneID="3dO-EV-9BI">
             <objects>
-                <tableViewController id="lTu-bG-fkQ" customClass="SearchFilterTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="bKP-tI-wIN">
+                <tableViewController id="6Gu-9L-WBE" customClass="FilterTableViewController" customModule="Cosmeticas" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="EZb-AX-TWd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="je1-FF-mzM">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6tb-ia-tzL">
-                                    <rect key="frame" x="111" y="16" width="153" height="32"/>
-                                    <segments>
-                                        <segment title="Category"/>
-                                        <segment title="Brand"/>
-                                    </segments>
-                                    <connections>
-                                        <action selector="optionChange:" destination="lTu-bG-fkQ" eventType="valueChanged" id="5kx-8Y-Q8r"/>
-                                    </connections>
-                                </segmentedControl>
-                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="IKD-7B-xeV">
-                                    <rect key="frame" x="339" y="21" width="20" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="2jh-LQ-bMM"/>
-                                        <constraint firstAttribute="height" constant="20" id="Owt-lC-Ozz"/>
-                                    </constraints>
-                                </activityIndicatorView>
-                            </subviews>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="6tb-ia-tzL" firstAttribute="top" secondItem="je1-FF-mzM" secondAttribute="top" constant="16" id="8nQ-hx-czN"/>
-                                <constraint firstItem="6tb-ia-tzL" firstAttribute="centerX" secondItem="je1-FF-mzM" secondAttribute="centerX" id="eMi-uA-b59"/>
-                                <constraint firstAttribute="trailing" secondItem="IKD-7B-xeV" secondAttribute="trailing" constant="16" id="jlW-Qn-orV"/>
-                                <constraint firstItem="IKD-7B-xeV" firstAttribute="top" secondItem="je1-FF-mzM" secondAttribute="top" constant="21" id="rfF-Um-hnu"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="zPW-CG-D4z" detailTextLabel="SIt-d2-PtD" imageView="hnu-vX-Nzi" style="IBUITableViewCellStyleSubtitle" id="NzM-yr-kFY" customClass="SearchFilterTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="16" y="118.5" width="343" height="55.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NzM-yr-kFY" id="0sn-c0-2iv">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="55.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zPW-CG-D4z">
-                                            <rect key="frame" x="54" y="10" width="33.5" height="20.5"/>
+                        <sections>
+                            <tableViewSection headerTitle="Brands" id="ao6-Ge-lgY">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Fbu-2c-yYi">
+                                        <rect key="frame" x="16" y="55.5" width="343" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fbu-2c-yYi" id="kBC-rx-LfU">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SIt-d2-PtD">
-                                            <rect key="frame" x="54" y="31.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="bag.fill" catalog="system" id="hnu-vX-Nzi">
-                                            <rect key="frame" x="17.5" y="17" width="19" height="19"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="tintColor" name="main-font-color"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BrandCell" rowHeight="106" id="bYS-TB-8ds" customClass="SearchFilterBrandTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="16" y="174" width="343" height="106"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bYS-TB-8ds" id="GrA-Y4-rdl">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="106"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg4" translatesAutoresizingMaskIntoConstraints="NO" id="cdu-L4-WIn">
-                                            <rect key="frame" x="23" y="18" width="70" height="70"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tWS-v2-JKD" customClass="FilterCollectionView" customModule="Cosmeticas">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2lQ-Bl-fFZ">
+                                                        <size key="itemSize" width="111" height="42"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandcell" id="DIa-Jb-rWM" customClass="FilterCollectionViewCell" customModule="Cosmeticas">
+                                                            <rect key="frame" x="10" y="10" width="47.5" height="36.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Oun-qK-e5C">
+                                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="36.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0w-V5-ezY">
+                                                                        <rect key="frame" x="8" y="8" width="31.5" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="c0w-V5-ezY" secondAttribute="trailing" constant="8" id="HdH-0X-cqb"/>
+                                                                    <constraint firstItem="c0w-V5-ezY" firstAttribute="top" secondItem="Oun-qK-e5C" secondAttribute="top" constant="8" id="KIc-IG-Aky"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="c0w-V5-ezY" secondAttribute="bottom" constant="8" id="f1v-OK-ppe"/>
+                                                                    <constraint firstItem="c0w-V5-ezY" firstAttribute="leading" secondItem="Oun-qK-e5C" secondAttribute="leading" constant="8" id="o3f-6B-LlV"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                            <connections>
+                                                                <outlet property="filterLabel" destination="c0w-V5-ezY" id="dXy-hE-vbx"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="1iU-Ka-SYk"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="Fx2-VO-gIU"/>
+                                                <constraint firstAttribute="trailing" secondItem="tWS-v2-JKD" secondAttribute="trailing" id="6XU-o4-fHd"/>
+                                                <constraint firstAttribute="bottom" secondItem="tWS-v2-JKD" secondAttribute="bottom" id="eX6-Yg-56A"/>
+                                                <constraint firstItem="tWS-v2-JKD" firstAttribute="top" secondItem="kBC-rx-LfU" secondAttribute="top" id="ido-iF-lhH"/>
+                                                <constraint firstItem="tWS-v2-JKD" firstAttribute="leading" secondItem="kBC-rx-LfU" secondAttribute="leading" id="m6B-wB-D1x"/>
                                             </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-Ss-fCu">
-                                            <rect key="frame" x="109" y="18" width="219" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="z1d-Ss-fCu" firstAttribute="trailing" secondItem="GrA-Y4-rdl" secondAttribute="trailingMargin" id="6Z3-h8-1MG"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="cdu-L4-WIn" secondAttribute="bottom" constant="7" id="ILA-kw-w3Q"/>
-                                        <constraint firstItem="cdu-L4-WIn" firstAttribute="centerY" secondItem="GrA-Y4-rdl" secondAttribute="centerY" id="Qi5-im-pfG"/>
-                                        <constraint firstItem="cdu-L4-WIn" firstAttribute="leading" secondItem="GrA-Y4-rdl" secondAttribute="leadingMargin" constant="8" id="jis-zx-USW"/>
-                                        <constraint firstItem="z1d-Ss-fCu" firstAttribute="top" secondItem="cdu-L4-WIn" secondAttribute="top" id="pDs-Fi-IIF"/>
-                                        <constraint firstItem="z1d-Ss-fCu" firstAttribute="leading" secondItem="cdu-L4-WIn" secondAttribute="trailing" constant="16" id="qiN-ge-pEF"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="tintColor" name="main-font-color"/>
-                                <connections>
-                                    <outlet property="brandLogo" destination="cdu-L4-WIn" id="bXR-1m-REi"/>
-                                    <outlet property="brandName" destination="z1d-Ss-fCu" id="0GK-1G-Z4Y"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemnotfound" id="7wn-bH-uW1" customClass="SearchFilterBrandTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="16" y="280" width="343" height="145.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7wn-bH-uW1" id="wCj-rk-sqb">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="145.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aeh-2e-Aci">
-                                            <rect key="frame" x="141.5" y="28" width="60" height="60"/>
-                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Categories" id="fyz-E3-LZl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="UgT-eH-5o8">
+                                        <rect key="frame" x="16" y="311.5" width="343" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UgT-eH-5o8" id="gbd-2O-HuH">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n2u-AG-xBU" customClass="FilterCollectionView" customModule="Cosmeticas">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dcy-e2-TE0">
+                                                        <size key="itemSize" width="111" height="42"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoriescell" id="8CJ-qV-7op" customClass="FilterCollectionViewCell" customModule="Cosmeticas">
+                                                            <rect key="frame" x="10" y="10" width="73.5" height="36.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="z7i-ul-Vs0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="73.5" height="36.5"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUP-Nt-jb9">
+                                                                        <rect key="frame" x="8" y="8" width="57.5" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="WUP-Nt-jb9" firstAttribute="top" secondItem="z7i-ul-Vs0" secondAttribute="top" constant="8" id="0yb-JO-FkQ"/>
+                                                                    <constraint firstItem="WUP-Nt-jb9" firstAttribute="leading" secondItem="z7i-ul-Vs0" secondAttribute="leading" constant="8" id="7mj-3s-PuQ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="WUP-Nt-jb9" secondAttribute="trailing" constant="8" id="ImD-qP-Eqd"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="WUP-Nt-jb9" secondAttribute="bottom" constant="8" id="V6O-8L-QLN"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                            <connections>
+                                                                <outlet property="filterLabel" destination="WUP-Nt-jb9" id="9HP-8J-Unp"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="LmO-Jw-tCL"/>
-                                                <constraint firstAttribute="height" constant="62" id="SMT-9j-3a2"/>
+                                                <constraint firstAttribute="bottom" secondItem="n2u-AG-xBU" secondAttribute="bottom" id="ZFN-VW-PbK"/>
+                                                <constraint firstAttribute="trailing" secondItem="n2u-AG-xBU" secondAttribute="trailing" id="d3R-69-FdV"/>
+                                                <constraint firstItem="n2u-AG-xBU" firstAttribute="leading" secondItem="gbd-2O-HuH" secondAttribute="leading" id="dLc-MB-jYD"/>
+                                                <constraint firstItem="n2u-AG-xBU" firstAttribute="top" secondItem="gbd-2O-HuH" secondAttribute="top" id="kX1-bY-LZe"/>
                                             </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item not found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5h-o4-LpO">
-                                            <rect key="frame" x="31" y="97" width="281" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="aeh-2e-Aci" firstAttribute="top" secondItem="wCj-rk-sqb" secondAttribute="topMargin" constant="16" id="1ID-8r-jJZ"/>
-                                        <constraint firstItem="O5h-o4-LpO" firstAttribute="top" secondItem="aeh-2e-Aci" secondAttribute="bottom" constant="8" id="Kja-tp-bSZ"/>
-                                        <constraint firstItem="O5h-o4-LpO" firstAttribute="trailing" secondItem="wCj-rk-sqb" secondAttribute="trailingMargin" constant="-16" id="RTJ-5H-CO5"/>
-                                        <constraint firstItem="aeh-2e-Aci" firstAttribute="centerX" secondItem="wCj-rk-sqb" secondAttribute="centerX" id="Vgz-cO-wDf"/>
-                                        <constraint firstItem="O5h-o4-LpO" firstAttribute="leading" secondItem="wCj-rk-sqb" secondAttribute="leadingMargin" constant="16" id="Wmf-ur-vqB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="O5h-o4-LpO" secondAttribute="bottom" constant="16" id="ZTo-3N-w62"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="tintColor" name="main-font-color"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="2WD-Gl-ge8">
+                                <cells/>
+                            </tableViewSection>
+                        </sections>
                         <connections>
-                            <outlet property="dataSource" destination="lTu-bG-fkQ" id="11v-29-77f"/>
-                            <outlet property="delegate" destination="lTu-bG-fkQ" id="ybb-RC-iUA"/>
+                            <outlet property="dataSource" destination="6Gu-9L-WBE" id="Ehk-ae-w8l"/>
+                            <outlet property="delegate" destination="6Gu-9L-WBE" id="HwF-9U-HZe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Filter" id="9pk-Pg-1ao">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Apply" style="done" id="N4p-5x-CS5">
+                    <navigationItem key="navigationItem" title="Filter" id="BIA-uC-eWN">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Apply" style="done" id="H6I-U0-T53">
                             <connections>
-                                <action selector="tapApply:" destination="lTu-bG-fkQ" id="I4x-B9-we0"/>
+                                <action selector="tapApply:" destination="6Gu-9L-WBE" id="HTu-1B-xn8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="applyButton" destination="N4p-5x-CS5" id="gN4-NM-nW4"/>
-                        <outlet property="loadingActivity" destination="IKD-7B-xeV" id="cXp-1V-wbr"/>
-                        <outlet property="optionSegment" destination="6tb-ia-tzL" id="kY2-4W-nvk"/>
+                        <outlet property="applyButton" destination="H6I-U0-T53" id="EoQ-T7-ion"/>
+                        <outlet property="brandCollectionView" destination="tWS-v2-JKD" id="cXJ-ev-L9R"/>
+                        <outlet property="categoriesCollectionView" destination="n2u-AG-xBU" id="uQ0-kG-pEj"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pxE-mj-eUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o6w-zY-UTK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3180" y="-401.64917541229386"/>
+            <point key="canvasLocation" x="2880.8000000000002" y="-403.44827586206901"/>
         </scene>
         <!--Package-->
         <scene sceneID="51d-3W-5SY">
             <objects>
-                <viewController id="2kK-wY-G6Z" customClass="PackageViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2kK-wY-G6Z" customClass="PackageViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KPy-BS-pFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1156,7 +1145,7 @@
         <!--No Item In Drawer View Controller-->
         <scene sceneID="Ifc-zC-zjJ">
             <objects>
-                <viewController storyboardIdentifier="noitemcollection" id="JNL-9e-L5a" customClass="NoItemInDrawerViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noitemcollection" id="JNL-9e-L5a" customClass="NoItemInDrawerViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ks3-FC-OCq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1224,7 +1213,7 @@
         <!--No Login View Controller-->
         <scene sceneID="7XD-2H-rO2">
             <objects>
-                <viewController storyboardIdentifier="nologin" id="ADp-BZ-4he" customClass="NoLoginViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nologin" id="ADp-BZ-4he" customClass="NoLoginViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O7y-1g-62F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1240,7 +1229,7 @@
                                             <constraint firstAttribute="height" constant="100" id="Znk-yR-64a"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3u-cr-SEG" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3u-cr-SEG" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="8" y="298" width="284" height="50"/>
                                         <color key="backgroundColor" name="cosmetic-color"/>
                                         <constraints>
@@ -1304,7 +1293,7 @@
         <!--Drawer Collection View Controller-->
         <scene sceneID="AXD-rA-PRg">
             <objects>
-                <viewController id="Ca7-sw-70w" customClass="DrawerCollectionViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ca7-sw-70w" customClass="DrawerCollectionViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VAZ-At-6TS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1365,7 +1354,7 @@
                                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionitem" id="upE-ML-UbI" customClass="DeskCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionitem" id="upE-ML-UbI" customClass="DeskCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="10" width="171" height="279"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cXY-Lb-6YA">
@@ -1506,7 +1495,7 @@
         <!--Add Drawer-->
         <scene sceneID="YNt-lM-sRX">
             <objects>
-                <tableViewController id="jsy-OS-2es" customClass="AddDrawerTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jsy-OS-2es" customClass="AddDrawerTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Jfe-U6-aXx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1594,7 +1583,7 @@
         <!--Cosmetic Desk-->
         <scene sceneID="aLt-LW-uEd">
             <objects>
-                <viewController id="lQy-YM-jfI" customClass="CosmeticDeskViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lQy-YM-jfI" customClass="CosmeticDeskViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qiu-JQ-DOF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1618,7 +1607,7 @@
                                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cartitem" id="WMw-ea-J6r" customClass="DeskCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cartitem" id="WMw-ea-J6r" customClass="DeskCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="10" width="171" height="279"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Mji-I3-OmK">
@@ -1698,7 +1687,7 @@
                                                             <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="tfX-uD-L2L"/>
                                                         </connections>
                                                     </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="draweritem" id="TEB-0x-KEX" customClass="DrawerCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="draweritem" id="TEB-0x-KEX" customClass="DrawerCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="194" y="87.5" width="171" height="124"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ife-vB-6LX">
@@ -1767,7 +1756,7 @@
                                                             <segue destination="Ca7-sw-70w" kind="show" identifier="drawercollection" id="qOF-MX-gwj"/>
                                                         </connections>
                                                     </collectionViewCell>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="adddrawercell" id="kvu-q6-kZS" customClass="AddDrawerCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="adddrawercell" id="kvu-q6-kZS" customClass="AddDrawerCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="299" width="171" height="124"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mkk-Si-qc2">
@@ -1939,7 +1928,7 @@
         <!--Me-->
         <scene sceneID="2S7-2Z-JyX">
             <objects>
-                <tableViewController id="HD1-W3-WgW" customClass="MeTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HD1-W3-WgW" customClass="MeTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="SFb-je-BLA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1947,7 +1936,7 @@
                         <sections>
                             <tableViewSection id="Wxc-Yf-Ecs">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="Tt1-DP-V4L" detailTextLabel="8ca-0A-S6x" imageView="HkU-hd-2xW" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="TYS-4H-vkJ" customClass="AccountTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="Tt1-DP-V4L" detailTextLabel="8ca-0A-S6x" imageView="HkU-hd-2xW" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="TYS-4H-vkJ" customClass="AccountTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="18" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TYS-4H-vkJ" id="ex0-Yo-htd">
@@ -2104,7 +2093,7 @@
         <!--Account Settings Table View Controller-->
         <scene sceneID="ZwZ-GZ-ITg">
             <objects>
-                <tableViewController storyboardIdentifier="accountsetting" id="aKS-hY-yQh" customClass="AccountSettingsTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="accountsetting" id="aKS-hY-yQh" customClass="AccountSettingsTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cBS-Fw-mju">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2303,7 +2292,7 @@
         <!--Account Detail-->
         <scene sceneID="A5K-qn-ZRW">
             <objects>
-                <tableViewController id="cAz-Us-hvg" customClass="AccountDetailTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cAz-Us-hvg" customClass="AccountDetailTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="a3O-An-nY7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2576,7 +2565,7 @@
         <!--Remove account-->
         <scene sceneID="13E-kf-daL">
             <objects>
-                <tableViewController id="SQX-7u-tMD" customClass="RemoveAccountTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SQX-7u-tMD" customClass="RemoveAccountTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9b6-6G-wUd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2650,13 +2639,13 @@
         <!--My Topic-->
         <scene sceneID="S8Q-dE-KUQ">
             <objects>
-                <tableViewController id="Zmg-So-Ltl" customClass="MyTopicTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Zmg-So-Ltl" customClass="MyTopicTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zzs-TI-QgU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topiccell" rowHeight="116" id="tcz-56-XfC" customClass="MyTopicTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topiccell" rowHeight="116" id="tcz-56-XfC" customClass="MyTopicTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tcz-56-XfC" id="8Ux-Sj-eab">
@@ -2728,7 +2717,7 @@
         <!--Save Topic-->
         <scene sceneID="ttg-vP-rWA">
             <objects>
-                <tableViewController id="Qxv-n5-bOy" customClass="SaveTopicTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Qxv-n5-bOy" customClass="SaveTopicTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bAG-Fy-KjX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2752,7 +2741,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topiccell" rowHeight="108" id="afh-XJ-jDY" customClass="MyTopicTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topiccell" rowHeight="108" id="afh-XJ-jDY" customClass="MyTopicTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="85" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="afh-XJ-jDY" id="LTh-Pc-qvm">
@@ -2817,13 +2806,13 @@
         <!--Notification-->
         <scene sceneID="g0U-BG-2O2">
             <objects>
-                <tableViewController id="5zF-Ip-IIv" customClass="NoficationTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="5zF-Ip-IIv" customClass="NoficationTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5es-S7-oaU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification" id="1P4-Fr-hZN" customClass="NotificationTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification" id="1P4-Fr-hZN" customClass="NotificationTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="131.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1P4-Fr-hZN" id="vyp-HN-Gyn">
@@ -2892,7 +2881,7 @@
         <!--Term and Condition-->
         <scene sceneID="b29-xM-nPo">
             <objects>
-                <viewController title="Term and Condition" id="Y8Y-ch-4K4" customClass="TermAndConditionViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Term and Condition" id="Y8Y-ch-4K4" customClass="TermAndConditionViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O22-f0-pKh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2928,7 +2917,7 @@
         <!--Sign in-->
         <scene sceneID="I3N-bJ-drO">
             <objects>
-                <viewController storyboardIdentifier="signin" id="0vH-5y-KJW" customClass="LoginViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signin" id="0vH-5y-KJW" customClass="LoginViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="axd-Rs-DLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3016,7 +3005,7 @@
                                     <color key="titleColor" name="main-font-color"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="926-TO-fLY" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="926-TO-fLY" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="23" y="359.5" width="329" height="50"/>
                                 <color key="backgroundColor" name="cosmetic-color"/>
                                 <constraints>
@@ -3092,7 +3081,7 @@
         <!--Register Table View Controller-->
         <scene sceneID="nkD-OO-sxA">
             <objects>
-                <tableViewController id="OYA-nV-ZP4" customClass="RegisterTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OYA-nV-ZP4" customClass="RegisterTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6el-Y5-NBK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3248,7 +3237,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mys-i7-y7P" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mys-i7-y7P" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="13" width="338" height="50"/>
                                                     <color key="backgroundColor" name="cosmetic-color"/>
                                                     <constraints>
@@ -3296,7 +3285,7 @@
         <!--Profile Table View Controller-->
         <scene sceneID="l90-gt-tzL">
             <objects>
-                <tableViewController storyboardIdentifier="profile" id="CSM-iF-paz" customClass="ProfileTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profile" id="CSM-iF-paz" customClass="ProfileTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="58k-Yd-7c2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3551,7 +3540,7 @@
         <!--Register-->
         <scene sceneID="hv5-oX-4k5">
             <objects>
-                <viewController storyboardIdentifier="registersuccess" title="Register" id="Jz6-RK-mJT" customClass="RegisterSuccessViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registersuccess" title="Register" id="Jz6-RK-mJT" customClass="RegisterSuccessViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="51M-ar-oef">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3582,7 +3571,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-1u-wBQ" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-1u-wBQ" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="23" y="408" width="329" height="50"/>
                                 <color key="backgroundColor" name="cosmetic-color"/>
                                 <constraints>
@@ -3628,14 +3617,14 @@
         <!--Search-->
         <scene sceneID="Zpi-M2-pxM">
             <objects>
-                <tableViewController storyboardIdentifier="searchView" id="BHj-ZC-OSc" customClass="SearchTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchView" id="BHj-ZC-OSc" customClass="SearchTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="m8L-Bj-svp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.63354616119999996" green="0.1737467919" blue="0.46815675220000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" rowHeight="89" id="fsx-jG-VMF" customClass="SearchTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" rowHeight="89" id="fsx-jG-VMF" customClass="SearchTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fsx-jG-VMF" id="QOv-af-rdI">
@@ -3701,73 +3690,19 @@
         <!--Search Detail Table View Controller-->
         <scene sceneID="7UK-jZ-A55">
             <objects>
-                <tableViewController storyboardIdentifier="SearchDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4zo-uX-Trl" customClass="SearchDetailTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4zo-uX-Trl" customClass="SearchDetailTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchReuse" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Yc-iN-sap">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yBw-8X-GBW">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K5B-vH-hfp">
-                                    <rect key="frame" x="0.0" y="62" width="375" height="130"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="130" id="h9b-FH-CmY"/>
-                                    </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="AnX-Rb-99X">
-                                        <size key="itemSize" width="114" height="134"/>
-                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                    </collectionViewFlowLayout>
-                                    <cells>
-                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filtercell" id="eR2-kF-L3b" customClass="CategoriesDetailCollectionViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="0.0" width="105" height="120"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w6T-aK-Bdd">
-                                                <rect key="frame" x="0.0" y="0.0" width="105" height="120"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-brand" translatesAutoresizingMaskIntoConstraints="NO" id="UvJ-mp-dBR">
-                                                        <rect key="frame" x="27" y="16" width="51" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="Vak-6h-CMT"/>
-                                                            <constraint firstAttribute="width" constant="60" id="prv-1F-q4C"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-7l-ekr">
-                                                        <rect key="frame" x="8" y="84" width="89" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="UvJ-mp-dBR" secondAttribute="trailing" constant="27" id="Cl0-PJ-wRz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="rZJ-7l-ekr" secondAttribute="trailing" constant="8" id="EGJ-PZ-dxm"/>
-                                                    <constraint firstAttribute="bottom" secondItem="rZJ-7l-ekr" secondAttribute="bottom" constant="16" id="HK3-i0-Xhf"/>
-                                                    <constraint firstItem="UvJ-mp-dBR" firstAttribute="centerX" secondItem="w6T-aK-Bdd" secondAttribute="centerX" id="JNK-Qs-6ac"/>
-                                                    <constraint firstItem="UvJ-mp-dBR" firstAttribute="leading" secondItem="w6T-aK-Bdd" secondAttribute="leading" constant="27" id="WUj-PO-gY8"/>
-                                                    <constraint firstItem="rZJ-7l-ekr" firstAttribute="leading" secondItem="w6T-aK-Bdd" secondAttribute="leading" constant="8" id="mrO-Ar-Qjv"/>
-                                                    <constraint firstItem="UvJ-mp-dBR" firstAttribute="top" secondItem="w6T-aK-Bdd" secondAttribute="top" constant="16" id="oIO-7g-seh"/>
-                                                    <constraint firstItem="rZJ-7l-ekr" firstAttribute="top" secondItem="UvJ-mp-dBR" secondAttribute="bottom" constant="8" id="yTa-5B-6Z0"/>
-                                                </constraints>
-                                            </collectionViewCellContentView>
-                                            <size key="customSize" width="105" height="120"/>
-                                            <connections>
-                                                <outlet property="filterLabel" destination="rZJ-7l-ekr" id="Pve-P9-7LU"/>
-                                                <outlet property="icon" destination="UvJ-mp-dBR" id="scN-iE-1co"/>
-                                                <segue destination="lTu-bG-fkQ" kind="show" identifier="filter" id="Vwo-Ab-Hov"/>
-                                            </connections>
-                                        </collectionViewCell>
-                                    </cells>
-                                </collectionView>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9s-lr-p3E">
-                                    <rect key="frame" x="302" y="16" width="65" height="30"/>
+                                    <rect key="frame" x="134.5" y="15" width="232.5" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="65" id="fJq-FQ-VnR"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="Hp4-bZ-NKC"/>
                                     </constraints>
                                     <state key="normal" title="Clear all">
                                         <color key="titleColor" name="cosmetic-color"/>
@@ -3776,52 +3711,39 @@
                                         <action selector="tapClear:" destination="4zo-uX-Trl" eventType="touchUpInside" id="QMo-65-7P0"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-QU-rf4">
-                                    <rect key="frame" x="16" y="16" width="278" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-cF-bCk">
-                                    <rect key="frame" x="16" y="202" width="343" height="21"/>
+                                    <rect key="frame" x="16" y="20" width="110.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="daL-4c-wRj">
-                                    <rect key="frame" x="332" y="216" width="20" height="20"/>
-                                </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About 0 Cosmetics we're found." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck2-Cj-T8T">
-                                    <rect key="frame" x="16" y="229" width="207" height="17"/>
+                                    <rect key="frame" x="16" y="47" width="207" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="daL-4c-wRj">
+                                    <rect key="frame" x="332" y="45" width="20" height="20"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="vMf-cF-bCk" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" constant="16" id="0IO-Uv-ZzA"/>
-                                <constraint firstItem="w9s-lr-p3E" firstAttribute="bottom" secondItem="mDH-QU-rf4" secondAttribute="bottom" id="2SC-TM-pmP"/>
-                                <constraint firstItem="K5B-vH-hfp" firstAttribute="top" secondItem="mDH-QU-rf4" secondAttribute="bottom" constant="16" id="F8o-zV-X5g"/>
+                                <constraint firstItem="w9s-lr-p3E" firstAttribute="top" secondItem="vMf-cF-bCk" secondAttribute="top" constant="-5" id="8Tv-sj-dHa"/>
                                 <constraint firstItem="ck2-Cj-T8T" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" constant="16" id="Gpk-RI-FJ5"/>
-                                <constraint firstItem="mDH-QU-rf4" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" constant="16" id="JaP-To-LVL"/>
-                                <constraint firstItem="w9s-lr-p3E" firstAttribute="leading" secondItem="mDH-QU-rf4" secondAttribute="trailing" constant="8" id="MXi-HR-hXm"/>
                                 <constraint firstItem="daL-4c-wRj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ck2-Cj-T8T" secondAttribute="trailing" constant="8" id="XSt-hR-aZf"/>
-                                <constraint firstItem="K5B-vH-hfp" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" id="Xq7-R7-tS0"/>
-                                <constraint firstItem="mDH-QU-rf4" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" constant="16" id="aC6-6Y-GyI"/>
                                 <constraint firstItem="ck2-Cj-T8T" firstAttribute="top" secondItem="vMf-cF-bCk" secondAttribute="bottom" constant="6" id="dWi-Xk-EpX"/>
-                                <constraint firstItem="w9s-lr-p3E" firstAttribute="top" secondItem="mDH-QU-rf4" secondAttribute="top" id="ddR-cc-CE5"/>
                                 <constraint firstAttribute="trailing" secondItem="daL-4c-wRj" secondAttribute="trailing" constant="23" id="f9j-mx-qOo"/>
-                                <constraint firstItem="vMf-cF-bCk" firstAttribute="top" secondItem="K5B-vH-hfp" secondAttribute="bottom" constant="10" id="gyt-ee-kY2"/>
-                                <constraint firstItem="daL-4c-wRj" firstAttribute="bottom" secondItem="ck2-Cj-T8T" secondAttribute="bottom" constant="-10" id="hAN-D9-yaB"/>
+                                <constraint firstItem="daL-4c-wRj" firstAttribute="bottom" secondItem="ck2-Cj-T8T" secondAttribute="bottom" constant="1" id="hAN-D9-yaB"/>
                                 <constraint firstAttribute="trailing" secondItem="w9s-lr-p3E" secondAttribute="trailing" constant="8" id="jU5-w1-1PI"/>
-                                <constraint firstAttribute="trailing" secondItem="K5B-vH-hfp" secondAttribute="trailing" id="sky-rH-8hZ"/>
-                                <constraint firstAttribute="trailing" secondItem="vMf-cF-bCk" secondAttribute="trailing" constant="16" id="uPN-WY-731"/>
+                                <constraint firstItem="vMf-cF-bCk" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" constant="20" id="mGW-Mn-pXN"/>
+                                <constraint firstItem="w9s-lr-p3E" firstAttribute="leading" secondItem="vMf-cF-bCk" secondAttribute="trailing" constant="8" id="vpZ-uO-MWj"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="77" id="Q4Q-1x-QrW" customClass="SearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="296" width="375" height="77"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="77" id="Q4Q-1x-QrW" customClass="SearchDetailTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4Q-1x-QrW" id="jq9-mZ-mxi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
@@ -3856,8 +3778,8 @@
                                     <segue destination="jmB-xZ-ZUV" kind="presentation" identifier="SeeMoreDetail" id="cHm-Ob-iaC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoItem" id="d5t-Q0-1XP" customClass="NotifySearchDetailTableViewCell" customModule="Cosmetic" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="373" width="375" height="147.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoItem" id="d5t-Q0-1XP" customClass="NotifySearchDetailTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="190" width="375" height="147.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d5t-Q0-1XP" id="5ij-zl-S5o">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="147.5"/>
@@ -3903,7 +3825,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchpredict" textLabel="hZz-3b-pDk" imageView="n2D-yM-cB7" style="IBUITableViewCellStyleDefault" id="uUe-I3-hma">
-                                <rect key="frame" x="0.0" y="520.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="337.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uUe-I3-hma" id="9jl-E9-Wyf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -3932,15 +3854,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="5XW-uH-uvK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="camera.fill" catalog="system" id="THh-vs-tHZ">
+                        <barButtonItem key="rightBarButtonItem" image="filter" id="THh-vs-tHZ">
                             <connections>
-                                <segue destination="olU-QC-1i8" kind="presentation" id="Zb6-dn-wWF"/>
+                                <segue destination="6Gu-9L-WBE" kind="show" identifier="filter" id="MoC-cl-jn5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clearButton" destination="w9s-lr-p3E" id="jXQ-ce-yXz"/>
-                        <outlet property="filterCollectionview" destination="K5B-vH-hfp" id="Aou-vb-CfS"/>
                         <outlet property="loadingActivity" destination="daL-4c-wRj" id="4S1-TQ-8os"/>
                         <outlet property="resultLabel" destination="ck2-Cj-T8T" id="FEA-Wt-JDr"/>
                         <outlet property="searchResultLabel" destination="vMf-cF-bCk" id="xa2-q1-frf"/>
@@ -3949,7 +3870,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm9-dV-zhb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="377"/>
+            <point key="canvasLocation" x="1861.5999999999999" y="356.67166416791605"/>
         </scene>
         <!--Write topic-->
         <scene sceneID="mtj-6F-xW1">
@@ -3959,7 +3880,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-p7-d9K" customClass="CustomTextfield" customModule="Cosmetic" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Topic" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdm-p7-d9K" customClass="CustomTextfield" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="16" y="60" width="343" height="55"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <color key="tintColor" name="main-font-color"/>
@@ -3981,7 +3902,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-yP-OOy" customClass="CustomTextView" customModule="Cosmetic" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4PK-yP-OOy" customClass="CustomTextView" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="16" y="131" width="343" height="516"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <color key="tintColor" name="main-font-color"/>
@@ -4030,7 +3951,7 @@
         <!--Select your product-->
         <scene sceneID="BwQ-Q6-k5c">
             <objects>
-                <tableViewController id="S2t-5g-PyV" customClass="ChooseProductTopicTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="S2t-5g-PyV" customClass="ChooseProductTopicTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1ws-gg-ePn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4055,7 +3976,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="77" id="DM5-ME-r25" customClass="ChooseProductTopicTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultReuse" rowHeight="77" id="DM5-ME-r25" customClass="ChooseProductTopicTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="90" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DM5-ME-r25" id="GsQ-xi-Cqa">
@@ -4112,7 +4033,7 @@
         <!--Preview-->
         <scene sceneID="S85-tJ-cZs">
             <objects>
-                <viewController id="ShD-Ki-RfJ" customClass="PreviewTopicViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ShD-Ki-RfJ" customClass="PreviewTopicViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0tK-nt-AbP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4179,7 +4100,7 @@
                                                     <constraint firstAttribute="height" constant="405" id="dSd-oP-n1N"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topicitem" rowHeight="130" id="Xzs-Bc-jUf" customClass="TopTopicItemTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="topicitem" rowHeight="130" id="Xzs-Bc-jUf" customClass="TopTopicItemTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xzs-Bc-jUf" id="Lbm-sg-tnn">
@@ -4304,7 +4225,7 @@
         <!--Add Topic Result View Controller-->
         <scene sceneID="c2F-uq-bk8">
             <objects>
-                <viewController storyboardIdentifier="addtopicresult" id="7kl-qi-wTK" customClass="AddTopicResultViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addtopicresult" id="7kl-qi-wTK" customClass="AddTopicResultViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ggy-0M-Cut">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4348,7 +4269,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcE-pv-bza" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcE-pv-bza" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="8" y="456" width="284" height="50"/>
                                         <color key="backgroundColor" name="cosmetic-color"/>
                                         <constraints>
@@ -4419,7 +4340,7 @@
         <!--Choose Image-->
         <scene sceneID="HE3-Iq-dwk">
             <objects>
-                <viewController id="c5S-lr-KdZ" customClass="ChooseImageViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c5S-lr-KdZ" customClass="ChooseImageViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tsa-Qs-zO5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4430,7 +4351,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wY-9f-LQv">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1w-Rj-nFs" customClass="CustomButton" customModule="Cosmetic" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1w-Rj-nFs" customClass="CustomButton" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="375" height="70"/>
                                         <color key="backgroundColor" name="cosmetic-color"/>
                                         <constraints>
@@ -4496,13 +4417,13 @@
         <!--Capture your product-->
         <scene sceneID="3mA-Wo-97c">
             <objects>
-                <viewController id="ciI-mB-J50" customClass="CameraCaptureViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ciI-mB-J50" customClass="CameraCaptureViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Bb-HK-zuU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z92-0q-80k">
-                                <rect key="frame" x="-4" y="41" width="380" height="625"/>
+                                <rect key="frame" x="-3" y="42" width="379" height="622"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="cgA-lf-hhA"/>
                             </imageView>
@@ -4626,7 +4547,7 @@
         <!--Found Product-->
         <scene sceneID="4Dt-KO-Fya">
             <objects>
-                <tableViewController storyboardIdentifier="cameraResult" id="uWK-A5-4If" customClass="cameraResultTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="cameraResult" id="uWK-A5-4If" customClass="cameraResultTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="34E-0X-zFt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4693,7 +4614,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="resultViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultViewCell" rowHeight="100" id="1Qo-4O-7qt" customClass="CameraResultTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="resultViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultViewCell" rowHeight="100" id="1Qo-4O-7qt" customClass="CameraResultTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="242" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Qo-4O-7qt" id="18L-p2-XyS">
@@ -4754,7 +4675,7 @@
         <!--Add Product to my drawer-->
         <scene sceneID="XfK-rJ-obq">
             <objects>
-                <tableViewController id="s4A-QP-YHl" customClass="AddProductDrawerTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="s4A-QP-YHl" customClass="AddProductDrawerTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" id="7P8-lX-BYc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4780,7 +4701,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="resultViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addcollectionproductcell" rowHeight="115.5" id="jWO-OV-SdO" customClass="AddProductDrawerTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="resultViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addcollectionproductcell" rowHeight="115.5" id="jWO-OV-SdO" customClass="AddProductDrawerTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="95" width="375" height="115.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWO-OV-SdO" id="r7i-p8-eXC">
@@ -4861,7 +4782,7 @@
         <!--Choose Drawer-->
         <scene sceneID="gNK-en-VUb">
             <objects>
-                <tableViewController storyboardIdentifier="choosedrawer" id="d0r-sH-5Wz" customClass="ChooseDrawerTableViewController" customModule="Cosmetic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="choosedrawer" id="d0r-sH-5Wz" customClass="ChooseDrawerTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8EU-Ak-sCV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4886,7 +4807,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="drawercell" textLabel="TFH-f2-scF" detailTextLabel="7zB-qk-CYs" imageView="jln-2w-B4s" style="IBUITableViewCellStyleSubtitle" id="utH-fJ-1Qj" customClass="ChooseDrawerTableViewCell" customModule="Cosmetic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="drawercell" textLabel="TFH-f2-scF" detailTextLabel="7zB-qk-CYs" imageView="jln-2w-B4s" style="IBUITableViewCellStyleSubtitle" id="utH-fJ-1Qj" customClass="ChooseDrawerTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utH-fJ-1Qj" id="d6Z-ja-eJQ">
@@ -4961,15 +4882,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LbI-LC-Sas"/>
-        <segue reference="wzQ-eO-vBc"/>
-        <segue reference="c3A-7h-gg6"/>
+        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="xXR-3P-iKQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ant.fill" catalog="system" width="107" height="128"/>
         <image name="archivebox.fill" catalog="system" width="128" height="106"/>
         <image name="arrow.turn.right.up" catalog="system" width="120" height="128"/>
-        <image name="bag.fill" catalog="system" width="128" height="128"/>
         <image name="bag.fill.badge.plus" catalog="system" width="128" height="119"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bg4" width="1240.5" height="1754"/>
@@ -4983,6 +4902,7 @@
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="escape" catalog="system" width="128" height="121"/>
+        <image name="filter" width="22" height="22"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="lock.fill" catalog="system" width="128" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
@@ -4994,7 +4914,6 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="questionmark.diamond.fill" catalog="system" width="128" height="122"/>
-        <image name="search-brand" width="302" height="302"/>
         <image name="shield.fill" catalog="system" width="128" height="115"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.fill.on.square.fill" catalog="system" width="128" height="113"/>

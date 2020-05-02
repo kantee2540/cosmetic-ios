@@ -94,7 +94,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Coco"
+        self.tabBarController?.navigationItem.title = ""
         tabBarController?.navigationItem.leftBarButtonItem = nil
         
         userId = UserDefaults.standard.string(forKey: ConstantUser.userId)

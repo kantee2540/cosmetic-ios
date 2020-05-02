@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		28C22B42D6159C0430E1E4B4 /* Pods_CosmeticTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62690FC4167064D941112340 /* Pods_CosmeticTests.framework */; };
 		B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */; };
+		B31121F3245D8274005DA548 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31121F2245D8274005DA548 /* FilterTableViewController.swift */; };
+		B31121F7245D8C0E005DA548 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31121F6245D8C0E005DA548 /* FilterCollectionViewCell.swift */; };
 		B316840423940A96005F4D88 /* DownloadPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840323940A96005F4D88 /* DownloadPackage.swift */; };
 		B316840823940BF1005F4D88 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840723940BF1005F4D88 /* PackageModel.swift */; };
 		B316840B23940D80005F4D88 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840A23940D80005F4D88 /* TopicModel.swift */; };
@@ -17,6 +19,7 @@
 		B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */; };
 		B31D758B23B5146600363057 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758A23B5146600363057 /* AccountTableViewCell.swift */; };
 		B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */; };
+		B328A0E8245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */; };
@@ -101,9 +104,6 @@
 		B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */; };
 		B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749D2426422500CB241F /* DeleteUser.swift */; };
 		B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */; };
-		B3E6D5A3243B3AAB009BF6DD /* SearchFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */; };
-		B3E6D5A5243B468A009BF6DD /* SearchFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */; };
-		B3E6D5A7243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */; };
 		B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30823BA640B0041D69A /* NotificationModel.swift */; };
 		B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30A23BA64980041D69A /* DownloadNotification.swift */; };
 		B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */; };
@@ -141,6 +141,8 @@
 		62690FC4167064D941112340 /* Pods_CosmeticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FEAB96A79E9D869E952EEA /* Pods-Cosmetic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debug.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debug.xcconfig"; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
+		B31121F2245D8274005DA548 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		B31121F6245D8C0E005DA548 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B316840323940A96005F4D88 /* DownloadPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPackage.swift; sourceTree = "<group>"; };
 		B316840723940BF1005F4D88 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
 		B316840A23940D80005F4D88 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		B31D758A23B5146600363057 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewController.swift; sourceTree = "<group>"; };
+		B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +219,7 @@
 		B3C050162420DE0100F1536B /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B3C050172420DE0100F1536B /* DebugLocal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugLocal.xcconfig; sourceTree = "<group>"; };
 		B3C050182420DE0100F1536B /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		B3C2F9E92245002C0054EE16 /* Cosmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3C2F9E92245002C0054EE16 /* Cosmeticas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmeticas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C2F9F32245002C0054EE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3C2F9F52245002E0054EE16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -243,9 +246,6 @@
 		B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountTableViewController.swift; sourceTree = "<group>"; };
 		B3DB749D2426422500CB241F /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTableViewController.swift; sourceTree = "<group>"; };
-		B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTableViewCell.swift; sourceTree = "<group>"; };
-		B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterBrandTableViewCell.swift; sourceTree = "<group>"; };
 		B3EBF30823BA640B0041D69A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		B3EBF30A23BA64980041D69A /* DownloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNotification.swift; sourceTree = "<group>"; };
 		B3EBF30D23BA69A00041D69A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -322,9 +322,9 @@
 				B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */,
 				B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */,
 				B3B058C623E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift */,
-				B3E6D5A2243B3AAB009BF6DD /* SearchFilterTableViewController.swift */,
-				B3E6D5A4243B468A009BF6DD /* SearchFilterTableViewCell.swift */,
-				B3E6D5A6243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift */,
+				B31121F2245D8274005DA548 /* FilterTableViewController.swift */,
+				B31121F6245D8C0E005DA548 /* FilterCollectionViewCell.swift */,
+				B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 		B3C2F9EA2245002C0054EE16 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3C2F9E92245002C0054EE16 /* Cosmetic.app */,
+				B3C2F9E92245002C0054EE16 /* Cosmeticas.app */,
 				B3C2F9FF2245002E0054EE16 /* CosmeticTests.xctest */,
 				B3C2FA0A2245002E0054EE16 /* CosmeticUITests.xctest */,
 			);
@@ -585,7 +585,7 @@
 			);
 			name = Cosmetic;
 			productName = Cosmetic;
-			productReference = B3C2F9E92245002C0054EE16 /* Cosmetic.app */;
+			productReference = B3C2F9E92245002C0054EE16 /* Cosmeticas.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B3C2F9FE2245002E0054EE16 /* CosmeticTests */ = {
@@ -840,7 +840,6 @@
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
 				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
-				B3E6D5A3243B3AAB009BF6DD /* SearchFilterTableViewController.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
@@ -848,7 +847,6 @@
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
 				B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */,
-				B3E6D5A7243B5461009BF6DD /* SearchFilterBrandTableViewCell.swift in Sources */,
 				B35B57622398164800AE754F /* PackageViewController.swift in Sources */,
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
@@ -861,6 +859,7 @@
 				B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */,
 				B387F29424378DA7006E139F /* MyTopicTableViewCell.swift in Sources */,
 				B3A8A86423B92AFA009AFEA3 /* NoficationTableViewController.swift in Sources */,
+				B328A0E8245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift in Sources */,
 				B387F29224378BD0006E139F /* MyTopicTableViewController.swift in Sources */,
 				B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */,
 				B3D7D3E72424C28F00F6B95B /* DrawerCollectionModel.swift in Sources */,
@@ -887,6 +886,7 @@
 				B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,
+				B31121F3245D8274005DA548 /* FilterTableViewController.swift in Sources */,
 				B3D7D3E92424E23100F6B95B /* DrawerCollection.swift in Sources */,
 				B3BFC8C32423407B00C7C430 /* DownloadDrawer.swift in Sources */,
 				B348223723E1D890008BD770 /* PickforyouCollectionViewCell.swift in Sources */,
@@ -901,7 +901,7 @@
 				B3A8A85C23B92792009AFEA3 /* TermAndConditionViewController.swift in Sources */,
 				B3A71EFC243658C3000A501B /* AddTopicResultViewController.swift in Sources */,
 				B3BFC8C72423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift in Sources */,
-				B3E6D5A5243B468A009BF6DD /* SearchFilterTableViewCell.swift in Sources */,
+				B31121F7245D8C0E005DA548 /* FilterCollectionViewCell.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */,
@@ -1058,7 +1058,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.coco.comseticas;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Cosmeticas;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1250,7 +1250,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.coco.comseticas;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Cosmeticas;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1282,7 +1282,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.coco.comseticas;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Cosmeticas;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

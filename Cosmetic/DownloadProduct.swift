@@ -29,6 +29,12 @@ class DownloadProduct: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
+    func downloadByCategoriesAndBrand(categoriesId: String, brandId: String){
+        postParameter["categories_id"] = categoriesId
+        postParameter["brand_id"] = brandId
+        downloadItem()
+    }
+    
     func downloadByCategories(categoriesId id: String){
         postParameter["categories_id"] = id
         downloadItem()
