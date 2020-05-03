@@ -20,20 +20,16 @@ class Network: NSObject {
     
     func downloadData(URL: String, param: [String: Any]){
         
-        let manager = AFHTTPRequestOperationManager()
+        let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        manager.post(URL, parameters: param, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.delegate?.downloadSuccess(data: responseObject as! Data)
-            })
-        }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
-            print(error)
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.delegate?.downloadFailed(error: error.localizedDescription)
-            })
+        manager.post(URL, parameters: param, headers: nil, progress: {(Progress) in },
+                     success: {(Operation, responseObject) in
+                        self.delegate?.downloadSuccess(data: responseObject as! Data)
+        },
+                     failure: {(Operation, error) in
+                        self.delegate?.downloadFailed(error: error.localizedDescription)
         })
+        
     }
 }

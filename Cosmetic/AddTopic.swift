@@ -28,15 +28,15 @@ class AddTopic: NSObject {
                      "user_id": user_id,
                      "productset": convertToJson(from: productSet)]
 
-        let manager = AFHTTPRequestOperationManager()
+        let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
 
-        manager.post(URL, parameters: param, constructingBodyWith: { (data:AFMultipartFormData!) -> Void in
+        manager.post(URL, parameters: param, headers: nil, constructingBodyWith: { (data:AFMultipartFormData!) -> Void in
             if image != nil{
                 data.appendPart(withFileData: (image?.jpegData(compressionQuality: 0.75))!, name: "imageFile", fileName: topic_name, mimeType: "image/jpeg")
             }
-        }, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
+        },progress: {(Progress) in}, success: {
+            (operation: URLSessionDataTask, responseObject: Any) in
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 var jsonResult = NSArray()
@@ -57,7 +57,7 @@ class AddTopic: NSObject {
                 self.delegate?.insertTopicSuccess(topicCode: topicCode)
             })
         }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
+            (Operation, error) in
             print(error)
             DispatchQueue.main.async(execute: { () -> Void in
                 self.delegate?.insertTopicFailed(error: error.localizedDescription)
@@ -87,11 +87,11 @@ class AddTopic: NSObject {
                      "user_id": user_id,
                      "productset": convertToJson(from: productSet)]
         
-        let manager = AFHTTPRequestOperationManager()
+        let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
-
-        manager.post(URL, parameters: param, success: {
-            (operation: AFHTTPRequestOperation, responseObject: Any) in
+        
+        manager.post(URL, parameters: param, headers: nil,progress: {(Progress) in }, success: {
+            (operation: URLSessionDataTask, responseObject: Any) in
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 var jsonResult = NSArray()
@@ -113,7 +113,7 @@ class AddTopic: NSObject {
                 self.delegate?.insertTopicSuccess(topicCode: topicCode)
             })
         }, failure: {
-            (opefation: AFHTTPRequestOperation?, error: Error) in
+            (opefation: URLSessionDataTask?, error: Error) in
             print(error)
             DispatchQueue.main.async(execute: { () -> Void in
                 self.delegate?.insertTopicFailed(error: error.localizedDescription)
