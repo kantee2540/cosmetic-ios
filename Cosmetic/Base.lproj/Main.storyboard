@@ -420,7 +420,7 @@
             <objects>
                 <viewController storyboardIdentifier="TopTopic" id="wgc-Gb-F3f" customClass="TopTopicViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V3M-F6-vZW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JY6-Xy-JvX">
@@ -661,7 +661,7 @@
             <objects>
                 <viewController storyboardIdentifier="productdetail" id="jmB-xZ-ZUV" customClass="CosmeticDetailViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tx5-W9-2qQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5Y-RS-Haj">
@@ -930,14 +930,14 @@
                         <sections>
                             <tableViewSection headerTitle="Brands" id="ao6-Ge-lgY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Fbu-2c-yYi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Fbu-2c-yYi" customClass="FilterTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="16" y="55.5" width="343" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fbu-2c-yYi" id="kBC-rx-LfU">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tWS-v2-JKD" customClass="FilterCollectionView" customModule="Cosmeticas">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tWS-v2-JKD" customClass="FilterCollectionView" customModule="Cosmeticas" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2lQ-Bl-fFZ">
@@ -988,14 +988,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Categories" id="fyz-E3-LZl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="UgT-eH-5o8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="UgT-eH-5o8" customClass="FilterTableViewCell" customModule="Cosmeticas" customModuleProvider="target">
                                         <rect key="frame" x="16" y="311.5" width="343" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UgT-eH-5o8" id="gbd-2O-HuH">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n2u-AG-xBU" customClass="FilterCollectionView" customModule="Cosmeticas">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n2u-AG-xBU" customClass="FilterCollectionView" customModule="Cosmeticas" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dcy-e2-TE0">
@@ -2020,7 +2020,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="YrC-VE-d7U" kind="show" id="aAe-2W-7IP"/>
+                                            <segue destination="YrC-VE-d7U" kind="show" id="cZo-ns-tNu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="kNI-Pl-X51" imageView="vZz-hZ-zpg" rowHeight="50" style="IBUITableViewCellStyleDefault" id="QLs-EX-Sh3">
@@ -3700,10 +3700,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9s-lr-p3E">
-                                    <rect key="frame" x="134.5" y="15" width="232.5" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="Hp4-bZ-NKC"/>
-                                    </constraints>
+                                    <rect key="frame" x="303.5" y="15" width="63.5" height="30"/>
                                     <state key="normal" title="Clear all">
                                         <color key="titleColor" name="cosmetic-color"/>
                                     </state>
@@ -3726,19 +3723,40 @@
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="daL-4c-wRj">
                                     <rect key="frame" x="332" y="45" width="20" height="20"/>
                                 </activityIndicatorView>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uV-hD-o2e">
+                                    <rect key="frame" x="134.5" y="20" width="114" height="21"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category: Powder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ume-fU-1np">
+                                            <rect key="frame" x="4" y="2" width="106" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="ume-fU-1np" firstAttribute="leading" secondItem="8uV-hD-o2e" secondAttribute="leading" constant="4" id="3nl-Ve-H70"/>
+                                        <constraint firstItem="ume-fU-1np" firstAttribute="top" secondItem="8uV-hD-o2e" secondAttribute="top" constant="2" id="Ljv-PD-ZYm"/>
+                                        <constraint firstAttribute="trailing" secondItem="ume-fU-1np" secondAttribute="trailing" constant="4" id="R5S-4b-7MI"/>
+                                        <constraint firstAttribute="bottom" secondItem="ume-fU-1np" secondAttribute="bottom" constant="2" id="eJc-ho-p6v"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="vMf-cF-bCk" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" constant="16" id="0IO-Uv-ZzA"/>
+                                <constraint firstItem="8uV-hD-o2e" firstAttribute="bottom" secondItem="vMf-cF-bCk" secondAttribute="bottom" id="3xb-yG-M6Y"/>
+                                <constraint firstItem="w9s-lr-p3E" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8uV-hD-o2e" secondAttribute="trailing" constant="55" id="8Mp-5G-Shr"/>
                                 <constraint firstItem="w9s-lr-p3E" firstAttribute="top" secondItem="vMf-cF-bCk" secondAttribute="top" constant="-5" id="8Tv-sj-dHa"/>
+                                <constraint firstItem="8uV-hD-o2e" firstAttribute="top" secondItem="vMf-cF-bCk" secondAttribute="top" id="FhG-gP-fhV"/>
                                 <constraint firstItem="ck2-Cj-T8T" firstAttribute="leading" secondItem="yBw-8X-GBW" secondAttribute="leading" constant="16" id="Gpk-RI-FJ5"/>
+                                <constraint firstItem="8uV-hD-o2e" firstAttribute="leading" secondItem="vMf-cF-bCk" secondAttribute="trailing" constant="8" id="MXA-vE-4Ce"/>
                                 <constraint firstItem="daL-4c-wRj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ck2-Cj-T8T" secondAttribute="trailing" constant="8" id="XSt-hR-aZf"/>
                                 <constraint firstItem="ck2-Cj-T8T" firstAttribute="top" secondItem="vMf-cF-bCk" secondAttribute="bottom" constant="6" id="dWi-Xk-EpX"/>
                                 <constraint firstAttribute="trailing" secondItem="daL-4c-wRj" secondAttribute="trailing" constant="23" id="f9j-mx-qOo"/>
                                 <constraint firstItem="daL-4c-wRj" firstAttribute="bottom" secondItem="ck2-Cj-T8T" secondAttribute="bottom" constant="1" id="hAN-D9-yaB"/>
                                 <constraint firstAttribute="trailing" secondItem="w9s-lr-p3E" secondAttribute="trailing" constant="8" id="jU5-w1-1PI"/>
                                 <constraint firstItem="vMf-cF-bCk" firstAttribute="top" secondItem="yBw-8X-GBW" secondAttribute="top" constant="20" id="mGW-Mn-pXN"/>
-                                <constraint firstItem="w9s-lr-p3E" firstAttribute="leading" secondItem="vMf-cF-bCk" secondAttribute="trailing" constant="8" id="vpZ-uO-MWj"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -3862,6 +3880,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="clearButton" destination="w9s-lr-p3E" id="jXQ-ce-yXz"/>
+                        <outlet property="filterLabel" destination="ume-fU-1np" id="bue-D4-v2c"/>
+                        <outlet property="filterView" destination="8uV-hD-o2e" id="vrK-5j-7AV"/>
                         <outlet property="loadingActivity" destination="daL-4c-wRj" id="4S1-TQ-8os"/>
                         <outlet property="resultLabel" destination="ck2-Cj-T8T" id="FEA-Wt-JDr"/>
                         <outlet property="searchResultLabel" destination="vMf-cF-bCk" id="xa2-q1-frf"/>
@@ -3875,7 +3895,7 @@
         <!--Write topic-->
         <scene sceneID="mtj-6F-xW1">
             <objects>
-                <viewController storyboardIdentifier="writetopic" id="YrC-VE-d7U" customClass="WriteTopicViewController" customModule="Cosmetic" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="writetopic" id="YrC-VE-d7U" customClass="WriteTopicViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jF-St-GOF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3934,13 +3954,13 @@
                     <navigationItem key="navigationItem" title="Write topic" id="8dL-gA-NAM">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" style="done" id="y6G-1r-MVS">
                             <connections>
-                                <segue destination="c5S-lr-KdZ" kind="show" identifier="gochooseimage" id="Eio-UO-uOt"/>
+                                <segue destination="c5S-lr-KdZ" kind="show" identifier="gochooseimage" id="6hD-zg-QjQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailTextView" destination="4PK-yP-OOy" id="x1r-PM-Fsf"/>
-                        <outlet property="nextButton" destination="y6G-1r-MVS" id="8Zc-0t-mqg"/>
+                        <outlet property="nextButton" destination="y6G-1r-MVS" id="gFq-N5-cPa"/>
                         <outlet property="titleTextField" destination="xdm-p7-d9K" id="lar-Op-f4L"/>
                     </connections>
                 </viewController>
@@ -4419,11 +4439,11 @@
             <objects>
                 <viewController id="ciI-mB-J50" customClass="CameraCaptureViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Bb-HK-zuU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z92-0q-80k">
-                                <rect key="frame" x="-3" y="42" width="379" height="622"/>
+                                <rect key="frame" x="-3" y="42" width="379" height="602"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="cgA-lf-hhA"/>
                             </imageView>
@@ -4882,8 +4902,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cHm-Ob-iaC"/>
-        <segue reference="xXR-3P-iKQ"/>
+        <segue reference="j6B-oM-jLe"/>
+        <segue reference="mCg-qs-FNI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ant.fill" catalog="system" width="107" height="128"/>

@@ -9,33 +9,39 @@
 import UIKit
 
 class SearchDetailTableViewController: UITableViewController, CosmeticDetailDelegate, FilterTableViewControllerDelegate {
-    func applyFilter(brandId: String, categoryId: String) {
+    func applyFilter(brand: BrandModel, category: CategoriesModel) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByCategoriesAndBrand(categoriesId: categoryId, brandId: brandId)
+        downloadProduct.downloadByCategoriesAndBrand(categoriesId: category.categories_id!, brandId: brand.brand_id!)
+        filterView.isHidden = false
+        filterLabel.text = "2 Filtered"
         searchCategory = true
         searchBrand = true
         clearButton.isHidden = false
         first = false
     }
     
-    func applyCategory(categoryId: String) {
+    func applyCategory(category: CategoriesModel) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByCategories(categoriesId: categoryId)
+        downloadProduct.downloadByCategories(categoriesId: category.categories_id!)
+        filterView.isHidden = false
+        filterLabel.text = "Category: \(category.categories_name ?? "")"
         searchCategory = true
         clearButton.isHidden = false
         first = false
         
     }
     
-    func applyBrand(brandId: String) {
+    func applyBrand(brand: BrandModel) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByBrands(brandId: brandId)
+        downloadProduct.downloadByBrands(brandId: brand.brand_id!)
+        filterView.isHidden = false
+        filterLabel.text = "Brand: \(brand.brand_name ?? "")"
         searchBrand = true
         clearButton.isHidden = false
         first = false
@@ -59,6 +65,8 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
     private var searching: Bool = false
     private var first: Bool = true
     
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var clearButton: UIButton!
@@ -72,6 +80,8 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        filterView.layer.cornerRadius = 6
         
         searchBar = UISearchBar()
         searchBar.placeholder = "Search Cosmetic"
@@ -231,6 +241,7 @@ extension SearchDetailTableViewController: DownloadProductProtocol{
         setCountLabel(count: allProduct.count)
         self.tableView.reloadData()
         loadingActivity.stopAnimating()
+        
     }
     
     func itemDownloadFailed(error_mes: String) {
@@ -247,6 +258,7 @@ extension SearchDetailTableViewController: DownloadProductProtocol{
         searchCategory = false
         setCountLabel(count: 0)
         selectedCollectionCell = nil
+        filterView.isHidden = true
         searchBar.placeholder = "Search Cosmetic"
         searchBar.text = ""
         searchResultLabel.text = "Search Result"

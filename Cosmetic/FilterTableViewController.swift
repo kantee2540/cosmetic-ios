@@ -9,9 +9,9 @@
 import UIKit
 
 protocol FilterTableViewControllerDelegate {
-    func applyFilter(brandId: String, categoryId: String)
-    func applyCategory(categoryId: String)
-    func applyBrand(brandId: String)
+    func applyFilter(brand: BrandModel, category: CategoriesModel)
+    func applyCategory(category: CategoriesModel)
+    func applyBrand(brand: BrandModel)
 }
 
 class FilterTableViewController: UITableViewController {
@@ -71,11 +71,11 @@ class FilterTableViewController: UITableViewController {
 
     @IBAction func tapApply(_ sender: Any) {
         if selectedCategory != nil && selectedBrand != nil{
-            delegate?.applyFilter(brandId: selectedBrand.brand_id!, categoryId: selectedCategory.categories_id!)
+            delegate?.applyFilter(brand: selectedBrand, category: selectedCategory)
         }else if selectedCategory != nil && selectedBrand == nil{
-            delegate?.applyCategory(categoryId: selectedCategory.categories_id!)
+            delegate?.applyCategory(category: selectedCategory)
         }else if selectedCategory == nil && selectedBrand != nil{
-            delegate?.applyBrand(brandId: selectedBrand.brand_id!)
+            delegate?.applyBrand(brand: selectedBrand)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -87,11 +87,13 @@ extension FilterTableViewController: UICollectionViewDelegate, UICollectionViewD
     func itemDownloadedBrands(item: NSMutableArray) {
         brandItem = item as! [BrandModel]
         brandCollectionView.reloadData()
+        
     }
     
     func itemDownloadedCategories(item: NSMutableArray) {
         categoriesItem = item as! [CategoriesModel]
         categoriesCollectionView.reloadData()
+        
     }
     
     
