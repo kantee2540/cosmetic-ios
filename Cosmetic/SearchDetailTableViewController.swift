@@ -9,24 +9,29 @@
 import UIKit
 
 class SearchDetailTableViewController: UITableViewController, CosmeticDetailDelegate, FilterTableViewControllerDelegate {
-    func applyFilter(brand: BrandModel, category: CategoriesModel) {
+    
+    func applyFilter(brand: BrandModel, category: CategoriesModel, minPrice: Int?, maxPrice: Int?) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByCategoriesAndBrand(categoriesId: category.categories_id!, brandId: brand.brand_id!)
+        downloadProduct.downloadByCategoriesAndBrand(categoriesId: category.categories_id!, brandId: brand.brand_id!, minPrice: minPrice, maxPrice: maxPrice)
         filterView.isHidden = false
-        filterLabel.text = "2 Filtered"
+        if minPrice == nil && maxPrice == nil{
+            filterLabel.text = "2 Filtered"
+        }else{
+            filterLabel.text = "3 Filtered"
+        }
         searchCategory = true
         searchBrand = true
         clearButton.isHidden = false
         first = false
     }
     
-    func applyCategory(category: CategoriesModel) {
+    func applyCategory(category: CategoriesModel, minPrice: Int?, maxPrice: Int?) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByCategories(categoriesId: category.categories_id!)
+        downloadProduct.downloadByCategories(categoriesId: category.categories_id!, minPrice: minPrice, maxPrice: maxPrice)
         filterView.isHidden = false
         filterLabel.text = "Category: \(category.categories_name ?? "")"
         searchCategory = true
@@ -35,13 +40,35 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         
     }
     
-    func applyBrand(brand: BrandModel) {
+    func applyBrand(brand: BrandModel, minPrice: Int?, maxPrice: Int?) {
         loadingActivity.startAnimating()
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadByBrands(brandId: brand.brand_id!)
+        downloadProduct.downloadByBrands(brandId: brand.brand_id!, minPrice: minPrice, maxPrice: maxPrice)
         filterView.isHidden = false
         filterLabel.text = "Brand: \(brand.brand_name ?? "")"
+        searchBrand = true
+        clearButton.isHidden = false
+        first = false
+    }
+    
+    func applyPrice(minPrice: Int?, maxPrice: Int?) {
+        loadingActivity.startAnimating()
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        if maxPrice == nil{
+            downloadProduct.downloadByMinPrice(minPrice: minPrice!)
+            filterLabel.text = "Minimum price: \(minPrice!)"
+        }else if minPrice == nil{
+            downloadProduct.downloadByMaxPrice(maxPrice: maxPrice!)
+            filterLabel.text = "Maximum price: \(maxPrice!)"
+        }
+
+        else{
+            downloadProduct.downloadByPrice(minPrice: minPrice!, maxPrice: maxPrice!)
+            filterLabel.text = "Price: \(minPrice!) - \(maxPrice!)"
+        }
+        filterView.isHidden = false
         searchBrand = true
         clearButton.isHidden = false
         first = false
@@ -89,18 +116,6 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         searchBar.delegate = self
         navigationItem.titleView = searchBar
         
-    }
-    
-    private func downloadProductByCategory(categoryId: String){
-        let downloadProducts = DownloadProduct()
-        downloadProducts.delegate = self
-        downloadProducts.downloadByCategories(categoriesId: categoryId)
-    }
-    
-    private func downloadProductByBrand(brandId: String){
-        let downloadProducts = DownloadProduct()
-        downloadProducts.delegate = self
-        downloadProducts.downloadByBrands(brandId: brandId)
     }
     
     private func setCountLabel(count: Int){

@@ -9,9 +9,10 @@
 import UIKit
 
 protocol FilterTableViewControllerDelegate {
-    func applyFilter(brand: BrandModel, category: CategoriesModel)
-    func applyCategory(category: CategoriesModel)
-    func applyBrand(brand: BrandModel)
+    func applyFilter(brand: BrandModel, category: CategoriesModel, minPrice: Int?, maxPrice: Int?)
+    func applyCategory(category: CategoriesModel, minPrice: Int?, maxPrice: Int?)
+    func applyBrand(brand: BrandModel, minPrice: Int?, maxPrice: Int?)
+    func applyPrice(minPrice: Int?, maxPrice: Int?)
 }
 
 class FilterTableViewController: UITableViewController {
@@ -24,6 +25,8 @@ class FilterTableViewController: UITableViewController {
     private var selectedBrand: BrandModel!
     private var selectedCategory: CategoriesModel!
     
+    @IBOutlet weak var minimumTextfield: UITextField!
+    @IBOutlet weak var maximumTextfield: UITextField!
     @IBOutlet weak var applyButton: UIBarButtonItem!
     @IBOutlet weak var brandCollectionView: UICollectionView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
@@ -39,6 +42,9 @@ class FilterTableViewController: UITableViewController {
         brandCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
+        
+        minimumTextfield.delegate = self
+        maximumTextfield.delegate = self
         
         downloadBrand()
         downloadCategories()
@@ -61,7 +67,7 @@ class FilterTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,12 +76,19 @@ class FilterTableViewController: UITableViewController {
     }
 
     @IBAction func tapApply(_ sender: Any) {
+        let minimum = Int(minimumTextfield.text!)
+        let maximum = Int(maximumTextfield.text!)
+        
         if selectedCategory != nil && selectedBrand != nil{
-            delegate?.applyFilter(brand: selectedBrand, category: selectedCategory)
+            delegate?.applyFilter(brand: selectedBrand, category: selectedCategory, minPrice: minimum, maxPrice: maximum)
         }else if selectedCategory != nil && selectedBrand == nil{
-            delegate?.applyCategory(category: selectedCategory)
+            delegate?.applyCategory(category: selectedCategory, minPrice: minimum, maxPrice: maximum)
         }else if selectedCategory == nil && selectedBrand != nil{
-            delegate?.applyBrand(brand: selectedBrand)
+            delegate?.applyBrand(brand: selectedBrand, minPrice: minimum, maxPrice: maximum)
+        }else if minimumTextfield.text!.count > 0 || maximumTextfield.text!.count > 0{
+            let minimum = Int(minimumTextfield.text!)
+            let maximum = Int(maximumTextfield.text!)
+            delegate?.applyPrice(minPrice: minimum, maxPrice: maximum)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -156,4 +169,16 @@ extension FilterTableViewController: UICollectionViewDelegate, UICollectionViewD
         }
     }
     
+}
+
+extension FilterTableViewController: UITextFieldDelegate{
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if ((minimumTextfield.text!.count > 0) || maximumTextfield.text!.count > 0) || selectedBrand != nil || selectedCategory != nil{
+            
+            applyButton.isEnabled = true
+            
+        }else{
+            applyButton.isEnabled = false
+        }
+    }
 }

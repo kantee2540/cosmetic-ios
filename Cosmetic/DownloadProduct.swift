@@ -29,14 +29,30 @@ class DownloadProduct: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func downloadByCategoriesAndBrand(categoriesId: String, brandId: String){
+    func downloadByCategoriesAndBrand(categoriesId: String, brandId: String, minPrice: Int?, maxPrice: Int?){
         postParameter["categories_id"] = categoriesId
         postParameter["brand_id"] = brandId
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
         downloadItem()
     }
     
-    func downloadByCategories(categoriesId id: String){
+    func downloadByCategories(categoriesId id: String, minPrice: Int?, maxPrice: Int?){
         postParameter["categories_id"] = id
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
         downloadItem()
     }
     func searchByKeyword(_ keyword: String){
@@ -44,8 +60,33 @@ class DownloadProduct: NSObject, NetworkDelegate {
         downloadItem()
     }
     
-    func downloadByBrands(brandId id: String){
+    func downloadByBrands(brandId id: String, minPrice: Int?, maxPrice: Int?){
         postParameter["brand_id"] = id
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
+        downloadItem()
+    }
+    
+    func downloadByPrice(minPrice min: Int, maxPrice max: Int){
+        postParameter["pricemin"] = min
+        postParameter["pricemax"] = max
+        
+        downloadItem()
+    }
+    
+    func downloadByMinPrice(minPrice min: Int){
+        postParameter["pricemin"] = min
+        downloadItem()
+    }
+    
+    func downloadByMaxPrice(maxPrice max: Int){
+        postParameter["pricemax"] = max
         downloadItem()
     }
     
