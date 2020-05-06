@@ -207,6 +207,10 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
         profileTable.reloadData()
     }
     
+    func updateProfileSuccess(imageURL: String) {
+        
+    }
+    
     func itemDownloadUser(item: UserModel) {
         UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
         UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)

@@ -1666,11 +1666,11 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg4" translatesAutoresizingMaskIntoConstraints="NO" id="LdG-q2-LsL">
-                                                                    <rect key="frame" x="13" y="13" width="145" height="137"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="150"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="145" id="VVL-3D-x7C"/>
-                                                                        <constraint firstAttribute="height" priority="750" constant="137" id="s4M-jb-sLQ"/>
+                                                                        <constraint firstAttribute="width" constant="171" id="VVL-3D-x7C"/>
+                                                                        <constraint firstAttribute="height" priority="750" constant="150" id="s4M-jb-sLQ"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum Lorem ipsum " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXk-PE-seA">
@@ -1711,14 +1711,14 @@
                                                             <constraints>
                                                                 <constraint firstItem="OMo-gp-ZQE" firstAttribute="leading" secondItem="Mji-I3-OmK" secondAttribute="leading" constant="13" id="39f-H2-2JC"/>
                                                                 <constraint firstAttribute="trailing" secondItem="qPG-ge-tkK" secondAttribute="trailing" constant="13" id="5AG-8B-LuH"/>
-                                                                <constraint firstItem="LdG-q2-LsL" firstAttribute="leading" secondItem="Mji-I3-OmK" secondAttribute="leading" constant="13" id="63D-gh-Pgb"/>
+                                                                <constraint firstItem="LdG-q2-LsL" firstAttribute="leading" secondItem="Mji-I3-OmK" secondAttribute="leading" id="63D-gh-Pgb"/>
                                                                 <constraint firstItem="h9M-kZ-310" firstAttribute="top" secondItem="DXk-PE-seA" secondAttribute="bottom" priority="250" constant="15" id="8WF-65-J7p"/>
                                                                 <constraint firstItem="h9M-kZ-310" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OMo-gp-ZQE" secondAttribute="trailing" constant="8" id="9wx-Rt-hQY"/>
                                                                 <constraint firstItem="qPG-ge-tkK" firstAttribute="leading" secondItem="Mji-I3-OmK" secondAttribute="leading" constant="13" id="Ixi-dt-7j3"/>
-                                                                <constraint firstAttribute="trailing" secondItem="LdG-q2-LsL" secondAttribute="trailing" constant="13" id="KtR-Bm-j7o"/>
+                                                                <constraint firstAttribute="trailing" secondItem="LdG-q2-LsL" secondAttribute="trailing" id="KtR-Bm-j7o"/>
                                                                 <constraint firstItem="qPG-ge-tkK" firstAttribute="top" secondItem="LdG-q2-LsL" secondAttribute="bottom" constant="13" id="N3o-WF-CoY"/>
                                                                 <constraint firstItem="DXk-PE-seA" firstAttribute="top" secondItem="qPG-ge-tkK" secondAttribute="bottom" constant="8" id="Okb-iu-fLB"/>
-                                                                <constraint firstItem="LdG-q2-LsL" firstAttribute="top" secondItem="Mji-I3-OmK" secondAttribute="top" constant="13" id="PVh-Nd-s4Q"/>
+                                                                <constraint firstItem="LdG-q2-LsL" firstAttribute="top" secondItem="Mji-I3-OmK" secondAttribute="top" id="PVh-Nd-s4Q"/>
                                                                 <constraint firstItem="DXk-PE-seA" firstAttribute="leading" secondItem="Mji-I3-OmK" secondAttribute="leading" constant="13" id="WrY-JQ-ExY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="OMo-gp-ZQE" secondAttribute="bottom" constant="15" id="eKe-ax-S4b"/>
                                                                 <constraint firstAttribute="bottom" secondItem="h9M-kZ-310" secondAttribute="bottom" constant="17" id="fKD-2Q-YIr"/>
@@ -1808,7 +1808,7 @@
                                                         </connections>
                                                     </collectionViewCell>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="adddrawercell" id="kvu-q6-kZS" customClass="AddDrawerCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="299" width="171" height="124"/>
+                                                        <rect key="frame" x="10" y="342.5" width="171" height="124"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mkk-Si-qc2">
                                                             <rect key="frame" x="0.0" y="0.0" width="171" height="124"/>
@@ -1843,6 +1843,22 @@
                                                         <connections>
                                                             <segue destination="jsy-OS-2es" kind="show" id="6zW-LJ-RpL"/>
                                                         </connections>
+                                                    </collectionViewCell>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8t3-sv-ev6">
+                                                        <rect key="frame" x="191" y="299" width="171" height="211"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dkk-to-AYR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="171" height="211"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWM-OY-DGx">
+                                                                    <rect key="frame" x="8" y="8" width="150" height="133"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </collectionViewCellContentView>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                        <size key="customSize" width="171" height="211"/>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -1974,7 +1990,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMc-Uh-0oE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="-402"/>
+            <point key="canvasLocation" x="893.60000000000002" y="-402.54872563718146"/>
         </scene>
         <!--Me-->
         <scene sceneID="2S7-2Z-JyX">
@@ -2133,9 +2149,6 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Me" image="person.fill" catalog="system" id="DS6-0G-CWq"/>
-                    <connections>
-                        <outlet property="mainTable" destination="SFb-je-BLA" id="ShI-jk-S0K"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbc-Nd-Rdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2182,12 +2195,28 @@
                                                         <constraint firstAttribute="width" constant="80" id="aUq-rA-8EK"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9f1-yL-d1c">
+                                                    <rect key="frame" x="235.5" y="11" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="N0g-lm-FLs"/>
+                                                        <constraint firstAttribute="width" constant="35" id="i1C-W0-3xC"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="cosmetic-color"/>
+                                                    <state key="normal" image="pencil.circle.fill" catalog="system">
+                                                        <color key="titleColor" name="cosmetic-color"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectImage:" destination="aKS-hY-yQh" eventType="touchUpInside" id="cxY-2R-fNQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Bl0-8M-wgv" firstAttribute="top" secondItem="AgD-1Q-xmn" secondAttribute="bottom" constant="4" id="5U9-lc-wc6"/>
                                                 <constraint firstItem="L9p-gA-TM3" firstAttribute="centerX" secondItem="Kz9-fd-sPn" secondAttribute="centerX" id="9c3-BH-TMw"/>
                                                 <constraint firstItem="Bl0-8M-wgv" firstAttribute="centerX" secondItem="Kz9-fd-sPn" secondAttribute="centerX" id="OBJ-zf-WbK"/>
+                                                <constraint firstItem="9f1-yL-d1c" firstAttribute="leading" secondItem="AgD-1Q-xmn" secondAttribute="trailing" constant="8" id="PG1-vL-3lm"/>
                                                 <constraint firstItem="AgD-1Q-xmn" firstAttribute="centerX" secondItem="Kz9-fd-sPn" secondAttribute="centerX" id="ha6-5o-bMq"/>
+                                                <constraint firstItem="9f1-yL-d1c" firstAttribute="top" secondItem="AgD-1Q-xmn" secondAttribute="top" id="jFu-TN-uNt"/>
                                                 <constraint firstItem="L9p-gA-TM3" firstAttribute="top" secondItem="Bl0-8M-wgv" secondAttribute="bottom" constant="2" id="jjq-qd-FI4"/>
                                                 <constraint firstItem="AgD-1Q-xmn" firstAttribute="top" secondItem="Kz9-fd-sPn" secondAttribute="topMargin" id="u3P-g1-HFD"/>
                                             </constraints>
@@ -2330,15 +2359,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="IY6-SQ-hT9"/>
                     <connections>
-                        <outlet property="accountTable" destination="cBS-Fw-mju" id="7jE-sB-28I"/>
                         <outlet property="fullNameLabel" destination="L9p-gA-TM3" id="cfs-u3-6oi"/>
                         <outlet property="nickNameLabel" destination="Bl0-8M-wgv" id="wYY-IX-S9X"/>
                         <outlet property="profileImage" destination="AgD-1Q-xmn" id="FDG-DA-NKL"/>
+                        <outlet property="selectprofileImage" destination="9f1-yL-d1c" id="DpR-35-yaf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Goj-9h-Slm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864" y="1889"/>
+            <point key="canvasLocation" x="1863.2" y="1888.6056971514245"/>
         </scene>
         <!--Account Detail-->
         <scene sceneID="A5K-qn-ZRW">
@@ -4953,7 +4982,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="j6B-oM-jLe"/>
+        <segue reference="tfX-uD-L2L"/>
         <segue reference="mCg-qs-FNI"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -4979,6 +5008,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="packageImage" width="400" height="400"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>

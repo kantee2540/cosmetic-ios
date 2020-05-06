@@ -19,8 +19,9 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
             UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
             UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
             UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
+            UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
             removeSpinner()
-            mainTable.reloadData()
+            self.tableView.reloadData()
         }else{
             removeSpinner()
         }
@@ -30,13 +31,10 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         Library.displayAlert(targetVC: self, title: "Error", message: error)
     }
     
-
-    @IBOutlet var mainTable: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTable.delegate = self
-        mainTable.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,7 +44,7 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "MyAccount"
-        mainTable.reloadData()
+        self.tableView.reloadData()
     }
     
     
@@ -117,7 +115,7 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(mainTable, cellForRowAt: indexPath)
+        let cell = super.tableView(self.tableView, cellForRowAt: indexPath)
         switch (indexPath.section, indexPath.row) {
         case (0, 0):
             if Auth.auth().currentUser != nil{

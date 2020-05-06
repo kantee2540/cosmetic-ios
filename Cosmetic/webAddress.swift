@@ -139,4 +139,9 @@ class webAddress {
         return webFile
     }
     
+    func getUpdateProfilepic() -> String{
+        let webFile = getrootURL() + "updateprofilepic.php"
+        return webFile
+    }
+    
 }

@@ -9,33 +9,34 @@
 import UIKit
 import FirebaseAuth
 
-class AccountSettingsTableViewController: UITableViewController {
-
-    @IBOutlet var accountTable: UITableView!
+class AccountSettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CollectUserdataDelegate {
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var selectprofileImage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        accountTable.delegate = self
+        self.tableView.delegate = self
         profileImage.makeRounded()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
         let firstName = UserDefaults.standard.string(forKey: ConstantUser.firstName)
         let lastName = UserDefaults.standard.string(forKey: ConstantUser.lastName)
+        let profileURL = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
+        
         self.navigationItem.title = "Account Settings"
         nickNameLabel.text = nickname
         fullNameLabel.text = firstName! + " " + lastName!
-        accountTable.reloadData()
+        
+        if profileURL != ""{
+            profileImage.downloadImage(from: URL(string: profileURL!)!)
+        }
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -70,6 +71,57 @@ class AccountSettingsTableViewController: UITableViewController {
             self.present(logoutMenu, animated: true, completion: nil)
         }
     }
+    @IBAction func selectImage(_ sender: Any) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        
+        let alert = UIAlertController(title: "Change profile picture", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action) -> Void in
+            imagePicker.sourceType = .camera
+            self.navigationController?.present(imagePicker, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Library", style: .default, handler: {(action) -> Void in
+            imagePicker.sourceType = .photoLibrary
+            self.navigationController?.present(imagePicker, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)!
+        
+        let collectionUser = CollectUserdata()
+        collectionUser.delegate = self
+        collectionUser.updateProfilePicture(userId: userId, image: image)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func insertDataSuccess() {
+        
+    }
+    
+    func insertDataFailed() {
+        
+    }
+    
+    func updateProfileSuccess(imageURL: String) {
+        
+        if imageURL != ""{
+            UserDefaults.standard.set(imageURL, forKey: ConstantUser.profilepic)
+            profileImage.downloadImage(from: URL(string: imageURL)!)
+        }else{
+            Library.displayAlert(targetVC: self, title: "Error", message: "Please try another image")
+        }
+        self.tableView.reloadData()
+    }
     
     private func logout(){
         let firebaseAuth = Auth.auth()
@@ -92,7 +144,7 @@ class AccountSettingsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(accountTable, cellForRowAt: indexPath)
+        let cell = super.tableView(self.tableView, cellForRowAt: indexPath)
         
         switch (indexPath.section, indexPath.row) {
         case (0,0):

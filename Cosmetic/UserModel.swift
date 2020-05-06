@@ -16,4 +16,5 @@ class UserModel: NSObject {
     var email: String?
     var gender: String?
     var birthday: String?
+    var profilepic: String?
 }
