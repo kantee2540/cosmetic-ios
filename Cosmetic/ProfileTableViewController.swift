@@ -40,6 +40,9 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
             if let user = user{
                 email = user.email
                 uid = user.uid
+                if let display = user.displayName{
+                    displaynameTextfield.text = display
+                }
             }
         }else{
             

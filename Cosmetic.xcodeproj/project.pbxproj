@@ -90,6 +90,7 @@
 		B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */; };
 		B3C2FA042245002E0054EE16 /* CosmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA032245002E0054EE16 /* CosmeticTests.swift */; };
 		B3C2FA0F2245002E0054EE16 /* CosmeticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA0E2245002E0054EE16 /* CosmeticUITests.swift */; };
+		B3CA9BE12465750E0037937F /* OtherSignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */; };
 		B3D0563F234377EC0000F1EB /* SearchDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */; };
 		B3D326D223B3B4EE006404B2 /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */; };
 		B3D326D423B3BB59006404B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D326D323B3BB59006404B2 /* LoginViewController.swift */; };
@@ -231,6 +232,7 @@
 		B3C2FA0A2245002E0054EE16 /* CosmeticUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmeticUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2FA0E2245002E0054EE16 /* CosmeticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticUITests.swift; sourceTree = "<group>"; };
 		B3C2FA102245002E0054EE16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSignInTableViewController.swift; sourceTree = "<group>"; };
 		B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewController.swift; sourceTree = "<group>"; };
 		B3D326CF23B3B45A006404B2 /* Cosmetic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cosmetic.entitlements; sourceTree = "<group>"; };
 		B3D326D123B3B4EE006404B2 /* MeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		B3BE28A1239177BC00AE22C6 /* TopTopic */ = {
 			isa = PBXGroup;
 			children = (
+				B35B57612398164800AE754F /* PackageViewController.swift */,
 				B3B38DF42391739A00ACD696 /* TopTopicViewController.swift */,
 				B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */,
 				B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */,
@@ -491,7 +494,6 @@
 				B328A1242354413C00915CDB /* Search */,
 				B33B6EA022904052008F3AEE /* getObject */,
 				B3BE28A42391868100AE22C6 /* CosmeticDetail */,
-				B35B57612398164800AE754F /* PackageViewController.swift */,
 				B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */,
 				B3C2F9F22245002C0054EE16 /* Main.storyboard */,
 				B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */,
@@ -535,6 +537,7 @@
 				B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */,
 				B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */,
 				B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */,
+				B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B397CB91243348F20081897B /* ChooseProductTopicTableViewController.swift in Sources */,
+				B3CA9BE12465750E0037937F /* OtherSignInTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
 				B3D7D3ED2424F0FE00F6B95B /* AddItemtoDrawerTableViewController.swift in Sources */,

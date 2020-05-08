@@ -8,16 +8,77 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, DownloadUserProtocol{
+    
     var window: UIWindow?
+    
+    //MARK: - Sign in with Google
+    func itemDownloadUser(item: UserModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nav = window?.rootViewController as? UINavigationController
+        
+        if item.firstName != nil{
+            UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
+            UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
+            UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
+            UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
+            UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
+            UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
+            UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
+            UserDefaults.standard.set(item.profilepic ?? "", forKey: ConstantUser.profilepic)
+            nav?.popToRootViewController(animated: true)
+        }else{
+            let vc = storyboard.instantiateViewController(withIdentifier: "profile")
+            nav?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func itemUserError(error: String) {
+        let nav = window?.rootViewController as? UINavigationController
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            nav?.popToRootViewController(animated: true)
+        }))
+        nav!.present(alert, animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        let nav = window?.rootViewController as? UINavigationController
+        if let error = error{
+            print(error.localizedDescription)
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential){
+            (authResult, error) in
+            if let error = error{
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                    nav?.popToRootViewController(animated: true)
+                }))
+                nav!.present(alert, animated: true, completion: nil)
+            }
+            
+            let downloadUser = DownloadUser()
+            downloadUser.delegate = self
+            downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
+        }
+        
+    }
 
-
+    //MARK: - Application has start
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance()?.delegate = self
         
         if let url = launchOptions?[.url] as? URL{
             print(url)
@@ -48,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    //MARK: - Tapic touch shortcut
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         
         //3DTouch Shortcut
@@ -60,6 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
     }
     
+    //MARK: - Deep link feature
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         let nav = window?.rootViewController as? UINavigationController
@@ -89,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             nav?.present(vc!, animated: true, completion: nil)
             
         }
-        return true
+        return (GIDSignIn.sharedInstance()?.handle(url))!
     }
 
 }

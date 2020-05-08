@@ -13,6 +13,7 @@ target 'Cosmetic' do
    pod 'Crashlytics', '~> 3.14.0'
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'
+   pod 'GoogleSignIn'
    pod 'AFNetworking', '~> 4.0'
 
   target 'CosmeticTests' do

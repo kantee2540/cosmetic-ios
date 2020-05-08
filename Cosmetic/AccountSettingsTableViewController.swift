@@ -135,6 +135,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
             UserDefaults.standard.removeObject(forKey: ConstantUser.email)
             UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
             UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
+            UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
             self.navigationController?.popViewController(animated: true)
             
         }catch let signoutError as NSError{
