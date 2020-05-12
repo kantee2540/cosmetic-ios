@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, DownloadUserProtocol{
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
             UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
             UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
             UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
-            UserDefaults.standard.set(item.profilepic ?? "", forKey: ConstantUser.profilepic)
+            UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
             nav?.popToRootViewController(animated: true)
         }else{
             let vc = storyboard.instantiateViewController(withIdentifier: "profile")
@@ -63,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
                     nav?.popToRootViewController(animated: true)
                 }))
                 nav!.present(alert, animated: true, completion: nil)
+                return
             }
             
             let downloadUser = DownloadUser()
@@ -79,6 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
         
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
+        
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
         
         if let url = launchOptions?[.url] as? URL{
             print(url)
@@ -152,6 +159,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
             nav?.present(vc!, animated: true, completion: nil)
             
         }
+        
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
         return (GIDSignIn.sharedInstance()?.handle(url))!
     }
 

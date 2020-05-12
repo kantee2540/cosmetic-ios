@@ -7,18 +7,40 @@
 //
 
 import UIKit
+import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
-class OtherSignInTableViewController: UITableViewController {
+class OtherSignInTableViewController: UITableViewController, DownloadUserProtocol {
+    
+    func itemDownloadUser(item: UserModel) {
+        if item.firstName != nil{
+            UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
+            UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
+            UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
+            UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
+            UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
+            UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
+            UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
+            UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
+            self.navigationController!.popToRootViewController(animated: true)
+        }else{
+            let vc = storyboard!.instantiateViewController(withIdentifier: "profile")
+            self.navigationController!.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func itemUserError(error: String) {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            self.navigationController!.popToRootViewController(animated: true)
+        }))
+        self.navigationController!.present(alert, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     // MARK: - Table view data source
@@ -30,13 +52,49 @@ class OtherSignInTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             GIDSignIn.sharedInstance()?.presentingViewController = self
             GIDSignIn.sharedInstance()?.signIn()
+        }else if indexPath.row == 1{
+            let loginManager = LoginManager()
+            if let _ = AccessToken.current{
+                loginManager.logOut()
+            }else{
+                loginManager.logIn(permissions: ["email"], from: self){
+                    [weak self] (result, error) in
+                    guard error == nil else{
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    
+                    guard let result = result, !result.isCancelled else{ return }
+                    
+                    let credential = FacebookAuthProvider.credential(withAccessToken: result.token!.tokenString)
+                    
+                    Auth.auth().signIn(with: credential){
+                        (authResult, error) in
+                        if let error = error{
+                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                                self?.navigationController!.popToRootViewController(animated: true)
+                            }))
+                            self?.navigationController!.present(alert, animated: true, completion: nil)
+                            loginManager.logOut()
+                            return
+                        }
+                        
+                        let downloadUser = DownloadUser()
+                        downloadUser.delegate = self
+                        downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
+                    }
+                }
+            }
+            
+            
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

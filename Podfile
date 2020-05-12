@@ -14,6 +14,7 @@ target 'Cosmetic' do
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'
    pod 'GoogleSignIn'
+   pod 'FBSDKLoginKit'
    pod 'AFNetworking', '~> 4.0'
 
   target 'CosmeticTests' do

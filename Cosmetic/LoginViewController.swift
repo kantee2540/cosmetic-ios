@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
         UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
         UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
         UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
-        UserDefaults.standard.set(item.profilepic ?? "", forKey: ConstantUser.profilepic)
+        UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
         self.navigationController?.popToRootViewController(animated: true)
     }
     

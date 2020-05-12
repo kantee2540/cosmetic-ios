@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class AccountSettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CollectUserdataDelegate {
     
@@ -124,9 +125,11 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
     }
     
     private func logout(){
+        let loginManager = LoginManager()
         let firebaseAuth = Auth.auth()
         do{
             try firebaseAuth.signOut()
+            loginManager.logOut()
             print("LOGGEDOUT!")
             UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
             UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)

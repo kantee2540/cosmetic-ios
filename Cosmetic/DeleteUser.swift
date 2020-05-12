@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 protocol DeleteUserDelegate {
     func deleteUserSuccess()
@@ -29,6 +30,7 @@ class DeleteUser: NSObject, NetworkDelegate {
     func deleteUser(userId: String){
         let DB_URL = getAddress.getDeleteUserURL()
         let param = ["user_id": userId]
+        let loginManager = LoginManager()
         
         let user = Auth.auth().currentUser
         user?.delete(completion: { error in
@@ -36,6 +38,7 @@ class DeleteUser: NSObject, NetworkDelegate {
                 print(error)
                 self.delegate?.deleteUserFailed(error: error.localizedDescription)
             }else{
+                loginManager.logOut()
                 let network = Network()
                 network.delegate = self
                 network.downloadData(URL: DB_URL, param: param)
