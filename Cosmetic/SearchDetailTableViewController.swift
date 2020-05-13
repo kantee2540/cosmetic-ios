@@ -251,9 +251,11 @@ extension SearchDetailTableViewController: DownloadProductProtocol{
     
     //MARK: - Search Finished
     func itemDownloaded(item: NSMutableArray) {
-        first = false
-        allProduct = item as! [ProductModel]
-        setCountLabel(count: allProduct.count)
+        if searchBar.text!.count > 0{
+            first = false
+            allProduct = item as! [ProductModel]
+            setCountLabel(count: allProduct.count)
+        }
         self.tableView.reloadData()
         loadingActivity.stopAnimating()
         
