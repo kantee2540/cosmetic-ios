@@ -79,8 +79,8 @@ class SearchTableViewController: UITableViewController, DownloadProductProtocol,
         
         myCell.productTitle.text = item.product_name
         myCell.productDescription.text = item.product_description
-        let imageUrl = URL(string: item.product_img!)!
-        myCell.productImage.downloadImage(from: imageUrl)
+        let imageUrl = URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)
+        myCell.productImage.downloadImage(from: imageUrl!)
         
         return myCell
     }
