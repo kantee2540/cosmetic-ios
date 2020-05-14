@@ -61,6 +61,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
         if indexPath.section == 2 && indexPath.row == 1{
             let logoutMenu = UIAlertController(title: "Signout",
                                                message: "Do you want to logout?",
@@ -69,6 +70,11 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
                 self.logout()
             }))
             logoutMenu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
+            
+            if let popoverController = logoutMenu.popoverPresentationController{
+                popoverController.sourceView = cell
+            }
+            
             self.present(logoutMenu, animated: true, completion: nil)
         }
     }
@@ -90,6 +96,12 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
             
         }))
+        
+        if let popoverController = alert.popoverPresentationController{
+            popoverController.sourceView = selectprofileImage
+            popoverController.sourceRect = selectprofileImage.bounds
+        }
+        
         self.present(alert, animated: true, completion: nil)
         
 

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DrawerCollectionViewCellDelegate {
-    func tapActionDrawer(userId: String, drawerId: String, drawerName: String)
+    func tapActionDrawer(userId: String, drawerId: String, drawerName: String, button: UIButton)
 }
 
 class DrawerCollectionViewCell: UICollectionViewCell {
@@ -35,7 +35,7 @@ class DrawerCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-        delegate?.tapActionDrawer(userId: userId!, drawerId: drawerId!, drawerName: drawerName!)
+        delegate?.tapActionDrawer(userId: userId!, drawerId: drawerId!, drawerName: drawerName!, button: optionButton)
     }
     
     override var isSelected: Bool{

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DeskCollectionViewCellDelegate {
-    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath)
+    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath, button: UIButton)
 }
 
 class DeskCollectionViewCell: UICollectionViewCell {
@@ -25,7 +25,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var actionButton: UIButton!
     
     @IBAction func tapAction(_ sender: Any) {
-        delegate?.tapAction(userId: userId!, productId: productId!, image: productImage.image!, indexPath: indexPath!)
+        delegate?.tapAction(userId: userId!, productId: productId!, image: productImage.image!, indexPath: indexPath!, button: actionButton)
     }
     
     override var isHighlighted: Bool{

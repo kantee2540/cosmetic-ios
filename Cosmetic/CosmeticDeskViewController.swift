@@ -93,43 +93,6 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    //MARK: - Tap Action from cosmetic desk item
-    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath) {
-        let item = deskList[indexPath.row]
-        
-        let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
-        deskItemAction.addAction(UIAlertAction(title: "Share", style: .default, handler: {
-            (UIAlertAction) in
-            //Tap share
-//            let titleActivity: String = item.product_name!
-//            let description: String = item.product_description!
-//            let image = image
-            let productId: String = item.product_id!
-            let getAddress = webAddress()
-            let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
-            
-            let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
-            self.present(activityViewController, animated: true, completion: nil)
-            
-        }))
-        deskItemAction.addAction(UIAlertAction(title: "Add to my drawer", style: .default, handler: {(UIAlertAction) in
-            let chooseDrawerVC = self.storyboard?.instantiateViewController(identifier: "choosedrawer") as! ChooseDrawerTableViewController
-            chooseDrawerVC.deskId = item.desk_id
-            self.navigationController?.pushViewController(chooseDrawerVC, animated: true)
-        }))
-        
-        deskItemAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
-            (UIAlertAction) in
-            //Delete this product item
-            self.showSpinner(onView: self.view)
-            let cosmeticDesk = CosmeticDesk()
-            cosmeticDesk.delegate = self
-            cosmeticDesk.deleteFromDesk(productId: productId, userId: userId)
-        }))
-        deskItemAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
-        self.present(deskItemAction, animated: true, completion: nil)
-    }
-    
     //MARK: - Change segment
     @IBAction func changeMenuSegment(_ sender: Any) {
         showSpinner(onView: self.view)
@@ -254,18 +217,73 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
 
 extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate, DrawerCollectionViewCellDelegate, DrawerDelegate{
     
-    func tapActionDrawer(userId: String, drawerId: String, drawerName: String) {
+    func tapActionDrawer(userId: String, drawerId: String, drawerName: String, button: UIButton) {
         print("\(userId) AND\(drawerId)")
-        let drawerAction = UIAlertController(title: "Drawer : \"\(drawerName)\"", message: "Do you want to delete this drawer?", preferredStyle: .actionSheet)
         
-        drawerAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (UIAlertAction) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (UIAlertAction) in
             let drawer = Drawer()
             drawer.delegate = self
             drawer.deleteDrawer(userid: userId, drawer_id: drawerId)
-            
-        }))
+        })
+        
+        let drawerAction = UIAlertController(title: "Drawer : \"\(drawerName)\"", message: "Do you want to delete this drawer?", preferredStyle: .actionSheet)
+        
+        //For iPad
+        if let popoverController = drawerAction.popoverPresentationController{
+            popoverController.sourceView = button
+            popoverController.sourceRect = button.bounds
+        }
+        
+        drawerAction.addAction(deleteAction)
         drawerAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
         self.present(drawerAction, animated: true, completion: nil)
+    }
+    
+    //MARK: - Tap Action from cosmetic desk item
+    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath, button: UIButton) {
+        let item = deskList[indexPath.row]
+        
+        let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
+        deskItemAction.addAction(UIAlertAction(title: "Share", style: .default, handler: {
+            (UIAlertAction) in
+            
+            let productId: String = item.product_id!
+            let getAddress = webAddress()
+            let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+            
+            let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
+            
+            //For iPad
+            if let popoverController = activityViewController.popoverPresentationController{
+                popoverController.sourceView = button
+                popoverController.sourceRect = button.bounds
+            }
+            
+            self.present(activityViewController, animated: true, completion: nil)
+            
+        }))
+        deskItemAction.addAction(UIAlertAction(title: "Add to my drawer", style: .default, handler: {(UIAlertAction) in
+            let chooseDrawerVC = self.storyboard?.instantiateViewController(identifier: "choosedrawer") as! ChooseDrawerTableViewController
+            chooseDrawerVC.deskId = item.desk_id
+            self.navigationController?.pushViewController(chooseDrawerVC, animated: true)
+        }))
+        
+        deskItemAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
+            (UIAlertAction) in
+            //Delete this product item
+            self.showSpinner(onView: self.view)
+            let cosmeticDesk = CosmeticDesk()
+            cosmeticDesk.delegate = self
+            cosmeticDesk.deleteFromDesk(productId: productId, userId: userId)
+        }))
+        
+        if let popoverController = deskItemAction.popoverPresentationController{
+            popoverController.sourceView = button
+            popoverController.sourceRect = button.bounds
+        }
+        
+        deskItemAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in }))
+        self.present(deskItemAction, animated: true, completion: nil)
     }
     
     //Deleted Success

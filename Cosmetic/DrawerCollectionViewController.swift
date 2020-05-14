@@ -30,7 +30,7 @@ class DrawerCollectionViewController: UIViewController, UICollectionViewDelegate
         Library.displayAlert(targetVC: self, title: "Error", message: "Delete item failed!")
     }
     
-    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath) {
+    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath, button: UIButton) {
         let item = drawerCollectionList[indexPath.row]
                 
         let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
@@ -42,9 +42,23 @@ class DrawerCollectionViewController: UIViewController, UICollectionViewDelegate
             let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
             
             let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
+            
+            //For iPad
+            if let popoverController = activityViewController.popoverPresentationController{
+                popoverController.sourceView = button
+                popoverController.sourceRect = button.bounds
+            }
+            
             self.present(activityViewController, animated: true, completion: nil)
             
         }))
+        
+        //For iPad
+        if let popoverController = deskItemAction.popoverPresentationController{
+            popoverController.sourceView = button
+            popoverController.sourceRect = button.bounds
+        }
+        
         deskItemAction.addAction(UIAlertAction(title: "Delete from this drawer", style: .default, handler: {(UIAlertAction) in
             let drawerCollection = DrawerCollection()
             drawerCollection.delegate = self
