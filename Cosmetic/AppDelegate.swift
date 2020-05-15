@@ -12,7 +12,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, DownloadUserProtocol{
+class AppDelegate: UIResponder, UIApplicationDelegate, DownloadUserProtocol{
     
     var window: UIWindow?
     
@@ -22,14 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
         let nav = window?.rootViewController as? UINavigationController
         
         if item.firstName != nil{
-            UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
-            UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
-            UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
-            UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
-            UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
-            UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
-            UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
-            UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
+            Library.setUserDefault(user: item)
             nav?.popToRootViewController(animated: true)
         }else{
             let vc = storyboard.instantiateViewController(withIdentifier: "profile")
@@ -45,34 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
         }))
         nav!.present(alert, animated: true, completion: nil)
     }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        let nav = window?.rootViewController as? UINavigationController
-        if let error = error{
-            print(error.localizedDescription)
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-        Auth.auth().signIn(with: credential){
-            (authResult, error) in
-            if let error = error{
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
-                    nav?.popToRootViewController(animated: true)
-                }))
-                nav!.present(alert, animated: true, completion: nil)
-                return
-            }
-            
-            let downloadUser = DownloadUser()
-            downloadUser.delegate = self
-            downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
-        }
-        
-    }
 
     //MARK: - Application has start
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -80,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
         FirebaseApp.configure()
         
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance()?.delegate = self
         
         ApplicationDelegate.shared.application(
             application,
@@ -107,14 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
             UserDefaults.standard.set(true, forKey: "launchBefore")
             do{
                 try auth.signOut()
-                UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.email)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
-                UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
+                Library.removeUserDefault()
                 
             }catch let signoutError as NSError{
                 print("Error Signout : \(signoutError)")

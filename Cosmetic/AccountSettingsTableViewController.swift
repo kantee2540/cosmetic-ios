@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import GoogleSignIn
 
 class AccountSettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CollectUserdataDelegate {
     
@@ -35,7 +36,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
         fullNameLabel.text = firstName! + " " + lastName!
         
         if profileURL != ""{
-            profileImage.downloadImage(from: URL(string: profileURL!)!)
+            profileImage.downloadImage(from: (URL(string: profileURL!) ?? URL(string: ConstantDefaultURL.defaultImageURL))!)
         }
         self.tableView.reloadData()
     }
@@ -51,9 +52,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 1:
-            return 3
-        case 2:
-            return 2
+            return 4
         default:
             return 1
         }
@@ -142,15 +141,8 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
         do{
             try firebaseAuth.signOut()
             loginManager.logOut()
-            print("LOGGEDOUT!")
-            UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.email)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
-            UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
+            GIDSignIn.sharedInstance()?.signOut()
+            Library.removeUserDefault()
             self.navigationController?.popViewController(animated: true)
             
         }catch let signoutError as NSError{

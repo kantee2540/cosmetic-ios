@@ -14,6 +14,29 @@ class Library {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in}))
         targetVC.present(alert, animated: true, completion: nil)
     }
+    
+    static func setUserDefault(user: UserModel){
+        UserDefaults.standard.set(user.userId ?? nil, forKey: ConstantUser.userId)
+        UserDefaults.standard.set(user.firstName ?? nil, forKey: ConstantUser.firstName)
+        UserDefaults.standard.set(user.lastName ?? nil, forKey: ConstantUser.lastName)
+        UserDefaults.standard.set(user.nickname ?? nil, forKey: ConstantUser.nickName)
+        UserDefaults.standard.set(user.email ?? nil, forKey: ConstantUser.email)
+        UserDefaults.standard.set(user.gender ?? nil, forKey: ConstantUser.gender)
+        UserDefaults.standard.set(user.birthday ?? nil, forKey: ConstantUser.birthday)
+        UserDefaults.standard.set(user.profilepic ?? nil, forKey: ConstantUser.profilepic)
+    }
+    
+    static func removeUserDefault(){
+        UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.email)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
+    }
+    
 }
 
 var spinView: UIView!

@@ -16,6 +16,7 @@
 		B316840B23940D80005F4D88 /* TopicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840A23940D80005F4D88 /* TopicModel.swift */; };
 		B316840D23940DB3005F4D88 /* DownloadTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840C23940DB3005F4D88 /* DownloadTopic.swift */; };
 		B316840F239414F5005F4D88 /* TopTopicItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */; };
+		B3197B5A246E89CA0015DAD9 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3197B59246E89CA0015DAD9 /* ResetPasswordViewController.swift */; };
 		B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */; };
 		B31D758B23B5146600363057 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758A23B5146600363057 /* AccountTableViewCell.swift */; };
 		B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */; };
@@ -50,6 +51,8 @@
 		B386F55623C637DE005F58C9 /* CosmeticDeskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */; };
 		B387F29224378BD0006E139F /* MyTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387F29124378BD0006E139F /* MyTopicTableViewController.swift */; };
 		B387F29424378DA7006E139F /* MyTopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387F29324378DA7006E139F /* MyTopicTableViewCell.swift */; };
+		B388A44C246E454600736173 /* LinkAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B388A44B246E454600736173 /* LinkAccountTableViewController.swift */; };
+		B388A44E246E723100736173 /* SetPasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B388A44D246E723100736173 /* SetPasswordTableViewController.swift */; };
 		B38E22F723DDE40E002A19FD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */; };
 		B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */; };
 		B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */; };
@@ -149,6 +152,7 @@
 		B316840A23940D80005F4D88 /* TopicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicModel.swift; sourceTree = "<group>"; };
 		B316840C23940DB3005F4D88 /* DownloadTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTopic.swift; sourceTree = "<group>"; };
 		B316840E239414F5005F4D88 /* TopTopicItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTopicItemTableViewCell.swift; sourceTree = "<group>"; };
+		B3197B59246E89CA0015DAD9 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		B31D758A23B5146600363057 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDeskModel.swift; sourceTree = "<group>"; };
 		B387F29124378BD0006E139F /* MyTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTopicTableViewController.swift; sourceTree = "<group>"; };
 		B387F29324378DA7006E139F /* MyTopicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTopicTableViewCell.swift; sourceTree = "<group>"; };
+		B388A44B246E454600736173 /* LinkAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountTableViewController.swift; sourceTree = "<group>"; };
+		B388A44D246E723100736173 /* SetPasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordTableViewController.swift; sourceTree = "<group>"; };
 		B38E22F623DDE40E002A19FD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B394C1A823E562B4008F5B8C /* SetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -532,12 +538,15 @@
 				B3B6E01423B6610500478E51 /* RegisterTableViewController.swift */,
 				B31D758A23B5146600363057 /* AccountTableViewCell.swift */,
 				B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */,
+				B388A44B246E454600736173 /* LinkAccountTableViewController.swift */,
+				B388A44D246E723100736173 /* SetPasswordTableViewController.swift */,
 				B3B6E01223B6534200478E51 /* RegisterSuccessViewController.swift */,
 				B3D5464823B7A30D00129E59 /* ProfileTableViewController.swift */,
 				B3A8A85B23B92792009AFEA3 /* TermAndConditionViewController.swift */,
 				B3A8A86123B92AF0009AFEA3 /* AccountDetailTableViewController.swift */,
 				B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */,
 				B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */,
+				B3197B59246E89CA0015DAD9 /* ResetPasswordViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -839,6 +848,7 @@
 				B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */,
 				B3B6E01523B6610500478E51 /* RegisterTableViewController.swift in Sources */,
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
+				B3197B5A246E89CA0015DAD9 /* ResetPasswordViewController.swift in Sources */,
 				B3463FBA2433AEAB00EC743B /* ChooseProductTopicTableViewCell.swift in Sources */,
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
 				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
@@ -854,6 +864,7 @@
 				B38E74B82395514C00080AF6 /* SearchDetailTableViewCell.swift in Sources */,
 				B3D5464923B7A30D00129E59 /* ProfileTableViewController.swift in Sources */,
 				B397CB91243348F20081897B /* ChooseProductTopicTableViewController.swift in Sources */,
+				B388A44E246E723100736173 /* SetPasswordTableViewController.swift in Sources */,
 				B3CA9BE12465750E0037937F /* OtherSignInTableViewController.swift in Sources */,
 				B342F0F6228C50D600196E3B /* DownloadCategories.swift in Sources */,
 				B371985423898D2E001DB6A7 /* Library.swift in Sources */,
@@ -887,6 +898,7 @@
 				B31D758B23B5146600363057 /* AccountTableViewCell.swift in Sources */,
 				B386F55423C62B1F005F58C9 /* DeskCollectionViewCell.swift in Sources */,
 				B386F54F23C6244D005F58C9 /* DownloadCosmeticDeskList.swift in Sources */,
+				B388A44C246E454600736173 /* LinkAccountTableViewController.swift in Sources */,
 				B3EBF30E23BA69A00041D69A /* NotificationTableViewCell.swift in Sources */,
 				B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */,
 				B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */,

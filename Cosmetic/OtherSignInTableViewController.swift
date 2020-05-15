@@ -11,18 +11,11 @@ import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
 
-class OtherSignInTableViewController: UITableViewController, DownloadUserProtocol {
+class OtherSignInTableViewController: UITableViewController, DownloadUserProtocol, GIDSignInDelegate {
     
     func itemDownloadUser(item: UserModel) {
         if item.firstName != nil{
-            UserDefaults.standard.set(item.userId ?? nil, forKey: ConstantUser.userId)
-            UserDefaults.standard.set(item.firstName ?? nil, forKey: ConstantUser.firstName)
-            UserDefaults.standard.set(item.lastName ?? nil, forKey: ConstantUser.lastName)
-            UserDefaults.standard.set(item.nickname ?? nil, forKey: ConstantUser.nickName)
-            UserDefaults.standard.set(item.email ?? nil, forKey: ConstantUser.email)
-            UserDefaults.standard.set(item.gender ?? nil, forKey: ConstantUser.gender)
-            UserDefaults.standard.set(item.birthday ?? nil, forKey: ConstantUser.birthday)
-            UserDefaults.standard.set(item.profilepic ?? nil, forKey: ConstantUser.profilepic)
+            Library.setUserDefault(user: item)
             self.navigationController!.popToRootViewController(animated: true)
         }else{
             let vc = storyboard!.instantiateViewController(withIdentifier: "profile")
@@ -37,10 +30,37 @@ class OtherSignInTableViewController: UITableViewController, DownloadUserProtoco
         }))
         self.navigationController!.present(alert, animated: true, completion: nil)
     }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error{
+            print(error.localizedDescription)
+            return
+            
+        }
+               
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential){
+            (authResult, error) in
+            if let error = error{
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                    self.navigationController!.popToRootViewController(animated: true)
+                }))
+                self.navigationController!.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            let downloadUser = DownloadUser()
+            downloadUser.delegate = self
+            downloadUser.getCurrentUserprofile(uid: (authResult?.user.uid)!)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     // MARK: - Table view data source
