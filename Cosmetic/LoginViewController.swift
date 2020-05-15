@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var signinOtherButton: UIButton!
     @IBOutlet weak var usernameIcon: UIImageView!
     @IBOutlet weak var passwordIcon: UIImageView!
     @IBOutlet weak var incorrectLabel: UILabel!
@@ -32,6 +33,7 @@ class LoginViewController: UIViewController, DownloadUserProtocol {
         passwordTextField.setUnderLine()
         self.hideKeyboardWhenTappedAround()
         signinButton.roundedCorner()
+        signinOtherButton.roundedCorner()
     }
     
     @IBAction func tapSignin(_ sender: Any) {

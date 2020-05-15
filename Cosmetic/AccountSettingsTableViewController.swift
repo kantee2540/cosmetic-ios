@@ -61,7 +61,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        if indexPath.section == 2 && indexPath.row == 1{
+        if indexPath.section == 2 && indexPath.row == 0{
             let logoutMenu = UIAlertController(title: "Signout",
                                                message: "Do you want to logout?",
                                                preferredStyle: .actionSheet)

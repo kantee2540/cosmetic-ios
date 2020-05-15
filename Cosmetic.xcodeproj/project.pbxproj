@@ -44,6 +44,7 @@
 		B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766C61236685630028B335 /* cameraResultTableViewController.swift */; };
 		B37A609423DB5895001FE027 /* NoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A609223DB5895001FE027 /* NoLoginViewController.swift */; };
 		B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B37E34D0232D783300FD4780 /* GoogleService-Info.plist */; };
+		B383C64F246EA05A004B2932 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B383C64E246EA05A004B2932 /* ForgotPasswordViewController.swift */; };
 		B386F54D23C60F67005F58C9 /* CosmeticDesk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */; };
 		B386F54F23C6244D005F58C9 /* DownloadCosmeticDeskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */; };
 		B386F55223C62AE6005F58C9 /* CosmeticDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */; };
@@ -181,6 +182,7 @@
 		B3766C61236685630028B335 /* cameraResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraResultTableViewController.swift; sourceTree = "<group>"; };
 		B37A609223DB5895001FE027 /* NoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLoginViewController.swift; sourceTree = "<group>"; };
 		B37E34D0232D783300FD4780 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B383C64E246EA05A004B2932 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDesk.swift; sourceTree = "<group>"; };
 		B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCosmeticDeskList.swift; sourceTree = "<group>"; };
 		B386F55123C62AE6005F58C9 /* CosmeticDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDeskViewController.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */,
 				B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */,
 				B3197B59246E89CA0015DAD9 /* ResetPasswordViewController.swift */,
+				B383C64E246EA05A004B2932 /* ForgotPasswordViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
 				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
+				B383C64F246EA05A004B2932 /* ForgotPasswordViewController.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
 				B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */,
 				B35B57622398164800AE754F /* PackageViewController.swift in Sources */,
