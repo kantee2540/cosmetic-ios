@@ -91,6 +91,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, Downlo
             print(url)
         }
         
+        //First run app
+        let launchBefore = UserDefaults.standard.bool(forKey: "launchBefore")
+        
+        //Check user
+        let auth = Auth.auth()
+        if launchBefore{
+            if auth.currentUser != nil{
+                let uid = auth.currentUser?.uid
+                let downloadUser = DownloadUser()
+                downloadUser.delegate = self
+                downloadUser.getCurrentUserprofile(uid: uid!)
+            }
+        }else{
+            UserDefaults.standard.set(true, forKey: "launchBefore")
+            do{
+                try auth.signOut()
+                UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.email)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
+                UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
+                
+            }catch let signoutError as NSError{
+                print("Error Signout : \(signoutError)")
+            }
+        }
+        
         return true
     }
 
