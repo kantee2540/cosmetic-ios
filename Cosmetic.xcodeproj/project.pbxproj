@@ -22,10 +22,8 @@
 		B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */; };
 		B328A0E8245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
-		B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32BDD1D2278152600933877 /* SearchTableViewController.swift */; };
 		B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */; };
 		B335250E2445DB6C005E0838 /* SaveTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */; };
-		B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338E7F5238BFD83007D5506 /* SearchTableViewCell.swift */; };
 		B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */; };
 		B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9E2290404D008F3AEE /* BrandModel.swift */; };
 		B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F3228C4F9700196E3B /* CategoriesModel.swift */; };
@@ -160,10 +158,8 @@
 		B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		B32BDD1D2278152600933877 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDetailViewController.swift; sourceTree = "<group>"; };
 		B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTopicTableViewController.swift; sourceTree = "<group>"; };
-		B338E7F5238BFD83007D5506 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBrands.swift; sourceTree = "<group>"; };
 		B33B6E9E2290404D008F3AEE /* BrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
 		B342F0F3228C4F9700196E3B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -326,8 +322,6 @@
 		B328A1242354413C00915CDB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				B32BDD1D2278152600933877 /* SearchTableViewController.swift */,
-				B338E7F5238BFD83007D5506 /* SearchTableViewCell.swift */,
 				B3D0563E234377EC0000F1EB /* SearchDetailTableViewController.swift */,
 				B38E74B62395514C00080AF6 /* SearchDetailTableViewCell.swift */,
 				B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */,
@@ -859,7 +853,6 @@
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
-				B32BDD1E2278152600933877 /* SearchTableViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B383C64F246EA05A004B2932 /* ForgotPasswordViewController.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
@@ -885,7 +878,6 @@
 				B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */,
 				B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
-				B338E7F6238BFD83007D5506 /* SearchTableViewCell.swift in Sources */,
 				B3D7D3F12425060C00F6B95B /* AddProductDrawerTableViewCell.swift in Sources */,
 				B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */,
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,

@@ -187,6 +187,13 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
             cell?.selectionStyle = .default
             cell?.productName.text = item.product_name
                 //cell?.productDescription.text = item.product_description
+            cell?.categoryLabel.text = item.categories_name
+            
+            let numberFormat = NumberFormatter()
+            numberFormat.numberStyle = .decimal
+            let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+            cell?.priceLabel.text = "\(formattedPrice ?? "")฿"
+            
             if item.product_img != ""{
                 cell?.productImg.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             }else{
