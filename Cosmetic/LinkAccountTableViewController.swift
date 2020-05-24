@@ -98,7 +98,7 @@ class LinkAccountTableViewController: UITableViewController, GIDSignInDelegate {
     @IBAction func linkwithGoogle(_ sender: Any) {
         if googleisLinked{
             //Unlink Google
-            let alert = UIAlertController(title: "Unlink link from Google", message: "When you unlink no longer to sign in with Google from this account", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Unlink from Google", message: "When you unlink no longer to sign in with Google from this account", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Unlink", style: .destructive, handler: {(action) -> Void in
                 let providerID = GoogleAuthProviderID
                 self.user.unlink(fromProvider: providerID, completion: {authResult, error in
@@ -125,7 +125,7 @@ class LinkAccountTableViewController: UITableViewController, GIDSignInDelegate {
     @IBAction func linkwithFacebook(_ sender: Any) {
         
         if AccessToken.current != nil || facebookisLinked{
-            let alert = UIAlertController(title: "Unlink link from Facebook", message: "When you unlink no longer to sign in with Facebook from this account", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Unlink from Facebook", message: "When you unlink no longer to sign in with Facebook from this account", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Unlink", style: .destructive, handler: {(action) -> Void in
                 let providerID = FacebookAuthProviderID
                 self.user?.unlink(fromProvider: providerID, completion: {user, error in
