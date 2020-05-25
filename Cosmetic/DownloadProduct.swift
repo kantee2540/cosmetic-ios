@@ -100,6 +100,11 @@ class DownloadProduct: NSObject, NetworkDelegate {
         downloadItem()
     }
     
+    func downloadSort(sort: Int){
+        postParameter["sort"] = sort
+        downloadItem()
+    }
+    
     func downloadItem(){
         DB_URL = getAddress.getProductURL()
         

@@ -4260,9 +4260,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9s-lr-p3E">
-                                    <rect key="frame" x="303.5" y="15" width="63.5" height="30"/>
-                                    <state key="normal" title="Clear all">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9s-lr-p3E">
+                                    <rect key="frame" x="279" y="15" width="88" height="30"/>
+                                    <state key="normal" title="Clear Recent">
                                         <color key="titleColor" name="cosmetic-color"/>
                                     </state>
                                     <connections>
@@ -4425,7 +4425,7 @@
                                     <outlet property="title" destination="hhz-m4-tSC" id="waa-hL-KtN"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchpredict" textLabel="hZz-3b-pDk" imageView="n2D-yM-cB7" style="IBUITableViewCellStyleDefault" id="uUe-I3-hma">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchrecent" textLabel="hZz-3b-pDk" imageView="n2D-yM-cB7" style="IBUITableViewCellStyleDefault" id="uUe-I3-hma">
                                 <rect key="frame" x="0.0" y="355.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uUe-I3-hma" id="9jl-E9-Wyf">
@@ -4445,7 +4445,7 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -5026,7 +5026,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z92-0q-80k">
-                                <rect key="frame" x="-4" y="40" width="376" height="599"/>
+                                <rect key="frame" x="-4" y="40" width="376" height="598"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="cgA-lf-hhA"/>
                             </imageView>
@@ -5515,8 +5515,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wzQ-eO-vBc"/>
-        <segue reference="c3A-7h-gg6"/>
+        <segue reference="cHm-Ob-iaC"/>
+        <segue reference="mCg-qs-FNI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>

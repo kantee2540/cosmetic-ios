@@ -23,6 +23,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         }
         searchCategory = true
         searchBrand = true
+        clearButton.setTitle("Clear all", for: .normal)
         clearButton.isHidden = false
         first = false
     }
@@ -35,6 +36,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         filterView.isHidden = false
         filterLabel.text = "Category: \(category.categories_name ?? "")"
         searchCategory = true
+        clearButton.setTitle("Clear all", for: .normal)
         clearButton.isHidden = false
         first = false
         
@@ -48,6 +50,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         filterView.isHidden = false
         filterLabel.text = "Brand: \(brand.brand_name ?? "")"
         searchBrand = true
+        clearButton.setTitle("Clear all", for: .normal)
         clearButton.isHidden = false
         first = false
     }
@@ -70,6 +73,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         }
         filterView.isHidden = false
         searchBrand = true
+        clearButton.setTitle("Clear all", for: .normal)
         clearButton.isHidden = false
         first = false
     }
@@ -83,6 +87,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
     private var filtedItem: [String] = []
     private var allProduct: [ProductModel] = []
     private var searchedProduct: [ProductModel] = []
+    private var popularProduct: [ProductModel] = []
     
     private var categoriesList: [CategoriesModel] = []
     private var brandsList: [BrandModel] = []
@@ -116,6 +121,16 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         searchBar.delegate = self
         navigationItem.titleView = searchBar
         
+        let recentWord = UserDefaults.standard.array(forKey: "recent")
+        if recentWord != nil{
+            clearButton.isHidden = false
+        }else{
+            clearButton.isHidden = true
+        }
+        
+        let downloadProduct = DownloadProduct()
+        downloadProduct.delegate = self
+        downloadProduct.downloadSort(sort: 1)
     }
     
     private func setCountLabel(count: Int){
@@ -132,7 +147,11 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         if segue.identifier == "SeeMoreDetail"{
             var item:ProductModel
             let itemIndex = self.tableView.indexPathForSelectedRow?.row
-            item = allProduct[itemIndex!]
+            if !first{
+                item = allProduct[itemIndex!]
+            }else{
+                item = popularProduct[itemIndex!]
+            }
             
             let destination = segue.destination as? CosmeticDetailViewController
             destination?.delegate = self
@@ -148,7 +167,12 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if !first{
+            return 1
+        }else{
+            return 2
+            
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,8 +194,16 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         }
             
         else{
-            self.tableView.separatorStyle = .none
-            return 1
+            let recentWord = UserDefaults.standard.array(forKey: "recent") as? [String]
+            if section == 0 && recentWord != nil{
+                self.tableView.separatorStyle = .singleLine
+                return recentWord!.count
+            }else if section == 1{
+                return popularProduct.count
+            }else{
+                return 1
+            }
+            
         }
         
     }
@@ -186,9 +218,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
             
             cell?.selectionStyle = .default
             cell?.productName.text = item.product_name
-                //cell?.productDescription.text = item.product_description
             cell?.categoryLabel.text = item.categories_name
-            
             let numberFormat = NumberFormatter()
             numberFormat.numberStyle = .decimal
             let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
@@ -210,20 +240,61 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
             let item = searchedProduct[indexPath.row]
             cell?.selectionStyle = .default
             cell?.productName.text = item.product_name
-                //cell?.productDescription.text = item.product_description
-            cell?.productImg.downloadImage(from: URL(string: item.product_img!)!)
+            cell?.categoryLabel.text = item.categories_name
+            let numberFormat = NumberFormatter()
+            numberFormat.numberStyle = .decimal
+            let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+            cell?.priceLabel.text = "\(formattedPrice ?? "")฿"
+            
+            if item.product_img != ""{
+                cell?.productImg.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+            }else{
+                cell?.productImg.image = UIImage.init(named: "AppIcon")
+            }
             return cell!
         }
         
         else{
                 
             if first{
-                let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                var recentWord = UserDefaults.standard.array(forKey: "recent") as? [String]
+                if recentWord != nil && indexPath.section == 0{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "searchrecent")
+                    recentWord?.reverse()
+                    let item = recentWord?[indexPath.row]
+                    cell?.textLabel!.text = item
+                    return cell!
+                    
+                }
+                else if indexPath.section == 1{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? SearchDetailTableViewCell
+                    
+                    let item = popularProduct[indexPath.row]
+                    cell?.selectionStyle = .default
+                    cell?.productName.text = item.product_name
+                    cell?.categoryLabel.text = item.categories_name
+                    let numberFormat = NumberFormatter()
+                    numberFormat.numberStyle = .decimal
+                    let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+                    cell?.priceLabel.text = "\(formattedPrice ?? "")฿"
+                    
+                    if item.product_img != ""{
+                        cell?.productImg.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+                    }else{
+                        cell?.productImg.image = UIImage.init(named: "AppIcon")
+                    }
+                    return cell!
+                }
                 
-                searchingCell.selectionStyle = .none
-                searchingCell.title.text = "Search Cosmetic"
-                searchingCell.notifyDescription.text = "Type your keyword or Filter by category or brand from filter search menu"
-                return searchingCell
+                else{
+                    let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
+                    
+                    searchingCell.selectionStyle = .none
+                    searchingCell.title.text = "Search Product"
+                    searchingCell.notifyDescription.text = "Type your product name or filter the product item with category or brand"
+                    return searchingCell
+                }
+                
                     
             }else{
                 let searchingCell = tableView.dequeueReusableCell(withIdentifier: "NoItem", for: indexPath) as! NotifySearchDetailTableViewCell
@@ -233,19 +304,62 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
                 searchingCell.notifyDescription.text = "Please try search another word to search"
                 return searchingCell
             }
-                
             
         }
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if first && indexPath.section == 0{
+            var recentWord = UserDefaults.standard.array(forKey: "recent") as? [String]
+            recentWord?.reverse()
+            searchBar.text = recentWord![indexPath.row]
+            downloadProductByKeyword(keyword: searchBar.text!)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let recentWord = UserDefaults.standard.array(forKey: "recent")
+        if first{
+            if section == 0 && recentWord != nil{
+                return "Recent Search"
+            }else if section == 0 && recentWord == nil{
+                return nil
+            }
+            else{
+                return "Most Popular"
+            }
+        }
+        else{
+            return nil
+        }
+    }
+    
+    private func downloadProductByKeyword(keyword: String){
+        loadingActivity.startAnimating()
+        let downloadProducts = DownloadProduct()
+        downloadProducts.delegate = self
+        downloadProducts.searchByKeyword(keyword.lowercased())
+        clearButton.setTitle("Clear all", for: .normal)
+        first = false
     }
     
     //MARK: - Tap clear
     @IBAction func tapClear(_ sender: Any) {
-        clearSearchCategory()
+        if first{
+            let alert = UIAlertController(title: "Clear Search Recent", message: "Do you want to clear search recent?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Clear", style: .destructive, handler: {(action) -> Void in
+                UserDefaults.standard.removeObject(forKey: "recent")
+                self.clearButton.isHidden = true
+                self.tableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action) -> Void in }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            clearSearch()
+        }
     }
     
     var selectedCollectionCell: IndexPath!
@@ -258,9 +372,12 @@ extension SearchDetailTableViewController: DownloadProductProtocol{
     
     //MARK: - Search Finished
     func itemDownloaded(item: NSMutableArray){
-        first = false
-        allProduct = item as! [ProductModel]
-        setCountLabel(count: allProduct.count)
+        if !first{
+            allProduct = item as! [ProductModel]
+            setCountLabel(count: allProduct.count)
+        }else{
+            popularProduct = item as! [ProductModel]
+        }
         
         self.tableView.reloadData()
         loadingActivity.stopAnimating()
@@ -271,8 +388,14 @@ extension SearchDetailTableViewController: DownloadProductProtocol{
         Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
     }
     
-    private func clearSearchCategory(){
-        clearButton.isHidden = true
+    private func clearSearch(){
+        clearButton.setTitle("Clear Recent", for: .normal)
+        let recentWord = UserDefaults.standard.array(forKey: "recent")
+        if recentWord != nil{
+            clearButton.isHidden = false
+        }else{
+            clearButton.isHidden = true
+        }
         allProduct.removeAll()
         searchedProduct.removeAll()
         first = true
@@ -310,22 +433,41 @@ extension SearchDetailTableViewController: UISearchBarDelegate{
         
         else{
             if searchBar.text!.count > 0{
-                loadingActivity.startAnimating()
-                let downloadProducts = DownloadProduct()
-                downloadProducts.delegate = self
-                downloadProducts.searchByKeyword(searchBar.text?.lowercased() ?? "")
                 clearButton.isHidden = false
                 first = false
+                downloadProductByKeyword(keyword: searchBar.text!)
+                
             }else{
                 allProduct.removeAll()
                 setCountLabel(count: 0)
                 first = true
                 self.tableView.reloadData()
-                clearButton.isHidden = true
+                let recentWord = UserDefaults.standard.array(forKey: "recent")
+                if recentWord != nil{
+                    clearButton.isHidden = false
+                }else{
+                    clearButton.isHidden = true
+                }
+                clearButton.setTitle("Clear Recent", for: .normal)
             }
         }
 
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //Collect Recent Search
+        var recentSearch = UserDefaults.standard.array(forKey: "recent") as? [String] ?? [String]()
+        if recentSearch.count >= 5{
+            recentSearch.remove(at: 0)
+        }
+        let searchbarText = searchBar.text
+        if searchbarText != ""{
+            recentSearch.append(searchbarText!)
+            UserDefaults.standard.set(recentSearch, forKey: "recent")
+        }
+        
+    }
+
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
