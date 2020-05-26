@@ -61,8 +61,6 @@ class DownloadUser: NSObject, NetworkDelegate {
                 let lastName = jsonElement[ConstantUser.lastName] as? String,
                 let nickName = jsonElement[ConstantUser.nickName] as? String,
                 let email = jsonElement[ConstantUser.email] as? String,
-                let gender = jsonElement[ConstantUser.gender] as? String,
-                let birthday = jsonElement[ConstantUser.birthday] as? String,
                 let profilepic = jsonElement[ConstantUser.profilepic] as? String?
             {
                 users.userId = userid
@@ -70,8 +68,6 @@ class DownloadUser: NSObject, NetworkDelegate {
                 users.lastName = lastName
                 users.nickname = nickName
                 users.email = email
-                users.gender = gender
-                users.birthday = birthday
                 users.profilepic = profilepic
             }
         }

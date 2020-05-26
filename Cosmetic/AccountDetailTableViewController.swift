@@ -11,13 +11,10 @@ import FirebaseAuth
 
 class AccountDetailTableViewController: UITableViewController {
     
-    private var uid: String?
     private var firstname: String?
     private var lastname: String?
     private var nickname: String?
     private var email: String?
-    private var gender: String?
-    private var birthday: String?
     private var createdUserDate: Date?
     private var lastSigninDate: Date?
 
@@ -32,13 +29,10 @@ class AccountDetailTableViewController: UITableViewController {
             let createdDate = Auth.auth().currentUser?.metadata.creationDate
             let lastSigninDate = Auth.auth().currentUser?.metadata.lastSignInDate
             if let user = user{
-                uid = user.uid
                 email = user.email
                 firstname = UserDefaults.standard.string(forKey: ConstantUser.firstName)
                 lastname = UserDefaults.standard.string(forKey: ConstantUser.lastName)
                 nickname = UserDefaults.standard.string(forKey: ConstantUser.nickName)
-                gender = UserDefaults.standard.string(forKey: ConstantUser.gender)
-                birthday = UserDefaults.standard.string(forKey: ConstantUser.birthday)
                 self.createdUserDate = createdDate
                 self.lastSigninDate = lastSigninDate
             }
@@ -56,7 +50,7 @@ class AccountDetailTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
-            return 7
+            return 4
         case 1:
             return 2
         default:
@@ -71,26 +65,14 @@ class AccountDetailTableViewController: UITableViewController {
         if indexPath.section == 0{
             switch indexPath.row {
             case 0:
-                //uid
-                cell.detailTextLabel?.text = uid
-            case 1:
                 //firstname
                 cell.detailTextLabel?.text = firstname
-            case 2:
+            case 1:
                 cell.detailTextLabel?.text = lastname
-            case 3:
+            case 2:
                 cell.detailTextLabel?.text = email
-            case 4:
+            case 3:
                 cell.detailTextLabel?.text = nickname
-            case 5:
-                cell.detailTextLabel?.text = gender
-            case 6:
-                let dateFormat = DateFormatter()
-                dateFormat.dateFormat = "yyyy-MM-dd"
-                dateFormat.locale = Locale.init(identifier: "en_GB")
-                let dateObj = dateFormat.date(from: birthday!)
-                dateFormat.dateFormat = "dd MMMM yyyy"
-                cell.detailTextLabel?.text = dateFormat.string(from: dateObj!)
             default:
                 break
             }

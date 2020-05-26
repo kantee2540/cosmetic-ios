@@ -34,27 +34,23 @@ class CollectUserdata: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func collectUserdata(firstname: String, lastName: String, nickname: String, email: String, gender: String, birthday: String, uid: String){
+    func collectUserdata(firstname: String, lastName: String, nickname: String, email: String, uid: String){
         print("Insert")
         postParameter = ["first_name" : firstname,
                          "last_name" : lastName,
                          "nick_name" : nickname,
                          "email" : email,
-                         "gender" : gender,
-                         "birthday" : birthday,
                          "uid" : uid,
                          "option" : 0]
         insertData()
     }
     
-    func updateUserdata(firstname: String, lastName: String, nickname: String, email: String, gender: String, birthday: String, uid: String){
+    func updateUserdata(firstname: String, lastName: String, nickname: String, email: String, uid: String){
         print("Update")
         postParameter = ["first_name" : firstname,
                          "last_name" : lastName,
                          "nick_name" : nickname,
                          "email" : email,
-                         "gender" : gender,
-                         "birthday" : birthday,
                          "uid" : uid,
                          "option" : 1]
         insertData()

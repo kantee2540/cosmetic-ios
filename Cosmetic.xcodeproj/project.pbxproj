@@ -1055,7 +1055,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1247,7 +1247,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1280,7 +1280,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = R6LKPZ4CU5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

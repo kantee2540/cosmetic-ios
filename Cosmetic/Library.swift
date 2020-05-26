@@ -21,8 +21,6 @@ class Library {
         UserDefaults.standard.set(user.lastName ?? nil, forKey: ConstantUser.lastName)
         UserDefaults.standard.set(user.nickname ?? nil, forKey: ConstantUser.nickName)
         UserDefaults.standard.set(user.email ?? nil, forKey: ConstantUser.email)
-        UserDefaults.standard.set(user.gender ?? nil, forKey: ConstantUser.gender)
-        UserDefaults.standard.set(user.birthday ?? nil, forKey: ConstantUser.birthday)
         UserDefaults.standard.set(user.profilepic ?? nil, forKey: ConstantUser.profilepic)
     }
     
@@ -32,8 +30,6 @@ class Library {
         UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.email)
-        UserDefaults.standard.removeObject(forKey: ConstantUser.gender)
-        UserDefaults.standard.removeObject(forKey: ConstantUser.birthday)
         UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
     }
     
