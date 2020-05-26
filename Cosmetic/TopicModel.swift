@@ -14,6 +14,7 @@ class TopicModel: NSObject {
     var topic_description: String?
     var topic_code: String?
     var topic_img: String?
+    var categories_name: String?
     var user_id: String?
     var nickname: String?
 }

@@ -20,6 +20,9 @@ class PackageModel: NSObject {
     var topic_description: String?
     var topic_code: String?
     
+    var categories_id: String?
+    var categories_name: String?
+    
     override init() {
         
     }

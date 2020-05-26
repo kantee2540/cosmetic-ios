@@ -66,7 +66,9 @@ class DownloadPackage: NSObject, NetworkDelegate {
                 let topic_id = jsonElement[ConstantProduct.topicId] as? String,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
                 let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
-                let topic_code = jsonElement[ConstantProduct.topic_code] as? String
+                let topic_code = jsonElement[ConstantProduct.topic_code] as? String,
+                let categories_id = jsonElement[ConstantCategories.categoriesId] as? String,
+                let categories_name = jsonElement[ConstantCategories.categoriesName] as? String
             {
                 product.product_id = product_id
                 product.product_name = product_name
@@ -77,7 +79,8 @@ class DownloadPackage: NSObject, NetworkDelegate {
                 product.topic_name = topic_name
                 product.topic_description = topic_description
                 product.topic_code = topic_code
-                
+                product.categories_id = categories_id
+                product.categories_name = categories_name
             }
             
             products.add(product)

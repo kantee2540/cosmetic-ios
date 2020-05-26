@@ -68,11 +68,11 @@ class DownloadTopic: NSObject, NetworkDelegate {
         
 
         var jsonElement = NSDictionary()
-        let products = NSMutableArray()
+        let topics = NSMutableArray()
         
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
-            let product = TopicModel()
+            let topic = TopicModel()
             
             if  let topic_id = jsonElement[ConstantProduct.topicId] as? String,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
@@ -82,21 +82,21 @@ class DownloadTopic: NSObject, NetworkDelegate {
                 let user_id = jsonElement[ConstantUser.userId] as? String,
                 let nickname = jsonElement[ConstantUser.nickName] as? String
             {
-                product.topic_id = topic_id
-                product.topic_name = topic_name
-                product.topic_description = topic_description
-                product.topic_code = topic_code
-                product.topic_img = topic_img
-                product.user_id = user_id
-                product.nickname = nickname
+                topic.topic_id = topic_id
+                topic.topic_name = topic_name
+                topic.topic_description = topic_description
+                topic.topic_code = topic_code
+                topic.topic_img = topic_img
+                topic.user_id = user_id
+                topic.nickname = nickname
                 
             }
             
-            products.add(product)
+            topics.add(topic)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.topicDownloaded(item: products)
+            self.delegate?.topicDownloaded(item: topics)
         })
         
     }

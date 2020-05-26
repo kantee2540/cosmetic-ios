@@ -100,18 +100,17 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var productTableHeight: NSLayoutConstraint!
     @IBOutlet weak var topicScroll: UIScrollView!
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
         self.productTableHeight.constant = self.productTable.contentSize.height
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self.viewWillLayoutSubviews()
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewDidLayoutSubviews()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topicItem.count
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,11 +121,11 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         let itemCell = tableView.dequeueReusableCell(withIdentifier: "topicitem") as! TopTopicItemTableViewCell
         let item = topicItem[indexPath.row]
         itemCell.itemProduct.text = item.product_name
-        itemCell.itemDescription.text = item.product_description
+        itemCell.itemDescription.text = item.categories_name
         let numberFormat = NumberFormatter()
         numberFormat.numberStyle = .decimal
         let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
-        itemCell.itemPrice.text = "Price: \(formattedPrice ?? "0") Baht"
+        itemCell.itemPrice.text = "\(formattedPrice ?? "0")฿"
         itemCell.itemImage.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             
         return itemCell
