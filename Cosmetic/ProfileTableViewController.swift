@@ -130,17 +130,32 @@ class ProfileTableViewController: UITableViewController, CollectUserdataDelegate
     func insertDataFailed() {
         self.removeSpinner()
         saveError = true
-        Library.displayAlert(targetVC: self, title: "Error", message: "Can't signup please try again")
-        let user = Auth.auth().currentUser
-        user?.delete(completion: { error in
-            if error != nil{
-                
-            }
-            else{
+        
+        if !updateMode{
+            let alert = UIAlertController(title: "Error", message: "Can't signup please try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+                let user = Auth.auth().currentUser
+                user?.delete(completion: { error in
+                    if error != nil{
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                    else{
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                })
+                self.profileTable.reloadData()
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            let alert = UIAlertController(title: "Error", message: "Can't edit please try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
                 self.navigationController?.popToRootViewController(animated: true)
-            }
-        })
-        profileTable.reloadData()
+                self.profileTable.reloadData()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func updateProfileSuccess(imageURL: String) {

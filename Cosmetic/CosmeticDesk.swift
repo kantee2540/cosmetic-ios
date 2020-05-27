@@ -16,7 +16,21 @@ protocol CosmeticDeskDelegate {
 class CosmeticDesk: NSObject, NetworkDelegate {
     func downloadSuccess(data: Data) {
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.onSuccess()
+            var jsonResult = NSDictionary()
+            let dataObj = data
+            
+            do{
+                jsonResult = try JSONSerialization.jsonObject(with: dataObj, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+            }catch let error as NSError{
+                print(error)
+            }
+            
+            let error = jsonResult["error"] as! Bool
+            if !error{
+                self.delegate?.onSuccess()
+            }else{
+                self.delegate?.onFailed()
+            }
         })
     }
     

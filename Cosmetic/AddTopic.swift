@@ -40,7 +40,6 @@ class AddTopic: NSObject {
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 var jsonResult = NSArray()
-                var topicCode :String
                 let dataObj = responseObject as! Data
                 
                 do{
@@ -52,9 +51,12 @@ class AddTopic: NSObject {
                 var jsonElement = NSDictionary()
                 
                 jsonElement = jsonResult[0] as! NSDictionary
-                topicCode = jsonElement["topic_code"] as! String
-                print("topicCode => \(topicCode)")
-                self.delegate?.insertTopicSuccess(topicCode: topicCode)
+                if let topicCode = jsonElement["topic_code"]{
+                    print("topicCode => \(topicCode)")
+                    self.delegate?.insertTopicSuccess(topicCode: topicCode as! String)
+                }else{
+                    self.delegate?.insertTopicFailed(error: "Can't post beauty kit")
+                }
             })
         }, failure: {
             (Operation, error) in
@@ -95,7 +97,6 @@ class AddTopic: NSObject {
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 var jsonResult = NSArray()
-                var topicCode :String
                 let dataObj = responseObject as! Data
                 
                 do{
@@ -107,10 +108,12 @@ class AddTopic: NSObject {
                 var jsonElement = NSDictionary()
                 
                 jsonElement = jsonResult[0] as! NSDictionary
-                topicCode = jsonElement["topic_code"] as! String
-                print("topicCode => \(topicCode)")
-                
-                self.delegate?.insertTopicSuccess(topicCode: topicCode)
+                if let topicCode = jsonElement["topic_code"]{
+                    print("topicCode => \(topicCode)")
+                    self.delegate?.insertTopicSuccess(topicCode: topicCode as! String)
+                }else{
+                    self.delegate?.insertTopicFailed(error: "Can't post beauty kit")
+                }
             })
         }, failure: {
             (opefation: URLSessionDataTask?, error: Error) in
