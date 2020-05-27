@@ -26,6 +26,7 @@ struct ConstantProduct {
     static let topic_code = "topic_code"
     static let topic_img = "topic_img"
     static let deskId = "desk_id"
+    static let favorite = "favorite"
 }
 
 struct ConstantCategories {

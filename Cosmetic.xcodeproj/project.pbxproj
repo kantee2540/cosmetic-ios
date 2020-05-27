@@ -104,6 +104,7 @@
 		B3D7D3EF2424F29700F6B95B /* ChooseDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3EE2424F29700F6B95B /* ChooseDrawerTableViewController.swift */; };
 		B3D7D3F12425060C00F6B95B /* AddProductDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3F02425060C00F6B95B /* AddProductDrawerTableViewCell.swift */; };
 		B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */; };
+		B3D7DEF7247E8ECD00F676F3 /* UpdateFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7DEF6247E8ECD00F676F3 /* UpdateFavorite.swift */; };
 		B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */; };
 		B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749D2426422500CB241F /* DeleteUser.swift */; };
 		B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */; };
@@ -249,6 +250,7 @@
 		B3D7D3EE2424F29700F6B95B /* ChooseDrawerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDrawerTableViewController.swift; sourceTree = "<group>"; };
 		B3D7D3F02425060C00F6B95B /* AddProductDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		B3D7D3F22425072F00F6B95B /* AddProductDrawerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductDrawerTableViewController.swift; sourceTree = "<group>"; };
+		B3D7DEF6247E8ECD00F676F3 /* UpdateFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavorite.swift; sourceTree = "<group>"; };
 		B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountTableViewController.swift; sourceTree = "<group>"; };
 		B3DB749D2426422500CB241F /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */,
 				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
 				B3BFC8C22423407B00C7C430 /* DownloadDrawer.swift */,
+				B3D7DEF6247E8ECD00F676F3 /* UpdateFavorite.swift */,
 				B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */,
 				B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */,
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
@@ -914,6 +917,7 @@
 				B3A71EFC243658C3000A501B /* AddTopicResultViewController.swift in Sources */,
 				B3BFC8C72423A3AD00C7C430 /* AddDrawerCollectionViewCell.swift in Sources */,
 				B31121F7245D8C0E005DA548 /* FilterCollectionViewCell.swift in Sources */,
+				B3D7DEF7247E8ECD00F676F3 /* UpdateFavorite.swift in Sources */,
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */,

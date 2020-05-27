@@ -14,7 +14,9 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet var deskView: UIView!
     @IBOutlet weak var noCosmetic: UILabel!
     @IBOutlet weak var welcomeNameLabel: UILabel!
-    @IBOutlet weak var allNumber: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var profilepic: UIImageView!
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var deskCollection: UICollectionView!
     @IBOutlet weak var menuSegment: UISegmentedControl!
@@ -37,56 +39,41 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     
     //MARK: - Number of item in collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if menuSegment.selectedSegmentIndex == 1{
-            return drawerList.count + 1
-        }else{
-            return deskList.count
-        }
+        return deskList.count
+        
     }
     
     //MARK: - Fetch item to cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if menuSegment.selectedSegmentIndex == 1{
-            if indexPath.row < drawerList.count{
-                let drawerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "draweritem", for: indexPath) as! DrawerCollectionViewCell
-                let item = drawerList[indexPath.row]
-                drawerCell.delegate = self
-                drawerCell.userId = userId
-                drawerCell.drawerId = item.drawer_id
-                drawerCell.drawerName = item.drawer_name
-                
-                drawerCell.countLabel.text = item.countitem! + " Cosmetics"
-                drawerCell.drawerNameLabel.text = item.drawer_name
-                drawerCell.layer.cornerRadius = 8
-                
-                return drawerCell
-            }
-            else{
-                let drawerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "adddrawercell", for: indexPath)
-                drawerCell.layer.cornerRadius = 8
-                return drawerCell
-            }
-            
+        let deskCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cartitem", for: indexPath) as! DeskCollectionViewCell
+        let item = deskList[indexPath.row]
+        deskCell.delegate = self
+        
+        deskCell.deskId = item.desk_id
+        deskCell.productId = item.product_id
+        deskCell.userId = userId
+        deskCell.indexPath = indexPath
+        
+        deskCell.productName.text = item.product_name
+        deskCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
+        deskCell.brand.text = item.brand_name?.uppercased()
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price!))
+        deskCell.productPrice.text = "\(formattedPrice!)฿"
+        
+        if item.favorite == "1"{
+            deskCell.favoriteStatus = true
+            deskCell.setHeartFill()
+        }else{
+            deskCell.favoriteStatus = false
+            deskCell.setHeartOutlined()
         }
-        else{
-            let deskCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cartitem", for: indexPath) as! DeskCollectionViewCell
-            let item = deskList[indexPath.row]
-            deskCell.delegate = self
-            deskCell.productId = item.product_id
-            deskCell.userId = userId
-            deskCell.indexPath = indexPath
-            
-            deskCell.productName.text = item.product_name
-            deskCell.productImage.downloadImage(from: URL(string: item.product_img!)!)
-            deskCell.brand.text = item.brand_name?.uppercased()
-            let numberFormat = NumberFormatter()
-            numberFormat.numberStyle = .decimal
-            let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price!))
-            deskCell.productPrice.text = "฿" + formattedPrice!
-            deskCell.layer.cornerRadius = 8
-            
-            return deskCell
-        }
+        
+        deskCell.layer.cornerRadius = 8
+        
+        return deskCell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -99,19 +86,13 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         if menuSegment.selectedSegmentIndex == 0{
             downloadCosmeticList()
         }else if menuSegment.selectedSegmentIndex == 1{
-            noCosmetic.text = ""
-            noCosmetic.isHidden = true
-            downloadDrawerList()
+            downloadFavoriteList()
         }
     }
     
     override func viewDidLayoutSubviews() {
         self.updateViewConstraints()
         self.collectionHeight.constant = deskCollection.contentSize.height
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -133,11 +114,22 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Cosmetic Desk"
-        
         userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
         if userId != nil{
             downloadDesk()
+            let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
+            let email = UserDefaults.standard.string(forKey: ConstantUser.email)
+            
+            profilepic.makeRounded()
+            if profileurl != ""{
+                profilepic.downloadImage(from: URL(string: profileurl!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+            }else{
+                profilepic.image = UIImage(systemName: "person.crop.circle.fill")
+            }
+            
+            emailLabel.text = email
+            
         }else{
             deskList.removeAll()
             deskCollection.reloadData()
@@ -148,16 +140,12 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         if menuSegment.selectedSegmentIndex == 0{
             downloadCosmeticList()
         }else if menuSegment.selectedSegmentIndex == 1{
-            downloadDrawerList()
+            downloadFavoriteList()
         }
-        welcomeNameLabel.text = "Hi, " + UserDefaults.standard.string(forKey: ConstantUser.nickName)!
+        welcomeNameLabel.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)!
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        allNumber.layer.masksToBounds = false
-        allNumber.layer.cornerRadius = allNumber.frame.height / 2
-        allNumber.clipsToBounds = true
         
         deskCollection.delegate = self
         deskCollection.dataSource = self
@@ -205,6 +193,12 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         let downloadDeskCosmetic = DownloadCosmeticDeskList()
         downloadDeskCosmetic.delegate = self
         downloadDeskCosmetic.getCosmeticDeskByUserid(userId: userId!)
+    }
+    
+    private func downloadFavoriteList(){
+        let downloadDeskCosmetic = DownloadCosmeticDeskList()
+        downloadDeskCosmetic.delegate = self
+        downloadDeskCosmetic.getFavorite(userId: userId!)
     }
     
     private func downloadDrawerList(){
@@ -262,11 +256,11 @@ extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDe
             self.present(activityViewController, animated: true, completion: nil)
             
         }))
-        deskItemAction.addAction(UIAlertAction(title: "Add to my drawer", style: .default, handler: {(UIAlertAction) in
-            let chooseDrawerVC = self.storyboard?.instantiateViewController(identifier: "choosedrawer") as! ChooseDrawerTableViewController
-            chooseDrawerVC.deskId = item.desk_id
-            self.navigationController?.pushViewController(chooseDrawerVC, animated: true)
-        }))
+//        deskItemAction.addAction(UIAlertAction(title: "Add to my drawer", style: .default, handler: {(UIAlertAction) in
+//            let chooseDrawerVC = self.storyboard?.instantiateViewController(identifier: "choosedrawer") as! ChooseDrawerTableViewController
+//            chooseDrawerVC.deskId = item.desk_id
+//            self.navigationController?.pushViewController(chooseDrawerVC, animated: true)
+//        }))
         
         deskItemAction.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
             (UIAlertAction) in
@@ -310,13 +304,17 @@ extension CosmeticDeskViewController: DownloadDrawerDelegate, DownloadCosmeticDe
     
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         deskList = item as! [CosmeticDeskModel]
-        allNumber.text = String(deskList.count)
         if deskList.count > 0{
             noCosmetic.text = ""
             noCosmetic.isHidden = true
+            
         }else{
             noCosmetic.text = "No cosmetic in your desk"
             noCosmetic.isHidden = false
+        }
+        
+        if menuSegment.selectedSegmentIndex == 0{
+            countLabel.text = "\(deskList.count) Cosmetics in your desk"
         }
         deskCollection.reloadData()
         removeSpinner()

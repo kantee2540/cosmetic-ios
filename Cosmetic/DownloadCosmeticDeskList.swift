@@ -33,6 +33,10 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
         postParameter["user_id"] = userId
         downloadItem()
     }
+    func getFavorite(userId: String){
+        postParameter = ["user_id": userId, "favorite": 9]
+        downloadItem()
+    }
     
     func getCosmeticByLimit(userId: String, limit: Int){
         postParameter = ["user_id": userId, "limit": limit]
@@ -62,11 +66,11 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
         }
 
         var jsonElement = NSDictionary()
-        let products = NSMutableArray()
+        let cosmeticDesks = NSMutableArray()
         
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
-            let product = CosmeticDeskModel()
+            let cosmeitcDesk = CosmeticDeskModel()
             
             if  let product_id = jsonElement[ConstantProduct.productId] as? String,
                 let product_name = jsonElement[ConstantProduct.productName] as? String,
@@ -77,25 +81,27 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
                 let product_img = jsonElement[ConstantProduct.productImg] as? String,
                 let ingredient = jsonElement[ConstantProduct.ingredient] as? String,
                 let user_id = jsonElement[ConstantUser.userId] as? String,
-                let desk_id = jsonElement[ConstantProduct.deskId] as? String
+                let desk_id = jsonElement[ConstantProduct.deskId] as? String,
+                let favorite = jsonElement[ConstantProduct.favorite] as? String
             {
-                product.product_id = product_id
-                product.product_name = product_name
-                product.product_description = product_description
-                product.product_price = Int(product_price)
-                product.categories_id = categories_id
-                product.brand_name = brand_name
-                product.product_img = product_img
-                product.ingredient = ingredient
-                product.user_id = user_id
-                product.desk_id = desk_id
+                cosmeitcDesk.product_id = product_id
+                cosmeitcDesk.product_name = product_name
+                cosmeitcDesk.product_description = product_description
+                cosmeitcDesk.product_price = Int(product_price)
+                cosmeitcDesk.categories_id = categories_id
+                cosmeitcDesk.brand_name = brand_name
+                cosmeitcDesk.product_img = product_img
+                cosmeitcDesk.ingredient = ingredient
+                cosmeitcDesk.user_id = user_id
+                cosmeitcDesk.desk_id = desk_id
+                cosmeitcDesk.favorite = favorite
             }
             
-            products.add(product)
+            cosmeticDesks.add(cosmeitcDesk)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.itemCosmeticDeskDownloaded(item: products)
+            self.delegate?.itemCosmeticDeskDownloaded(item: cosmeticDesks)
         })
         
     }

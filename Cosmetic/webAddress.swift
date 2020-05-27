@@ -89,6 +89,11 @@ class webAddress {
         return webFile
     }
     
+    func getUpdateFavoriteURL() -> String{
+        let webFile = getrootURL() + "updateFavorite.php"
+        return webFile
+    }
+    
     func getDrawerURL() -> String{
         let webFile = getrootURL() + "getDrawer.php"
         return webFile

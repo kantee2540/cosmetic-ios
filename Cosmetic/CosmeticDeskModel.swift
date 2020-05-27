@@ -20,6 +20,7 @@ class CosmeticDeskModel: NSObject, NSCoding {
     var brand_name: String?
     var product_img: String?
     var ingredient: String?
+    var favorite: String?
     
     override init() {
         
