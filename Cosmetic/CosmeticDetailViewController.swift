@@ -16,6 +16,8 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     var delegate: CosmeticDetailDelegate?
     var productId: String!
     private var productData: [ProductModel] = []
+    private var isSave: Bool = false
+    
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
@@ -30,10 +32,10 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     @IBOutlet weak var ingredient: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         if item.count > 0{
+            isSave = true
             disableSaveButton()
         }
     }
@@ -123,10 +125,15 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     
     @IBAction func tapSave(_ sender: Any) {
         if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
-            loadingActivity.isHidden = false
-            let insertItem = CosmeticDesk()
-            insertItem.delegate = self
-            insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+            if !isSave{
+                let insertItem = CosmeticDesk()
+                insertItem.delegate = self
+                insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+            }else{
+                let insertItem = CosmeticDesk()
+                insertItem.delegate = self
+                insertItem.deleteFromDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+            }
         }else{
             dismiss(animated: true, completion: nil)
             self.delegate?.dismissFromCosmeticDetail()
@@ -134,7 +141,13 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     func onSuccess() {
-        disableSaveButton()
+        if !isSave{
+            disableSaveButton()
+            isSave = true
+        }else{
+            enableSaveButton()
+            isSave = false
+        }
     }
     
     func onFailed() {
@@ -142,9 +155,12 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
 
     private func disableSaveButton(){
-        loadingActivity.isHidden = true
-        saveButton.backgroundColor = UIColor.gray
-        saveButton.setTitle("Saved", for: .disabled)
-        saveButton.isEnabled = false
+        saveButton.tintColor = UIColor.systemYellow
+        saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+    }
+    
+    private func enableSaveButton(){
+        saveButton.tintColor = UIColor.label
+        saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
 }
