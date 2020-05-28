@@ -175,6 +175,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         downloadTopic.getTopicById(topicId: topicId!)
         
         checkSaveTopic()
+        checkLike()
         downloadPackage()
         getLikeCount()
     }
@@ -248,7 +249,6 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
             destination?.productId = item.product_id
         }
     }
-    
 
 }
 
@@ -258,6 +258,12 @@ extension TopTopicViewController: LikeDislikeDelegate, SetLikeUnlikeDelegate{
         let setLikeUnlike = SetLikeUnlike()
         setLikeUnlike.delegate = self
         setLikeUnlike.like(userId: userId!, topicId: topicId!)
+    }
+    
+    func checkLike(){
+        let setLikeUnlike = SetLikeUnlike()
+        setLikeUnlike.delegate = self
+        setLikeUnlike.checkLike(userId: userId!, topicId: topicId!)
     }
     
     func setLikeUnlikeSuccess(like: Bool) {

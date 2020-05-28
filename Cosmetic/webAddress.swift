@@ -159,4 +159,9 @@ class webAddress {
         return webFile
     }
     
+    func getCheckLikeURL() -> String{
+        let webFile = getrootURL() + "checklike.php"
+        return webFile
+    }
+    
 }
