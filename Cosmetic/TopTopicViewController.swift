@@ -15,7 +15,11 @@ protocol TopTopicDelegate {
 class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol, SaveTopicDelegate, DownloadSaveTopicDelegate {
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         if item.count > 0{
+            isSavedTopic = true
             savedButtonState()
+        }else{
+            isSavedTopic = false
+            unsavedButtonState()
         }
     }
     
@@ -24,16 +28,25 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func saveTopicSuccess() {
-        savedButtonState()
+        if !isSavedTopic{
+            isSavedTopic = true
+            savedButtonState()
+        }else{
+            isSavedTopic = false
+            unsavedButtonState()
+        }
     }
     
     private func savedButtonState(){
-        saveActivity.stopAnimating()
-        saveButton.titleLabel?.text = "Saved"
-        saveButton.setTitleColor(UIColor.white, for: .disabled)
-        saveButton.isEnabled = false
-        saveButton.backgroundColor = UIColor.systemGray
-        saveButton.tintColor = UIColor.white
+        saveLabel.text = "Saved"
+        saveButton.tintColor = UIColor.systemYellow
+        saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+    }
+    
+    private func unsavedButtonState(){
+        saveLabel.text = "Save"
+        saveButton.tintColor = UIColor.label
+        saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
     
     func saveTopicFailed() {
@@ -87,8 +100,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     var topicId: String?
     private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
+    private var isSavedTopic: Bool = false
     
-    @IBOutlet weak var saveActivity: UIActivityIndicatorView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -97,6 +110,11 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var saveLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeCountLabel: UILabel!
+    @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var dislikeCountLabel: UILabel!
     @IBOutlet weak var productTableHeight: NSLayoutConstraint!
     @IBOutlet weak var topicScroll: UIScrollView!
     
@@ -175,10 +193,6 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func settingtitleLabel(){
-        titleLabel.layer.shadowColor = UIColor.black.cgColor
-        titleLabel.layer.shadowOpacity = 0.5
-        titleLabel.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        titleLabel.layer.shadowRadius = 3
         shareButton.roundedCorner()
         saveButton.roundedCorner()
         
@@ -188,10 +202,17 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
         if userId != nil{
-            saveActivity.startAnimating()
             let saveTopic = SaveTopic()
             saveTopic.delegate = self
-            saveTopic.saveTopic(topicId: topicId!, userId: userId!)
+            if !isSavedTopic{
+                //To save
+                print("Save")
+                saveTopic.saveTopic(topicId: topicId!, userId: userId!)
+            }else{
+                //To remove
+                print("Unsave")
+                saveTopic.deleteTopic(topicId: topicId!, userId: userId!)
+            }
         }else{
             self.dismiss(animated: true, completion: nil)
             delegate?.dismissFromTopTopic()
