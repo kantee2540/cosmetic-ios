@@ -34,7 +34,7 @@ class SaveTopic: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param)
     }
         
     func deleteTopic(topicId: String, userId: String){
@@ -43,6 +43,6 @@ class SaveTopic: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param)
     }
 }

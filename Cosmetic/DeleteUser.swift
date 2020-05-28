@@ -41,7 +41,7 @@ class DeleteUser: NSObject, NetworkDelegate {
                 loginManager.logOut()
                 let network = Network()
                 network.delegate = self
-                network.downloadData(URL: DB_URL, param: param)
+                network.post(URL: DB_URL, param: param)
                 self.removeUserData()
             }
         })

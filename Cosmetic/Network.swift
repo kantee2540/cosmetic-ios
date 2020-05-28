@@ -18,7 +18,7 @@ class Network: NSObject {
     
     var delegate: NetworkDelegate?
     
-    func downloadData(URL: String, param: [String: Any]){
+    func post(URL: String, param: [String: Any]){
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
@@ -31,5 +31,18 @@ class Network: NSObject {
                         self.delegate?.downloadFailed(error: error.localizedDescription)
         })
         
+    }
+    
+    func get(URL: String, param: [String: Any]){
+        let manager = AFHTTPSessionManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        
+        manager.get(URL, parameters: param, headers: nil, progress: {(Progress) in },
+                     success: {(Operation, responseObject) in
+                        self.delegate?.downloadSuccess(data: responseObject as! Data)
+        },
+                     failure: {(Operation, error) in
+                        self.delegate?.downloadFailed(error: error.localizedDescription)
+        })
     }
 }

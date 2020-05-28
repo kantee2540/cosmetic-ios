@@ -32,7 +32,7 @@ class DownloadCategories: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: [:])
+        network.get(URL: DB_URL, param: [:])
     }
     
     func parseJSON(_ data:Data){

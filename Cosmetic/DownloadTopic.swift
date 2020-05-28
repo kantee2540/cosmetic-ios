@@ -53,7 +53,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: postParameter)
+        network.get(URL: DB_URL, param: postParameter)
         
     }
     

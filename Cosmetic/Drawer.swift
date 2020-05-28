@@ -35,7 +35,7 @@ class Drawer: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: postParam)
+        network.post(URL: DB_URL, param: postParam)
         
     }
     
@@ -45,6 +45,6 @@ class Drawer: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: postParam)
+        network.post(URL: DB_URL, param: postParam)
     }
 }

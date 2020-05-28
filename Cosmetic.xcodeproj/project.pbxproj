@@ -107,8 +107,6 @@
 		B3DB749C2426407200CB241F /* RemoveAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */; };
 		B3DB749E2426422500CB241F /* DeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DB749D2426422500CB241F /* DeleteUser.swift */; };
 		B3E6D5A1243B18DD009BF6DD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */; };
-		B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30823BA640B0041D69A /* NotificationModel.swift */; };
-		B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBF30A23BA64980041D69A /* DownloadNotification.swift */; };
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
@@ -251,8 +249,6 @@
 		B3DB749B2426407200CB241F /* RemoveAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAccountTableViewController.swift; sourceTree = "<group>"; };
 		B3DB749D2426422500CB241F /* DeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUser.swift; sourceTree = "<group>"; };
 		B3E6D5A0243B18DD009BF6DD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		B3EBF30823BA640B0041D69A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
-		B3EBF30A23BA64980041D69A /* DownloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNotification.swift; sourceTree = "<group>"; };
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
@@ -309,7 +305,6 @@
 				B316840723940BF1005F4D88 /* PackageModel.swift */,
 				B316840A23940D80005F4D88 /* TopicModel.swift */,
 				B3BFDD7323B8A24A00BC0035 /* UserModel.swift */,
-				B3EBF30823BA640B0041D69A /* NotificationModel.swift */,
 				B386F55523C637DE005F58C9 /* CosmeticDeskModel.swift */,
 				B3BFC8C4242341BF00C7C430 /* DrawerModel.swift */,
 				B3D7D3E62424C28F00F6B95B /* DrawerCollectionModel.swift */,
@@ -354,13 +349,12 @@
 				B316840C23940DB3005F4D88 /* DownloadTopic.swift */,
 				B3687AA1244711E800FB909D /* DownloadSaveTopic.swift */,
 				B386F54E23C6244D005F58C9 /* DownloadCosmeticDeskList.swift */,
-				B3EBF30A23BA64980041D69A /* DownloadNotification.swift */,
 				B3BFC8C22423407B00C7C430 /* DownloadDrawer.swift */,
+				B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */,
 				B3D7DEF6247E8ECD00F676F3 /* UpdateFavorite.swift */,
 				B3BFDD7523B8A60500BC0035 /* DownloadUser.swift */,
 				B386F54C23C60F67005F58C9 /* CosmeticDesk.swift */,
 				B3BFDD7123B889BB00BC0035 /* CollectUserdata.swift */,
-				B36CD6342424B46800D33F31 /* DownloadDrawerCollection.swift */,
 				B3BFC8C0242333A900C7C430 /* Network.swift */,
 				B3B19B382423BBCC00501426 /* Drawer.swift */,
 				B3D7D3E82424E23100F6B95B /* DrawerCollection.swift */,
@@ -867,7 +861,6 @@
 				B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */,
 				B34B4002229D0BE20045DF9A /* webAddress.swift in Sources */,
 				B3D7D3F12425060C00F6B95B /* AddProductDrawerTableViewCell.swift in Sources */,
-				B3EBF30923BA640B0041D69A /* NotificationModel.swift in Sources */,
 				B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */,
 				B386F55623C637DE005F58C9 /* CosmeticDeskModel.swift in Sources */,
 				B3FC3AC82421051C004E098D /* WriteTopicViewController.swift in Sources */,
@@ -905,7 +898,6 @@
 				B349E14022D2241800943A1D /* CameraResultTableViewCell.swift in Sources */,
 				B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */,
 				B3D7D3F32425072F00F6B95B /* AddProductDrawerTableViewController.swift in Sources */,
-				B3EBF30B23BA64980041D69A /* DownloadNotification.swift in Sources */,
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B3BFC8BF2423312900C7C430 /* DrawerCollectionViewCell.swift in Sources */,
 				B34CE3172439FB49007228FC /* DrawerCollectionViewController.swift in Sources */,

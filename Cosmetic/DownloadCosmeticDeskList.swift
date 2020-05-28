@@ -53,7 +53,7 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: postParameter)
+        network.post(URL: DB_URL, param: postParameter)
     }
     
     func parseJSON(_ data:Data){

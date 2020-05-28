@@ -31,7 +31,7 @@ import UIKit
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: [:])
+        network.get(URL: DB_URL, param: [:])
     }
     
     @objc func parseJSON(_ data:Data){

@@ -32,7 +32,7 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param)
     }
     
     func downloadSaveTopic(userId: String){
@@ -41,7 +41,7 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param)
         
     }
     

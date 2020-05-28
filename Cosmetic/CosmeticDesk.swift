@@ -60,6 +60,6 @@ class CosmeticDesk: NSObject, NetworkDelegate {
     private func processing(){
         let network = Network()
         network.delegate = self
-        network.downloadData(URL: DB_URL, param: postParameter)
+        network.post(URL: DB_URL, param: postParameter)
     }
 }
