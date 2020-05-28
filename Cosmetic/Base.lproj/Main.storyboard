@@ -103,6 +103,7 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sdC-9U-bgI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="114"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" priority="750" constant="114" id="aqH-za-KQg"/>
                                                                         <constraint firstAttribute="width" priority="750" constant="130" id="bdb-ly-JCi"/>
@@ -235,6 +236,7 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SFF-FM-RPG">
                                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="114"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="1FI-dM-I60"/>
                                                                         <constraint firstAttribute="height" priority="750" constant="114" id="Ka1-L8-seW"/>
@@ -746,7 +748,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7g-qs-XTd">
-                                <rect key="frame" x="16" y="25" width="46" height="22"/>
+                                <rect key="frame" x="16" y="25" width="222" height="22"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -953,7 +955,7 @@
                             <constraint firstItem="K7g-qs-XTd" firstAttribute="top" secondItem="kcn-NJ-ZOr" secondAttribute="top" constant="25" id="qwi-WJ-FgC"/>
                             <constraint firstItem="U5Y-RS-Haj" firstAttribute="top" secondItem="kcn-NJ-ZOr" secondAttribute="top" constant="20" id="rRC-NJ-tMH"/>
                             <constraint firstItem="1Of-lr-REX" firstAttribute="bottom" secondItem="kcn-NJ-ZOr" secondAttribute="bottom" id="tD5-Wb-rSV"/>
-                            <constraint firstItem="GUK-k2-Xak" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K7g-qs-XTd" secondAttribute="trailing" constant="8" id="wqC-mi-0ag"/>
+                            <constraint firstItem="GUK-k2-Xak" firstAttribute="leading" secondItem="K7g-qs-XTd" secondAttribute="trailing" constant="8" id="wqC-mi-0ag"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kcn-NJ-ZOr"/>
                     </view>
@@ -5383,8 +5385,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zvl-aX-vqg"/>
-        <segue reference="mCg-qs-FNI"/>
+        <segue reference="alj-iG-gXm"/>
+        <segue reference="c3A-7h-gg6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>
