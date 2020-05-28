@@ -575,8 +575,11 @@
                                                         <state key="normal" image="hand.thumbsup" catalog="system">
                                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tapLike:" destination="wgc-Gb-F3f" eventType="touchUpInside" id="8UQ-45-BCe"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95Q-nT-GEs">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95Q-nT-GEs">
                                                         <rect key="frame" x="255" y="10" width="85" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="9by-2q-bvS"/>
@@ -595,7 +598,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya0-y6-pKC">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya0-y6-pKC">
                                                         <rect key="frame" x="293" y="47" width="9" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
@@ -607,9 +610,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8z-gm-5ae">
-                                                        <rect key="frame" x="24" y="47" width="38" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8z-gm-5ae">
+                                                        <rect key="frame" x="23.5" y="47" width="38" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -619,6 +621,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="0Xx-Ti-cHq"/>
                                                     <constraint firstItem="52Z-C8-7BN" firstAttribute="centerY" secondItem="Hdf-Q2-eTC" secondAttribute="centerY" id="7iN-w1-djW"/>
+                                                    <constraint firstItem="U8z-gm-5ae" firstAttribute="firstBaseline" secondItem="j0H-Tu-OfG" secondAttribute="firstBaseline" id="BWg-ZE-MDc"/>
                                                     <constraint firstItem="j0H-Tu-OfG" firstAttribute="centerX" secondItem="52Z-C8-7BN" secondAttribute="centerX" id="DI7-11-nGU"/>
                                                     <constraint firstItem="Hdf-Q2-eTC" firstAttribute="centerY" secondItem="GKg-E6-ZtO" secondAttribute="centerY" id="HSX-pv-rcn"/>
                                                     <constraint firstItem="ya0-y6-pKC" firstAttribute="centerX" secondItem="95Q-nT-GEs" secondAttribute="centerX" id="LXs-e8-V4S"/>
@@ -630,6 +633,7 @@
                                                     <constraint firstItem="ya0-y6-pKC" firstAttribute="top" secondItem="GKg-E6-ZtO" secondAttribute="top" constant="47" id="e2O-W9-m5K"/>
                                                     <constraint firstAttribute="width" constant="340" id="gOf-76-Bd6"/>
                                                     <constraint firstItem="Ced-hb-mG6" firstAttribute="leading" secondItem="52Z-C8-7BN" secondAttribute="trailing" id="hBq-1x-cQi"/>
+                                                    <constraint firstItem="U8z-gm-5ae" firstAttribute="centerX" secondItem="Hdf-Q2-eTC" secondAttribute="centerX" id="jnT-8Y-dpN"/>
                                                     <constraint firstItem="j0H-Tu-OfG" firstAttribute="firstBaseline" secondItem="EuS-W2-SeV" secondAttribute="firstBaseline" id="nkw-kJ-Iqe"/>
                                                     <constraint firstItem="52Z-C8-7BN" firstAttribute="leading" secondItem="Hdf-Q2-eTC" secondAttribute="trailing" id="qb2-5Q-6gx"/>
                                                     <constraint firstItem="Ced-hb-mG6" firstAttribute="centerY" secondItem="GKg-E6-ZtO" secondAttribute="centerY" id="vlp-Tz-BK7"/>
@@ -1409,7 +1413,6 @@
         <!--Drawer Collection View Controller-->
         <scene sceneID="AXD-rA-PRg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="trS-fi-Crn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Ca7-sw-70w" customClass="DrawerCollectionViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VAZ-At-6TS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1604,6 +1607,7 @@
                         <outlet property="drawerNameLabel" destination="kE2-Mu-bNa" id="FNo-h1-my2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trS-fi-Crn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1545" y="-2427"/>
         </scene>
@@ -5155,7 +5159,6 @@
         <!--Add Product to my drawer-->
         <scene sceneID="XfK-rJ-obq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zak-gq-0NJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="s4A-QP-YHl" customClass="AddProductDrawerTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" id="7P8-lX-BYc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -5256,13 +5259,13 @@
                         <outlet property="doneButton" destination="l5Q-A3-9uR" id="Wsh-L6-AVE"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zak-gq-0NJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2369" y="-2427"/>
         </scene>
         <!--Choose Drawer-->
         <scene sceneID="gNK-en-VUb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ibd-KZ-jKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="choosedrawer" id="d0r-sH-5Wz" customClass="ChooseDrawerTableViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8EU-Ak-sCV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -5334,6 +5337,7 @@
                         <outlet property="okButton" destination="0Hj-Od-OYS" id="9CD-6O-WTE"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ibd-KZ-jKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3148" y="-2427"/>
         </scene>

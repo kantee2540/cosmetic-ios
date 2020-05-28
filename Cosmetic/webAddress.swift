@@ -149,4 +149,14 @@ class webAddress {
         return webFile
     }
     
+    func getLikeURL() -> String{
+        let webFile = getrootURL() + "likeTopic.php"
+        return webFile
+    }
+    
+    func getSetLike() -> String{
+        let webFile = getrootURL() + "setLike.php"
+        return webFile
+    }
+    
 }

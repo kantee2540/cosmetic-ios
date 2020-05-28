@@ -101,6 +101,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
     private var isSavedTopic: Bool = false
+    private var userId: String?
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -175,10 +176,11 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         
         checkSaveTopic()
         downloadPackage()
+        getLikeCount()
     }
     
     private func checkSaveTopic(){
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         if userId != nil{
             let downloadSaveTopic = DownloadSaveTopic()
             downloadSaveTopic.delegate = self
@@ -206,17 +208,19 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
             saveTopic.delegate = self
             if !isSavedTopic{
                 //To save
-                print("Save")
                 saveTopic.saveTopic(topicId: topicId!, userId: userId!)
             }else{
                 //To remove
-                print("Unsave")
                 saveTopic.deleteTopic(topicId: topicId!, userId: userId!)
             }
         }else{
             self.dismiss(animated: true, completion: nil)
             delegate?.dismissFromTopTopic()
         }
+    }
+    
+    @IBAction func tapLike(_ sender: Any) {
+        setLike()
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -246,4 +250,48 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
+}
+
+extension TopTopicViewController: LikeDislikeDelegate, SetLikeUnlikeDelegate{
+    
+    func setLike(){
+        let setLikeUnlike = SetLikeUnlike()
+        setLikeUnlike.delegate = self
+        setLikeUnlike.like(userId: userId!, topicId: topicId!)
+    }
+    
+    func setLikeUnlikeSuccess(like: Bool) {
+        if like{
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            likeButton.tintColor = UIColor.systemGreen
+            
+        }else{
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            likeButton.tintColor = UIColor.label
+            
+        }
+        
+        getLikeCount()
+    }
+    
+    func setLikeUnlikeFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Can't like please try again")
+    }
+    
+    
+    func getLikeCount(){
+        let likeDislike = CountLike()
+        likeDislike.delegate = self
+        likeDislike.getLikeCount(topicId: topicId!)
+    }
+    
+    func getLikeDislikeSuccess(like: Int) {
+        likeCountLabel.text = String(like)
+    }
+    
+    func getLikeDislikeFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+    }
+    
+    
 }
