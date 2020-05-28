@@ -75,11 +75,11 @@ class PreviewTopicViewController: UIViewController, UITableViewDelegate, UITable
         let itemCell = tableView.dequeueReusableCell(withIdentifier: "topicitem") as! TopTopicItemTableViewCell
         let item = productSet[indexPath.row]
         itemCell.itemProduct.text = item.product_name
-        itemCell.itemDescription.text = item.product_description
+        itemCell.itemDescription.text = item.categories_name
         let numberFormat = NumberFormatter()
         numberFormat.numberStyle = .decimal
         let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
-        itemCell.itemPrice.text = "Price: \(formattedPrice ?? "0") Baht"
+        itemCell.itemPrice.text = "\(formattedPrice ?? "0")฿"
         itemCell.itemImage.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             
         return itemCell
