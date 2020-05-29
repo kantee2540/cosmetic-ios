@@ -174,19 +174,21 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         downloadTopic.delegate = self
         downloadTopic.getTopicById(topicId: topicId!)
         
-        checkSaveTopic()
-        checkLike()
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        if userId != nil{
+            checkSaveTopic()
+            checkLike()
+        }
+        
         downloadPackage()
         getLikeCount()
     }
     
     private func checkSaveTopic(){
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
-        if userId != nil{
-            let downloadSaveTopic = DownloadSaveTopic()
-            downloadSaveTopic.delegate = self
-            downloadSaveTopic.checkTopicIsSaved(userId: userId!, topicId: topicId!)
-        }
+        let downloadSaveTopic = DownloadSaveTopic()
+        downloadSaveTopic.delegate = self
+        downloadSaveTopic.checkTopicIsSaved(userId: userId!, topicId: topicId!)
+        
     }
     
     private func downloadPackage(){
@@ -202,7 +204,6 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     @IBAction func tapSave(_ sender: Any) {
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
         if userId != nil{
             let saveTopic = SaveTopic()
@@ -221,7 +222,12 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func tapLike(_ sender: Any) {
-        setLike()
+        if userId != nil{
+            setLike()
+        }else{
+            self.dismiss(animated: true, completion: nil)
+            delegate?.dismissFromTopTopic()
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
