@@ -74,7 +74,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.downloadLimitTopic(limit: 4)
+        downloadTopic.downloadLimitTopic(limit: 10)
         
         if userId != nil{
             downloadCosmeticDeskList()
