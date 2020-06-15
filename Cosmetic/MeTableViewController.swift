@@ -56,7 +56,7 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
         
     }
 
@@ -68,13 +68,13 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         }
         else if section == 1{
             if Auth.auth().currentUser != nil{
-                return 2
+                return 3
             }else{
                 return 0
             }
         }
         else{
-            return 0
+            return 2
         }
         
     }

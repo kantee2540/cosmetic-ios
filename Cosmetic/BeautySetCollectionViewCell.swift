@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol BeautySetCollectionViewCellDelegate {
+    func tapBeautysetOption(indexPath: IndexPath, button: UIButton)
+}
+
 class BeautySetCollectionViewCell: UICollectionViewCell {
     
+    var delegate: BeautySetCollectionViewCellDelegate?
+    var indexPath: IndexPath?
     @IBOutlet weak var topicName: UILabel!
     @IBOutlet weak var topicImage: UIImageView!
+    @IBOutlet weak var actionButton: UIButton!
     
     override var isHighlighted: Bool{
         didSet{
@@ -32,4 +39,10 @@ class BeautySetCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    
+    @IBAction func tapAction(_ sender: Any) {
+        delegate?.tapBeautysetOption(indexPath: indexPath!, button: actionButton)
+    }
+    
 }

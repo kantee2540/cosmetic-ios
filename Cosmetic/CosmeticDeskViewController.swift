@@ -90,6 +90,8 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savetopic", for: indexPath) as! BeautySetCollectionViewCell
             cell.layer.cornerRadius = 8
+            cell.delegate = self
+            cell.indexPath = indexPath
             let item = saveTopic[indexPath.row]
             if item.topic_img != ""{
                 cell.topicImage.downloadImage(from: URL(string: item.topic_img!)!)
@@ -235,6 +237,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
 }
 
 extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate, DownloadSaveTopicDelegate{
+    
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         saveTopic = item as! [TopicModel]
         countTopic.text = "\(saveTopic.count)"
@@ -322,4 +325,52 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     func onFailed() {
         
     }
+}
+
+extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveTopicDelegate{
+    func saveTopicSuccess() {
+        removeSpinner()
+        downloadBeautySet()
+        deskCollection.reloadData()
+    }
+    
+    func saveTopicFailed() {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Failed to delete")
+    }
+    
+    func tapBeautysetOption(indexPath: IndexPath, button: UIButton) {
+        let item = saveTopic[indexPath.row]
+        let setOption = UIAlertController(title: item.topic_name, message: "What do you next?", preferredStyle: .actionSheet)
+        setOption.addAction(UIAlertAction(title: "Share", style: .default, handler: {
+            (UIAlertAction) in
+            let topicId: String = item.topic_id!
+            let getAddress = webAddress()
+            let url = URL(string: getAddress.getrootURL() + "?topicId=\(topicId)")
+            
+            let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
+            
+            //For iPad
+            if let popoverController = activityViewController.popoverPresentationController{
+                popoverController.sourceView = button
+                popoverController.sourceRect = button.bounds
+            }
+            
+            self.present(activityViewController, animated: true, completion: nil)
+        }))
+        
+        setOption.addAction(UIAlertAction(title: "Delete from save set", style: .destructive, handler: {
+            (UIAlertAction) in
+            self.showSpinner(onView: self.view)
+            let saveTopic = SaveTopic()
+            saveTopic.delegate = self
+            saveTopic.deleteTopic(topicId: item.topic_id!, userId: self.userId!)
+        }))
+        
+        setOption.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (UIAlertAction) in
+        }))
+        
+        self.present(setOption, animated: true, completion: nil)
+    }
+    
 }
