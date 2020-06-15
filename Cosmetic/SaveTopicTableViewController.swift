@@ -21,7 +21,7 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
     
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         savedItem = item as! [TopicModel]
-        countLabel.text = "You have \(savedItem.count) saved topics"
+        //countLabel.text = "You have \(savedItem.count) saved topics"
         self.tableView.reloadData()
     }
     
@@ -48,9 +48,32 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
-        downloadSaveTopic(userId: userId!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        if userId != nil{
+            downloadSaveTopic(userId: userId!)
+        }else{
+            savedItem.removeAll()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.title = "Saved Beauty set"
+        
+        let nologinVc = (self.storyboard?.instantiateViewController(identifier: "nologin")) as! NoLoginViewController
+        let viewControllers: [UIViewController] = self.children
+        if userId != nil{
+            for vcs in viewControllers{
+                vcs.willMove(toParent: nil)
+                vcs.view.removeFromSuperview()
+                vcs.removeFromParent()
+            }
+        }else{
+            add(nologinVc)
+        }
     }
     
     private func downloadSaveTopic(userId: String){

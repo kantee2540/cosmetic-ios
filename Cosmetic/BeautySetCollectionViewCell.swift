@@ -1,14 +1,17 @@
 //
-//  AddDrawerCollectionViewCell.swift
+//  BeautySetCollectionViewCell.swift
 //  Cosmetic
 //
-//  Created by Omp on 19/3/2563 BE.
+//  Created by Omp on 15/6/2563 BE.
 //  Copyright © 2563 Omp. All rights reserved.
 //
 
 import UIKit
 
-class AddDrawerCollectionViewCell: UICollectionViewCell {
+class BeautySetCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var topicName: UILabel!
+    @IBOutlet weak var topicImage: UIImageView!
     
     override var isHighlighted: Bool{
         didSet{
