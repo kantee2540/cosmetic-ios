@@ -23,7 +23,6 @@
 		B328A0E8245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */; };
-		B335250E2445DB6C005E0838 /* SaveTopicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */; };
 		B33B6E9D22903F74008F3AEE /* DownloadBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */; };
 		B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B6E9E2290404D008F3AEE /* BrandModel.swift */; };
 		B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B342F0F3228C4F9700196E3B /* CategoriesModel.swift */; };
@@ -101,6 +100,8 @@
 		B3EB7C2E247FECBA00226886 /* SetLikeUnlike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EB7C2D247FECBA00226886 /* SetLikeUnlike.swift */; };
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
 		B3F111B42498CA170057A3A0 /* SortListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F111B32498CA170057A3A0 /* SortListCollectionViewCell.swift */; };
+		B3F111B624991F3A0057A3A0 /* BeautysetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F111B524991F3A0057A3A0 /* BeautysetViewController.swift */; };
+		B3F111B8249928E20057A3A0 /* BeautyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F111B7249928E20057A3A0 /* BeautyCollectionViewCell.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
 		B3FC3AC82421051C004E098D /* WriteTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */; };
@@ -149,7 +150,6 @@
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticDetailViewController.swift; sourceTree = "<group>"; };
-		B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTopicTableViewController.swift; sourceTree = "<group>"; };
 		B33B6E9C22903F74008F3AEE /* DownloadBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBrands.swift; sourceTree = "<group>"; };
 		B33B6E9E2290404D008F3AEE /* BrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
 		B342F0F3228C4F9700196E3B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -236,6 +236,8 @@
 		B3EB7C2D247FECBA00226886 /* SetLikeUnlike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLikeUnlike.swift; sourceTree = "<group>"; };
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
 		B3F111B32498CA170057A3A0 /* SortListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortListCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3F111B524991F3A0057A3A0 /* BeautysetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautysetViewController.swift; sourceTree = "<group>"; };
+		B3F111B7249928E20057A3A0 /* BeautyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautyCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
 		B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTopicViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +418,8 @@
 				B3A71EFB243658C3000A501B /* AddTopicResultViewController.swift */,
 				B387F29124378BD0006E139F /* MyTopicTableViewController.swift */,
 				B387F29324378DA7006E139F /* MyTopicTableViewCell.swift */,
-				B335250D2445DB6C005E0838 /* SaveTopicTableViewController.swift */,
+				B3F111B524991F3A0057A3A0 /* BeautysetViewController.swift */,
+				B3F111B7249928E20057A3A0 /* BeautyCollectionViewCell.swift */,
 			);
 			name = TopTopic;
 			sourceTree = "<group>";
@@ -813,9 +816,11 @@
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
 				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,
+				B3F111B8249928E20057A3A0 /* BeautyCollectionViewCell.swift in Sources */,
 				B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */,
 				B3BFC8C1242333A900C7C430 /* Network.swift in Sources */,
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
+				B3F111B624991F3A0057A3A0 /* BeautysetViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
 				B383C64F246EA05A004B2932 /* ForgotPasswordViewController.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
@@ -878,7 +883,6 @@
 				B3766C62236685630028B335 /* cameraResultTableViewController.swift in Sources */,
 				B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */,
 				B3B058C723E1F5FE00D4786C /* NotifySearchDetailTableViewCell.swift in Sources */,
-				B335250E2445DB6C005E0838 /* SaveTopicTableViewController.swift in Sources */,
 				B3A8A86223B92AF0009AFEA3 /* AccountDetailTableViewController.swift in Sources */,
 				B394C1A923E562B4008F5B8C /* SetCollectionViewCell.swift in Sources */,
 				B3B38DF52391739A00ACD696 /* TopTopicViewController.swift in Sources */,

@@ -32,6 +32,10 @@ class DownloadTopic: NSObject, NetworkDelegate {
         postParameter["topic_limit"] = lim
         downloadItem()
     }
+    func downloadTopLimitTopic(limit lim: Int){
+        postParameter["top_limit"] = lim
+        downloadItem()
+    }
     
     func getTopicById(topicId id: String){
         postParameter["topic_id"] = id
@@ -80,7 +84,8 @@ class DownloadTopic: NSObject, NetworkDelegate {
                 let topic_code = jsonElement[ConstantProduct.topic_code] as? String,
                 let topic_img = jsonElement[ConstantProduct.topic_img] as? String,
                 let user_id = jsonElement[ConstantUser.userId] as? String,
-                let nickname = jsonElement[ConstantUser.nickName] as? String
+                let nickname = jsonElement[ConstantUser.nickName] as? String,
+                let profilePic = jsonElement[ConstantUser.profilepic] as? String
             {
                 topic.topic_id = topic_id
                 topic.topic_name = topic_name
@@ -89,6 +94,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
                 topic.topic_img = topic_img
                 topic.user_id = user_id
                 topic.nickname = nickname
+                topic.userImg = profilePic
                 
             }
             
