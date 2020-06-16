@@ -1423,15 +1423,12 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="171" height="159.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="171" id="VVL-3D-x7C"/>
+                                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="171" id="VVL-3D-x7C"/>
                                                                         <constraint firstAttribute="height" priority="750" constant="150" id="s4M-jb-sLQ"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum Lorem ipsum " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXk-PE-seA">
                                                                     <rect key="frame" x="13" y="195" width="145" height="36"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" priority="750" constant="36" id="jQW-FW-Xch"/>
-                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1467,7 +1464,7 @@
                                                                     <rect key="frame" x="110" y="243" width="23" height="19"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="19" id="55c-9g-MLc"/>
-                                                                        <constraint firstAttribute="width" constant="23" id="V1g-X2-dhX"/>
+                                                                        <constraint firstAttribute="width" priority="750" constant="23" id="V1g-X2-dhX"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1496,7 +1493,7 @@
                                                                 <constraint firstAttribute="bottom" secondItem="h9M-kZ-310" secondAttribute="bottom" constant="17" id="fKD-2Q-YIr"/>
                                                                 <constraint firstItem="h9M-kZ-310" firstAttribute="leading" secondItem="dAs-Vo-PIk" secondAttribute="trailing" constant="2" id="gVz-I8-L1Z"/>
                                                                 <constraint firstAttribute="trailing" secondItem="DXk-PE-seA" secondAttribute="trailing" constant="13" id="h4b-xp-dWV"/>
-                                                                <constraint firstItem="dAs-Vo-PIk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OMo-gp-ZQE" secondAttribute="trailing" constant="23.5" id="ref-1k-phl"/>
+                                                                <constraint firstItem="dAs-Vo-PIk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OMo-gp-ZQE" secondAttribute="trailing" priority="250" constant="23.5" id="ref-1k-phl"/>
                                                                 <constraint firstItem="OMo-gp-ZQE" firstAttribute="top" secondItem="DXk-PE-seA" secondAttribute="bottom" priority="250" constant="12" id="rgW-ka-Qsj"/>
                                                                 <constraint firstAttribute="trailing" secondItem="h9M-kZ-310" secondAttribute="trailing" constant="13" id="tmf-bQ-T36"/>
                                                                 <constraint firstItem="dAs-Vo-PIk" firstAttribute="top" secondItem="OMo-gp-ZQE" secondAttribute="top" id="tv4-7A-yc6"/>
@@ -4978,7 +4975,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tfX-uD-L2L"/>
-        <segue reference="yWH-Lh-tVT"/>
+        <segue reference="sZC-Ln-y5u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>

@@ -18,6 +18,7 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
         beautyList = item as! [TopicModel]
         beautyCollection.reloadData()
         topicRefreshControl.endRefreshing()
+        removeSpinner()
     }
     
     func topicError(error: String) {
@@ -39,7 +40,7 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showSpinner(onView: self.view)
         beautyCollection.delegate = self
         beautyCollection.dataSource = self
         

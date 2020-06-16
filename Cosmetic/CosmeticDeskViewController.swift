@@ -190,7 +190,13 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     
     //MARK: - Didload
     override func viewDidLoad() {
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        
+        sortCollection.delegate = self
+        sortCollection.dataSource = self
+        deskCollection.delegate = self
+        deskCollection.dataSource = self
+        
+        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         if userId != nil{
             showSpinner(onView: self.view)
             spinnerIsShow = true
@@ -207,8 +213,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
         
         if userId != nil{
-            downloadDesk()
-            downloadBeautySet(orderBy: "recent")
+            
             let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
             let email = UserDefaults.standard.string(forKey: ConstantUser.email)
             
@@ -233,19 +238,17 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }else if menuSegment.selectedSegmentIndex == 1{
             downloadFavoriteList(orderBy: "recent")
         }
+        downloadBeautySet(orderBy: "recent")
         welcomeNameLabel.text = UserDefaults.standard.string(forKey: ConstantUser.nickName)!
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        sortCollection.delegate = self
-        sortCollection.dataSource = self
-        deskCollection.delegate = self
-        deskCollection.dataSource = self
-        
         let nologinVc = (self.storyboard?.instantiateViewController(identifier: "nologin")) as! NoLoginViewController
         let viewControllers: [UIViewController] = self.children
         if userId != nil{
+            downloadDesk()
+            
             for vcs in viewControllers{
                 vcs.willMove(toParent: nil)
                 vcs.view.removeFromSuperview()
@@ -336,9 +339,11 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         saveTopic = item as! [TopicModel]
         countTopic.text = "\(saveTopic.count)"
-        deskCollection.reloadData()
-        removeSpinner()
-        deskRefreshControl.endRefreshing()
+        if menuSegment.selectedSegmentIndex == 2{
+            deskCollection.reloadData()
+            removeSpinner()
+            deskRefreshControl.endRefreshing()
+        }
     }
     
     func downloadSaveTopicFailed(error: String) {
