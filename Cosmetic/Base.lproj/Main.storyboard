@@ -758,7 +758,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="583"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJJ-bb-ZEV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="956.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1939.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRODUCT " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUq-Hw-luf">
                                                 <rect key="frame" x="23" y="23" width="329" height="31.5"/>
@@ -773,14 +773,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-ct-IPh">
-                                                <rect key="frame" x="0.0" y="283.5" width="375" height="351"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-1" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-ct-IPh">
+                                                <rect key="frame" x="0.0" y="283.5" width="375" height="1334"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="250" constant="240" id="UHz-ub-RHt"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="300" id="UHz-ub-RHt"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="li3-lg-XB1">
-                                                <rect key="frame" x="16" y="701" width="343" height="75"/>
+                                                <rect key="frame" x="16" y="1684" width="343" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-93-8Se">
                                                         <rect key="frame" x="72" y="12" width="263" height="17"/>
@@ -818,7 +818,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06e-3h-KgT">
-                                                <rect key="frame" x="16" y="792" width="343" height="141.5"/>
+                                                <rect key="frame" x="16" y="1775" width="343" height="141.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gu-y4-AzO">
                                                         <rect key="frame" x="72" y="12" width="263" height="17"/>
@@ -873,7 +873,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLX-7t-wL5">
-                                                <rect key="frame" x="23" y="657.5" width="329" height="20.5"/>
+                                                <rect key="frame" x="23" y="1640.5" width="329" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1777,7 +1777,7 @@
                                     <size key="itemSize" width="331" height="351"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="beautyset" id="MXo-Me-wyr" customClass="BeautyCollectionViewCell" customModule="Cosmeticas" customModuleProvider="target">
@@ -4975,14 +4975,14 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tfX-uD-L2L"/>
-        <segue reference="sZC-Ln-y5u"/>
+        <segue reference="yWH-Lh-tVT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>
         <image name="Google" width="23" height="23"/>
         <image name="arrow.turn.right.up" catalog="system" width="120" height="128"/>
         <image name="bag.fill.badge.plus" catalog="system" width="128" height="119"/>
-        <image name="bg" width="500" height="351"/>
+        <image name="bg-1" width="750" height="1334"/>
         <image name="bg4" width="1240.5" height="1754"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>

@@ -20,6 +20,7 @@
 		B31CCE432434DC3D00655A20 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */; };
 		B31D758B23B5146600363057 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758A23B5146600363057 /* AccountTableViewCell.swift */; };
 		B31D758D23B5B7DC00363057 /* AccountSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */; };
+		B322F3D224994B40006AA8FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B322F3D124994B40006AA8FC /* LaunchScreen.storyboard */; };
 		B328A0E8245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */; };
 		B328A126235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */; };
 		B32D844D238EC62200435CAA /* CosmeticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32D844C238EC62200435CAA /* CosmeticDetailViewController.swift */; };
@@ -81,7 +82,6 @@
 		B3C2F9ED2245002C0054EE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */; };
 		B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F22245002C0054EE16 /* Main.storyboard */; };
 		B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F52245002E0054EE16 /* Assets.xcassets */; };
-		B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */; };
 		B3C2FA042245002E0054EE16 /* CosmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA032245002E0054EE16 /* CosmeticTests.swift */; };
 		B3C2FA0F2245002E0054EE16 /* CosmeticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2FA0E2245002E0054EE16 /* CosmeticUITests.swift */; };
 		B3CA9BE12465750E0037937F /* OtherSignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CA9BE02465750E0037937F /* OtherSignInTableViewController.swift */; };
@@ -146,6 +146,7 @@
 		B31CCE422434DC3D00655A20 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		B31D758A23B5146600363057 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		B31D758C23B5B7DC00363057 /* AccountSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewController.swift; sourceTree = "<group>"; };
+		B322F3D124994B40006AA8FC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B328A0E7245DC2B20040AC5C /* SearchFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B328A12323543EAF00915CDB /* Cosmetic copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Cosmetic copy-Info.plist"; path = "/Users/omp/cosmetic-ios/Cosmetic copy-Info.plist"; sourceTree = "<absolute>"; };
 		B328A125235441BC00915CDB /* CategoriesDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C2F9F32245002C0054EE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3C2F9F52245002E0054EE16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B3C2F9F82245002E0054EE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3C2F9FA2245002E0054EE16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C2F9FF2245002E0054EE16 /* CosmeticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmeticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2FA032245002E0054EE16 /* CosmeticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticTests.swift; sourceTree = "<group>"; };
@@ -472,8 +472,8 @@
 				B33B6EA022904052008F3AEE /* getObject */,
 				B3BE28A42391868100AE22C6 /* CosmeticDetail */,
 				B3C2F9EC2245002C0054EE16 /* AppDelegate.swift */,
+				B322F3D124994B40006AA8FC /* LaunchScreen.storyboard */,
 				B3C2F9F22245002C0054EE16 /* Main.storyboard */,
-				B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */,
 				B3C2F9F52245002E0054EE16 /* Assets.xcassets */,
 				B3C2F9FA2245002E0054EE16 /* Info.plist */,
 				B37E34D0232D783300FD4780 /* GoogleService-Info.plist */,
@@ -652,12 +652,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C0501A2420DE0100F1536B /* DebugLocal.xcconfig in Resources */,
-				B3C2F9F92245002E0054EE16 /* LaunchScreen.storyboard in Resources */,
 				B3C0501B2420DE0100F1536B /* Debug.xcconfig in Resources */,
 				B3C2F9F62245002E0054EE16 /* Assets.xcassets in Resources */,
 				B3C2F9F42245002C0054EE16 /* Main.storyboard in Resources */,
 				B37E34D1232D783300FD4780 /* GoogleService-Info.plist in Resources */,
 				B3C050192420DE0100F1536B /* Release.xcconfig in Resources */,
+				B322F3D224994B40006AA8FC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,14 +928,6 @@
 				B3C2F9F32245002C0054EE16 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B3C2F9F72245002E0054EE16 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3C2F9F82245002E0054EE16 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
