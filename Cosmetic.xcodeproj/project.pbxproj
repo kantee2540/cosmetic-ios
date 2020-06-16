@@ -100,6 +100,7 @@
 		B3EB7C2C247FDB9000226886 /* CountLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EB7C2B247FDB9000226886 /* CountLike.swift */; };
 		B3EB7C2E247FECBA00226886 /* SetLikeUnlike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EB7C2D247FECBA00226886 /* SetLikeUnlike.swift */; };
 		B3ED714A236C7B3300DD1412 /* ConstantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED7149236C7B3300DD1412 /* ConstantName.swift */; };
+		B3F111B42498CA170057A3A0 /* SortListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F111B32498CA170057A3A0 /* SortListCollectionViewCell.swift */; };
 		B3F319C32278B6C1005B2AE2 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C22278B6C0005B2AE2 /* ProductModel.swift */; };
 		B3F319C52278B9FB005B2AE2 /* DownloadProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */; };
 		B3FC3AC82421051C004E098D /* WriteTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */; };
@@ -234,6 +235,7 @@
 		B3EB7C2B247FDB9000226886 /* CountLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLike.swift; sourceTree = "<group>"; };
 		B3EB7C2D247FECBA00226886 /* SetLikeUnlike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLikeUnlike.swift; sourceTree = "<group>"; };
 		B3ED7149236C7B3300DD1412 /* ConstantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantName.swift; sourceTree = "<group>"; };
+		B3F111B32498CA170057A3A0 /* SortListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortListCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3F319C22278B6C0005B2AE2 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B3F319C42278B9FB005B2AE2 /* DownloadProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProduct.swift; sourceTree = "<group>"; };
 		B3FC3AC72421051C004E098D /* WriteTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTopicViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				B37A609223DB5895001FE027 /* NoLoginViewController.swift */,
 				B3D7D3EA2424ED9600F6B95B /* NoItemInDrawerViewController.swift */,
 				B354445024976A86005DB70B /* BeautySetCollectionViewCell.swift */,
+				B3F111B32498CA170057A3A0 /* SortListCollectionViewCell.swift */,
 			);
 			name = CosmeticDesk;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				B316840B23940D80005F4D88 /* TopicModel.swift in Sources */,
 				B3197B5A246E89CA0015DAD9 /* ResetPasswordViewController.swift in Sources */,
 				B3463FBA2433AEAB00EC743B /* ChooseProductTopicTableViewCell.swift in Sources */,
+				B3F111B42498CA170057A3A0 /* SortListCollectionViewCell.swift in Sources */,
 				B3D7D3EB2424ED9600F6B95B /* NoItemInDrawerViewController.swift in Sources */,
 				B3BFC8C5242341BF00C7C430 /* DrawerModel.swift in Sources */,
 				B33B6E9F2290404D008F3AEE /* BrandModel.swift in Sources */,

@@ -79,7 +79,7 @@ class SaveTopicTableViewController: UITableViewController, DownloadSaveTopicDele
     private func downloadSaveTopic(userId: String){
         let downloadSaveTopic = DownloadSaveTopic()
         downloadSaveTopic.delegate = self
-        downloadSaveTopic.downloadSaveTopic(userId: userId)
+        downloadSaveTopic.downloadSaveTopic(userId: userId, orderBy: "recent")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -22,19 +22,20 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
         self.delegate?.itemCosmeticDeskFailed(error: error)
     }
     
-
     var delegate: DownloadCosmeticDeskListDelegate?
     
     let getAddress = webAddress()
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func getCosmeticDeskByUserid(userId: String){
+    func getCosmeticDeskByUserid(userId: String, orderBy: String){
         postParameter["user_id"] = userId
+        postParameter["orderby"] = orderBy
         downloadItem()
     }
-    func getFavorite(userId: String){
+    func getFavorite(userId: String, orderBy: String){
         postParameter = ["user_id": userId, "favorite": 9]
+        postParameter["orderby"] = orderBy
         downloadItem()
     }
     
