@@ -90,6 +90,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     
     @objc func openCamera(_ :UIBarButtonItem){
         let vc = storyboard?.instantiateViewController(withIdentifier: "cameraViewController")
+        vc?.modalPresentationStyle = .fullScreen
         self.navigationController?.present(vc!, animated: true, completion: nil)
     }
     

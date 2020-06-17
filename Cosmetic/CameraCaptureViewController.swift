@@ -23,18 +23,20 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     var isCapturing: Bool = false
 
     @IBOutlet weak var captureButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
     @IBOutlet weak var controlContainer: UIView!
+    @IBOutlet weak var tipLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCamera()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         setupControlContainer()
         if isCapturing{
             self.captureSession.startRunning()
@@ -43,14 +45,22 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     private func setupControlContainer(){
-        controlContainer.layer.cornerRadius = 8
         controlContainer.clipsToBounds = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewWillDisappear(animated)
         self.captureSession.stopRunning()
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
     }
     
     @IBAction func doneButton(_ sender: Any) {
@@ -64,6 +74,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         captureSession!.sessionPreset = AVCaptureSession.Preset.photo
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
             else{
+                Library.displayAlert(targetVC: self, title: "Camera Error", message: "Unable to access back camera!")
                 print("Unable to access back camera!")
                 return
             }
@@ -97,11 +108,18 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         }
         
     }
+    @IBAction func tapClose(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Photo Capture
     @IBAction func tapCapture(_ sender: Any) {
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        stillImageOutput.capturePhoto(with: settings, delegate: self)
+        if isCapturing{
+            let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+            stillImageOutput.capturePhoto(with: settings, delegate: self)
+        }else{
+            searchFromImage()
+        }
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -142,7 +160,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     //MARK: - Begin Search
-    @IBAction func tapSearch(_ sender: Any) {
+    private func searchFromImage() {
         searchArray = Array()
         var startCount :Int = 0
         var charCount :Int = 0
@@ -179,15 +197,15 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     private func capturingPhoto(){
         isCapturing = true
-        captureButton.isHidden = false
-        searchButton.isHidden = true
+        captureButton.setBackgroundImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
+        tipLabel.text = "Arrange the cosmetic label to camera"
         retakeButton.isHidden = true
     }
     
     private func afterCapturePhoto(){
         isCapturing = false
-        captureButton.isHidden = true
-        searchButton.isHidden = false
+        captureButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        tipLabel.text = "Tap search to get result"
         retakeButton.isHidden = false
     }
     

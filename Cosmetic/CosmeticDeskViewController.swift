@@ -470,6 +470,11 @@ extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveT
             (UIAlertAction) in
         }))
         
+        if let popoverController = setOption.popoverPresentationController{
+            popoverController.sourceView = button
+            popoverController.sourceRect = button.bounds
+        }
+        
         self.present(setOption, animated: true, completion: nil)
     }
     
