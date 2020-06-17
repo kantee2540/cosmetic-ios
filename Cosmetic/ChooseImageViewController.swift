@@ -38,8 +38,23 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         pickerController.delegate = self
         pickerController.allowsEditing = false
         pickerController.mediaTypes = ["public.image"]
-        pickerController.sourceType = .photoLibrary
-        navigationController?.present(pickerController, animated: true, completion: nil)
+        
+        let action = UIAlertController(title: "Select Image", message: "", preferredStyle: .actionSheet)
+        action.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+            (UIAlertAction) in
+            pickerController.sourceType = .camera
+            self.navigationController?.present(pickerController, animated: true, completion: nil)
+        }))
+        action.addAction(UIAlertAction(title: "Library", style: .default, handler: {
+            (UIAlertAction) in
+            pickerController.sourceType = .photoLibrary
+            self.navigationController?.present(pickerController, animated: true, completion: nil)
+        }))
+        action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (UIAlertAction) in
+        }))
+        
+        self.present(action, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

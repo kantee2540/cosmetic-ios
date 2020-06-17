@@ -422,7 +422,7 @@
             <objects>
                 <viewController storyboardIdentifier="TopTopic" id="wgc-Gb-F3f" customClass="TopTopicViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V3M-F6-vZW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JY6-Xy-JvX">
@@ -733,7 +733,7 @@
             <objects>
                 <viewController storyboardIdentifier="productdetail" id="jmB-xZ-ZUV" customClass="CosmeticDetailViewController" customModule="Cosmeticas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tx5-W9-2qQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5Y-RS-Haj">
@@ -1303,7 +1303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcr-hH-fgf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3074" y="1602"/>
+            <point key="canvasLocation" x="-4449" y="2233"/>
         </scene>
         <!--No Login View Controller-->
         <scene sceneID="7XD-2H-rO2">
@@ -1383,7 +1383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DM0-O9-fdv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2223" y="1602"/>
+            <point key="canvasLocation" x="-3598" y="2233"/>
         </scene>
         <!--Cosmetic Desk-->
         <scene sceneID="aLt-LW-uEd">
@@ -1871,6 +1871,121 @@
             </objects>
             <point key="canvasLocation" x="-1906.4000000000001" y="836.13193403298362"/>
         </scene>
+        <!--Became beauty blogger-->
+        <scene sceneID="9BT-Hm-oRA">
+            <objects>
+                <viewController id="OIU-nD-SH8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zap-jD-oD8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIY-tU-Qa2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iJ-Cb-WTX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="983.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beautyblogger" translatesAutoresizingMaskIntoConstraints="NO" id="uUS-AD-oQp">
+                                                <rect key="frame" x="87.5" y="24" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="IhJ-fg-HsX"/>
+                                                    <constraint firstAttribute="width" constant="200" id="bAo-OH-eVf"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1I-Zi-6jh">
+                                                <rect key="frame" x="16" y="230" width="343" height="86.5"/>
+                                                <string key="text">Do you want to share and love to review the cosmetic makeup you used everyday to public? post it to Cosmeticas! create opportunity to everyone know you.</string>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to post?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M8-Fs-KlD">
+                                                <rect key="frame" x="16" y="346.5" width="343" height="33.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QY-Va-47Q">
+                                                <rect key="frame" x="16" y="403" width="343" height="350.5"/>
+                                                <string key="text">1. Go to me tab then tap post mekeup set to begin create the set
+
+2. Type the title and description of you set "how's about your set?"
+
+3. Select your smiley face or other image link to your title and product that you're selected.
+
+4. Select the product that you're used to your set. they will show to your set. everyone can view more the detail of product.
+
+5. Post it! your set will become into the public everyone can seeyou and follow you.</string>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How about to your set after posted?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTy-By-8Wf">
+                                                <rect key="frame" x="16" y="783.5" width="343" height="67.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvo-Ck-3qL">
+                                                <rect key="frame" x="16" y="874" width="343" height="86.5"/>
+                                                <string key="text">If you have like that result of your post have someone known you!
+
+Enjoy and have fun our app!</string>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="1000" id="1QU-Ov-5CN"/>
+                                            <constraint firstItem="9M8-Fs-KlD" firstAttribute="leading" secondItem="q1I-Zi-6jh" secondAttribute="leading" id="4db-1y-Vhw"/>
+                                            <constraint firstAttribute="trailing" secondItem="q1I-Zi-6jh" secondAttribute="trailing" constant="16" id="96F-iI-FUy"/>
+                                            <constraint firstAttribute="bottom" secondItem="Dvo-Ck-3qL" secondAttribute="bottom" constant="23" id="98e-pc-b0a"/>
+                                            <constraint firstItem="lTy-By-8Wf" firstAttribute="trailing" secondItem="0QY-Va-47Q" secondAttribute="trailing" id="Bm0-xk-vC4"/>
+                                            <constraint firstItem="q1I-Zi-6jh" firstAttribute="top" secondItem="2iJ-Cb-WTX" secondAttribute="top" constant="230" id="GhX-ZO-w1I"/>
+                                            <constraint firstItem="0QY-Va-47Q" firstAttribute="trailing" secondItem="9M8-Fs-KlD" secondAttribute="trailing" id="L5e-nm-b4X"/>
+                                            <constraint firstItem="0QY-Va-47Q" firstAttribute="top" secondItem="9M8-Fs-KlD" secondAttribute="bottom" constant="23" id="NC8-MC-Erc"/>
+                                            <constraint firstItem="0QY-Va-47Q" firstAttribute="leading" secondItem="9M8-Fs-KlD" secondAttribute="leading" id="QoF-bb-4ly"/>
+                                            <constraint firstItem="Dvo-Ck-3qL" firstAttribute="leading" secondItem="lTy-By-8Wf" secondAttribute="leading" id="Vvd-Cw-9Ng"/>
+                                            <constraint firstItem="9M8-Fs-KlD" firstAttribute="trailing" secondItem="q1I-Zi-6jh" secondAttribute="trailing" id="Z9e-YI-Nn5"/>
+                                            <constraint firstItem="q1I-Zi-6jh" firstAttribute="leading" secondItem="2iJ-Cb-WTX" secondAttribute="leading" constant="16" id="a4r-Ce-6Cd"/>
+                                            <constraint firstItem="Dvo-Ck-3qL" firstAttribute="trailing" secondItem="lTy-By-8Wf" secondAttribute="trailing" id="czG-tB-cQt"/>
+                                            <constraint firstItem="lTy-By-8Wf" firstAttribute="top" secondItem="0QY-Va-47Q" secondAttribute="bottom" constant="30" id="dLr-EV-4An"/>
+                                            <constraint firstItem="uUS-AD-oQp" firstAttribute="centerX" secondItem="2iJ-Cb-WTX" secondAttribute="centerX" id="dRW-Dy-L9Y"/>
+                                            <constraint firstItem="lTy-By-8Wf" firstAttribute="leading" secondItem="0QY-Va-47Q" secondAttribute="leading" id="fjW-Ck-mQd"/>
+                                            <constraint firstItem="uUS-AD-oQp" firstAttribute="top" secondItem="2iJ-Cb-WTX" secondAttribute="top" constant="24" id="gkh-LO-Bsv"/>
+                                            <constraint firstItem="9M8-Fs-KlD" firstAttribute="top" secondItem="q1I-Zi-6jh" secondAttribute="bottom" constant="30" id="oYO-07-3xH"/>
+                                            <constraint firstItem="Dvo-Ck-3qL" firstAttribute="top" secondItem="lTy-By-8Wf" secondAttribute="bottom" constant="23" id="qHB-Ea-sHh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2iJ-Cb-WTX" firstAttribute="top" secondItem="bIY-tU-Qa2" secondAttribute="top" id="BLc-hT-SYC"/>
+                                    <constraint firstAttribute="bottom" secondItem="2iJ-Cb-WTX" secondAttribute="bottom" id="EVy-aN-zG1"/>
+                                    <constraint firstAttribute="trailing" secondItem="2iJ-Cb-WTX" secondAttribute="trailing" id="FP3-FW-p3q"/>
+                                    <constraint firstItem="2iJ-Cb-WTX" firstAttribute="leading" secondItem="bIY-tU-Qa2" secondAttribute="leading" id="Jg2-XP-KGi"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="icq-cx-ceO"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="khe-rg-SOY"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bIY-tU-Qa2" firstAttribute="leading" secondItem="7M1-bP-3Lr" secondAttribute="leading" id="WKj-qg-nwM"/>
+                            <constraint firstItem="2iJ-Cb-WTX" firstAttribute="width" secondItem="zap-jD-oD8" secondAttribute="width" id="e5o-zq-oXG"/>
+                            <constraint firstItem="bIY-tU-Qa2" firstAttribute="trailing" secondItem="7M1-bP-3Lr" secondAttribute="trailing" id="eiR-m8-Pej"/>
+                            <constraint firstItem="bIY-tU-Qa2" firstAttribute="bottom" secondItem="7M1-bP-3Lr" secondAttribute="bottom" id="hVY-2c-9Di"/>
+                            <constraint firstItem="bIY-tU-Qa2" firstAttribute="top" secondItem="zap-jD-oD8" secondAttribute="top" id="spb-5b-uzD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7M1-bP-3Lr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Became beauty blogger" id="2OF-hB-WqQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGs-rA-P9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1879.2" y="1583.6581709145428"/>
+        </scene>
         <!--Me-->
         <scene sceneID="2S7-2Z-JyX">
             <objects>
@@ -1986,6 +2101,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="OIU-nD-SH8" kind="show" id="Bt6-pY-wec"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -3188,7 +3306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJx-5h-wj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1343" y="1800"/>
+            <point key="canvasLocation" x="-106" y="725"/>
         </scene>
         <!--Term and Condition-->
         <scene sceneID="b29-xM-nPo">
@@ -5038,14 +5156,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mi2-vE-bcf"/>
-        <segue reference="yWH-Lh-tVT"/>
+        <segue reference="tfX-uD-L2L"/>
+        <segue reference="sZC-Ln-y5u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>
         <image name="Google" width="23" height="23"/>
         <image name="arrow.turn.right.up" catalog="system" width="120" height="128"/>
         <image name="bag.fill.badge.plus" catalog="system" width="128" height="119"/>
+        <image name="beautyblogger" width="400" height="400"/>
         <image name="bg-1" width="750" height="1334"/>
         <image name="bg4" width="1240.5" height="1754"/>
         <image name="bolt.circle" catalog="system" width="128" height="121"/>
