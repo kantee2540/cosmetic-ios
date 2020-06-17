@@ -70,11 +70,12 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
             if Auth.auth().currentUser != nil{
                 return 3
             }else{
-                return 0
+                return 1
             }
         }
+            
         else{
-            return 2
+            return 1
         }
         
     }
@@ -152,8 +153,6 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
         }
         if indexPath.section == 1 && Auth.auth().currentUser == nil{
             return 0.01
-        }else if indexPath.section == 2 && Auth.auth().currentUser == nil{
-            return 0.01
         }else{
             return 50
         }
@@ -161,8 +160,6 @@ class MeTableViewController: UITableViewController, DownloadUserProtocol {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 && Auth.auth().currentUser == nil{
-            return 0.01
-        }else if section == 2 && Auth.auth().currentUser == nil{
             return 0.01
         }else{
             return UITableView.automaticDimension
