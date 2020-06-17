@@ -124,6 +124,11 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
             cell.titleTextView.text = item.product_name
             let imageUrl = URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!
             cell.productImage.downloadImage(from: imageUrl)
+            cell.categoriesLabel.text = item.categories_name
+            let numberFormat = NumberFormatter()
+            numberFormat.numberStyle = .decimal
+            let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+            cell.priceLabel.text = "\(formattedPrice ?? "")฿"
             
             return cell
         }
