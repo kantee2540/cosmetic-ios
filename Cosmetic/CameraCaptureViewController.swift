@@ -21,12 +21,14 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     var searchArray: Array<String>!
     var resultText: String = ""
     var isCapturing: Bool = false
+    var isFlashOn: Bool = false
 
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
     @IBOutlet weak var controlContainer: UIView!
     @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var flashButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +96,30 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             setupLivePreview()
         }
         
+    }
+    
+    func toggleTorch(on: Bool){
+        guard let device = AVCaptureDevice.default(for: .video) else{ return }
+        if device.hasTorch{
+            do{
+                try device.lockForConfiguration()
+                
+                if on{
+                    device.torchMode = .on
+                    flashButton.setBackgroundImage(UIImage(systemName: "bolt.circle.fill"), for: .normal)
+                    isFlashOn = true
+                }else{
+                    device.torchMode = .off
+                    flashButton.setBackgroundImage(UIImage(systemName: "bolt.circle"), for: .normal)
+                    isFlashOn = false
+                }
+                device.unlockForConfiguration()
+            }catch{
+                print("Torch could not be used")
+            }
+        }else{
+            print("Torch not available")
+        }
     }
     
     private func setupLivePreview(){
@@ -189,6 +215,13 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         }
         navigationController?.pushViewController(infoVc!, animated: true)
     }
+    @IBAction func tapFlash(_ sender: Any) {
+        if !isFlashOn{
+            toggleTorch(on: true)
+        }else{
+            toggleTorch(on: false)
+        }
+    }
     
     @IBAction func tapRetake(_ sender: Any) {
         setupCamera()
@@ -200,6 +233,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         captureButton.setBackgroundImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
         tipLabel.text = "Arrange the cosmetic label to camera"
         retakeButton.isHidden = true
+        flashButton.isHidden = false
     }
     
     private func afterCapturePhoto(){
@@ -207,6 +241,8 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         captureButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         tipLabel.text = "Tap search to get result"
         retakeButton.isHidden = false
+        flashButton.isHidden = true
+        flashButton.setBackgroundImage(UIImage(systemName: "bolt.circle"), for: .normal)
     }
     
     //MARK: - Firebase text processing

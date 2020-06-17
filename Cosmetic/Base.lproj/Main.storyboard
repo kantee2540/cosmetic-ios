@@ -4753,7 +4753,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT8-vF-UJn">
-                                                    <rect key="frame" x="335" y="12" width="32" height="31"/>
+                                                    <rect key="frame" x="327" y="12" width="32" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="2lJ-G5-nVN"/>
                                                         <constraint firstAttribute="width" constant="32" id="hGi-uk-gKG"/>
@@ -4766,10 +4766,24 @@
                                                         <action selector="tapClose:" destination="ciI-mB-J50" eventType="touchUpInside" id="9ac-0Y-1Xd"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMU-Em-1PV">
+                                                    <rect key="frame" x="16" y="11.5" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="53u-tI-Ujg"/>
+                                                        <constraint firstAttribute="height" constant="33" id="iLc-4m-xf7"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" backgroundImage="bolt.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="tapFlash:" destination="ciI-mB-J50" eventType="touchUpInside" id="AUv-Qo-vPm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="gT8-vF-UJn" secondAttribute="trailing" constant="8" id="F7G-Qc-CNA"/>
+                                                <constraint firstAttribute="trailing" secondItem="gT8-vF-UJn" secondAttribute="trailing" constant="16" id="F7G-Qc-CNA"/>
                                                 <constraint firstItem="gT8-vF-UJn" firstAttribute="centerY" secondItem="hid-gV-6um" secondAttribute="centerY" id="IzD-su-t2X"/>
+                                                <constraint firstItem="dMU-Em-1PV" firstAttribute="leading" secondItem="hid-gV-6um" secondAttribute="leading" constant="16" id="KBv-aF-NaY"/>
+                                                <constraint firstItem="dMU-Em-1PV" firstAttribute="centerY" secondItem="hid-gV-6um" secondAttribute="centerY" id="Wvv-7u-S8V"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="regular"/>
@@ -4808,6 +4822,7 @@
                     <connections>
                         <outlet property="captureButton" destination="Atg-qj-g0q" id="8vD-6I-quq"/>
                         <outlet property="controlContainer" destination="VBX-Ux-97O" id="vyT-ZX-ujP"/>
+                        <outlet property="flashButton" destination="dMU-Em-1PV" id="wPn-yN-Ckz"/>
                         <outlet property="photoPreviewImageView" destination="Z92-0q-80k" id="GM8-f2-c0M"/>
                         <outlet property="retakeButton" destination="Lq5-Gd-J5n" id="UNz-Ms-1Bw"/>
                         <outlet property="tipLabel" destination="Cv2-xA-2nd" id="mOP-jB-1hl"/>
@@ -5011,6 +5026,7 @@
         <image name="bag.fill.badge.plus" catalog="system" width="128" height="119"/>
         <image name="bg-1" width="750" height="1334"/>
         <image name="bg4" width="1240.5" height="1754"/>
+        <image name="bolt.circle" catalog="system" width="128" height="121"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
