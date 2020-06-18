@@ -11,9 +11,9 @@ import UIKit
 class CameraResultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleTextView: UILabel!
-    @IBOutlet weak var descriptionTextView: UILabel!
-    @IBOutlet weak var priceTextView: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

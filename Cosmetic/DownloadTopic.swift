@@ -10,49 +10,55 @@ import UIKit
 
 public protocol DownloadTopicProtocol: class{
     func topicDownloaded(item: NSMutableArray)
+    func topicError(error: String)
 }
 
-class DownloadTopic: NSObject {
+class DownloadTopic: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        delegate?.topicError(error: error)
+    }
+    
     weak var delegate: DownloadTopicProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: Any] = [:]
     
     func downloadLimitTopic(limit lim: Int){
-        postParameter = "topic_limit=\(lim)"
+        postParameter["topic_limit"] = lim
+        downloadItem()
+    }
+    func downloadTopLimitTopic(limit lim: Int){
+        postParameter["top_limit"] = lim
+        downloadItem()
+    }
+    
+    func getTopicById(topicId id: String){
+        postParameter["topic_id"] = id
+        downloadItem()
+    }
+    
+    func getTopicByUserId(userId id: String){
+        postParameter["user_id"] = id
         downloadItem()
     }
     
     func getTopicId(code topicCode: String){
-        postParameter = "topic_code=\(topicCode)"
+        postParameter["topic_code"] = topicCode
         downloadItem()
     }
     
     func downloadItem(){
         DB_URL = getAddress.getTopicURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
+        let network = Network()
+        network.delegate = self
+        network.get(URL: DB_URL, param: postParameter)
         
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Package")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
     }
     
     @objc func parseJSON(_ data:Data){
@@ -66,31 +72,37 @@ class DownloadTopic: NSObject {
         
 
         var jsonElement = NSDictionary()
-        let products = NSMutableArray()
+        let topics = NSMutableArray()
         
         for i in 0 ..< jsonResult.count{
             jsonElement = jsonResult[i] as! NSDictionary
-            let product = TopicModel()
+            let topic = TopicModel()
             
             if  let topic_id = jsonElement[ConstantProduct.topicId] as? String,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
                 let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
                 let topic_code = jsonElement[ConstantProduct.topic_code] as? String,
-                let topic_img = jsonElement[ConstantProduct.topic_img] as? String
+                let topic_img = jsonElement[ConstantProduct.topic_img] as? String,
+                let user_id = jsonElement[ConstantUser.userId] as? String,
+                let nickname = jsonElement[ConstantUser.nickName] as? String,
+                let profilePic = jsonElement[ConstantUser.profilepic] as? String
             {
-                product.topic_id = topic_id
-                product.topic_name = topic_name
-                product.topic_description = topic_description
-                product.topic_code = topic_code
-                product.topic_img = topic_img
+                topic.topic_id = topic_id
+                topic.topic_name = topic_name
+                topic.topic_description = topic_description
+                topic.topic_code = topic_code
+                topic.topic_img = topic_img
+                topic.user_id = user_id
+                topic.nickname = nickname
+                topic.userImg = profilePic
                 
             }
             
-            products.add(product)
+            topics.add(topic)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            self.delegate?.topicDownloaded(item: products)
+            self.delegate?.topicDownloaded(item: topics)
         })
         
     }

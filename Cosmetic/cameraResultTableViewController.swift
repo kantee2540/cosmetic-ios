@@ -16,33 +16,39 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     var searchedProduct: [ProductModel] = []
     var session :URLSession!
     
-    @IBOutlet var resultTableView: UITableView!
-    
+    @IBOutlet weak var resultCountLabel: UILabel!
     func itemDownloaded(item: NSMutableArray) {
         resultItem = item as! [ProductModel]
+        
         if capturedWord != nil{
             for item in resultItem{
-                
+
                 let productName = item.product_name!
                 let exProductName = extractString(toExtract: productName)
-                
+
                 for x in exProductName{
                     if capturedWord.contains(where: {$0 == x.lowercased()}){
                         searchedProduct.append(item)
                     }
                 }
             }
-            
-        }
-        if searchedProduct.count != 0{
-            resultTableView.separatorStyle = .singleLine
-        }
-        else{
-            resultTableView.separatorStyle = .none
+
         }
         
-        resultTableView.reloadData()
+        if searchedProduct.count > 0{
+            self.tableView.separatorStyle = .singleLine
+            resultCountLabel.text = "About \(searchedProduct.count) Cosmetics from text in image."
+        }
+        else{
+            self.tableView.separatorStyle = .none
+        }
+        
+        self.tableView.reloadData()
         removeSpinner()
+    }
+    
+    func itemDownloadFailed(error_mes: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: "Something went wrong\n\(error_mes)")
     }
     
     private func extractString(toExtract string: String) -> Array<String>{
@@ -71,8 +77,8 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.resultTableView.delegate = self
-        self.resultTableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
@@ -84,7 +90,7 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeMoreDetail"{
             let destination = segue.destination as? CosmeticDetailViewController
-            let itemIndex = resultTableView.indexPathForSelectedRow?.row
+            let itemIndex = self.tableView.indexPathForSelectedRow?.row
             let item = searchedProduct[itemIndex!]
             destination?.productId = item.product_id
         }
@@ -99,31 +105,30 @@ class cameraResultTableViewController: UITableViewController, DownloadProductPro
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchedProduct.count != 0{
+        if searchedProduct.count > 0{
             return searchedProduct.count
         }
         else{
             return 1
         }
         
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         /// If have item for display
-        if searchedProduct.count != 0 {
+        if searchedProduct.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "resultViewCell", for: indexPath) as! CameraResultTableViewCell
             let item :ProductModel = searchedProduct[indexPath.row]
             
             cell.titleTextView.text = item.product_name
-            cell.descriptionTextView.text = item.product_description
+            let imageUrl = URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!
+            cell.productImage.downloadImage(from: imageUrl)
+            cell.categoriesLabel.text = item.categories_name
             let numberFormat = NumberFormatter()
             numberFormat.numberStyle = .decimal
-            let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price ?? 0))
-            cell.priceTextView.text = "Price : " + formattedPrice! + " Baht"
-            let imageUrl = URL(string: item.product_img!)!
-            cell.productImage.downloadImage(from: imageUrl)
+            let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+            cell.priceLabel.text = "\(formattedPrice ?? "")฿"
             
             return cell
         }

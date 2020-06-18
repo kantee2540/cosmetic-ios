@@ -12,43 +12,33 @@ public protocol DownloadPackageProtocol: class {
     func itemDownloaded(item: NSMutableArray)
 }
 
-class DownloadPackage: NSObject {
+class DownloadPackage: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     
     weak var delegate: DownloadPackageProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: String] = [:]
     
     func downloadByTopicId(id topicId: String){
-        postParameter = "topic_id=\(topicId)"
+        postParameter["topic_id"] = topicId
         downloadItem()
     }
     
     func downloadItem(){
         DB_URL = getAddress.getPackageURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
-        
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Package")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        let network = Network()
+        network.delegate = self
+        network.get(URL: DB_URL, param: postParameter)
     }
     
     func parseJSON(_ data:Data){
@@ -76,7 +66,9 @@ class DownloadPackage: NSObject {
                 let topic_id = jsonElement[ConstantProduct.topicId] as? String,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
                 let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
-                let topic_code = jsonElement[ConstantProduct.topic_code] as? String
+                let topic_code = jsonElement[ConstantProduct.topic_code] as? String,
+                let categories_id = jsonElement[ConstantCategories.categoriesId] as? String,
+                let categories_name = jsonElement[ConstantCategories.categoriesName] as? String
             {
                 product.product_id = product_id
                 product.product_name = product_name
@@ -87,7 +79,8 @@ class DownloadPackage: NSObject {
                 product.topic_name = topic_name
                 product.topic_description = topic_description
                 product.topic_code = topic_code
-                
+                product.categories_id = categories_id
+                product.categories_name = categories_name
             }
             
             products.add(product)

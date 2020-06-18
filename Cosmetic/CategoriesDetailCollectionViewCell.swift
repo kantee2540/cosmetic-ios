@@ -9,7 +9,8 @@
 import UIKit
 
 class CategoriesDetailCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var categoriesIcon: UIImageView!
-    @IBOutlet weak var categoriesName: UILabel!
+    
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var filterLabel: UILabel!
     
 }

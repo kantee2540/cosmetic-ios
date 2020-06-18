@@ -8,16 +8,76 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, DownloadUserProtocol{
+    
     var window: UIWindow?
+    
+    //MARK: - Sign in with Google
+    func itemDownloadUser(item: UserModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nav = window?.rootViewController as? UINavigationController
+        
+        if item.firstName != nil{
+            Library.setUserDefault(user: item)
+            nav?.popToRootViewController(animated: true)
+        }else{
+            let vc = storyboard.instantiateViewController(withIdentifier: "profile")
+            nav?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func itemUserError(error: String) {
+        let nav = window?.rootViewController as? UINavigationController
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
+            nav?.popToRootViewController(animated: true)
+        }))
+        nav!.present(alert, animated: true, completion: nil)
+    }
 
-
+    //MARK: - Application has start
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        
+        if let url = launchOptions?[.url] as? URL{
+            print(url)
+        }
+        
+        //First run app
+        let launchBefore = UserDefaults.standard.bool(forKey: "launchBefore")
+        
+        //Check user
+        let auth = Auth.auth()
+        if launchBefore{
+            if auth.currentUser != nil{
+                let uid = auth.currentUser?.uid
+                let downloadUser = DownloadUser()
+                downloadUser.delegate = self
+                downloadUser.getCurrentUserprofile(uid: uid!)
+            }
+        }else{
+            UserDefaults.standard.set(true, forKey: "launchBefore")
+            do{
+                try auth.signOut()
+                Library.removeUserDefault()
+                
+            }catch let signoutError as NSError{
+                print("Error Signout : \(signoutError)")
+            }
+        }
+        
         return true
     }
 
@@ -43,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    //MARK: - Tapic touch shortcut
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         
         //3DTouch Shortcut
@@ -54,7 +115,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
        
     }
-
+    
+    //MARK: - Deep link feature
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let nav = window?.rootViewController as? UINavigationController
+        
+        if url.host == "cosmetic"{
+            var param: [String: String] = [:]
+            
+            URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach{
+                param[$0.name] = $0.value
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "productdetail") as? CosmeticDetailViewController
+            vc?.productId = param["id"]
+            nav?.present(vc!, animated: true, completion: nil)
+            
+        }else if url.host == "topic"{
+            var param: [String: String] = [:]
+            
+            URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach{
+                param[$0.name] = $0.value
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "TopTopic") as? TopTopicViewController
+            vc?.topicId = param["id"]
+            nav?.present(vc!, animated: true, completion: nil)
+            
+        }
+        
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
+        return (GIDSignIn.sharedInstance()?.handle(url))!
+    }
 
 }
 

@@ -12,7 +12,15 @@ protocol DownloadCategoriesProtocol: class {
     func itemDownloadedCategories(item: NSMutableArray)
 }
 
-class DownloadCategories: NSObject {
+class DownloadCategories: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     
     weak var delegate: DownloadCategoriesProtocol?
     //Change this if URL of database is changed
@@ -22,23 +30,9 @@ class DownloadCategories: NSObject {
     func downloadItem(){
         DB_URL = getAddress.getCategoriesURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded all Categories")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        let network = Network()
+        network.delegate = self
+        network.get(URL: DB_URL, param: [:])
     }
     
     func parseJSON(_ data:Data){

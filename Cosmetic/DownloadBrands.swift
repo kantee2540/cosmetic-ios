@@ -12,7 +12,15 @@ import UIKit
     func itemDownloadedBrands(item: NSMutableArray)
 }
 
-@objc class DownloadBrands: NSObject {
+@objc class DownloadBrands: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
+    
+    func downloadFailed(error: String) {
+        
+    }
+    
     @objc weak var delegate: DownloadBrandProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
@@ -21,23 +29,9 @@ import UIKit
     @objc func downloadItem(){
         DB_URL = getAddress.getBrandURL()
         
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Brands")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+        let network = Network()
+        network.delegate = self
+        network.get(URL: DB_URL, param: [:])
     }
     
     @objc func parseJSON(_ data:Data){

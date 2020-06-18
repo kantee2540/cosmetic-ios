@@ -8,65 +8,112 @@
 
 import UIKit
 
-@objc public protocol DownloadProductProtocol: class {
+public protocol DownloadProductProtocol: class {
     func itemDownloaded(item: NSMutableArray)
+    func itemDownloadFailed(error_mes: String)
 }
 
-@objc class DownloadProduct: NSObject {
+class DownloadProduct: NSObject, NetworkDelegate {
+    func downloadSuccess(data: Data) {
+        self.parseJSON(data)
+    }
     
-    @objc weak var delegate: DownloadProductProtocol?
+    func downloadFailed(error: String) {
+        self.delegate?.itemDownloadFailed(error_mes: error)
+    }
+    
+    
+    weak var delegate: DownloadProductProtocol?
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: String = ""
+    var postParameter: [String: Any] = [:]
     
-    func downloadByCategories(categoriesId id: String){
-        postParameter = "categories_id=\(id)"
+    func downloadByCategoriesAndBrand(categoriesId: String, brandId: String, minPrice: Int?, maxPrice: Int?){
+        postParameter["categories_id"] = categoriesId
+        postParameter["brand_id"] = brandId
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
         downloadItem()
     }
     
-    func downloadByBrands(brandId id: String){
-        postParameter = "brand_id=\(id)"
+    func downloadByCategories(categoriesId id: String, minPrice: Int?, maxPrice: Int?){
+        postParameter["categories_id"] = id
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
+        downloadItem()
+    }
+    func searchByKeyword(_ keyword: String){
+        postParameter["keyword"] = keyword
+        downloadItem()
+    }
+    
+    func downloadByBrands(brandId id: String, minPrice: Int?, maxPrice: Int?){
+        postParameter["brand_id"] = id
+        if minPrice != nil && maxPrice != nil{
+            postParameter["pricemin"] = minPrice
+            postParameter["pricemax"] = maxPrice
+        }else if minPrice != nil{
+            postParameter["pricemin"] = minPrice
+        }else if maxPrice != nil{
+            postParameter["pricemax"] = maxPrice
+        }
+        downloadItem()
+    }
+    
+    func downloadByPrice(minPrice min: Int, maxPrice max: Int){
+        postParameter["pricemin"] = min
+        postParameter["pricemax"] = max
+        
+        downloadItem()
+    }
+    
+    func downloadByMinPrice(minPrice min: Int){
+        postParameter["pricemin"] = min
+        downloadItem()
+    }
+    
+    func downloadByMaxPrice(maxPrice max: Int){
+        postParameter["pricemax"] = max
         downloadItem()
     }
     
     func downloadSelectItem(productId id: String){
-        postParameter = "productId=\(id)"
+        postParameter["productId"] = id
         downloadItem()
     }
     
     func downloadLimitItem(limitNum: Int){
-        postParameter = "limit=\(limitNum)"
+        postParameter["limit"] = limitNum
         downloadItem()
     }
     
-    @objc func downloadItem(){
-        DB_URL = getAddress.getProductURL()
-        
-        //Get data from database
-        var request = URLRequest(url: URL(string: DB_URL)!)
-        request.httpMethod = "POST"
-        
-        if postParameter != ""{
-            request.httpBody = postParameter.data(using: .utf8)
-        }
-        
-        let task = URLSession.shared.dataTask(with: request){
-            data, response, error in
-            
-            if error != nil{
-                print("Failed to Download data")
-                
-            }else{
-                print("Data downloaded - Product")
-                self.parseJSON(data!)
-            }
-            
-        }
-        task.resume()
+    func downloadSort(sort: Int){
+        postParameter["sort"] = sort
+        downloadItem()
     }
     
-    @objc func parseJSON(_ data:Data){
+    func downloadItem(){
+        DB_URL = getAddress.getProductURL()
+        
+        let network = Network()
+        network.delegate = self
+        network.get(URL: DB_URL, param: postParameter)
+    }
+    
+    func parseJSON(_ data:Data){
         var jsonResult = NSArray()
         
         do{
@@ -74,7 +121,6 @@ import UIKit
         }catch let error as NSError{
             print(error)
         }
-        
 
         var jsonElement = NSDictionary()
         let products = NSMutableArray()
