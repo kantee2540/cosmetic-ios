@@ -156,7 +156,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 178{
+        if scrollView.contentOffset.y > 220{
             doneButton.tintColor = UIColor.label
         }else{
             doneButton.tintColor = UIColor.white

@@ -4919,9 +4919,8 @@ Enjoy and have fun our app!</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-El-1Wy">
                                 <rect key="frame" x="0.0" y="44" width="375" height="55"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBE-tN-Qak">
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBE-tN-Qak">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hid-gV-6um">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4965,6 +4964,10 @@ Enjoy and have fun our app!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.40000000000000002" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="bBE-tN-Qak" firstAttribute="top" secondItem="M4f-El-1Wy" secondAttribute="top" id="6ku-l5-lPy"/>
+                                    <constraint firstAttribute="trailing" secondItem="bBE-tN-Qak" secondAttribute="trailing" id="Ser-HR-t4p"/>
+                                    <constraint firstItem="bBE-tN-Qak" firstAttribute="leading" secondItem="M4f-El-1Wy" secondAttribute="leading" id="eh7-lm-pEj"/>
+                                    <constraint firstAttribute="bottom" secondItem="bBE-tN-Qak" secondAttribute="bottom" id="jbG-uj-Djj"/>
                                     <constraint firstAttribute="height" constant="55" id="jmG-UB-7dY"/>
                                 </constraints>
                             </view>
@@ -5212,7 +5215,7 @@ Enjoy and have fun our app!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tfX-uD-L2L"/>
+        <segue reference="zvl-aX-vqg"/>
         <segue reference="sZC-Ln-y5u"/>
     </inferredMetricsTieBreakers>
     <resources>
