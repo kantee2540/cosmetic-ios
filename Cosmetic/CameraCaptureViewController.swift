@@ -65,6 +65,35 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         return true
     }
     
+    override func viewDidLayoutSubviews() {
+        if let connection = videoPreviewLayer.connection{
+            let currentDevice = UIDevice.current
+            let orientation = currentDevice.orientation
+            let previewConnection = connection
+            if previewConnection.isVideoOrientationSupported{
+                switch orientation {
+                case .portrait:
+                    updatePreviewLayer(layer: previewConnection, orientation: .portrait)
+                    break
+                case .landscapeRight:
+                    updatePreviewLayer(layer: previewConnection, orientation: .landscapeLeft)
+                case .landscapeLeft:
+                    updatePreviewLayer(layer: previewConnection, orientation: .landscapeRight)
+                case.portraitUpsideDown:
+                    updatePreviewLayer(layer: previewConnection, orientation: .portraitUpsideDown)
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation){
+        layer.videoOrientation = orientation
+        videoPreviewLayer.frame = self.photoPreviewImageView.bounds
+        stillImageOutput.connection(with: .video)?.videoOrientation = orientation
+    }
+    
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -124,16 +153,13 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     private func setupLivePreview(){
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.connection?.videoOrientation = .portrait
         videoPreviewLayer.videoGravity = .resizeAspectFill
         photoPreviewImageView.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
         capturingPhoto()
-        DispatchQueue.main.async {
-            self.videoPreviewLayer?.frame = self.photoPreviewImageView.bounds
-        }
         
     }
+    
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -153,7 +179,6 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             else{
                 return
             }
-        
         let image = UIImage(data: imageData)
         outputImage = image
         captureSession.stopRunning()
