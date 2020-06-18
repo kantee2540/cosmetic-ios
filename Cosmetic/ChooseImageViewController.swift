@@ -54,6 +54,11 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             (UIAlertAction) in
         }))
         
+        if let popoverController = action.popoverPresentationController{
+            popoverController.sourceView = chooseButton
+            popoverController.sourceRect = chooseButton.bounds
+        }
+        
         self.present(action, animated: true, completion: nil)
     }
     
