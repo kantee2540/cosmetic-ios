@@ -15,6 +15,41 @@ class Library {
         targetVC.present(alert, animated: true, completion: nil)
     }
     
+    static func countNumFormat(num: Int) -> String{
+        if num >= 1000000{
+            let stringNum = String(num)
+            let prefixNum = stringNum.prefix(2)
+            
+            let firstChar = prefixNum[prefixNum.startIndex]
+            let secondChar = prefixNum[prefixNum.index(prefixNum.startIndex, offsetBy: 1)]
+            
+            return "\(firstChar).\(secondChar)M"
+            
+        }else if num >= 100000{
+            let stringNum = String(num)
+            let prefixNum = stringNum.prefix(3)
+            return "\(prefixNum)K"
+            
+        }else if num >= 10000{
+            let stringNum = String(num)
+            let prefixNum = stringNum.prefix(2)
+            return "\(prefixNum)K"
+            
+        }else if num >= 1000{
+            let stringNum = String(num)
+            let prefixNum = stringNum.prefix(2)
+            
+            let firstChar = prefixNum[prefixNum.startIndex]
+            let secondChar = prefixNum[prefixNum.index(prefixNum.startIndex, offsetBy: 1)]
+            
+            return "\(firstChar).\(secondChar)K"
+            
+        }
+        else{
+            return String(num)
+        }
+    }
+    
     static func setUserDefault(user: UserModel){
         UserDefaults.standard.set(user.userId ?? nil, forKey: ConstantUser.userId)
         UserDefaults.standard.set(user.firstName ?? nil, forKey: ConstantUser.firstName)

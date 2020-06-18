@@ -298,7 +298,8 @@ extension TopTopicViewController: LikeDislikeDelegate, SetLikeUnlikeDelegate{
     }
     
     func getLikeDislikeSuccess(like: Int) {
-        likeCountLabel.text = String(like)
+        let likeCount = Library.countNumFormat(num: like)
+        likeCountLabel.text = likeCount
     }
     
     func getLikeDislikeFailed(error: String) {
