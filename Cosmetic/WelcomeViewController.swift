@@ -109,7 +109,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         let cammerabtn_image = UIImage.init(systemName: "camera.fill")
         let cammerabtn = UIBarButtonItem(title: "Camera", style: .done, target: self, action: #selector(openCamera(_:)))
         

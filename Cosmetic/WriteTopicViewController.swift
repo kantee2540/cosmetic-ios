@@ -8,8 +8,7 @@
 
 import UIKit
 
-class WriteTopicViewController: UIViewController, UITextFieldDelegate {
-    
+class WriteTopicViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailTextView: UITextView!
@@ -18,8 +17,8 @@ class WriteTopicViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleTextField.delegate = self
+        detailTextView.delegate = self
         self.hideKeyboardWhenTappedAround()
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,20 +30,18 @@ class WriteTopicViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField.text!.count > 0{
+        checkEnableButton()
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        checkEnableButton()
+    }
+    
+    private func checkEnableButton(){
+        if titleTextField.text!.count > 0 && detailTextView.text.count > 0{
             nextButton.isEnabled = true
         }else{
             nextButton.isEnabled = false
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

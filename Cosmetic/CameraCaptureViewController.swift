@@ -29,9 +29,36 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var controlContainer: UIView!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var flashButton: UIButton!
+    @IBOutlet weak var topnavHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+        switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                //print("iPhone 5 or 5S or 5C")
+                topnavHeight.constant = 55
+            case 1334:
+                //print("iPhone 6/6S/7/8")
+                topnavHeight.constant = 55
+            case 1920, 2208:
+               //print("iPhone 6+/6S+/7+/8+")
+                topnavHeight.constant = 55
+            case 2436:
+                //print("iPhone X/XS/11 Pro")
+                topnavHeight.constant = 80
+            case 2688:
+                //print("iPhone XS Max/11 Pro Max")
+                topnavHeight.constant = 80
+            case 1792:
+                //print("iPhone XR/ 11 ")
+                topnavHeight.constant = 80
+            default:
+                //print("Unknown")
+                topnavHeight.constant = 55
+            }
+        }
         
         setupCamera()
     }
@@ -39,11 +66,14 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setupControlContainer()
         if isCapturing{
             self.captureSession.startRunning()
         }
-        
     }
     
     private func setupControlContainer(){
@@ -66,23 +96,25 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     override func viewDidLayoutSubviews() {
-        if let connection = videoPreviewLayer.connection{
-            let currentDevice = UIDevice.current
-            let orientation = currentDevice.orientation
-            let previewConnection = connection
-            if previewConnection.isVideoOrientationSupported{
-                switch orientation {
-                case .portrait:
-                    updatePreviewLayer(layer: previewConnection, orientation: .portrait)
-                    break
-                case .landscapeRight:
-                    updatePreviewLayer(layer: previewConnection, orientation: .landscapeLeft)
-                case .landscapeLeft:
-                    updatePreviewLayer(layer: previewConnection, orientation: .landscapeRight)
-                case.portraitUpsideDown:
-                    updatePreviewLayer(layer: previewConnection, orientation: .portraitUpsideDown)
-                default:
-                    break
+        if videoPreviewLayer != nil{
+            if let connection = videoPreviewLayer.connection{
+                let currentDevice = UIDevice.current
+                let orientation = currentDevice.orientation
+                let previewConnection = connection
+                if previewConnection.isVideoOrientationSupported{
+                    switch orientation {
+                    case .portrait:
+                        updatePreviewLayer(layer: previewConnection, orientation: .portrait)
+                        break
+                    case .landscapeRight:
+                        updatePreviewLayer(layer: previewConnection, orientation: .landscapeLeft)
+                    case .landscapeLeft:
+                        updatePreviewLayer(layer: previewConnection, orientation: .landscapeRight)
+                    case.portraitUpsideDown:
+                        updatePreviewLayer(layer: previewConnection, orientation: .portraitUpsideDown)
+                    default:
+                        break
+                    }
                 }
             }
         }
