@@ -32,6 +32,27 @@ class DeskCollectionViewCell: UICollectionViewCell {
         delegate?.tapAction(userId: userId!, productId: productId!, image: productImage.image!, indexPath: indexPath!, button: actionButton)
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    private func setupView(){
+        contentView.layer.cornerRadius = 8
+        layer.cornerRadius = 8
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0, height: 5)
+        layer.shadowRadius = 10
+        layer.masksToBounds = false
+        contentView.layer.masksToBounds = true
+    }
+    
     override func awakeFromNib() {
         if UIDevice().userInterfaceIdiom == .phone
          {

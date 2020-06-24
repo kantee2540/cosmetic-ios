@@ -29,7 +29,6 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryTypeLabel: UILabel!
-    @IBOutlet weak var ingredient: UILabel!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -63,11 +62,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
             
             categoryLabel.text = productData[0].categories_name
             categoryTypeLabel.text = productData[0].categories_type
-            if productData[0].ingredient != "n/a"{
-                ingredient.text = productData[0].ingredient
-            }else{
-                ingredient.text = "Ingredient not available"
-            }
+            
         }else{
             let alert = UIAlertController(title: "No Product", message: "Sorry, Product you're looking not found.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in

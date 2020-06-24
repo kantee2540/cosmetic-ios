@@ -41,6 +41,10 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.hideKeyboardWhenTappedAround()
         
         startSearchview.layer.cornerRadius = 8
+        startSearchview.layer.shadowColor = UIColor.black.cgColor
+        startSearchview.layer.shadowOpacity = 0.15
+        startSearchview.layer.shadowOffset = CGSize(width: 0, height: 5)
+        startSearchview.layer.shadowRadius = 10
         
         pickYouCollectionView.delegate = self
         pickYouCollectionView.dataSource = self
@@ -227,8 +231,8 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView ==  pickYouCollectionView{
             let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickcell", for: indexPath) as! PickforyouCollectionViewCell
+            
             let item = pickForYouProduct[indexPath.row]
-            pickCell.layer.cornerRadius = 5
             pickCell.productName.text = item.product_name
             pickCell.productBrand.text = item.brand_name
             if item.product_img != ""{
@@ -241,7 +245,6 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         else if collectionView == setCollectionview{
             let setCell = collectionView.dequeueReusableCell(withReuseIdentifier: "setcell", for: indexPath) as! SetCollectionViewCell
             let item = recommendedSet[indexPath.row]
-            setCell.layer.cornerRadius = 5
             if item.topic_img != ""{
                 setCell.setImage.downloadImage(from: URL(string: item.topic_img ?? "") ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
             }else{
@@ -254,7 +257,6 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         }else if collectionView == cosmeticdeskCollectionview && userId != nil{
             let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deskcell", for: indexPath) as! PickforyouCollectionViewCell
             let item = cosmeticList[indexPath.row]
-            pickCell.layer.cornerRadius = 5
             pickCell.productName.text = item.product_name
             pickCell.productBrand.text = item.brand_name
             if item.product_img != ""{

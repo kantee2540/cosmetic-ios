@@ -12,7 +12,12 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet var deskView: UIView!
-    @IBOutlet weak var noCosmetic: UILabel!
+    
+    @IBOutlet weak var noItemIcon: UIImageView!
+    @IBOutlet weak var noItemview: UIView!
+    @IBOutlet weak var noItemLabel: UILabel!
+    @IBOutlet weak var noItemDetail: UILabel!
+    
     @IBOutlet weak var welcomeNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profilepic: UIImageView!
@@ -111,13 +116,10 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
                     deskCell.setHeartOutlined()
                 }
                 
-                deskCell.layer.cornerRadius = 8
-                
                 return deskCell
                 
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savetopiccell", for: indexPath) as! BeautySetCollectionViewCell
-                cell.layer.cornerRadius = 8
                 cell.delegate = self
                 cell.indexPath = indexPath
                 let item = saveTopic[indexPath.row]
@@ -330,6 +332,27 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         }else if menuSegment.selectedSegmentIndex == 2{
             downloadBeautySet(orderBy: order)
         }
+        deskCollection.reloadData()
+    }
+    
+    private func noItemupdate(segment: Int){
+        switch segment {
+        case 0:
+            noItemIcon.image = UIImage.init(systemName: "bag.fill")
+            noItemLabel.text = "No item in your desk"
+            noItemDetail.text = "Explore cosmetic items and save them to your desk."
+        case 1:
+            noItemIcon.image = UIImage.init(systemName: "heart.fill")
+            noItemLabel.text = "No favorite item in your desk"
+            noItemDetail.text = "Tap heart to mark most item you love."
+        case 2:
+            noItemIcon.image = UIImage.init(systemName: "square.grid.2x2.fill")
+            noItemLabel.text = "No beauty set in your desk"
+            noItemDetail.text = "Explore beauty set and save them to your desk"
+        default:
+            noItemLabel.text = "No item in your desk"
+            noItemDetail.text = "Explore cosmetic items and save them to your desk."
+        }
     }
 
 }
@@ -338,8 +361,17 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         saveTopic = item as! [TopicModel]
-        countTopic.text = "\(saveTopic.count)"
+        let formatNum = Library.countNumFormat(num: saveTopic.count)
+        countTopic.text = "\(formatNum)"
         if menuSegment.selectedSegmentIndex == 2{
+            if saveTopic.count > 0{
+                noItemview.visibility = .gone
+                deskCollection.visibility = .visible
+            }else{
+                noItemview.visibility = .visible
+                deskCollection.visibility = .gone
+                noItemupdate(segment: 2)
+            }
             deskCollection.reloadData()
             removeSpinner()
             deskRefreshControl.endRefreshing()
@@ -395,16 +427,21 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         deskList = item as! [CosmeticDeskModel]
         if deskList.count > 0{
-            noCosmetic.text = ""
-            noCosmetic.isHidden = true
-            
+            noItemview.visibility = .gone
+            deskCollection.visibility = .visible
         }else{
-            noCosmetic.text = "No cosmetic in your desk"
-            noCosmetic.isHidden = false
+            noItemview.visibility = .visible
+            deskCollection.visibility = .gone
+            if menuSegment.selectedSegmentIndex == 0{
+                noItemupdate(segment: 0)
+            }else{
+                noItemupdate(segment: 1)
+            }
         }
         
         if menuSegment.selectedSegmentIndex == 0{
-            countLabel.text = "\(deskList.count)"
+            let formatNum = Library.countNumFormat(num: deskList.count)
+            countLabel.text = "\(formatNum)"
         }
         
         deskCollection.reloadData()
