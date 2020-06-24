@@ -116,7 +116,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
                 return deskCell
                 
             }else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savetopic", for: indexPath) as! BeautySetCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savetopiccell", for: indexPath) as! BeautySetCollectionViewCell
                 cell.layer.cornerRadius = 8
                 cell.delegate = self
                 cell.indexPath = indexPath
