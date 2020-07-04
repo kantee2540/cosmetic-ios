@@ -132,7 +132,10 @@
 		034D30E1FE172915DBC29E7D /* Pods_Cosmetic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmetic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		055F7F38F804347BCE72F637 /* Pods-Cosmetic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.release.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.release.xcconfig"; sourceTree = "<group>"; };
 		09A94A1D9C16D2110EEF0B94 /* Pods_CosmeticUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18C9A59313C6C120982FB154 /* Pods-Cosmetic.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debugbeta.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debugbeta.xcconfig"; sourceTree = "<group>"; };
+		3AEB8DCBBAD31E93CBA41653 /* Pods-CosmeticUITests.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticUITests.debugbeta.xcconfig"; path = "Target Support Files/Pods-CosmeticUITests/Pods-CosmeticUITests.debugbeta.xcconfig"; sourceTree = "<group>"; };
 		467EEBE87CE5E0240880C37C /* Pods-CosmeticUITests.debuglocal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticUITests.debuglocal.xcconfig"; path = "Target Support Files/Pods-CosmeticUITests/Pods-CosmeticUITests.debuglocal.xcconfig"; sourceTree = "<group>"; };
+		52B3C77C3BD37BED3C64EB93 /* Pods-CosmeticTests.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debugbeta.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debugbeta.xcconfig"; sourceTree = "<group>"; };
 		62690FC4167064D941112340 /* Pods_CosmeticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FEAB96A79E9D869E952EEA /* Pods-Cosmetic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debug.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debug.xcconfig"; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		B342F0F3228C4F9700196E3B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		B342F0F5228C50D600196E3B /* DownloadCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadCategories.swift; sourceTree = "<group>"; };
 		B3463FB92433AEAB00EC743B /* ChooseProductTopicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProductTopicTableViewCell.swift; sourceTree = "<group>"; };
+		B3476D5A24A7275900EFD7AA /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		B348223623E1D88F008BD770 /* PickforyouCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickforyouCollectionViewCell.swift; sourceTree = "<group>"; };
 		B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraResultTableViewCell.swift; sourceTree = "<group>"; };
 		B34B4001229D0BE20045DF9A /* webAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webAddress.swift; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 				B3C050182420DE0100F1536B /* Debug.xcconfig */,
 				B3C050172420DE0100F1536B /* DebugLocal.xcconfig */,
 				B3C050162420DE0100F1536B /* Release.xcconfig */,
+				B3476D5A24A7275900EFD7AA /* Beta.xcconfig */,
 				B3D326CF23B3B45A006404B2 /* Cosmetic.entitlements */,
 				B386F55023C62AC3005F58C9 /* CosmeticDesk */,
 				B3D326D023B3B498006404B2 /* Account */,
@@ -537,6 +542,9 @@
 				EB41A8A18D5CA00313318940 /* Pods-CosmeticUITests.debug.xcconfig */,
 				467EEBE87CE5E0240880C37C /* Pods-CosmeticUITests.debuglocal.xcconfig */,
 				EE1925C8D001B4D57F25D3A5 /* Pods-CosmeticUITests.release.xcconfig */,
+				18C9A59313C6C120982FB154 /* Pods-Cosmetic.debugbeta.xcconfig */,
+				52B3C77C3BD37BED3C64EB93 /* Pods-CosmeticTests.debugbeta.xcconfig */,
+				3AEB8DCBBAD31E93CBA41653 /* Pods-CosmeticUITests.debugbeta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -937,6 +945,143 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B3476D5624A7248F00EFD7AA /* DebugBeta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = DebugBeta;
+		};
+		B3476D5724A7248F00EFD7AA /* DebugBeta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3476D5A24A7275900EFD7AA /* Beta.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cosmetic/Cosmetic.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 28;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R6LKPZ4CU5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Cosmetic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coco.comseticas;
+				PRODUCT_NAME = Cosmeticas;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cosmetic/Cosmetic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = DebugBeta;
+		};
+		B3476D5824A7248F00EFD7AA /* DebugBeta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52B3C77C3BD37BED3C64EB93 /* Pods-CosmeticTests.debugbeta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MPJF3QG6MV;
+				INFOPLIST_FILE = CosmeticTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-.CosmeticTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmetic.app/Cosmetic";
+			};
+			name = DebugBeta;
+		};
+		B3476D5924A7248F00EFD7AA /* DebugBeta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AEB8DCBBAD31E93CBA41653 /* Pods-CosmeticUITests.debugbeta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MPJF3QG6MV;
+				INFOPLIST_FILE = CosmeticUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-.CosmeticUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cosmetic;
+			};
+			name = DebugBeta;
+		};
 		B3C0500F2420D56B00F1536B /* DebugLocal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1347,6 +1492,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3C2FA112245002E0054EE16 /* Debug */,
+				B3476D5624A7248F00EFD7AA /* DebugBeta */,
 				B3C0500F2420D56B00F1536B /* DebugLocal */,
 				B3C2FA122245002E0054EE16 /* Release */,
 			);
@@ -1357,6 +1503,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3C2FA142245002E0054EE16 /* Debug */,
+				B3476D5724A7248F00EFD7AA /* DebugBeta */,
 				B3C050102420D56B00F1536B /* DebugLocal */,
 				B3C2FA152245002E0054EE16 /* Release */,
 			);
@@ -1367,6 +1514,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3C2FA172245002E0054EE16 /* Debug */,
+				B3476D5824A7248F00EFD7AA /* DebugBeta */,
 				B3C050112420D56B00F1536B /* DebugLocal */,
 				B3C2FA182245002E0054EE16 /* Release */,
 			);
@@ -1377,6 +1525,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3C2FA1A2245002E0054EE16 /* Debug */,
+				B3476D5924A7248F00EFD7AA /* DebugBeta */,
 				B3C050122420D56B00F1536B /* DebugLocal */,
 				B3C2FA1B2245002E0054EE16 /* Release */,
 			);
