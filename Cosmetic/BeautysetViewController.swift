@@ -77,7 +77,8 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
         
         let item = beautyList[indexPath.row]
         
-        cell.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 20
+        cell.layer.masksToBounds = true
         cell.title.text = item.topic_name
         cell.detail.text = item.topic_description
         

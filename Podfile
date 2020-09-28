@@ -7,8 +7,7 @@ target 'Cosmetic' do
   source 'https://github.com/CocoaPods/Specs.git'
   # Pods for Cosmetic
    pod 'Firebase/Core'
-   pod 'Firebase/MLVision'
-   pod 'Firebase/MLVisionTextModel'
+   pod 'GoogleMLKit/TextRecognition'
    pod 'Fabric', '~> 1.10.2'
    pod 'Crashlytics', '~> 3.14.0'
    pod 'Firebase/Analytics'

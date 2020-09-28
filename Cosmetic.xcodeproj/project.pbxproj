@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28C22B42D6159C0430E1E4B4 /* Pods_CosmeticTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62690FC4167064D941112340 /* Pods_CosmeticTests.framework */; };
+		B306B9D02520FD7A00AD56CC /* MLKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B306B9CF2520FD7A00AD56CC /* MLKitExtensions.swift */; };
 		B30732B9236410FE00C7C66D /* CameraCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */; };
 		B31121F3245D8274005DA548 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31121F2245D8274005DA548 /* FilterTableViewController.swift */; };
 		B31121F7245D8C0E005DA548 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31121F6245D8C0E005DA548 /* FilterCollectionViewCell.swift */; };
@@ -138,6 +139,7 @@
 		52B3C77C3BD37BED3C64EB93 /* Pods-CosmeticTests.debugbeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CosmeticTests.debugbeta.xcconfig"; path = "Target Support Files/Pods-CosmeticTests/Pods-CosmeticTests.debugbeta.xcconfig"; sourceTree = "<group>"; };
 		62690FC4167064D941112340 /* Pods_CosmeticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CosmeticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85FEAB96A79E9D869E952EEA /* Pods-Cosmetic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmetic.debug.xcconfig"; path = "Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debug.xcconfig"; sourceTree = "<group>"; };
+		B306B9CF2520FD7A00AD56CC /* MLKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLKitExtensions.swift; sourceTree = "<group>"; };
 		B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureViewController.swift; sourceTree = "<group>"; };
 		B31121F2245D8274005DA548 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		B31121F6245D8C0E005DA548 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				B30732B7236410FE00C7C66D /* CameraCaptureViewController.swift */,
+				B306B9CF2520FD7A00AD56CC /* MLKitExtensions.swift */,
 				B3766C61236685630028B335 /* cameraResultTableViewController.swift */,
 				B349E13F22D2241800943A1D /* CameraResultTableViewCell.swift */,
 			);
@@ -833,6 +836,7 @@
 				B3A71EF82435FF53000A501B /* PreviewTopicViewController.swift in Sources */,
 				B3F111B624991F3A0057A3A0 /* BeautysetViewController.swift in Sources */,
 				B342F0F4228C4F9700196E3B /* CategoriesModel.swift in Sources */,
+				B306B9D02520FD7A00AD56CC /* MLKitExtensions.swift in Sources */,
 				B383C64F246EA05A004B2932 /* ForgotPasswordViewController.swift in Sources */,
 				B3BFDD7223B889BB00BC0035 /* CollectUserdata.swift in Sources */,
 				B3BFDD7623B8A60500BC0035 /* DownloadUser.swift in Sources */,

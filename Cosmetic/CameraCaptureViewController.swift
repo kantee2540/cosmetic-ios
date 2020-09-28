@@ -7,23 +7,23 @@
 //
 
 import UIKit
+import PhotosUI
 import AVFoundation
-import Firebase
+import CoreGraphics
+import MLKit
 
-class CameraCaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate {
-    
-    lazy var vision = Vision.vision()
+class CameraCaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate, PHPickerViewControllerDelegate {
     
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
-    var outputImage: UIImage!
     var searchArray: Array<String>!
     var resultText: String = ""
     var isCapturing: Bool = false
     var isFlashOn: Bool = false
 
     @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var livePreview: UIImageView!
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
     @IBOutlet weak var controlContainer: UIView!
@@ -72,7 +72,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     override func viewDidAppear(_ animated: Bool) {
         setupControlContainer()
         if isCapturing{
-            self.captureSession.startRunning()
+            startSession()
         }
     }
     
@@ -83,7 +83,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewWillDisappear(animated)
-        self.captureSession.stopRunning()
+        stopSession()
         
     }
     
@@ -96,6 +96,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     override func viewDidLayoutSubviews() {
+        videoPreviewLayer.frame = livePreview.frame
         if videoPreviewLayer != nil{
             if let connection = videoPreviewLayer.connection{
                 let currentDevice = UIDevice.current
@@ -105,7 +106,6 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
                     switch orientation {
                     case .portrait:
                         updatePreviewLayer(layer: previewConnection, orientation: .portrait)
-                        break
                     case .landscapeRight:
                         updatePreviewLayer(layer: previewConnection, orientation: .landscapeLeft)
                     case .landscapeLeft:
@@ -122,7 +122,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     private func updatePreviewLayer(layer: AVCaptureConnection, orientation: AVCaptureVideoOrientation){
         layer.videoOrientation = orientation
-        videoPreviewLayer.frame = self.photoPreviewImageView.bounds
+        videoPreviewLayer.frame = self.livePreview.bounds
         stillImageOutput.connection(with: .video)?.videoOrientation = orientation
     }
     
@@ -135,6 +135,8 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     private func setupCamera(){
         captureSession = AVCaptureSession()
         captureSession!.sessionPreset = AVCaptureSession.Preset.photo
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
             else{
                 Library.displayAlert(targetVC: self, title: "Camera Error", message: "Unable to access back camera!")
@@ -152,11 +154,25 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         }
         stillImageOutput = AVCapturePhotoOutput()
         if captureSession!.canAddInput(input) && captureSession!.canAddOutput(stillImageOutput!){
+            
+            videoPreviewLayer.videoGravity = .resizeAspectFill
+            livePreview.layer.addSublayer(videoPreviewLayer)
+            
             captureSession.addInput(input)
             captureSession.addOutput(stillImageOutput)
-            setupLivePreview()
+            
+            startSession()
+            capturingPhoto()
         }
         
+    }
+    
+    func startSession(){
+        captureSession.startRunning()
+    }
+    
+    func stopSession(){
+        captureSession.stopRunning()
     }
     
     func toggleTorch(on: Bool){
@@ -183,15 +199,6 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         }
     }
     
-    private func setupLivePreview(){
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resizeAspectFill
-        photoPreviewImageView.layer.addSublayer(videoPreviewLayer!)
-        captureSession.startRunning()
-        capturingPhoto()
-        
-    }
-    
     @IBAction func tapClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -201,6 +208,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
         if isCapturing{
             let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             stillImageOutput.capturePhoto(with: settings, delegate: self)
+            removeExistSubview()
         }else{
             searchFromImage()
         }
@@ -211,35 +219,101 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
             else{
                 return
             }
+
         let image = UIImage(data: imageData)
-        outputImage = image
-        captureSession.stopRunning()
-        photoPreviewImageView.layer.sublayers = nil
-        photoPreviewImageView.image = outputImage
+        updateImageView(with: image!)
+        stopSession()
         afterCapturePhoto()
-        textRecognizeOnDevice(image: outputImage)
         
     }
     
     //MARK: - Pick image from library
     @IBAction func tapLibrary(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = false
-        pickerController.mediaTypes = ["public.image"]
-        pickerController.sourceType = .photoLibrary
-        navigationController?.present(pickerController, animated: true, completion: nil)
+        if #available(iOS 14, *){
+            var configuration = PHPickerConfiguration()
+            configuration.filter = .images
+            let picker = PHPickerViewController(configuration: configuration)
+            picker.delegate = self
+            present(picker, animated: true)
+
+        }else{
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.allowsEditing = false
+            pickerController.mediaTypes = ["public.image"]
+            pickerController.sourceType = .photoLibrary
+            navigationController?.present(pickerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        removeExistSubview()
+        picker.dismiss(animated: true)
+        
+        for result in results{
+            let provider = result.itemProvider
+            if provider.canLoadObject(ofClass: UIImage.self){
+                provider.loadObject(ofClass: UIImage.self){
+                    image, error in
+                    DispatchQueue.main.async {
+                        self.updateImageView(with: image! as! UIImage)
+                        self.afterCapturePhoto()
+                        self.stopSession()
+                    }
+                }
+            }
+            
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        removeExistSubview()
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        outputImage = image
-        captureSession.stopRunning()
-        photoPreviewImageView.image = outputImage
-        photoPreviewImageView.layer.sublayers = nil
+        updateImageView(with: image)
         afterCapturePhoto()
-        textRecognizeOnDevice(image: outputImage)
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func updateImageView(with image: UIImage) {
+        let orientation = UIDevice.current.orientation
+        var scaledImageWidth: CGFloat = 0.0
+        var scaledImageHeight: CGFloat = 0.0
+            
+        switch orientation {
+        case .portrait, .portraitUpsideDown, .faceUp, .faceDown, .unknown:
+            scaledImageWidth = self.photoPreviewImageView.bounds.size.width
+            scaledImageHeight = image.size.height * scaledImageWidth / image.size.width
+        case .landscapeLeft, .landscapeRight:
+            scaledImageWidth = image.size.width * scaledImageHeight / image.size.height
+            scaledImageHeight = self.photoPreviewImageView.bounds.size.height
+        @unknown default:
+            fatalError()
+        }
+        
+      DispatchQueue.global(qos: .userInitiated).async {
+        // Scale image while maintaining aspect ratio so it displays better in the UIImageView.
+        var scaledImage = image.scaledImage(
+          with: CGSize(width: scaledImageWidth, height: scaledImageHeight)
+        )
+        scaledImage = scaledImage ?? image
+        guard let finalImage = scaledImage else { return }
+        DispatchQueue.main.async {
+          self.photoPreviewImageView.image = finalImage
+        }
+        self.textRecognizeOnDevice(image: finalImage)
+      }
+    }
+    
+    private func removeExistSubview(){
+        for view in photoPreviewImageView.subviews{
+            view.removeFromSuperview()
+        }
     }
     
     //MARK: - Begin Search
@@ -287,6 +361,7 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     private func capturingPhoto(){
         isCapturing = true
+        photoPreviewImageView.isHidden = true
         captureButton.setBackgroundImage(UIImage(systemName: "largecircle.fill.circle"), for: .normal)
         tipLabel.text = "Arrange the cosmetic label to camera"
         retakeButton.isHidden = true
@@ -295,73 +370,98 @@ class CameraCaptureViewController: UIViewController, UIImagePickerControllerDele
     
     private func afterCapturePhoto(){
         isCapturing = false
-        captureButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        tipLabel.text = "Tap search to get result"
-        retakeButton.isHidden = false
-        flashButton.isHidden = true
-        flashButton.setBackgroundImage(UIImage(systemName: "bolt.circle"), for: .normal)
+        DispatchQueue.main.async {
+            self.photoPreviewImageView.isHidden = false
+            self.captureButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+            self.tipLabel.text = "Tap search to get result"
+            self.retakeButton.isHidden = false
+            self.flashButton.isHidden = true
+            self.flashButton.setBackgroundImage(UIImage(systemName: "bolt.circle"), for: .normal)
+        }
+        
     }
     
     //MARK: - Firebase text processing
+    
+    private func transformMatrix() -> CGAffineTransform {
+        guard let image = photoPreviewImageView.image else { return CGAffineTransform() }
+        let imageViewWidth = photoPreviewImageView.frame.size.width
+        let imageViewHeight = photoPreviewImageView.frame.size.height
+        let imageWidth = image.size.width
+        let imageHeight = image.size.height
+    
+        let imageViewAspectRatio = imageViewWidth / imageViewHeight
+        let imageAspectRatio = imageWidth / imageHeight
+        let scale =
+          (imageViewAspectRatio > imageAspectRatio)
+          ? imageViewHeight / imageHeight : imageViewWidth / imageWidth
+    
+        // Image view's `contentMode` is `scaleAspectFit`, which scales the image to fit the size   of the
+        // image view by maintaining the aspect ratio. Multiple by `scale` to get image's   original size.
+        let scaledImageWidth = imageWidth * scale
+        let scaledImageHeight = imageHeight * scale
+        let xValue = (imageViewWidth - scaledImageWidth) / CGFloat(2.0)
+        let yValue = (imageViewHeight - scaledImageHeight) / CGFloat(2.0)
+    
+        var transform = CGAffineTransform.identity.translatedBy(x: xValue, y: yValue)
+        transform = transform.scaledBy(x: scale, y: scale)
+        return transform
+    }
+    
+    public static func addRectangle(_ rectangle: CGRect, to view: UIView, color: UIColor) {
+        guard !rectangle.isNaN() else { return }
+        let rectangleView = UIView(frame: rectangle)
+        rectangleView.layer.cornerRadius = Constants.rectangleViewCornerRadius
+        rectangleView.alpha = Constants.rectangleViewAlpha
+        rectangleView.backgroundColor = color
+        view.addSubview(rectangleView)
+    }
+    
+    private enum Constants {
+      static let rectangleViewAlpha: CGFloat = 0.3
+      static let rectangleViewCornerRadius: CGFloat = 5.0
+    }
+
+    
     func textRecognizeOnDevice(image :UIImage?){
         guard let image = image else { return }
         
-        let onDeviceTextRecognizer = vision.onDeviceTextRecognizer()
-        
-        let imageMetadata = VisionImageMetadata()
-        imageMetadata.orientation = CameraCaptureViewController.visionImageOrientation(from: image.imageOrientation)
+        let textRecognizer = TextRecognizer.textRecognizer()
         
         let visionImage = VisionImage(image: image)
-        visionImage.metadata = imageMetadata
+        visionImage.orientation = image.imageOrientation
         
-        textProcessing(visionImage, with: onDeviceTextRecognizer)    }
-    
-    func textProcessing(_ visionImage: VisionImage, with textRecognizer: VisionTextRecognizer?){
-        
-        textRecognizer?.process(visionImage){
-            result, error in guard error == nil, let textResult = result else{
-                print(error as Any)
-                self.resultText = ""
-                return
+        textRecognizer.process(visionImage) { [self] result, error in
+          guard error == nil, let result = result else {
+            // Error handling
+            self.resultText = ""
+            return
+          }
+            
+          // Recognized text
+            print("\(result.text)\n")
+            self.resultText = "\(result.text)\n"
+            for block in result.blocks{
+                // Lines.
+                for line in block.lines {
+                    let transformedRect = line.frame.applying(self.transformMatrix())
+                    CameraCaptureViewController.addRectangle(
+                      transformedRect,
+                        to: self.photoPreviewImageView,
+                      color: .orange
+                    )
+                    
+                }
             }
             
-//            for block in textResult.blocks{
-//                for line in block.lines{
-//                    for element in line.elements{
-//
-//                    }
-//                }
-//
-//            }
-            
-            print("\(textResult.text)\n")
-            self.resultText = "\(textResult.text)\n"
         }
         
     }
-    
-    public static func visionImageOrientation(
-      from imageOrientation: UIImage.Orientation
-      ) -> VisionDetectorImageOrientation {
-        switch imageOrientation {
-          case .up:
-            return .topLeft
-          case .down:
-            return .bottomRight
-          case .left:
-            return .leftBottom
-          case .right:
-            return .rightTop
-          case .upMirrored:
-            return .topRight
-          case .downMirrored:
-            return .bottomLeft
-          case .leftMirrored:
-            return .leftTop
-          case .rightMirrored:
-            return .rightBottom
-        @unknown default:
-            return .leftTop
-        }
-    }
+}
+
+extension CGRect {
+  /// Returns a `Bool` indicating whether the rectangle has any value that is `NaN`.
+  func isNaN()  -> Bool {
+    return origin.x.isNaN || origin.y.isNaN || width.isNaN || height.isNaN
+  }
 }
