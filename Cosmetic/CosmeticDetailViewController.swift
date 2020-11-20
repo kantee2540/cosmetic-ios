@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
+
 protocol CosmeticDetailDelegate {
     func dismissFromCosmeticDetail()
 }
@@ -85,6 +87,7 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         priceView.makeRoundedView()
         categoryView.makeRoundedView()
         saveButton.roundedCorner()
+        
     }
     
     private func setProduct(){
@@ -105,10 +108,6 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     @IBAction func tapShare(_ sender: Any) {
-        
-//        let titleActivity: String = productData[0].product_name!
-//        let description: String = productData[0].product_description!
-//        let image: UIImage = productImage.image!
         let productId: String = productData[0].product_id!
         let getAddress = webAddress()
         let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
@@ -119,15 +118,21 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     @IBAction func tapSave(_ sender: Any) {
+        let answerMessage = MDCSnackbarMessage()
+        
         if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
             if !isSave{
                 let insertItem = CosmeticDesk()
                 insertItem.delegate = self
                 insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+                answerMessage.text = "Saved item to cosmetic desk"
+                MDCSnackbarManager().show(answerMessage)
             }else{
                 let insertItem = CosmeticDesk()
                 insertItem.delegate = self
                 insertItem.deleteFromDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+                answerMessage.text = "Removed item from cosmetic desk"
+                MDCSnackbarManager().show(answerMessage)
             }
         }else{
             dismiss(animated: true, completion: nil)

@@ -13,7 +13,8 @@ class ChooseProductTopicTableViewCell: UITableViewCell {
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productImg: UIImageView!
-
+    @IBOutlet weak var productPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

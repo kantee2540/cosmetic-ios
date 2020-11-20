@@ -78,6 +78,7 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
                 let product_description = jsonElement[ConstantProduct.description] as? String,
                 let product_price = jsonElement[ConstantProduct.productPrice] as? String,
                 let categories_id = jsonElement[ConstantProduct.categoriesId] as? String,
+                let categories_name = jsonElement[ConstantCategories.categoriesName] as? String,
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,
                 let product_img = jsonElement[ConstantProduct.productImg] as? String,
                 let ingredient = jsonElement[ConstantProduct.ingredient] as? String,
@@ -90,6 +91,7 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
                 cosmeitcDesk.product_description = product_description
                 cosmeitcDesk.product_price = Int(product_price)
                 cosmeitcDesk.categories_id = categories_id
+                cosmeitcDesk.categories_name = categories_name
                 cosmeitcDesk.brand_name = brand_name
                 cosmeitcDesk.product_img = product_img
                 cosmeitcDesk.ingredient = ingredient

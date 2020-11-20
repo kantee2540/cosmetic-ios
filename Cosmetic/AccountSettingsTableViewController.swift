@@ -92,7 +92,7 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
             imagePicker.sourceType = .photoLibrary
             self.navigationController?.present(imagePicker, animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
             
         }))
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
 protocol TopTopicDelegate {
     func dismissFromTopTopic()
@@ -41,12 +42,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         saveLabel.text = "Saved"
         saveButton.tintColor = UIColor.systemYellow
         saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        
     }
     
     private func unsavedButtonState(){
         saveLabel.text = "Save"
         saveButton.tintColor = UIColor.label
         saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        
     }
     
     func saveTopicFailed() {
@@ -211,9 +214,15 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
             if !isSavedTopic{
                 //To save
                 saveTopic.saveTopic(topicId: topicId!, userId: userId!)
+                let snackMessage = MDCSnackbarMessage()
+                snackMessage.text = "Saved cosmetic set to desk"
+                MDCSnackbarManager().show(snackMessage)
             }else{
                 //To remove
                 saveTopic.deleteTopic(topicId: topicId!, userId: userId!)
+                let snackMessage = MDCSnackbarMessage()
+                snackMessage.text = "Removed cosmetic set from desk"
+                MDCSnackbarManager().show(snackMessage)
             }
         }else{
             self.dismiss(animated: true, completion: nil)

@@ -30,7 +30,7 @@ class PreviewTopicViewController: UIViewController, UITableViewDelegate, UITable
     var descriptionTopic: String?
     var selectedImage: UIImage?
     var isSelectedCustomImage: Bool = false
-    var productSet: [ProductModel] = []
+    var productSet: [CosmeticDeskModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

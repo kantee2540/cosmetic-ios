@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ChooseProductTopicTableViewController: UITableViewController, DownloadProductProtocol {
-    func itemDownloaded(item: NSMutableArray) {
-        productList = item as! [ProductModel]
+class ChooseProductTopicTableViewController: UITableViewController, DownloadCosmeticDeskListDelegate, UISearchBarDelegate {
+    func itemCosmeticDeskDownloaded(item: NSMutableArray) {
+        productList = item as! [CosmeticDeskModel]
         self.tableView.reloadData()
     }
     
-    func itemDownloadFailed(error_mes: String) {
+    func itemCosmeticDeskFailed(error error_mes: String) {
         let alert = UIAlertController(title: "Error", message: error_mes, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action) -> Void in
             self.dismiss(animated: true, completion: nil)
@@ -22,8 +22,8 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadProd
         self.present(alert, animated: true, completion: nil)
     }
     
-    private var productList: [ProductModel] = []
-    private var selectedProduct: [ProductModel] = []
+    private var productList: [CosmeticDeskModel] = []
+    private var selectedProduct: [CosmeticDeskModel] = []
     
     var titleTopic: String?
     var descriptionTopic: String?
@@ -32,13 +32,14 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadProd
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let downloadProduct = DownloadProduct()
+        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)!
+        let downloadProduct = DownloadCosmeticDeskList()
         downloadProduct.delegate = self
-        downloadProduct.downloadItem()
+        downloadProduct.getCosmeticDeskByUserid(userId: userId, orderBy: "recent")
     }
 
     // MARK: - Table view data source
@@ -58,6 +59,12 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadProd
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultReuse", for: indexPath) as? ChooseProductTopicTableViewCell
         let item = productList[indexPath.row]
         cell?.productName.text = item.product_name
+        cell?.productDescription.text = item.categories_name
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
+        let formattedPrice = numberFormat.string(from: NSNumber(value:item.product_price ?? 0))
+        cell?.productPrice.text = formattedPrice! + "B"
+        
         if item.product_img != ""{
             cell?.productImg.downloadImage(from: URL(string: item.product_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         }else{
