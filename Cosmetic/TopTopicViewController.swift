@@ -13,7 +13,18 @@ protocol TopTopicDelegate {
     func dismissFromTopTopic()
 }
 
-class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DownloadPackageProtocol, CosmeticDetailDelegate, DownloadTopicProtocol, SaveTopicDelegate, DownloadSaveTopicDelegate {
+class TopTopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CosmeticDetailDelegate, DownloadTopicProtocol, SaveTopicDelegate, DownloadSaveTopicDelegate {
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        titleLabel.text = detail.topic_name
+        descriptionLabel.text = detail.topic_description
+        personLabel.text = detail.nickname
+        coverImage.downloadImage(from: URL(string: detail.topic_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
+        topicItem = packages as! [PackageModel]
+        likeCountLabel.text = Library.countNumFormat(num: detail.likeCount ?? 0)
+        productTable.reloadData()
+        removeSpinner()
+    }
+    
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         if item.count > 0{
             isSavedTopic = true
@@ -100,11 +111,11 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     var delegate: TopTopicDelegate?
-    var topicId: String?
+    var topicId: Int?
     private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
     private var isSavedTopic: Bool = false
-    private var userId: String?
+    private var userId: Int?
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -177,27 +188,14 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         downloadTopic.delegate = self
         downloadTopic.getTopicById(topicId: topicId!)
         
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        userId = UserDefaults.standard.integer(forKey: ConstantUser.userId)
         if userId != nil{
-            checkSaveTopic()
-            checkLike()
+//            checkSaveTopic()
+//            checkLike()
         }
         
-        downloadPackage()
-        getLikeCount()
-    }
-    
-    private func checkSaveTopic(){
-        let downloadSaveTopic = DownloadSaveTopic()
-        downloadSaveTopic.delegate = self
-        downloadSaveTopic.checkTopicIsSaved(userId: userId!, topicId: topicId!)
-        
-    }
-    
-    private func downloadPackage(){
-        let downloadPackage = DownloadPackage()
-        downloadPackage.delegate = self
-        downloadPackage.downloadByTopicId(id: topicId ?? "")
+//        downloadPackage()
+//        getLikeCount()
     }
     
     private func settingtitleLabel(){
@@ -232,7 +230,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func tapLike(_ sender: Any) {
         if userId != nil{
-            setLike()
+            
         }else{
             self.dismiss(animated: true, completion: nil)
             delegate?.dismissFromTopTopic()
@@ -248,7 +246,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
 //        let image: UIImage = coverImage.image!
         
         let getAddress = webAddress()
-        let url = URL(string: getAddress.getrootURL() + "?topicId=\(topicHeadItem[0].topic_id ?? "0")")
+        let url = URL(string: getAddress.getrootURL() + "\(topicId ?? 0)")
         
         let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView

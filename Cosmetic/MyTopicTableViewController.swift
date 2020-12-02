@@ -9,6 +9,10 @@
 import UIKit
 
 class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
         topicList = item as! [TopicModel]
         self.tableView.reloadData()

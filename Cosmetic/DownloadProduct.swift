@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 public protocol DownloadProductProtocol: class {
     func itemDownloaded(item: NSMutableArray)
@@ -30,6 +31,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
     var postParameter: [String: Any] = [:]
     
     func downloadByCategoriesAndBrand(categoriesId: String, brandId: String, minPrice: Int?, maxPrice: Int?){
+        DB_URL = getAddress.getProductURL()
         postParameter["categories_id"] = categoriesId
         postParameter["brand_id"] = brandId
         if minPrice != nil && maxPrice != nil{
@@ -44,6 +46,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
     }
     
     func downloadByCategories(categoriesId id: String, minPrice: Int?, maxPrice: Int?){
+        DB_URL = getAddress.getProductURL()
         postParameter["categories_id"] = id
         if minPrice != nil && maxPrice != nil{
             postParameter["pricemin"] = minPrice
@@ -56,11 +59,13 @@ class DownloadProduct: NSObject, NetworkDelegate {
         downloadItem()
     }
     func searchByKeyword(_ keyword: String){
+        DB_URL = getAddress.getProductURL()
         postParameter["keyword"] = keyword
         downloadItem()
     }
     
     func downloadByBrands(brandId id: String, minPrice: Int?, maxPrice: Int?){
+        DB_URL = getAddress.getProductURL()
         postParameter["brand_id"] = id
         if minPrice != nil && maxPrice != nil{
             postParameter["pricemin"] = minPrice
@@ -74,6 +79,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
     }
     
     func downloadByPrice(minPrice min: Int, maxPrice max: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["pricemin"] = min
         postParameter["pricemax"] = max
         
@@ -81,32 +87,37 @@ class DownloadProduct: NSObject, NetworkDelegate {
     }
     
     func downloadByMinPrice(minPrice min: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["pricemin"] = min
         downloadItem()
     }
     
     func downloadByMaxPrice(maxPrice max: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["pricemax"] = max
         downloadItem()
     }
     
-    func downloadSelectItem(productId id: String){
+    func downloadSelectItem(productId id: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["productId"] = id
         downloadItem()
     }
     
     func downloadLimitItem(limitNum: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["limit"] = limitNum
         downloadItem()
     }
     
     func downloadSort(sort: Int){
+        DB_URL = getAddress.getProductURL()
         postParameter["sort"] = sort
         downloadItem()
     }
     
     func downloadItem(){
-        DB_URL = getAddress.getProductURL()
+        
         
         let network = Network()
         network.delegate = self
@@ -129,11 +140,11 @@ class DownloadProduct: NSObject, NetworkDelegate {
             jsonElement = jsonResult[i] as! NSDictionary
             let product = ProductModel()
             
-            if  let product_id = jsonElement[ConstantProduct.productId] as? String,
+            if  let product_id = jsonElement[ConstantProduct.productId] as? Int,
                 let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
-                let product_price = jsonElement[ConstantProduct.productPrice] as? String,
-                let categories_id = jsonElement[ConstantProduct.categoriesId] as? String,
+                let product_price = jsonElement[ConstantProduct.productPrice] as? Int,
+                let categories_id = jsonElement[ConstantProduct.categoriesId] as? Int,
                 let categories_name = jsonElement[ConstantProduct.categoriesName] as? String,
                 let categories_type = jsonElement[ConstantProduct.categoriesType] as? String,
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,

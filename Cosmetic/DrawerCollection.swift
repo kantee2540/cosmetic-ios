@@ -30,7 +30,7 @@ class DrawerCollection: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["":""])
         
     }
     
@@ -39,7 +39,7 @@ class DrawerCollection: NSObject, NetworkDelegate {
         let param = ["desk_id": deskId, "drawer_id": drawerId]
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["":""])
     }
     
     func addToCollection(drawerId: String, deskIdSet: [String]){
@@ -49,7 +49,7 @@ class DrawerCollection: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param as [String : Any])
+        network.post(URL: DB_URL, param: param as [String : Any], header: ["":""])
     }
     
     func convertToJson(object: [String]) -> String?{

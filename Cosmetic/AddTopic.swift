@@ -19,14 +19,14 @@ class AddTopic: NSObject {
     var delegate: AddTopicDelegate?
     let getAddress = webAddress()
 
-    func insertTopic(topic_name: String, topic_desc: String, user_id: String, productSet: [String], image: UIImage?){
+    func insertTopic(topic_name: String, topic_desc: String, user_id: Int, productSet: [Any], image: UIImage?){
         
         let URL = getAddress.getInsertTopicURL()
         
         let param = ["topic_name": topic_name,
                      "topic_desc": topic_desc,
                      "user_id": user_id,
-                     "productset": convertToJson(from: productSet)]
+                     "productset": convertToJson(from: productSet) as Any] as [String : Any]
 
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
@@ -80,14 +80,14 @@ class AddTopic: NSObject {
 //        })
     }
     
-    func insertTopicWithOutImage(topic_name: String, topic_desc: String, user_id: String, productSet: [String]){
+    func insertTopicWithOutImage(topic_name: String, topic_desc: String, user_id: Int, productSet: [Any]){
         
         let URL = getAddress.getInsertTopicURL()
         
         let param = ["topic_name": topic_name,
                      "topic_desc": topic_desc,
                      "user_id": user_id,
-                     "productset": convertToJson(from: productSet)]
+                     "productset": convertToJson(from: productSet) as Any] as [String : Any]
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
@@ -124,7 +124,7 @@ class AddTopic: NSObject {
         })
     }
     
-    func convertToJson(from object: [String]) -> String? {
+    func convertToJson(from object: [Any]) -> String? {
         guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else{
             return nil
         }

@@ -50,6 +50,7 @@ struct ConstantUser {
     static let gender = "gender"
     static let birthday = "birthday"
     static let profilepic = "profilepic"
+    static let uid = "uid"
 }
 
 struct ConstantNotification {

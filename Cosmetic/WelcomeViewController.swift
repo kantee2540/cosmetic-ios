@@ -136,7 +136,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
             let itemIndex = cosmeticdeskCollectionview.indexPathsForSelectedItems?.first?.item
             destination?.delegate = self
             let item = cosmeticList[itemIndex!]
-            destination?.productId = item.product_id
+            destination?.productId = Int(item.product_id!)
         }
         
         else if segue.identifier == "Seetopic"{
@@ -167,6 +167,10 @@ extension WelcomeViewController: UITextFieldDelegate{
 }
 
 extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, DownloadProductProtocol, DownloadTopicProtocol, DownloadCosmeticDeskListDelegate{
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         cosmeticList = item as! [CosmeticDeskModel]

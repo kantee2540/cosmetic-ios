@@ -26,9 +26,9 @@ class DownloadPackage: NSObject, NetworkDelegate {
     //Change this if URL of database is changed
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: [String: String] = [:]
+    var postParameter: [String: Any] = [:]
     
-    func downloadByTopicId(id topicId: String){
+    func downloadByTopicId(id topicId: Int){
         postParameter["topic_id"] = topicId
         downloadItem()
     }
@@ -58,16 +58,16 @@ class DownloadPackage: NSObject, NetworkDelegate {
             jsonElement = jsonResult[i] as! NSDictionary
             let product = PackageModel()
             
-            if  let product_id = jsonElement[ConstantProduct.productId] as? String,
+            if  let product_id = jsonElement[ConstantProduct.productId] as? Int,
                 let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
                 let product_price = jsonElement[ConstantProduct.productPrice] as? String,
                 let product_img = jsonElement[ConstantProduct.productImg] as? String,
-                let topic_id = jsonElement[ConstantProduct.topicId] as? String,
+                let topic_id = jsonElement[ConstantProduct.topicId] as? Int,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
                 let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
                 let topic_code = jsonElement[ConstantProduct.topic_code] as? String,
-                let categories_id = jsonElement[ConstantCategories.categoriesId] as? String,
+                let categories_id = jsonElement[ConstantCategories.categoriesId] as? Int,
                 let categories_name = jsonElement[ConstantCategories.categoriesName] as? String
             {
                 product.product_id = product_id

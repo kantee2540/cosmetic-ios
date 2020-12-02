@@ -25,7 +25,7 @@ class webAddress {
     }
     
     func getProductURL() -> String{
-        let webFile = getrootURL() + "getProduct.php"
+        let webFile = getrootURL() + "product"
         return webFile
     }
     func getProductOnSearchURL() -> String {
@@ -37,6 +37,7 @@ class webAddress {
         let webFile = getrootURL() + "getCategories.php"
         return webFile
     }
+    
     
     func getBrandURL() -> String{
         let webFile = getrootURL() + "getBrand.php"
@@ -50,7 +51,7 @@ class webAddress {
     }
     
     func getTopicURL() -> String{
-        let webFile = getrootURL() + "getTopic.php"
+        let webFile = getrootURL() + "beautyset"
         return webFile
     }
     
@@ -60,7 +61,7 @@ class webAddress {
     }
     
     func getUserURL() -> String{
-        let webFile = getrootURL() + "getUser.php"
+        let webFile = getrootURL() + "user"
         return webFile
     }
     
@@ -74,13 +75,18 @@ class webAddress {
         return webFile
     }
     
+    func getCheckItem() -> String{
+        let webFile = getrootURL() + "cosmetic_desk/check"
+        return webFile
+    }
+    
     func getInsertItemToDesk() -> String{
-        let webFile = getrootURL() + "insertCosmeticDesk.php"
+        let webFile = getrootURL() + "cosmetic_desk/add"
         return webFile
     }
     
     func getDeleteItemFromDesk() -> String{
-        let webFile = getrootURL() + "deleteCosmeticDesk.php"
+        let webFile = getrootURL() + "cosmetic_desk/delete"
         return webFile
     }
     

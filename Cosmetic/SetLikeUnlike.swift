@@ -40,23 +40,23 @@ class SetLikeUnlike: NSObject, NetworkDelegate{
     var delegate: SetLikeUnlikeDelegate?
     let getAddress = webAddress()
     
-    func like(userId: String, topicId: String){
+    func like(userId: Int, topicId: Int){
         let DB_URL = getAddress.getSetLike()
         let param = ["user_id": userId, "topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["":""])
         
     }
     
-    func checkLike(userId: String, topicId: String){
+    func checkLike(userId: Int, topicId: Int){
         let DB_URL = getAddress.getCheckLikeURL()
         let param = ["user_id": userId, "topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["":""])
     }
     
 }

@@ -25,7 +25,7 @@ class CountLike: NSObject, NetworkDelegate {
     var delegate :LikeDislikeDelegate?
     let getAddress = webAddress()
     
-    func getLikeCount(topicId: String){
+    func getLikeCount(topicId: Int){
         let DB_URL = getAddress.getLikeURL()
         
         let postParam = ["topic_id": topicId] as [String : Any]

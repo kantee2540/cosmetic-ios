@@ -9,6 +9,10 @@
 import UIKit
 
 class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopicProtocol, TopTopicDelegate {
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     func dismissFromTopTopic() {
         let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
         self.navigationController?.pushViewController(accountVc!, animated: true)

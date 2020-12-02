@@ -27,7 +27,7 @@ class UpdateFavorite: NSObject, NetworkDelegate {
         delegate?.updateFavoriteFailed(error: error)
     }
     
-    func setFavorite(setFavorite: Bool, desk_id: String){
+    func setFavorite(setFavorite: Bool, desk_id: Int){
         DB_URL = getAddress.getUpdateFavoriteURL()
         var fav: Int?
         
@@ -41,6 +41,6 @@ class UpdateFavorite: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParam)
+        network.post(URL: DB_URL, param: postParam, header: ["":""])
     }
 }

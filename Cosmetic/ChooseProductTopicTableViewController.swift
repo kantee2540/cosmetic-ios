@@ -36,7 +36,7 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadCosm
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)!
+        let userId = UserDefaults.standard.integer(forKey: ConstantUser.userId)
         let downloadProduct = DownloadCosmeticDeskList()
         downloadProduct.delegate = self
         downloadProduct.getCosmeticDeskByUserid(userId: userId, orderBy: "recent")

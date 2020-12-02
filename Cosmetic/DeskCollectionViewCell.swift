@@ -9,14 +9,14 @@
 import UIKit
 
 protocol DeskCollectionViewCellDelegate {
-    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath, button: UIButton)
+    func tapAction(userId: Int, productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton)
 }
 
 class DeskCollectionViewCell: UICollectionViewCell {
     
-    var deskId: String?
-    var productId: String?
-    var userId: String?
+    var deskId: Int?
+    var productId: Int?
+    var userId: Int?
     var favoriteStatus: Bool = false
     var indexPath: IndexPath?
     var delegate: DeskCollectionViewCellDelegate?

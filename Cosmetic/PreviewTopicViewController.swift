@@ -50,10 +50,10 @@ class PreviewTopicViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func tapPost(_ sender: Any) {
         showSpinner(onView: self.view)
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId) ?? ""
+        let userId = UserDefaults.standard.integer(forKey: ConstantUser.userId)
         let addTopic = AddTopic()
         addTopic.delegate = self
-        var productIdSet: [String] = []
+        var productIdSet: [Any] = []
         
         for item in productSet{
             productIdSet.append(item.product_id!)
