@@ -8,19 +8,8 @@
 
 import UIKit
 
-@objc class BrandModel: NSObject {
-    @objc var brand_id :String?
-    @objc var brand_name :String?
-    @objc var brand_logo :String?
-    
-    override init() {
-        
-    }
-    
-    @objc init(brand_id: String, brand_name: String, brand_logo: String) {
-        self.brand_id = brand_id
-        self.brand_name = brand_name
-        self.brand_logo = brand_logo
-    }
-    
+class BrandModel: NSObject {
+    var brand_id :Int?
+    var brand_name :String?
+    var brand_logo :String?
 }

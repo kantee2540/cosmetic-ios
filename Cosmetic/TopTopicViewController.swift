@@ -21,7 +21,15 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         coverImage.downloadImage(from: URL(string: detail.topic_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         topicItem = packages as! [PackageModel]
         likeCountLabel.text = Library.countNumFormat(num: detail.likeCount ?? 0)
+        if(detail.isSaved!){
+            isSavedTopic = true
+            savedButtonState()
+        }else{
+            isSavedTopic = false
+            unsavedButtonState()
+        }
         productTable.reloadData()
+        self.productTable.endUpdates()
         removeSpinner()
     }
     
@@ -115,7 +123,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     private var topicHeadItem: [TopicModel] = []
     private var topicItem: [PackageModel] = []
     private var isSavedTopic: Bool = false
-    private var userId: Int?
+    private var isLikedTopic: Bool = false
+    private var uid: String?
     
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -188,10 +197,9 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         downloadTopic.delegate = self
         downloadTopic.getTopicById(topicId: topicId!)
         
-        userId = UserDefaults.standard.integer(forKey: ConstantUser.userId)
-        if userId != nil{
-//            checkSaveTopic()
-//            checkLike()
+        uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        if uid != nil{
+            checkLike()
         }
         
 //        downloadPackage()
@@ -201,23 +209,22 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     private func settingtitleLabel(){
         shareButton.roundedCorner()
         saveButton.roundedCorner()
-        
-        
     }
+    
     @IBAction func tapSave(_ sender: Any) {
         
-        if userId != nil{
+        if uid != nil{
             let saveTopic = SaveTopic()
             saveTopic.delegate = self
             if !isSavedTopic{
                 //To save
-                saveTopic.saveTopic(topicId: topicId!, userId: userId!)
+                saveTopic.saveTopic(topicId: topicId!)
                 let snackMessage = MDCSnackbarMessage()
                 snackMessage.text = "Saved cosmetic set to desk"
                 MDCSnackbarManager().show(snackMessage)
             }else{
                 //To remove
-                saveTopic.deleteTopic(topicId: topicId!, userId: userId!)
+                saveTopic.deleteTopic(topicId: topicId!)
                 let snackMessage = MDCSnackbarMessage()
                 snackMessage.text = "Removed cosmetic set from desk"
                 MDCSnackbarManager().show(snackMessage)
@@ -229,7 +236,12 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func tapLike(_ sender: Any) {
-        if userId != nil{
+        if uid != nil{
+            if !isLikedTopic{
+                setLike()
+            }else{
+                setUnLike()
+            }
             
         }else{
             self.dismiss(animated: true, completion: nil)
@@ -265,52 +277,43 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
 
 }
 
-extension TopTopicViewController: LikeDislikeDelegate, SetLikeUnlikeDelegate{
+extension TopTopicViewController: SetLikeUnlikeDelegate{
     
     func setLike(){
         let setLikeUnlike = SetLikeUnlike()
         setLikeUnlike.delegate = self
-        setLikeUnlike.like(userId: userId!, topicId: topicId!)
+        setLikeUnlike.like(topicId: topicId!)
+    }
+    
+    func setUnLike(){
+        let setLikeUnlike = SetLikeUnlike()
+        setLikeUnlike.delegate = self
+        setLikeUnlike.unlike(topicId: topicId!)
     }
     
     func checkLike(){
         let setLikeUnlike = SetLikeUnlike()
         setLikeUnlike.delegate = self
-        setLikeUnlike.checkLike(userId: userId!, topicId: topicId!)
+        setLikeUnlike.checkLike(topicId: topicId!)
     }
     
-    func setLikeUnlikeSuccess(like: Bool) {
+    func setLikeUnlikeSuccess(like: Bool, currentLike: Int) {
+        likeCountLabel.text = Library.countNumFormat(num: currentLike)
         if like{
+            isLikedTopic = true
             likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
             likeButton.tintColor = UIColor.systemGreen
             
         }else{
+            isLikedTopic = false
             likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
             likeButton.tintColor = UIColor.label
             
         }
-        
-        getLikeCount()
     }
     
     func setLikeUnlikeFailed(error: String) {
         Library.displayAlert(targetVC: self, title: "Error", message: "Can't like please try again")
-    }
-    
-    
-    func getLikeCount(){
-        let likeDislike = CountLike()
-        likeDislike.delegate = self
-        likeDislike.getLikeCount(topicId: topicId!)
-    }
-    
-    func getLikeDislikeSuccess(like: Int) {
-        let likeCount = Library.countNumFormat(num: like)
-        likeCountLabel.text = likeCount
-    }
-    
-    func getLikeDislikeFailed(error: String) {
-        Library.displayAlert(targetVC: self, title: "Error", message: error)
     }
     
     

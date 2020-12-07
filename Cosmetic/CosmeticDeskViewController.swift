@@ -107,7 +107,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
                 let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price!))
                 deskCell.productPrice.text = "\(formattedPrice!)฿"
                 
-                if item.favorite == "1"{
+                if item.favorite == 1{
                     deskCell.favoriteStatus = true
                     deskCell.setHeartFill()
                 }else{
@@ -210,7 +210,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "My Desk"
-        
+        uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         if uid != nil{
             
             let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
@@ -286,19 +286,19 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     private func downloadCosmeticList(orderBy: String){
         let downloadDeskCosmetic = DownloadCosmeticDeskList()
         downloadDeskCosmetic.delegate = self
-        //downloadDeskCosmetic.getCosmeticDeskByUserid(userId: userId!, orderBy: orderBy)
+        downloadDeskCosmetic.getCosmeticDeskByUserid(orderby: orderBy)
     }
     
     private func downloadFavoriteList(orderBy: String){
         let downloadDeskCosmetic = DownloadCosmeticDeskList()
         downloadDeskCosmetic.delegate = self
-        //downloadDeskCosmetic.getFavorite(userId: userId!, orderBy: orderBy)
+        downloadDeskCosmetic.getFavorite(orderBy: orderBy)
     }
     
     private func downloadBeautySet(orderBy: String){
         let downloadSaveTopic = DownloadSaveTopic()
         downloadSaveTopic.delegate = self
-        //downloadSaveTopic.downloadSaveTopic(userId: userId!, orderBy: orderBy)
+        downloadSaveTopic.downloadSaveTopic(orderBy: orderBy)
     }
     
     private func refreshData(){
@@ -383,7 +383,7 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     }
     
     //MARK: - Tap Action from cosmetic desk item
-    func tapAction(userId: Int, productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton) {
+    func tapAction(productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton) {
         let item = deskList[indexPath.row]
         
         let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
@@ -455,7 +455,7 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
         deskRefreshControl.endRefreshing()
     }
     
-    func onSuccess() {
+    func onSuccess(isSave: Bool) {
         refreshData()
     }
     
@@ -500,7 +500,7 @@ extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveT
             self.showSpinner(onView: self.view)
             let saveTopic = SaveTopic()
             saveTopic.delegate = self
-            //saveTopic.deleteTopic(topicId: item.topic_id!, userId: self.userId!)
+            saveTopic.deleteTopic(topicId: item.topic_id!)
         }))
         
         setOption.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {

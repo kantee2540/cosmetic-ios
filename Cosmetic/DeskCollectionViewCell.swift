@@ -9,14 +9,13 @@
 import UIKit
 
 protocol DeskCollectionViewCellDelegate {
-    func tapAction(userId: Int, productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton)
+    func tapAction(productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton)
 }
 
 class DeskCollectionViewCell: UICollectionViewCell {
     
     var deskId: Int?
     var productId: Int?
-    var userId: Int?
     var favoriteStatus: Bool = false
     var indexPath: IndexPath?
     var delegate: DeskCollectionViewCellDelegate?
@@ -29,7 +28,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageWidth: NSLayoutConstraint!
     
     @IBAction func tapAction(_ sender: Any) {
-        delegate?.tapAction(userId: userId!, productId: productId!, image: productImage.image!, indexPath: indexPath!, button: actionButton)
+        delegate?.tapAction(productId: productId!, image: productImage.image!, indexPath: indexPath!, button: actionButton)
     }
     
     override init(frame: CGRect) {

@@ -143,8 +143,8 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         }
     }
     
-    func onSuccess() {
-        if !isSaveItem{
+    func onSuccess(isSave: Bool) {
+        if isSave{
             disableSaveButton()
             isSaveItem = true
         }else{

@@ -28,26 +28,17 @@ class webAddress {
         let webFile = getrootURL() + "product"
         return webFile
     }
-    func getProductOnSearchURL() -> String {
-        let webFile = getrootURL() + "getProductOnSearch.php"
-        return webFile
-    }
     
     func getCategoriesURL() -> String {
-        let webFile = getrootURL() + "getCategories.php"
+        let webFile = getrootURL() + "categories"
         return webFile
     }
     
     
     func getBrandURL() -> String{
-        let webFile = getrootURL() + "getBrand.php"
+        let webFile = getrootURL() + "brand"
         return webFile
         
-    }
-    
-    func getPackageURL() -> String{
-        let webFile = getrootURL() + "getPackage.php"
-        return webFile
     }
     
     func getTopicURL() -> String{
@@ -55,8 +46,18 @@ class webAddress {
         return webFile
     }
     
-    func getCollectUserdata() -> String{
-        let webFile = getrootURL() + "collectUserData.php"
+    func getMytopicURL() -> String{
+        let webFile = getrootURL() + "beautyset/my_set"
+        return webFile
+    }
+    
+    func getCreateUserURL() -> String{
+        let webFile = getrootURL() + "user/create"
+        return webFile
+    }
+    
+    func getUpdateUserURL() -> String{
+        let webFile = getrootURL() + "user/update"
         return webFile
     }
     
@@ -66,7 +67,7 @@ class webAddress {
     }
     
     func getDeleteUserURL() -> String{
-        let webFile = getrootURL() + "deleteuser.php"
+        let webFile = getrootURL() + "user/delete"
         return webFile
     }
     
@@ -91,82 +92,62 @@ class webAddress {
     }
     
     func getCosmeticDeskList() -> String{
-        let webFile = getrootURL() + "getCosmeticDeskList.php"
+        let webFile = getrootURL() + "cosmetic_desk/list"
+        return webFile
+    }
+    
+    func getCosmeticDeskFavoriteList() -> String{
+        let webFile = getrootURL() + "cosmetic_desk/favorite"
         return webFile
     }
     
     func getUpdateFavoriteURL() -> String{
-        let webFile = getrootURL() + "updateFavorite.php"
-        return webFile
-    }
-    
-    func getDrawerURL() -> String{
-        let webFile = getrootURL() + "getDrawer.php"
-        return webFile
-    }
-    
-    func getAddDrawerURL() -> String{
-        let webFile = getrootURL() + "insertDrawer.php"
-        return webFile
-    }
-    
-    func getDrawerCollectionURL() -> String {
-        let webFile = getrootURL() + "getDrawerCollection.php"
-        return webFile
-    }
-    
-    func getDeleteDrawerURL() -> String{
-        let webFile = getrootURL() + "deleteDrawer.php"
-        return webFile
-    }
-    
-    func getDeleteCollectionURL() -> String{
-        let webFile = getrootURL() + "deleteDrawerCollection.php"
-        return webFile
-    }
-    
-    func getAddCollectionURL() -> String{
-        let webFile = getrootURL() + "insertDrawerCollection.php"
+        let webFile = getrootURL() + "cosmetic_desk/update_favorite"
         return webFile
     }
     
     func getInsertTopicURL() -> String{
-        let webFile = getrootURL() + "insertTopic.php"
+        let webFile = getrootURL() + "beautyset/add"
+        return webFile
+    }
+    
+    func removeTopicURL() -> String{
+        let webFile = getrootURL() + "beautyset/delete"
         return webFile
     }
     
     func getSaveTopicURL() -> String {
-        let webFile = getrootURL() + "getSaveTopic.php"
+        let webFile = getrootURL() + "beautyset/my_set/saved_set"
         return webFile
     }
     
     func getInsertSaveTopicURL() -> String{
-        let webFile = getrootURL() + "insertSaveTopic.php"
+        let webFile = getrootURL() + "beautyset/my_set/save"
         return webFile
     }
     
     func getDeleteSaveTopicURL() -> String{
-        let webFile = getrootURL() + "deleteSaveTopic.php"
+        let webFile = getrootURL() + "beautyset/my_set/delete"
         return webFile
     }
     
     func getUpdateProfilepic() -> String{
-        let webFile = getrootURL() + "updateprofilepic.php"
-        return webFile
-    }
-    
-    func getLikeURL() -> String{
-        let webFile = getrootURL() + "likeTopic.php"
+        let webFile = getrootURL() + "user/upload_profile"
         return webFile
     }
     
     func getSetLike() -> String{
-        let webFile = getrootURL() + "setLike.php"
+        let webFile = getrootURL() + "beautyset/my_set/set_like"
+        return webFile
+    }
+    
+    func getSetunlike() -> String{
+        let webFile = getrootURL() + "beautyset/my_set/set_unlike"
         return webFile
     }
     
     func getCheckLikeURL() -> String{
-        let webFile = getrootURL() + "checklike.php"
+        let webFile = getrootURL() + "beautyset/my_set/is_liked"
         return webFile
     }
     

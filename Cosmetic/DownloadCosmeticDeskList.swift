@@ -29,19 +29,20 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func getCosmeticDeskByUserid(userId: Int, orderBy: String){
-        postParameter["user_id"] = userId
-        postParameter["orderby"] = orderBy
+    func getCosmeticDeskByUserid(orderby: String){
+        DB_URL = getAddress.getCosmeticDeskList()
+        postParameter["orderby"] = orderby
         downloadItem()
     }
-    func getFavorite(userId: Int, orderBy: String){
-        postParameter = ["user_id": userId, "favorite": 9]
+    func getFavorite(orderBy: String){
+        DB_URL = getAddress.getCosmeticDeskFavoriteList()
         postParameter["orderby"] = orderBy
         downloadItem()
     }
     
-    func getCosmeticByLimit(userId: String, limit: Int){
-        postParameter = ["user_id": userId, "limit": limit]
+    func getCosmeticByLimit(limit: Int){
+        DB_URL = getAddress.getCosmeticDeskList()
+        postParameter = ["limit": limit]
         downloadItem()
     }
     
@@ -51,11 +52,11 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
     }
     
     private func downloadItem(){
-        DB_URL = getAddress.getCosmeticDeskList()
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter, header: ["":""])
+        network.post(URL: DB_URL, param: postParameter, header: ["Authorization": String(uid!)])
     }
     
     func parseJSON(_ data:Data){
@@ -85,7 +86,7 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
                 let ingredient = jsonElement[ConstantProduct.ingredient] as? String,
                 let user_id = jsonElement[ConstantUser.userId] as? Int,
                 let desk_id = jsonElement[ConstantProduct.deskId] as? Int,
-                let favorite = jsonElement[ConstantProduct.favorite] as? String
+                let favorite = jsonElement[ConstantProduct.favorite] as? Int
             {
                 cosmeitcDesk.product_id = product_id
                 cosmeitcDesk.product_name = product_name

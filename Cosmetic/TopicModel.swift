@@ -19,4 +19,5 @@ public class TopicModel: NSObject {
     var nickname: String?
     var userImg: String?
     var likeCount: Int?
+    var isSaved: Bool?
 }

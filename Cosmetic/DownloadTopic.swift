@@ -40,13 +40,15 @@ class DownloadTopic: NSObject, NetworkDelegate {
     }
     
     func getTopicById(topicId id: Int){
-        //postParameter["topic_id"] = id
         downloadOneItem(topicId: id)
     }
     
-    func getTopicByUserId(userId id: String){
-        postParameter["user_id"] = id
-        downloadItem()
+    func getTopicByUserId(){
+        DB_URL = getAddress.getMytopicURL()
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let network = Network()
+        network.delegate = self
+        network.post(URL: DB_URL, param: postParameter, header: ["Authorization": String(uid!)])
     }
     
     func getTopicId(code topicCode: String){
@@ -66,9 +68,11 @@ class DownloadTopic: NSObject, NetworkDelegate {
     func downloadOneItem(topicId id: Int){
         DB_URL = getAddress.getTopicURL() + "/\(id)"
         
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
-        manager.get(DB_URL, parameters: nil, headers: nil, progress: {(Progress) in },
+        manager.get(DB_URL, parameters: nil, headers: ["Authorization": String(uid!)], progress: {(Progress) in },
                      success: {(Operation, responseObject) in
                         do{
                             let json = try JSONSerialization.jsonObject(with: responseObject as! Data, options: .mutableContainers) as! [String: Any]
@@ -83,6 +87,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
                             topic.nickname = topicDetail[ConstantUser.nickName] as? String
                             topic.userImg = topicDetail[ConstantUser.profilepic] as? String
                             topic.likeCount = json["like_count"] as? Int
+                            topic.isSaved = json["is_saved"] as? Bool
                             
                             let packagesData = json["packages"] as! NSArray
                             let packages = NSMutableArray()

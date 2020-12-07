@@ -30,7 +30,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func downloadByCategoriesAndBrand(categoriesId: String, brandId: String, minPrice: Int?, maxPrice: Int?){
+    func downloadByCategoriesAndBrand(categoriesId: Int, brandId: Int, minPrice: Int?, maxPrice: Int?){
         DB_URL = getAddress.getProductURL()
         postParameter["categories_id"] = categoriesId
         postParameter["brand_id"] = brandId
@@ -45,7 +45,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
         downloadItem()
     }
     
-    func downloadByCategories(categoriesId id: String, minPrice: Int?, maxPrice: Int?){
+    func downloadByCategories(categoriesId id: Int, minPrice: Int?, maxPrice: Int?){
         DB_URL = getAddress.getProductURL()
         postParameter["categories_id"] = id
         if minPrice != nil && maxPrice != nil{
@@ -64,7 +64,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
         downloadItem()
     }
     
-    func downloadByBrands(brandId id: String, minPrice: Int?, maxPrice: Int?){
+    func downloadByBrands(brandId id: Int, minPrice: Int?, maxPrice: Int?){
         DB_URL = getAddress.getProductURL()
         postParameter["brand_id"] = id
         if minPrice != nil && maxPrice != nil{

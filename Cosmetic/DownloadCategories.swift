@@ -52,7 +52,7 @@ class DownloadCategories: NSObject, NetworkDelegate {
             jsonElement = jsonResult[i] as! NSDictionary
             let category = CategoriesModel()
             
-            if  let categories_id = jsonElement[ConstantCategories.categoriesId] as? String,
+            if  let categories_id = jsonElement[ConstantCategories.categoriesId] as? Int,
                 let categories_name = jsonElement[ConstantCategories.categoriesName] as? String,
                 let categories_type = jsonElement[ConstantCategories.categoriesType] as? String
             {

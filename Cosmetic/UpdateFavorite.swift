@@ -37,10 +37,11 @@ class UpdateFavorite: NSObject, NetworkDelegate {
             fav = 0
         }
         
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         let postParam = ["favorite": fav as Any, "desk_id": desk_id] as [String : Any]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParam, header: ["":""])
+        network.post(URL: DB_URL, param: postParam, header: ["Authorization": String(uid!)])
     }
 }

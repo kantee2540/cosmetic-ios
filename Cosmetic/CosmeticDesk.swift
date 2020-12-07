@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CosmeticDeskDelegate {
-    func onSuccess()
+    func onSuccess(isSave: Bool)
     func checkedItem(isSave: Bool)
     func onFailed()
 }
@@ -32,7 +32,7 @@ class CosmeticDesk: NSObject, NetworkDelegate {
             
             if let error = jsonResult["error"] as? Bool{
                 if !error{
-                    self.delegate?.onSuccess()
+                    self.delegate?.onSuccess(isSave: jsonResult["is_saved"] as! Bool)
                 }else{
                     self.delegate?.onFailed()
                 }

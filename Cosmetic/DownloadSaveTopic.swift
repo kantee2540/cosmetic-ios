@@ -35,13 +35,14 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
         network.post(URL: DB_URL, param: param, header: ["":""])
     }
     
-    func downloadSaveTopic(userId: Int, orderBy: String){
+    func downloadSaveTopic(orderBy: String){
         let DB_URL = getAddress.getSaveTopicURL()
-        let param = ["user_id": userId, "orderby": orderBy] as [String : Any]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["orderby": orderBy] as [String : Any]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param, header: ["":""])
+        network.post(URL: DB_URL, param: param, header: ["Authorization": String(uid!)])
         
     }
     

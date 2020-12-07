@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
     private var cosmeticList: [CosmeticDeskModel] = []
     private var pickForYouProduct: [ProductModel] = []
     private var recommendedSet: [TopicModel] = []
-    private var userId: String?
+    private var uid: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         downloadTopic.delegate = self
         downloadTopic.downloadLimitTopic(limit: 10)
         
-        if userId != nil{
+        if uid != nil{
             downloadCosmeticDeskList()
         }
     }
@@ -89,7 +89,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         
         let downloadCosmeticDesk = DownloadCosmeticDeskList()
         downloadCosmeticDesk.delegate = self
-        downloadCosmeticDesk.getCosmeticByLimit(userId: userId ?? "", limit: 5)
+        downloadCosmeticDesk.getCosmeticByLimit(limit: 5)
     }
     
     @objc func openCamera(_ :UIBarButtonItem){
@@ -102,9 +102,9 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         self.tabBarController?.navigationItem.title = ""
         tabBarController?.navigationItem.leftBarButtonItem = nil
         
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
+        uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         
-        if userId == nil{
+        if uid == nil{
             cosmeticdeskCollectionview.visibility = .gone
             cosmeticDeskTitle.visibility = .gone
             deskload.visibility = .gone
@@ -223,7 +223,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             return pickForYouProduct.count
         }else if collectionView == setCollectionview{
             return recommendedSet.count
-        }else if collectionView == cosmeticdeskCollectionview && userId != nil{
+        }else if collectionView == cosmeticdeskCollectionview && uid != nil{
             return cosmeticList.count
         }
         else{
@@ -258,7 +258,7 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
             setCell.setName.text = item.topic_name
             return setCell
             
-        }else if collectionView == cosmeticdeskCollectionview && userId != nil{
+        }else if collectionView == cosmeticdeskCollectionview && uid != nil{
             let pickCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deskcell", for: indexPath) as! PickforyouCollectionViewCell
             let item = cosmeticList[indexPath.row]
             pickCell.productName.text = item.product_name

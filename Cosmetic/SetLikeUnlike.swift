@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SetLikeUnlikeDelegate {
-    func setLikeUnlikeSuccess(like: Bool)
+    func setLikeUnlikeSuccess(like: Bool, currentLike: Int)
     func setLikeUnlikeFailed(error: String)
 }
 
@@ -24,8 +24,9 @@ class SetLikeUnlike: NSObject, NetworkDelegate{
             print(error)
         }
         
-        if let countLike = jsonResult["like"] as? Bool{
-            self.delegate?.setLikeUnlikeSuccess(like: countLike)
+        if let countLike = jsonResult["is_liked"] as? Bool,
+           let currentLike = jsonResult["current_like"] as? Int{
+            self.delegate?.setLikeUnlikeSuccess(like: countLike, currentLike: currentLike)
         }else{
             self.delegate?.setLikeUnlikeFailed(error: "Failed to get data")
         }
@@ -40,23 +41,36 @@ class SetLikeUnlike: NSObject, NetworkDelegate{
     var delegate: SetLikeUnlikeDelegate?
     let getAddress = webAddress()
     
-    func like(userId: Int, topicId: Int){
+    func like(topicId: Int){
         let DB_URL = getAddress.getSetLike()
-        let param = ["user_id": userId, "topic_id": topicId]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param, header: ["":""])
+        network.post(URL: DB_URL, param: param, header:["Authorization": String(uid!)])
         
     }
     
-    func checkLike(userId: Int, topicId: Int){
-        let DB_URL = getAddress.getCheckLikeURL()
-        let param = ["user_id": userId, "topic_id": topicId]
+    func unlike(topicId: Int){
+        let DB_URL = getAddress.getSetunlike()
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param, header: ["":""])
+        network.post(URL: DB_URL, param: param, header:["Authorization": String(uid!)])
+        
+    }
+    
+    func checkLike(topicId: Int){
+        let DB_URL = getAddress.getCheckLikeURL()
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["topic_id": topicId]
+        
+        let network = Network()
+        network.delegate = self
+        network.post(URL: DB_URL, param: param, header: ["Authorization": String(uid!)])
     }
     
 }

@@ -22,8 +22,20 @@ class CustomTextfield: UITextField {
         return textRect
     }
 
-    @IBInspectable var leftPadding: CGFloat = 0
-    @IBInspectable var rightPadding: CGFloat = 0
+    @IBInspectable var leftPadding: CGFloat = 0{
+        didSet{
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: leftPadding, height: self.frame.size.height))
+            self.leftView = paddingView
+            self.leftViewMode = .always
+        }
+    }
+    @IBInspectable var rightPadding: CGFloat = 0{
+        didSet{
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: rightPadding, height: self.frame.size.height))
+            self.rightView = paddingView
+            self.rightViewMode = .always
+        }
+    }
     @IBInspectable var cornerRadius: CGFloat = 0{
         didSet{
             setcornerRadius()
