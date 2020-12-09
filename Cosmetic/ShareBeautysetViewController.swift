@@ -13,7 +13,7 @@ protocol ShareBeautysetDelegate {
     func finishedCreateset()
 }
 
-class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate ,ChooseProductDelegate, AddTopicDelegate{
+class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate ,ChooseProductDelegate, AddTopicDelegate, DownloadTopicProtocol, EditTopicDeletegate{
     
     @IBOutlet weak var selectedTableview: UITableView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
@@ -24,16 +24,34 @@ class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var selectedTableviewHeight: NSLayoutConstraint!
     private var selectedProduct: [CosmeticDeskModel] = []
+    private var addProduct: [CosmeticDeskModel] = []
+    private var deleteProduct: [CosmeticDeskModel] = []
+    private var isEditmode: Bool = false
     var delegate: ShareBeautysetDelegate?
+    var topicId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        if topicId != nil{
+            editingMode()
+        }
+        
         selectedTableview.delegate = self
         selectedTableview.dataSource = self
         selectedTableview.isEditing = true
         titleTextfield.delegate = self
         setupView()
+    }
+    
+    func editingMode(){
+        selectedProduct = []
+        addProduct = []
+        deleteProduct = []
+        let downloadTopic = DownloadTopic()
+        downloadTopic.delegate = self
+        downloadTopic.downloadOneItem(topicId: topicId!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,13 +70,28 @@ class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDel
     }
     @IBAction func tapShare(_ sender: Any) {
         showSpinner(onView: self.view)
-        var productIdSet :[Any] = []
-        for i in selectedProduct{
-            productIdSet.append(i.product_id!)
+        if isEditmode{
+            var productIdAdd: [Any] = []
+            var productIdDelete :[Any] = []
+            for i in addProduct{
+                productIdAdd.append(i.product_id!)
+            }
+            for j in deleteProduct{
+                productIdDelete.append(j.product_id!)
+            }
+            let editTopic = Topic()
+            editTopic.editDelegate = self
+            editTopic.editTopic(topicId: topicId, topic_name: titleTextfield.text ?? "", topic_desc: descTextview.text ?? "", new_set: productIdAdd, delete_set: productIdDelete, image: coverImage.image)
+            
+        }else{
+            var productIdSet :[Any] = []
+            for i in selectedProduct{
+                productIdSet.append(i.product_id!)
+            }
+            let addTopic = Topic()
+            addTopic.delegate = self
+            addTopic.insertTopic(topic_name: titleTextfield.text ?? "", topic_desc: descTextview.text ?? "", productSet: productIdSet, image: coverImage.image)
         }
-        let addTopic = Topic()
-        addTopic.delegate = self
-        addTopic.insertTopic(topic_name: titleTextfield.text ?? "", topic_desc: descTextview.text ?? "", productSet: productIdSet, image: coverImage.image)
     }
     
     func insertTopicSuccess(topicCode: String) {
@@ -67,6 +100,17 @@ class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDel
         dismiss(animated: true, completion: {()in
             self.delegate?.finishedCreateset()
         })
+    }
+    
+    func editTopicSuccess() {
+        removeSpinner()
+        dismiss(animated: true, completion: {()in
+            self.delegate?.finishedCreateset()
+        })
+    }
+    
+    func editTopicFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Edit beauty set failed", message: error)
     }
     
     func insertTopicFailed(error: String) {
@@ -128,11 +172,47 @@ class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDel
     }
     
     func finshedSelectItem(item: [CosmeticDeskModel]) {
+        
         selectedProduct.append(contentsOf: item)
+        if isEditmode{
+            addProduct.append(contentsOf: item)
+        }
         selectedTableview.reloadData()
         showSpinner(onView: self.view)
         removeSpinner()
     }
+    
+    func topicDownloaded(item: NSMutableArray) {
+        
+    }
+    
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        self.navigationItem.title = "Edit beauty set"
+        titleTextfield.text = detail.topic_name
+        descTextview.text = detail.topic_description
+        coverImage.downloadImage(from: URL(string: detail.topic_img!)!)
+        
+        shareButton.isEnabled = true
+        shareButton.title = "Save"
+        
+        for i in packages as! [PackageModel]{
+            let packageDesk = CosmeticDeskModel()
+            packageDesk.product_id = i.product_id
+            packageDesk.product_name = i.product_name
+            packageDesk.product_price = i.product_price
+            packageDesk.categories_name = i.categories_name
+            packageDesk.product_img = i.product_img
+            selectedProduct.append(packageDesk)
+        }
+        
+        isEditmode = true
+        selectedTableview.reloadData()
+    }
+    
+    func topicError(error: String) {
+        
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
@@ -145,6 +225,12 @@ class ShareBeautysetViewController: UIViewController, UIImagePickerControllerDel
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            if isEditmode{
+                if !addProduct.contains(selectedProduct[indexPath.row]){
+                    deleteProduct.append(selectedProduct[indexPath.row])
+                }
+            }
             selectedProduct.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

@@ -40,7 +40,7 @@ class WelcomeViewController: UIViewController, CosmeticDetailDelegate, TopTopicD
         
         self.hideKeyboardWhenTappedAround()
         
-        startSearchview.layer.cornerRadius = 8
+        startSearchview.layer.cornerRadius = 20
         startSearchview.layer.shadowColor = UIColor.black.cgColor
         startSearchview.layer.shadowOpacity = 0.15
         startSearchview.layer.shadowOffset = CGSize(width: 0, height: 5)

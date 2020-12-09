@@ -111,6 +111,11 @@ class webAddress {
         return webFile
     }
     
+    func editTopicURL() -> String{
+        let webFile = getrootURL() + "beautyset/edit"
+        return webFile
+    }
+    
     func removeTopicURL() -> String{
         let webFile = getrootURL() + "beautyset/delete"
         return webFile

@@ -9,7 +9,14 @@
 import UIKit
 import MaterialComponents.MaterialSnackbar
 
-class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, RemoveTopicDelegate {
+class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, RemoveTopicDelegate, ShareBeautysetDelegate {
+    func finishedCreateset() {
+        downloadTopic()
+        let answerMessage = MDCSnackbarMessage()
+        answerMessage.text = "Updated beauty set"
+        MDCSnackbarManager().show(answerMessage)
+    }
+    
     func removeSuccess() {
         downloadTopic()
         removeSpinner()
@@ -98,12 +105,26 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let item = topicList[indexPath.row]
         
-        if editingStyle == .delete {
+        let FlagAction = UIContextualAction(style: .normal, title:  "Edit", handler: {
+            (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            if let rootVc = self.storyboard?.instantiateViewController(withIdentifier: "sharesetroot") as? ShareBeautysetRootViewController{
+                let shareVc = rootVc.viewControllers.first as? ShareBeautysetViewController
+                rootVc.topicId = item.topic_id
+                shareVc?.delegate = self
+                self.present(rootVc, animated: true, completion: nil)
+            }
+            
+            success(true)
+        })
+        FlagAction.backgroundColor = .lightGray
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {
+            (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             let alert = UIAlertController(title: "Are you sure to delete this beauty set?", message: "\"\(item.topic_name!)\" will deleted. You can't undo this action.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(action) -> Void in
                 self.showSpinner(onView: self.view)
@@ -111,14 +132,12 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, 
                 topic.removeDelegate = self
                 topic.removeTopic(id: item.topic_id!)
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in
-                
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
             }))
             self.present(alert, animated: true, completion: nil)
-            
-            
-            
-        }
+            success(true)
+        })
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, FlagAction])
     }
-
 }

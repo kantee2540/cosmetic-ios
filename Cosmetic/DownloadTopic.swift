@@ -72,7 +72,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
-        manager.get(DB_URL, parameters: nil, headers: ["Authorization": String(uid!)], progress: {(Progress) in },
+        manager.get(DB_URL, parameters: nil, headers: ["Authorization": String(uid ?? "")], progress: {(Progress) in },
                      success: {(Operation, responseObject) in
                         do{
                             let json = try JSONSerialization.jsonObject(with: responseObject as! Data, options: .mutableContainers) as! [String: Any]
@@ -88,6 +88,7 @@ class DownloadTopic: NSObject, NetworkDelegate {
                             topic.userImg = topicDetail[ConstantUser.profilepic] as? String
                             topic.likeCount = json["like_count"] as? Int
                             topic.isSaved = json["is_saved"] as? Bool
+                            topic.viewCount = json["view_count"] as? Int
                             
                             let packagesData = json["packages"] as! NSArray
                             let packages = NSMutableArray()

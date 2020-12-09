@@ -130,7 +130,7 @@ class SearchDetailTableViewController: UITableViewController, CosmeticDetailDele
         
         let downloadProduct = DownloadProduct()
         downloadProduct.delegate = self
-        downloadProduct.downloadSort(sort: 1)
+        downloadProduct.downloadLimitItem(limitNum: 10)
     }
     
     private func setCountLabel(count: Int){

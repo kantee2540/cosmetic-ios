@@ -117,7 +117,7 @@ class DownloadProduct: NSObject, NetworkDelegate {
     }
     
     func downloadItem(){
-        
+        DB_URL = getAddress.getProductURL()
         
         let network = Network()
         network.delegate = self

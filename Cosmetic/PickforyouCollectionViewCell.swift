@@ -25,8 +25,8 @@ class PickforyouCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView(){
-        contentView.layer.cornerRadius = 8
-        layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 15
+        layer.cornerRadius = 15
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.15
         layer.shadowOffset = CGSize(width: 0, height: 5)

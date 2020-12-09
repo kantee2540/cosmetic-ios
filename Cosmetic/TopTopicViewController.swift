@@ -18,6 +18,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
         titleLabel.text = detail.topic_name
         descriptionLabel.text = detail.topic_description
         personLabel.text = detail.nickname
+        viewLabel.text = "\(detail.viewCount ?? 0) views"
         coverImage.downloadImage(from: URL(string: detail.topic_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         topicItem = packages as! [PackageModel]
         likeCountLabel.text = Library.countNumFormat(num: detail.likeCount ?? 0)
@@ -131,6 +132,7 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productTable: UITableView!
     @IBOutlet weak var personLabel: UILabel!
+    @IBOutlet weak var viewLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!

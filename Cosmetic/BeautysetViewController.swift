@@ -65,7 +65,7 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     private func setupTopview(){
-        topView.layer.cornerRadius = 8
+        topView.layer.cornerRadius = 20
         topView.layer.shadowColor =  UIColor.black.cgColor
         topView.layer.shadowOpacity = 0.15
         topView.layer.shadowRadius = 10
@@ -76,11 +76,11 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
     private func downloadTopic(){
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.downloadTopLimitTopic(limit: 5)
+        downloadTopic.downloadTopLimitTopic(limit: 10)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Top Beauty Set"
+        self.tabBarController?.navigationItem.title = "Beauty Set"
         let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         if uid != nil{
             topView.visibility = .visible
