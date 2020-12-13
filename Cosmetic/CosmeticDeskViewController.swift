@@ -391,8 +391,8 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
             (UIAlertAction) in
             
             let productId: Int = item.product_id!
-            let getAddress = webAddress()
-            let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+            //let getAddress = webAddress()
+            let url = URL(string: "http://54.255.220.88/?cosmeticid=\(productId)")
             
             let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
             
@@ -481,8 +481,8 @@ extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveT
         setOption.addAction(UIAlertAction(title: "Share", style: .default, handler: {
             (UIAlertAction) in
             let topicId: Int = item.topic_id!
-            let getAddress = webAddress()
-            let url = URL(string: getAddress.getrootURL() + "?topicId=\(topicId)")
+            //let getAddress = webAddress()
+            let url = URL(string: "http://54.255.220.88/?topicId=\(topicId)")
             
             let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
             

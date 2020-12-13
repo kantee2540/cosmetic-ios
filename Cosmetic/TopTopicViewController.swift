@@ -259,8 +259,8 @@ class TopTopicViewController: UIViewController, UITableViewDelegate, UITableView
 //        let description: String = topicHeadItem[0].topic_description!
 //        let image: UIImage = coverImage.image!
         
-        let getAddress = webAddress()
-        let url = URL(string: getAddress.getrootURL() + "\(topicId ?? 0)")
+        //let getAddress = webAddress()
+        let url = URL(string: "http://54.255.220.88/?topicId=\(topicId ?? 0)")
         
         let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView

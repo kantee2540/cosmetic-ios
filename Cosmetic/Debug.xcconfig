@@ -12,4 +12,4 @@
 #include "Pods/Target Support Files/Pods-Cosmetic/Pods-Cosmetic.debug.xcconfig"
 
 //SERVER_URL = https:/$()/cococosmetic.000webhostapp.com/
-SERVER_URL = http:/$()/localhost:5000/api/v1/
+SERVER_URL = http:/$()/54.254.210.75/api/v1/

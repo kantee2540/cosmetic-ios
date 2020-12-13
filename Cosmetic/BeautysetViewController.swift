@@ -86,8 +86,9 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
             topView.visibility = .visible
             let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
             if profileurl != ""{
-                
                 topProfilepic.downloadImage(from: URL(string: profileurl!)!)
+            }else{
+                topProfilepic.image = UIImage.init(systemName: "person.crop.circle.fill")
             }
         }else{
             topView.visibility = .gone
@@ -123,7 +124,7 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.title.text = item.topic_name
         cell.detail.text = item.topic_description
         
-        if item.topic_img != ""{
+        if item.topic_img != "" && item.topic_img != nil{
             cell.beautysetImage.downloadImage(from: URL(string: item.topic_img!)!)
         }
         if item.userImg != ""{

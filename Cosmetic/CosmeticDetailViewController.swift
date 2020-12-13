@@ -112,8 +112,8 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     
     @IBAction func tapShare(_ sender: Any) {
         let productId: Int = productData[0].product_id!
-        let getAddress = webAddress()
-        let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+        //let getAddress = webAddress()
+        let url = URL(string: "http://54.255.220.88/?cosmeticid=\(productId)")
         
         let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView

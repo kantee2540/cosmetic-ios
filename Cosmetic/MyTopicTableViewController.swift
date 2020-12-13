@@ -93,7 +93,7 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, 
         cell?.descriptionLabel.text = item.topic_description
         cell?.topicCodeLabel.text = "Code : \(item.topic_code ?? "000000")"
         
-        if item.topic_img != ""{
+        if item.topic_img != "" && item.topic_img != nil{
             cell?.topicImage.downloadImage(from: URL(string: item.topic_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         }else{
             cell?.topicImage.image = UIImage(named: "bg4")

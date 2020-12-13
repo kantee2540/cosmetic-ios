@@ -38,7 +38,7 @@ class DownloadUser: NSObject, NetworkDelegate {
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter, header: ["":""])
+        network.post(URL: DB_URL, param: postParameter, header: nil)
     }
     
     @objc func parseJSON(_ data:Data){

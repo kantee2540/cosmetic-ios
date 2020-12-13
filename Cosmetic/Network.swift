@@ -18,7 +18,7 @@ class Network: NSObject {
     
     var delegate: NetworkDelegate?
     
-    func post(URL: String, param: [String: Any], header: [String: String]){
+    func post(URL: String, param: [String: Any], header: [String: String]?){
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()

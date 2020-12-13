@@ -71,7 +71,7 @@ class CollectUserdata: NSObject, NetworkDelegate {
     func insertData(){
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter, header: ["":""])
+        network.post(URL: DB_URL, param: postParameter, header: nil)
     }
     
     func updateProfilePicture(image: UIImage?){

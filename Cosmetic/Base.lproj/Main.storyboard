@@ -5263,7 +5263,7 @@ Enjoy and have fun our app!</string>
     <inferredMetricsTieBreakers>
         <segue reference="zay-x5-2N6"/>
         <segue reference="alj-iG-gXm"/>
-        <segue reference="c3A-7h-gg6"/>
+        <segue reference="CN3-NP-Tnc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="23" height="23"/>
@@ -5321,7 +5321,7 @@ Enjoy and have fun our app!</string>
             <color red="1" green="0.54500001668930054" blue="0.78600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="main-font-color">
-            <color red="0.86799997091293335" green="0.25200000405311584" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.36275452375411987" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="second-color">
             <color red="1" green="0.85199999809265137" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
