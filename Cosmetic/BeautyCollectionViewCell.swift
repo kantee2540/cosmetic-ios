@@ -29,7 +29,8 @@ class BeautyCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView(){
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 20
+        layer.cornerRadius = 20
         layer.shadowColor =  UIColor.black.cgColor
         layer.shadowOpacity = 0.15
         layer.shadowOffset = CGSize(width: 0, height: 5)

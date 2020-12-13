@@ -25,16 +25,6 @@ class CountLike: NSObject, NetworkDelegate {
     var delegate :LikeDislikeDelegate?
     let getAddress = webAddress()
     
-    func getLikeCount(topicId: String){
-        let DB_URL = getAddress.getLikeURL()
-        
-        let postParam = ["topic_id": topicId] as [String : Any]
-        
-        let network = Network()
-        network.delegate = self
-        network.get(URL: DB_URL, param: postParam)
-    }
-    
     func fetchData(data: Data){
         var jsonResult = NSDictionary()
         let dataObj = data

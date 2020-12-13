@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChooseProductDelegate {
+    func finshedSelectItem(item: [CosmeticDeskModel])
+}
+
 class ChooseProductTopicTableViewController: UITableViewController, DownloadCosmeticDeskListDelegate, UISearchBarDelegate {
     func itemCosmeticDeskDownloaded(item: NSMutableArray) {
         productList = item as! [CosmeticDeskModel]
@@ -29,6 +33,7 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadCosm
     var descriptionTopic: String?
     var selectedImage: UIImage?
     var isSelectedCustomImage: Bool?
+    var delegate: ChooseProductDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +41,9 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadCosm
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)!
         let downloadProduct = DownloadCosmeticDeskList()
         downloadProduct.delegate = self
-        downloadProduct.getCosmeticDeskByUserid(userId: userId, orderBy: "recent")
+        downloadProduct.getCosmeticDeskByUserid(orderby: "recent")
     }
 
     // MARK: - Table view data source
@@ -85,15 +89,8 @@ class ChooseProductTopicTableViewController: UITableViewController, DownloadCosm
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gopreview"{
-            let destination = segue.destination as? PreviewTopicViewController
-            destination?.titleTopic = titleTopic
-            destination?.descriptionTopic = descriptionTopic
-            destination?.selectedImage = selectedImage
-            destination?.isSelectedCustomImage = isSelectedCustomImage!
-            destination?.productSet = selectedProduct
-        }
+    @IBAction func tapDone(_ sender: Any) {
+        delegate?.finshedSelectItem(item: selectedProduct)
+        navigationController?.popViewController(animated: true)
     }
-    
 }

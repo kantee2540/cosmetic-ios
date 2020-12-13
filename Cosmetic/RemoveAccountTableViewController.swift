@@ -44,7 +44,7 @@ class RemoveAccountTableViewController: UITableViewController, UITextFieldDelega
         removeButton.isEnabled = false
         let deleteUser = DeleteUser()
         deleteUser.delegate = self
-        deleteUser.deleteUser(userId: userId!)
+        deleteUser.deleteUser()
     }
     // MARK: - Table view data source
 

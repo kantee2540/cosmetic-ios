@@ -27,22 +27,24 @@ class SaveTopic: NSObject, NetworkDelegate {
     let getAddress = webAddress()
     var DB_URL: String?
     
-    func saveTopic(topicId: String, userId: String){
+    func saveTopic(topicId: Int){
         
         let DB_URL = getAddress.getInsertSaveTopicURL()
-        let param = ["topic_id": topicId, "user_id": userId]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["Authorization": String(uid!)])
     }
         
-    func deleteTopic(topicId: String, userId: String){
+    func deleteTopic(topicId: Int){
         let DB_URL = getAddress.getDeleteSaveTopicURL()
-        let param = ["topic_id": topicId, "user_id": userId]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["topic_id": topicId]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["Authorization": String(uid!)])
     }
 }

@@ -27,9 +27,9 @@ class DeleteUser: NSObject, NetworkDelegate {
     var delegate: DeleteUserDelegate?
     let getAddress = webAddress()
     
-    func deleteUser(userId: String){
+    func deleteUser(){
         let DB_URL = getAddress.getDeleteUserURL()
-        let param = ["user_id": userId]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         let loginManager = LoginManager()
         
         let user = Auth.auth().currentUser
@@ -41,14 +41,14 @@ class DeleteUser: NSObject, NetworkDelegate {
                 loginManager.logOut()
                 let network = Network()
                 network.delegate = self
-                network.post(URL: DB_URL, param: param)
+                network.post(URL: DB_URL, param: [:], header: ["Authorization": String(uid!)])
                 self.removeUserData()
             }
         })
     }
     
     private func removeUserData(){
-        UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.uid)
         UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)

@@ -13,12 +13,12 @@ protocol CosmeticDetailDelegate {
     func dismissFromCosmeticDetail()
 }
 
-class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, CosmeticDeskDelegate, DownloadCosmeticDeskListDelegate{
+class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, CosmeticDeskDelegate{
     
     var delegate: CosmeticDetailDelegate?
-    var productId: String!
+    var productId: Int!
     private var productData: [ProductModel] = []
-    private var isSave: Bool = false
+    private var isSaveItem: Bool = false
     
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -34,10 +34,13 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     
     @IBOutlet weak var saveButton: UIButton!
     
-    func itemCosmeticDeskDownloaded(item: NSMutableArray) {
-        if item.count > 0{
-            isSave = true
+    func checkedItem(isSave: Bool) {
+        if(isSave){
+            isSaveItem = true
             disableSaveButton()
+        }else{
+            isSaveItem = false
+            enableSaveButton()
         }
     }
     
@@ -96,10 +99,10 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         downloadProduct.delegate = self
         downloadProduct.downloadSelectItem(productId: productId)
         
-        if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
-            let downloadDesk = DownloadCosmeticDeskList()
-            downloadDesk.delegate = self
-            downloadDesk.checkCosmeticIsSaved(userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!, productId: productId)
+        if UserDefaults.standard.string(forKey: ConstantUser.uid) != nil{
+            let cosmeticDesk = CosmeticDesk()
+            cosmeticDesk.delegate = self
+            cosmeticDesk.checkItem(productId: productId)
         }
     }
     
@@ -108,9 +111,9 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     }
     
     @IBAction func tapShare(_ sender: Any) {
-        let productId: String = productData[0].product_id!
-        let getAddress = webAddress()
-        let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+        let productId: Int = productData[0].product_id!
+        //let getAddress = webAddress()
+        let url = URL(string: "http://54.255.220.88/?cosmeticid=\(productId)")
         
         let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = sender as? UIView
@@ -120,17 +123,17 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
     @IBAction func tapSave(_ sender: Any) {
         let answerMessage = MDCSnackbarMessage()
         
-        if UserDefaults.standard.string(forKey: ConstantUser.userId) != nil{
-            if !isSave{
+        if UserDefaults.standard.string(forKey: ConstantUser.uid) != nil{
+            if !isSaveItem{
                 let insertItem = CosmeticDesk()
                 insertItem.delegate = self
-                insertItem.insertToDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+                insertItem.insertToDesk(productId: productId)
                 answerMessage.text = "Saved item to cosmetic desk"
                 MDCSnackbarManager().show(answerMessage)
             }else{
                 let insertItem = CosmeticDesk()
                 insertItem.delegate = self
-                insertItem.deleteFromDesk(productId: productId, userId: UserDefaults.standard.string(forKey: ConstantUser.userId)!)
+                insertItem.deleteFromDesk(productId: productId)
                 answerMessage.text = "Removed item from cosmetic desk"
                 MDCSnackbarManager().show(answerMessage)
             }
@@ -140,13 +143,13 @@ class CosmeticDetailViewController: UIViewController, DownloadProductProtocol, C
         }
     }
     
-    func onSuccess() {
-        if !isSave{
+    func onSuccess(isSave: Bool) {
+        if isSave{
             disableSaveButton()
-            isSave = true
+            isSaveItem = true
         }else{
             enableSaveButton()
-            isSave = false
+            isSaveItem = false
         }
     }
     

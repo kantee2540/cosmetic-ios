@@ -51,14 +51,12 @@ import UIKit
             jsonElement = jsonResult[i] as! NSDictionary
             let brand = BrandModel()
             
-            if let brand_id = jsonElement[ConstantBrand.brandId] as? String,
-                let brand_name = jsonElement[ConstantBrand.brandName] as? String,
-            let brand_logo = jsonElement[ConstantBrand.brandLogo] as? String
+            if let brand_id = jsonElement[ConstantBrand.brandId] as? Int,
+                let brand_name = jsonElement[ConstantBrand.brandName] as? String
                 
             {
                 brand.brand_id = brand_id
                 brand.brand_name = brand_name
-                brand.brand_logo = brand_logo
             }
             
             brands.add(brand)

@@ -49,70 +49,73 @@ class CollectUserdata: NSObject, NetworkDelegate {
     var postParameter: [String: Any] = [:]
     
     func collectUserdata(firstname: String, lastName: String, nickname: String, email: String, uid: String){
-        print("Insert")
+        DB_URL = getAddress.getCreateUserURL()
         postParameter = ["first_name" : firstname,
                          "last_name" : lastName,
-                         "nick_name" : nickname,
+                         "nickname" : nickname,
                          "email" : email,
-                         "uid" : uid,
-                         "option" : 0]
+                         "uid" : uid]
         insertData()
     }
     
     func updateUserdata(firstname: String, lastName: String, nickname: String, email: String, uid: String){
-        print("Update")
+        DB_URL = getAddress.getUpdateUserURL()
         postParameter = ["first_name" : firstname,
                          "last_name" : lastName,
-                         "nick_name" : nickname,
+                         "nickname" : nickname,
                          "email" : email,
-                         "uid" : uid,
-                         "option" : 1]
+                         "uid" : uid]
         insertData()
     }
     
     func insertData(){
-        DB_URL = getAddress.getCollectUserdata()
-        
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter)
+        network.post(URL: DB_URL, param: postParameter, header: nil)
     }
     
-    func updateProfilePicture(userId: String, image: UIImage?){
+    func updateProfilePicture(image: UIImage?){
         let url = getAddress.getUpdateProfilepic()
         let manager = AFHTTPSessionManager()
-        let param = ["user_id": userId]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         manager.responseSerializer = AFHTTPResponseSerializer()
 
-        manager.post(url, parameters: param, headers: nil, constructingBodyWith: { (data:AFMultipartFormData!) -> Void in
+        manager.post(url, parameters: [:], headers: ["Authorization": String(uid!)], constructingBodyWith: { (data:AFMultipartFormData!) -> Void in
             if image != nil{
-                data.appendPart(withFileData: (image?.jpegData(compressionQuality: 0.75))!, name: "imageFile", fileName: userId, mimeType: "image/jpeg")
+                data.appendPart(withFileData: (image?.jpegData(compressionQuality: 0.75))!, name: "image", fileName: uid!+".jpg", mimeType: "image/jpeg")
+                
             }
         },progress: {(Progress) in}, success: {
             (operation: URLSessionDataTask, responseObject: Any) in
             DispatchQueue.main.async(execute: { () -> Void in
-                var jsonResult = NSArray()
+                var jsonResult = NSDictionary()
                 var profileURL :String = ""
                 let dataObj = responseObject as! Data
                 
                 do{
-                    jsonResult = try JSONSerialization.jsonObject(with: dataObj, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                    jsonResult = try JSONSerialization.jsonObject(with: dataObj, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                 }catch let error as NSError{
                     print(error)
                 }
-
-                var jsonElement = NSDictionary()
-                
-                jsonElement = jsonResult[0] as! NSDictionary
-                if let imgUrl = jsonElement["profileURL"]{
+                print(jsonResult)
+                if let imgUrl = jsonResult["profile_url"],
+                   let error = jsonResult["error"] as? Bool{
                     profileURL = imgUrl as! String
+                    if !error{
+                        self.delegate?.updateProfileSuccess(imageURL: profileURL)
+                    }else{
+                        self.delegate?.insertDataFailed()
+                    }
+                    
+                }else{
+                    self.delegate?.insertDataFailed()
                 }
                 
-                self.delegate?.updateProfileSuccess(imageURL: profileURL)
+                
             })
         }, failure: {
             (Operation, error) in
-            print(error)
+            print("Error : " + error.localizedDescription)
             DispatchQueue.main.async(execute: { () -> Void in
                 self.delegate?.insertDataFailed()
             })

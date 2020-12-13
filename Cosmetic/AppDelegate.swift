@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DownloadUserProtocol{
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "productdetail") as? CosmeticDetailViewController
-            vc?.productId = param["id"]
+            vc?.productId = Int(param["id"]!) ?? 0
             nav?.present(vc!, animated: true, completion: nil)
             
         }else if url.host == "topic"{
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, DownloadUserProtocol{
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "TopTopic") as? TopTopicViewController
-            vc?.topicId = param["id"]
+            vc?.topicId = Int(param["id"]!) ?? 0
             nav?.present(vc!, animated: true, completion: nil)
             
         }

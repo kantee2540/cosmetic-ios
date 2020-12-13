@@ -26,22 +26,23 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
     var delegate: DownloadSaveTopicDelegate?
     let getAddress = webAddress()
     
-    func checkTopicIsSaved(userId: String, topicId: String){
+    func checkTopicIsSaved(userId: Int, topicId: Int){
         let DB_URL = getAddress.getSaveTopicURL()
-        let param = ["user_id": userId, "topic_id": topicId]
+        let param = ["user_id": userId, "topic_id": topicId] as [String : Any]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["":""])
     }
     
-    func downloadSaveTopic(userId: String, orderBy: String){
+    func downloadSaveTopic(orderBy: String){
         let DB_URL = getAddress.getSaveTopicURL()
-        let param = ["user_id": userId, "orderby": orderBy]
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        let param = ["orderby": orderBy] as [String : Any]
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: param)
+        network.post(URL: DB_URL, param: param, header: ["Authorization": String(uid!)])
         
     }
     
@@ -62,7 +63,7 @@ class DownloadSaveTopic: NSObject, NetworkDelegate {
             jsonElement = jsonResult[i] as! NSDictionary
             let product = TopicModel()
             
-            if  let topic_id = jsonElement[ConstantProduct.topicId] as? String,
+            if  let topic_id = jsonElement[ConstantProduct.topicId] as? Int,
                 let topic_name = jsonElement[ConstantProduct.topicName] as? String,
                 let topic_description = jsonElement[ConstantProduct.topicDescription] as? String,
                 let topic_code = jsonElement[ConstantProduct.topic_code] as? String,

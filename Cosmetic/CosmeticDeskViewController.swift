@@ -32,7 +32,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     private var topicSortList: [String] = ["Most Recent", "A-Z", "Most View"]
     private var deskList: [CosmeticDeskModel] = []
     private var saveTopic: [TopicModel] = []
-    private var userId: String?
+    private var uid: String?
     private var spinnerIsShow: Bool = false
     
     lazy var deskRefreshControl: UIRefreshControl = {
@@ -97,7 +97,6 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
                 
                 deskCell.deskId = item.desk_id
                 deskCell.productId = item.product_id
-                deskCell.userId = userId
                 deskCell.indexPath = indexPath
                 
                 deskCell.productName.text = item.product_name
@@ -108,7 +107,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
                 let formattedPrice = numberFormat.string(from: NSNumber(value: item.product_price!))
                 deskCell.productPrice.text = "\(formattedPrice!)฿"
                 
-                if item.favorite == "1"{
+                if item.favorite == 1{
                     deskCell.favoriteStatus = true
                     deskCell.setHeartFill()
                 }else{
@@ -198,8 +197,8 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         deskCollection.delegate = self
         deskCollection.dataSource = self
         
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
-        if userId != nil{
+        uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        if uid != nil{
             showSpinner(onView: self.view)
             spinnerIsShow = true
         }
@@ -211,10 +210,8 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "My Desk"
-        
-        userId = UserDefaults.standard.string(forKey: ConstantUser.userId)
-        
-        if userId != nil{
+        uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        if uid != nil{
             
             let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
             let email = UserDefaults.standard.string(forKey: ConstantUser.email)
@@ -248,7 +245,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
         
         let nologinVc = (self.storyboard?.instantiateViewController(identifier: "nologin")) as! NoLoginViewController
         let viewControllers: [UIViewController] = self.children
-        if userId != nil{
+        if uid != nil{
             downloadDesk()
             
             for vcs in viewControllers{
@@ -270,7 +267,7 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
             let itemIndex = deskCollection.indexPathsForSelectedItems?.first
             let item = deskList[itemIndex!.row]
             destination?.delegate = self
-            destination?.productId = item.product_id
+            destination?.productId = Int(item.product_id!)
             
          }else if segue.identifier == "showtopic"{
             let destination = segue.destination as? TopTopicViewController
@@ -289,19 +286,19 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
     private func downloadCosmeticList(orderBy: String){
         let downloadDeskCosmetic = DownloadCosmeticDeskList()
         downloadDeskCosmetic.delegate = self
-        downloadDeskCosmetic.getCosmeticDeskByUserid(userId: userId!, orderBy: orderBy)
+        downloadDeskCosmetic.getCosmeticDeskByUserid(orderby: orderBy)
     }
     
     private func downloadFavoriteList(orderBy: String){
         let downloadDeskCosmetic = DownloadCosmeticDeskList()
         downloadDeskCosmetic.delegate = self
-        downloadDeskCosmetic.getFavorite(userId: userId!, orderBy: orderBy)
+        downloadDeskCosmetic.getFavorite(orderBy: orderBy)
     }
     
     private func downloadBeautySet(orderBy: String){
         let downloadSaveTopic = DownloadSaveTopic()
         downloadSaveTopic.delegate = self
-        downloadSaveTopic.downloadSaveTopic(userId: userId!, orderBy: orderBy)
+        downloadSaveTopic.downloadSaveTopic(orderBy: orderBy)
     }
     
     private func refreshData(){
@@ -358,6 +355,9 @@ class CosmeticDeskViewController: UIViewController, UICollectionViewDelegate, UI
 }
 
 extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskCollectionViewCellDelegate, CosmeticDeskDelegate, CosmeticDetailDelegate, DownloadSaveTopicDelegate{
+    func checkedItem(isSave: Bool) {
+        
+    }
     
     func downloadSaveTopicSuccess(item: NSMutableArray) {
         saveTopic = item as! [TopicModel]
@@ -383,16 +383,16 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
     }
     
     //MARK: - Tap Action from cosmetic desk item
-    func tapAction(userId: String, productId: String, image: UIImage, indexPath: IndexPath, button: UIButton) {
+    func tapAction(productId: Int, image: UIImage, indexPath: IndexPath, button: UIButton) {
         let item = deskList[indexPath.row]
         
         let deskItemAction = UIAlertController(title: item.product_name, message: "Do you want to do next?", preferredStyle: .actionSheet)
         deskItemAction.addAction(UIAlertAction(title: "Share", style: .default, handler: {
             (UIAlertAction) in
             
-            let productId: String = item.product_id!
-            let getAddress = webAddress()
-            let url = URL(string: getAddress.getrootURL() + "?cosmeticid=\(productId)")
+            let productId: Int = item.product_id!
+            //let getAddress = webAddress()
+            let url = URL(string: "http://54.255.220.88/?cosmeticid=\(productId)")
             
             let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
             
@@ -412,7 +412,7 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
             self.showSpinner(onView: self.view)
             let cosmeticDesk = CosmeticDesk()
             cosmeticDesk.delegate = self
-            cosmeticDesk.deleteFromDesk(productId: productId, userId: userId)
+            cosmeticDesk.deleteFromDesk(productId: productId)
         }))
         
         if let popoverController = deskItemAction.popoverPresentationController{
@@ -455,7 +455,7 @@ extension CosmeticDeskViewController: DownloadCosmeticDeskListDelegate, DeskColl
         deskRefreshControl.endRefreshing()
     }
     
-    func onSuccess() {
+    func onSuccess(isSave: Bool) {
         refreshData()
     }
     
@@ -480,9 +480,9 @@ extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveT
         let setOption = UIAlertController(title: item.topic_name, message: "What do you next?", preferredStyle: .actionSheet)
         setOption.addAction(UIAlertAction(title: "Share", style: .default, handler: {
             (UIAlertAction) in
-            let topicId: String = item.topic_id!
-            let getAddress = webAddress()
-            let url = URL(string: getAddress.getrootURL() + "?topicId=\(topicId)")
+            let topicId: Int = item.topic_id!
+            //let getAddress = webAddress()
+            let url = URL(string: "http://54.255.220.88/?topicId=\(topicId)")
             
             let activityViewController = UIActivityViewController(activityItems: [url as Any], applicationActivities: nil)
             
@@ -500,7 +500,7 @@ extension CosmeticDeskViewController: BeautySetCollectionViewCellDelegate, SaveT
             self.showSpinner(onView: self.view)
             let saveTopic = SaveTopic()
             saveTopic.delegate = self
-            saveTopic.deleteTopic(topicId: item.topic_id!, userId: self.userId!)
+            saveTopic.deleteTopic(topicId: item.topic_id!)
         }))
         
         setOption.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {

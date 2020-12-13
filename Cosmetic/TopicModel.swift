@@ -8,14 +8,17 @@
 
 import UIKit
 
-class TopicModel: NSObject {
-    var topic_id: String?
+public class TopicModel: NSObject {
+    var topic_id: Int?
     var topic_name: String?
     var topic_description: String?
     var topic_code: String?
     var topic_img: String?
     var categories_name: String?
-    var user_id: String?
+    var user_id: Int?
     var nickname: String?
     var userImg: String?
+    var likeCount: Int?
+    var isSaved: Bool?
+    var viewCount: Int?
 }

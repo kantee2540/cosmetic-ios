@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
-class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DownloadTopicProtocol, TopTopicDelegate {
+class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DownloadTopicProtocol, TopTopicDelegate, ShareBeautysetDelegate {
+    func finishedCreateset() {
+        let answerMessage = MDCSnackbarMessage()
+        answerMessage.text = "Shared your beauty set to public"
+        MDCSnackbarManager().show(answerMessage)
+    }
+    
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     func dismissFromTopTopic() {
         let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
         self.navigationController?.pushViewController(accountVc!, animated: true)
@@ -26,7 +37,11 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
     }
 
     private var beautyList: [TopicModel] = []
+    @IBOutlet weak var beautysetScrollview: UIScrollView!
     @IBOutlet weak var beautyCollection: UICollectionView!
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topProfilepic: UIImageView!
     
     lazy var topicRefreshControl: UIRefreshControl = {
        let refreshControl = UIRefreshControl()
@@ -44,18 +59,40 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
         beautyCollection.delegate = self
         beautyCollection.dataSource = self
         
+        setupTopview()
         downloadTopic()
-        beautyCollection.addSubview(topicRefreshControl)
+        beautysetScrollview.addSubview(topicRefreshControl)
+    }
+    
+    private func setupTopview(){
+        topView.layer.cornerRadius = 20
+        topView.layer.shadowColor =  UIColor.black.cgColor
+        topView.layer.shadowOpacity = 0.15
+        topView.layer.shadowRadius = 10
+        topView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        topProfilepic.makeRounded()
     }
     
     private func downloadTopic(){
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.downloadTopLimitTopic(limit: 5)
+        downloadTopic.downloadTopLimitTopic(limit: 10)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.title = "Top Beauty Set"
+        self.tabBarController?.navigationItem.title = "Beauty Set"
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        if uid != nil{
+            topView.visibility = .visible
+            let profileurl = UserDefaults.standard.string(forKey: ConstantUser.profilepic)
+            if profileurl != ""{
+                topProfilepic.downloadImage(from: URL(string: profileurl!)!)
+            }else{
+                topProfilepic.image = UIImage.init(systemName: "person.crop.circle.fill")
+            }
+        }else{
+            topView.visibility = .gone
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +102,12 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
             let item = beautyList[index!.row]
             destination.delegate = self
             destination.topicId = item.topic_id
+        }else if segue.identifier == "shareset"{
+            if let navigationController = segue.destination as? UINavigationController {
+                if let firstvc = navigationController.viewControllers.first as? ShareBeautysetViewController {
+                    firstvc.delegate = self
+                }
+            }
         }
     }
     
@@ -77,12 +120,11 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
         
         let item = beautyList[indexPath.row]
         
-        cell.layer.cornerRadius = 20
-        cell.layer.masksToBounds = true
+        
         cell.title.text = item.topic_name
         cell.detail.text = item.topic_description
         
-        if item.topic_img != ""{
+        if item.topic_img != "" && item.topic_img != nil{
             cell.beautysetImage.downloadImage(from: URL(string: item.topic_img!)!)
         }
         if item.userImg != ""{
@@ -95,6 +137,15 @@ class BeautysetViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.updateViewConstraints()
+        collectionHeight.constant = beautyCollection.contentSize.height
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.viewDidLayoutSubviews()
     }
 
 }

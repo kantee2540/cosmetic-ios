@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ProductModel: NSObject {
-    var product_id: String?
+public class ProductModel: NSObject {
+    var product_id: Int?
     var product_name: String?
     var product_description: String?
     var product_price: Int?
-    var categories_id: String?
+    var categories_id: Int?
     var categories_name: String?
     var categories_type: String?
     var brand_name: String?
@@ -24,7 +24,7 @@ class ProductModel: NSObject {
         
     }
     
-    init(product_name: String, product_description: String, product_price: Int, categories_id:String, categories_name: String,categories_type: String, brand_name: String, product_img: String, ingredient: String) {
+    init(product_name: String, product_description: String, product_price: Int, categories_id:Int, categories_name: String,categories_type: String, brand_name: String, product_img: String, ingredient: String) {
         self.product_name = product_name
         self.product_description = product_description
         self.product_price = product_price
@@ -36,7 +36,7 @@ class ProductModel: NSObject {
         self.ingredient = ingredient
     }
     
-    override var description: String{
+    public override var description: String{
         return "ProductName: " + product_name! + "ProductDescription: " + product_description!
     }
 }

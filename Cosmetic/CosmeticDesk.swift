@@ -9,7 +9,8 @@
 import UIKit
 
 protocol CosmeticDeskDelegate {
-    func onSuccess()
+    func onSuccess(isSave: Bool)
+    func checkedItem(isSave: Bool)
     func onFailed()
 }
 
@@ -25,11 +26,16 @@ class CosmeticDesk: NSObject, NetworkDelegate {
                 print(error)
             }
             
-            let error = jsonResult["error"] as! Bool
-            if !error{
-                self.delegate?.onSuccess()
-            }else{
-                self.delegate?.onFailed()
+            if let isSaved = jsonResult["is_saved"] as? Bool{
+                self.delegate?.checkedItem(isSave: isSaved)
+            }
+            
+            if let error = jsonResult["error"] as? Bool{
+                if !error{
+                    self.delegate?.onSuccess(isSave: jsonResult["is_saved"] as! Bool)
+                }else{
+                    self.delegate?.onFailed()
+                }
             }
         })
     }
@@ -43,23 +49,36 @@ class CosmeticDesk: NSObject, NetworkDelegate {
     var delegate: CosmeticDeskDelegate?
     let getAddress = webAddress()
     var DB_URL:String!
-    var postParameter: [String: String] = [:]
+    var postParameter: [String: Any] = [:]
+    var header: [String: String] = [:]
     
-    func insertToDesk(productId: String, userId: String){
-        DB_URL = getAddress.getInsertItemToDesk()
-        postParameter = ["user_id": userId, "product_id": productId]
+    func checkItem(productId: Int){
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        DB_URL = getAddress.getCheckItem()
+        postParameter = ["product_id": productId]
+        header = ["Authorization": String(uid!)]
         processing()
     }
     
-    func deleteFromDesk(productId: String, userId: String) {
+    func insertToDesk(productId: Int){
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
+        DB_URL = getAddress.getInsertItemToDesk()
+        postParameter = ["product_id": productId]
+        header = ["Authorization": String(uid!)]
+        processing()
+    }
+    
+    func deleteFromDesk(productId: Int) {
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         DB_URL = getAddress.getDeleteItemFromDesk()
-        postParameter = ["user_id" : userId, "product_id": productId]
+        postParameter = ["product_id": productId]
+        header = ["Authorization": String(uid!)]
         processing()
     }
     
     private func processing(){
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter)
+        network.post(URL: DB_URL, param: postParameter, header: header)
     }
 }

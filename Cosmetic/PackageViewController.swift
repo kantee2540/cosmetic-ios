@@ -9,6 +9,10 @@
 import UIKit
 
 class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopicProtocol, TopTopicDelegate {
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     func dismissFromTopTopic() {
         let accountVc = storyboard?.instantiateViewController(withIdentifier: "signin")
         self.navigationController?.pushViewController(accountVc!, animated: true)
@@ -45,7 +49,7 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
         codeField.delegate = self
         codeField.autocapitalizationType = UITextAutocapitalizationType.allCharacters
         codeField.delegate = self
-        codeField.setUnderLine()
+        //codeField.setUnderLine()
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
@@ -67,14 +71,6 @@ class PackageViewController: UIViewController, UITextFieldDelegate, DownloadTopi
             downloadTopic.delegate = self
             downloadTopic.getTopicId(code: textField.text ?? "")
         }
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setUnderLine()
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.setUnderLine()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

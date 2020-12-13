@@ -9,19 +9,8 @@
 import UIKit
 
 class CategoriesModel: NSObject {
-    var categories_id :String?
+    var categories_id :Int?
     var categories_name :String?
     var categories_type :String?
-    
-    override init() {
-        
-    }
-    
-    init(categories_id: String, categories_name: String, categories_type: String){
-        
-        self.categories_id = categories_id
-        self.categories_name = categories_name
-        self.categories_type = categories_type
-    }
     
 }

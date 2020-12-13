@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 protocol DownloadCosmeticDeskListDelegate {
     func itemCosmeticDeskDownloaded(item: NSMutableArray)
@@ -28,33 +29,34 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
     var DB_URL:String!
     var postParameter: [String: Any] = [:]
     
-    func getCosmeticDeskByUserid(userId: String, orderBy: String){
-        postParameter["user_id"] = userId
-        postParameter["orderby"] = orderBy
+    func getCosmeticDeskByUserid(orderby: String){
+        DB_URL = getAddress.getCosmeticDeskList()
+        postParameter["orderby"] = orderby
         downloadItem()
     }
-    func getFavorite(userId: String, orderBy: String){
-        postParameter = ["user_id": userId, "favorite": 9]
+    func getFavorite(orderBy: String){
+        DB_URL = getAddress.getCosmeticDeskFavoriteList()
         postParameter["orderby"] = orderBy
         downloadItem()
     }
     
-    func getCosmeticByLimit(userId: String, limit: Int){
-        postParameter = ["user_id": userId, "limit": limit]
+    func getCosmeticByLimit(limit: Int){
+        DB_URL = getAddress.getCosmeticDeskList()
+        postParameter = ["limit": limit]
         downloadItem()
     }
     
-    func checkCosmeticIsSaved(userId: String, productId: String){
-        postParameter = ["user_id" : userId, "product_id" : productId]
+    func checkCosmeticIsSaved(productId: Int){
+        postParameter = ["product_id" : productId]
         downloadItem()
     }
     
     private func downloadItem(){
-        DB_URL = getAddress.getCosmeticDeskList()
+        let uid = UserDefaults.standard.string(forKey: ConstantUser.uid)
         
         let network = Network()
         network.delegate = self
-        network.post(URL: DB_URL, param: postParameter)
+        network.post(URL: DB_URL, param: postParameter, header: ["Authorization": String(uid!)])
     }
     
     func parseJSON(_ data:Data){
@@ -73,18 +75,18 @@ class DownloadCosmeticDeskList: NSObject, NetworkDelegate {
             jsonElement = jsonResult[i] as! NSDictionary
             let cosmeitcDesk = CosmeticDeskModel()
             
-            if  let product_id = jsonElement[ConstantProduct.productId] as? String,
+            if  let product_id = jsonElement[ConstantProduct.productId] as? Int,
                 let product_name = jsonElement[ConstantProduct.productName] as? String,
                 let product_description = jsonElement[ConstantProduct.description] as? String,
-                let product_price = jsonElement[ConstantProduct.productPrice] as? String,
-                let categories_id = jsonElement[ConstantProduct.categoriesId] as? String,
+                let product_price = jsonElement[ConstantProduct.productPrice] as? Int,
+                let categories_id = jsonElement[ConstantProduct.categoriesId] as? Int,
                 let categories_name = jsonElement[ConstantCategories.categoriesName] as? String,
                 let brand_name = jsonElement[ConstantProduct.brandName] as? String,
                 let product_img = jsonElement[ConstantProduct.productImg] as? String,
                 let ingredient = jsonElement[ConstantProduct.ingredient] as? String,
-                let user_id = jsonElement[ConstantUser.userId] as? String,
-                let desk_id = jsonElement[ConstantProduct.deskId] as? String,
-                let favorite = jsonElement[ConstantProduct.favorite] as? String
+                let user_id = jsonElement[ConstantUser.userId] as? Int,
+                let desk_id = jsonElement[ConstantProduct.deskId] as? Int,
+                let favorite = jsonElement[ConstantProduct.favorite] as? Int
             {
                 cosmeitcDesk.product_id = product_id
                 cosmeitcDesk.product_name = product_name

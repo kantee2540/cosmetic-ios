@@ -9,6 +9,10 @@
 import UIKit
 
 class AddTopicResultViewController: UIViewController, DownloadTopicProtocol {
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     
     func topicDownloaded(item: NSMutableArray) {
         topicList = item as! [TopicModel]

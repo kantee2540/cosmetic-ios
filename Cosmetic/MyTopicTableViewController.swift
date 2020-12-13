@@ -7,8 +7,32 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
-class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
+class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol, RemoveTopicDelegate, ShareBeautysetDelegate {
+    func finishedCreateset() {
+        downloadTopic()
+        let answerMessage = MDCSnackbarMessage()
+        answerMessage.text = "Updated beauty set"
+        MDCSnackbarManager().show(answerMessage)
+    }
+    
+    func removeSuccess() {
+        downloadTopic()
+        removeSpinner()
+        let answerMessage = MDCSnackbarMessage()
+        answerMessage.text = "Removed beauty from account"
+        MDCSnackbarManager().show(answerMessage)
+    }
+    
+    func removeFailed(error: String) {
+        Library.displayAlert(targetVC: self, title: "Error", message: error)
+    }
+    
+    func topicGetItem(detail: TopicModel, packages: NSMutableArray) {
+        
+    }
+    
     func topicDownloaded(item: NSMutableArray) {
         topicList = item as! [TopicModel]
         self.tableView.reloadData()
@@ -23,18 +47,19 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
     }
     
     private var topicList: [TopicModel] = []
-    var userId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+        downloadTopic()
+    }
+    
+    private func downloadTopic(){
         let downloadTopic = DownloadTopic()
         downloadTopic.delegate = self
-        downloadTopic.getTopicByUserId(userId: userId!)
-        
+        downloadTopic.getTopicByUserId()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,14 +86,14 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "topiccell", for: indexPath) as? MyTopicTableViewCell
-
         // Configure the cell...
         let item = topicList[indexPath.row]
+        
         cell?.titleLabel.text = item.topic_name
         cell?.descriptionLabel.text = item.topic_description
         cell?.topicCodeLabel.text = "Code : \(item.topic_code ?? "000000")"
         
-        if item.topic_img != ""{
+        if item.topic_img != "" && item.topic_img != nil{
             cell?.topicImage.downloadImage(from: URL(string: item.topic_img!) ?? URL(string: ConstantDefaultURL.defaultImageURL)!)
         }else{
             cell?.topicImage.image = UIImage(named: "bg4")
@@ -81,4 +106,38 @@ class MyTopicTableViewController: UITableViewController, DownloadTopicProtocol {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let item = topicList[indexPath.row]
+        
+        let FlagAction = UIContextualAction(style: .normal, title:  "Edit", handler: {
+            (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            if let rootVc = self.storyboard?.instantiateViewController(withIdentifier: "sharesetroot") as? ShareBeautysetRootViewController{
+                let shareVc = rootVc.viewControllers.first as? ShareBeautysetViewController
+                rootVc.topicId = item.topic_id
+                shareVc?.delegate = self
+                self.present(rootVc, animated: true, completion: nil)
+            }
+            
+            success(true)
+        })
+        FlagAction.backgroundColor = .lightGray
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: {
+            (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            let alert = UIAlertController(title: "Are you sure to delete this beauty set?", message: "\"\(item.topic_name!)\" will deleted. You can't undo this action.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(action) -> Void in
+                self.showSpinner(onView: self.view)
+                let topic = Topic()
+                topic.removeDelegate = self
+                topic.removeTopic(id: item.topic_id!)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) -> Void in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            success(true)
+        })
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, FlagAction])
+    }
 }

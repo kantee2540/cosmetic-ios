@@ -18,12 +18,12 @@ class Network: NSObject {
     
     var delegate: NetworkDelegate?
     
-    func post(URL: String, param: [String: Any]){
+    func post(URL: String, param: [String: Any], header: [String: String]?){
         
         let manager = AFHTTPSessionManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        manager.post(URL, parameters: param, headers: nil, progress: {(Progress) in },
+        manager.post(URL, parameters: param, headers: header, progress: {(Progress) in },
                      success: {(Operation, responseObject) in
                         self.delegate?.downloadSuccess(data: responseObject as! Data)
         },

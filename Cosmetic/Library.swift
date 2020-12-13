@@ -51,7 +51,6 @@ class Library {
     }
     
     static func setUserDefault(user: UserModel){
-        UserDefaults.standard.set(user.userId ?? nil, forKey: ConstantUser.userId)
         UserDefaults.standard.set(user.firstName ?? nil, forKey: ConstantUser.firstName)
         UserDefaults.standard.set(user.lastName ?? nil, forKey: ConstantUser.lastName)
         UserDefaults.standard.set(user.nickname ?? nil, forKey: ConstantUser.nickName)
@@ -60,12 +59,12 @@ class Library {
     }
     
     static func removeUserDefault(){
-        UserDefaults.standard.removeObject(forKey: ConstantUser.userId)
         UserDefaults.standard.removeObject(forKey: ConstantUser.firstName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.lastName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.nickName)
         UserDefaults.standard.removeObject(forKey: ConstantUser.email)
         UserDefaults.standard.removeObject(forKey: ConstantUser.profilepic)
+        UserDefaults.standard.removeObject(forKey: ConstantUser.uid)
     }
     
 }

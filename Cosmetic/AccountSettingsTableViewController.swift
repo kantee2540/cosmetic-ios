@@ -108,11 +108,10 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        let userId = UserDefaults.standard.string(forKey: ConstantUser.userId)!
         
         let collectionUser = CollectUserdata()
         collectionUser.delegate = self
-        collectionUser.updateProfilePicture(userId: userId, image: image)
+        collectionUser.updateProfilePicture(image: image)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -121,12 +120,13 @@ class AccountSettingsTableViewController: UITableViewController, UIImagePickerCo
     }
     
     func insertDataFailed() {
-        
+        Library.displayAlert(targetVC: self, title: "Error", message: "Failed to uploaded profile image")
     }
     
     func updateProfileSuccess(imageURL: String) {
         
         if imageURL != ""{
+            print("SHOW")
             UserDefaults.standard.set(imageURL, forKey: ConstantUser.profilepic)
             profileImage.downloadImage(from: URL(string: imageURL)!)
         }else{
